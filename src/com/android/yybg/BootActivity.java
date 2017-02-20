@@ -36,7 +36,7 @@ public class BootActivity extends Activity {
     }
 
     private void goHome() {
-        Intent intent = new Intent(BootActivity.this, MainActivity.class);
+        Intent intent = new Intent(BootActivity.this, LauncherActivity.class);
         BootActivity.this.startActivity(intent);
         BootActivity.this.finish();
     }

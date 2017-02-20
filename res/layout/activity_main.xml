@@ -1,12 +1,46 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_weight="1" />
 
-</RelativeLayout>
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0"
+        android:background="#dbdbdb"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_main"
+            style="@+style/RadioButton_Style"
+            android:drawableTop="@drawable/iv_main_drawable_selector"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/rb_video"
+            style="@+style/RadioButton_Style"
+            android:drawableTop="@drawable/iv_video_drawable_selector"
+            android:text="视频" />
+
+        <RadioButton
+            android:id="@+id/rb_care_about"
+            style="@+style/RadioButton_Style"
+            android:drawableTop="@drawable/iv_care_about_drawable_selector"
+            android:text="关心" />
+
+        <RadioButton
+            android:id="@+id/rb_person"
+            style="@+style/RadioButton_Style"
+            android:drawableTop="@drawable/iv_person_drawable_selector"
+            android:text="我的" />
+    </RadioGroup>
+</LinearLayout>
