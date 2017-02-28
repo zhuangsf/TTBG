@@ -8,12 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * 作者：哇牛Aaron
- * 作者简书文章地址: http://www.jianshu.com/users/07a8b5386866/latest_articles
- * 时间: 2016/10/24
- * 功能描述: Fragment的基类 其它Fragment继承它
- */
+
+
 public abstract class BaseFragment extends Fragment{
     protected Context mContext;
 
