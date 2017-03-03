@@ -15,6 +15,10 @@
 -->
 
 <resources>
-    <color name="white">#ff000000</color>
-    <color name="black">#ffffffff</color>
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="gray">#ff888888</color>
+    <color name="orange">#ffff6600</color>
+    <color name="gray_dark">#ff222222</color>
+    
 </resources>

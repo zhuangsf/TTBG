@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.android.yybg.R;
+import com.android.yybg.util.TimerUtil;
+
 
 import android.content.Context;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
@@ -19,6 +22,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 
@@ -35,6 +39,16 @@ public class MainFragment extends BaseFragment {
     private AtomicInteger atomicInteger = new AtomicInteger(0);
     private boolean isContinue = true;   
     
+    private ImageView count1_image;
+    private ImageView count2_image;
+    private ImageView count3_image;
+    private ImageView count4_image;
+    private TextView count1_time;
+    private TextView count2_time;
+    private TextView count3_time;
+    private TextView count4_time;
+    
+    
     @Override
     protected View initView() {
         //Log.e(TAG, "首页页面Fragment页面被初始化了...");
@@ -42,13 +56,75 @@ public class MainFragment extends BaseFragment {
         
         if(mainFragmentView != null)
         {
-        	initViewPager(mainFragmentView);
+        	initADPager(mainFragmentView);      //初始化页眉广告条
+        	initCountDownPage(mainFragmentView);
         }
         return mainFragmentView;
     }
+    private void initCountDownPage(View v) {
+        count1_image = (ImageView) v.findViewById(R.id.count1_image);
+        count2_image = (ImageView) v.findViewById(R.id.count1_image);
+        count3_image = (ImageView) v.findViewById(R.id.count1_image);
+        count4_image = (ImageView) v.findViewById(R.id.count1_image);
+        count1_time = (TextView) v.findViewById(R.id.count1_time);
+        count2_time = (TextView) v.findViewById(R.id.count2_time);
+        count3_time = (TextView) v.findViewById(R.id.count3_time);
+        count4_time = (TextView) v.findViewById(R.id.count4_time);
+        
+     
+        CountDownTimer timer1 = new CountDownTimer(180000, 35) {
+          @Override
+          public void onTick(long millisUntilFinished) {
+        	  count1_time.setText(TimerUtil.stringForTime(millisUntilFinished));
+          }
+          @Override
+          public void onFinish() {
+        	 count1_time.setText("正在开奖");
+          }
+        };
+     
+        
+        CountDownTimer timer2 = new CountDownTimer(170000, 35) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+          	  count2_time.setText(TimerUtil.stringForTime(millisUntilFinished));
+            }
+            @Override
+            public void onFinish() {
+          	 count2_time.setText("正在开奖");
+            }
+          };
+  
+          
+          CountDownTimer timer3 = new CountDownTimer(160000, 35) {
+              @Override
+              public void onTick(long millisUntilFinished) {
+            	  count3_time.setText(TimerUtil.stringForTime(millisUntilFinished));
+              }
+              @Override
+              public void onFinish() {
+            	 count3_time.setText("正在开奖");
+              }
+            };
 
-    
-    private void initViewPager(View v) {
+            
+            CountDownTimer timer4 = new CountDownTimer(150000, 35) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+              	  count4_time.setText(TimerUtil.stringForTime(millisUntilFinished));
+                }
+                @Override
+                public void onFinish() {
+              	 count4_time.setText("正在开奖");
+                }
+              };
+              timer1.start();
+              timer2.start();
+              timer3.start();
+              timer4.start();
+    }
+
+    private void initADPager(View v) {
         // 从布局文件中获取ViewPager父容器
         pagerLayout = (LinearLayout) v.findViewById(R.id.view_pager_content);
         // 创建ViewPager

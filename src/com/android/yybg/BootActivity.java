@@ -20,7 +20,7 @@ import android.os.Handler;
 public class BootActivity extends Activity {
 
     //延迟3秒 
-    private static final long SPLASH_DELAY_MILLIS = 3000;
+    private static final long SPLASH_DELAY_MILLIS = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

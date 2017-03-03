@@ -109,9 +109,7 @@ public class LauncherActivity extends FragmentActivity implements ILauncherView 
 			OperatingSharedPreferences.setBooleanFirstBoot(LauncherActivity.this);
 			return true;
 		} else {
-//			return false;
-			
-			return true;
+			return false;
 		}
 	}
 
