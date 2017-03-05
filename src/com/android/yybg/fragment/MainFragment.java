@@ -2,11 +2,14 @@ package com.android.yybg.fragment;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.android.yybg.R;
+import com.android.yybg.adapter.GoodsRecommendAdapter;
 import com.android.yybg.util.TimerUtil;
+import com.android.yybg.view.GoodsRecommandItem;
 
 
 import android.content.Context;
@@ -20,6 +23,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -58,9 +62,32 @@ public class MainFragment extends BaseFragment {
         {
         	initADPager(mainFragmentView);      //初始化页眉广告条
         	initCountDownPage(mainFragmentView);
+        	intiGoodsItems(mainFragmentView);
         }
         return mainFragmentView;
     }
+    
+    private void intiGoodsItems(View v) {
+    	GridView gridView = (GridView) v.findViewById(R.id.gridview_recommend);
+    	
+    	List<GoodsRecommandItem> hashMapList = new ArrayList<GoodsRecommandItem>();
+        //测试数据
+        for (int i = 0; i < 8; i++) {
+
+            GoodsRecommandItem goodsRecommandItem = new GoodsRecommandItem();
+            goodsRecommandItem.setGoodsRecommandItem(getActivity(), "测试测试测试", null, i*10, i*100, i*90);
+            hashMapList.add(goodsRecommandItem);
+
+        }
+
+        GoodsRecommendAdapter goodsRecommendAdapter = new GoodsRecommendAdapter(getActivity(), hashMapList);
+
+        gridView.setAdapter(goodsRecommendAdapter);
+    }
+    
+    
+    
+    
     private void initCountDownPage(View v) {
         count1_image = (ImageView) v.findViewById(R.id.count1_image);
         count2_image = (ImageView) v.findViewById(R.id.count1_image);

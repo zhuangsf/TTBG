@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/padding_large"
+    android:paddingLeft="@dimen/padding_large"
+    android:paddingTop="@dimen/padding_large" >
+
+    <ImageView
+        android:id="@+id/iv_goods_pic"
+        style="@style/ImageView.Large"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/goods_pic_default" />
+
+    <TextView
+        android:id="@+id/tv_goods_label"
+        style="@style/TextView.Limit"
+        android:layout_alignLeft="@id/iv_goods_pic"
+        android:layout_alignTop="@id/iv_goods_pic"
+        android:text="test1"
+        android:paddingRight="@dimen/padding_large" />
+
+    <TextView
+        android:id="@+id/tv_good_sname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_goods_pic"
+        android:layout_marginTop="@dimen/padding_large"
+        android:ellipsize="end"
+        android:paddingRight="@dimen/padding_large"
+        android:singleLine="true"
+        android:text="test2"
+        android:textColor="@color/text_title"
+        android:textSize="@dimen/text_little" />
+
+    
+ <RelativeLayout         
+        android:id="@+id/pn_goods"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_good_sname"
+        android:layout_marginTop="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_large">
+    <ProgressBar android:id="@+id/pb_participation" android:layout_width="fill_parent" android:layout_height="4.0dip" android:max="100" android:progress="30" android:progressDrawable="@drawable/progress_horizontal_cloudbar" style="?android:attr/progressBarStyleHorizontal" />
+    <TextView android:textSize="@dimen/text_mircro" android:textColor="@color/text_orange" android:id="@+id/tv_participated_num" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/pb_participation" android:layout_alignParentLeft="true"  android:text="100"/>
+    <TextView android:textSize="@dimen/text_mircro" android:textColor="@color/text_hint" android:id="@+id/tv_total_num" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/pb_participation" android:layout_centerHorizontal="true" android:text="1000" />
+    <TextView android:textSize="@dimen/text_mircro" android:textColor="@color/yan" android:id="@+id/tv_surplus_num" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/pb_participation" android:layout_alignParentRight="true" android:text="900"/>
+    <TextView android:textSize="@dimen/text_mircro" android:textColor="@color/text_hint" android:id="@+id/tv_participated_num_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/text_sell" android:layout_below="@id/tv_participated_num" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="@dimen/text_mircro" android:textColor="@color/text_hint" android:id="@+id/tv_total_num_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/text_total" android:layout_below="@id/tv_total_num" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/text_mircro" android:textColor="@color/text_hint" android:id="@+id/tv_surplus_num_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/text_surplus" android:layout_below="@id/tv_surplus_num" android:layout_alignParentRight="true" />
+</RelativeLayout>
+    
+    <!-- 
+    <com.yyg.cloudshopping.ui.custom.widget.ParticipationNum
+        android:id="@+id/pn_goods"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_good_sname"
+        android:layout_marginTop="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_large" />
+ -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pn_goods"
+        android:layout_marginTop="@dimen/padding_normal" >
+
+        <LinearLayout
+            android:id="@+id/ll_add_to_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:paddingRight="@dimen/padding_large" >
+
+            <ImageView
+                android:id="@+id/iv_add_to_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/add_to_cart" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_buynow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/padding_large"
+            android:layout_toLeftOf="@id/ll_add_to_cart"
+            android:background="@drawable/btn_home_buy_now"
+            android:paddingBottom="@dimen/padding_xlittle"
+            android:paddingTop="@dimen/padding_xlittle"
+            android:text="@string/home_buy_now"
+            android:textColor="@color/theme"
+            android:textSize="@dimen/text_little" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -28,6 +28,37 @@
         <item name="android:padding">3dp</item>
         <item name="android:textSize">10sp</item>
     </style>    
+    <style name="ImageView">
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">@dimen/iv_middle</item>
+        <item name="android:layout_height">@dimen/iv_middle</item>
+        <item name="android:src">@drawable/goods_pic_default</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+    <style name="ImageView.Large" parent="@style/ImageView">
+        <item name="android:layout_width">@dimen/iv_large</item>
+        <item name="android:layout_height">@dimen/iv_large</item>
+        <item name="android:src">@drawable/goods_pic_default</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+    
+    
+    <style name="TextView">
+        <item name="android:background">@android:color/transparent</item>
+    </style>    
+    <style name="TextView.Limit" parent="@style/TextView">
+        <item name="android:textSize">@dimen/text_mircro</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/background_limit_shopping</item>
+        <item name="android:paddingLeft">@dimen/text_leading</item>
+        <item name="android:paddingRight">@dimen/text_leading</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/limit_shopping</item>
+    </style>    
+    
     
     
 </resources>

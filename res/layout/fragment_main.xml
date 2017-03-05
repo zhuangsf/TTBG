@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-	android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
 
     <!-- title -->
-        <LinearLayout
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:background="@color/orange" >
@@ -64,312 +66,523 @@
                 android:scaleType="fitEnd"
                 android:src="@drawable/titlebar_logo" />
         </LinearLayout>
-        
-</LinearLayout>
+    </LinearLayout>
     <!-- title -->
-<!-- 广告页 -->
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical" >
 
-        <LinearLayout
-            android:id="@+id/view_pager_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
-        <LinearLayout
-            android:id="@+id/viewGroup"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/view_pager_content"
-            android:layout_marginTop="-25px"
-            android:gravity="right"
-            android:orientation="horizontal" >
-        </LinearLayout>
-    </RelativeLayout>        
-<!-- 广告页 -->
-        
-<!-- 五个按钮 -->
-    <LinearLayout
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/white"
-         >
+        android:scrollbars="none" >
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="vertical" >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="fitEnd"
-                android:src="@drawable/home_navigation_new_goods" />
+            <!-- 广告页 -->
 
-            <TextView
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/view_pager_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/viewGroup"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view_pager_content"
+                    android:layout_marginTop="-25px"
+                    android:gravity="right"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </RelativeLayout>
+            <!-- 广告页 -->
+
+
+            <!-- 五个按钮 -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/home_navigation_new_goods" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="新品"
+                        android:textColor="@color/gray_dark"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/home_navigation_limited" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="限购"
+                        android:textColor="@color/gray_dark"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/home_navigation_share_post" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="晒单"
+                        android:textColor="@color/gray_dark"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/home_navigation_new_commer" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="新手"
+                        android:textColor="@color/gray_dark"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/home_navigation_recharge" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="充值"
+                        android:textColor="@color/gray_dark"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 五个按钮 -->
+
+
+            <!-- 当前开奖 -->
+
+            <com.android.yybg.view.LampView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="新品"
-                android:textColor="@color/gray_dark"
-                android:textSize="10sp" />
-        </LinearLayout>
+                android:background="@color/white"
+                android:minHeight="40dp" />
+            <!-- 当前开奖 -->
 
-        <LinearLayout
-           android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <!-- 最新揭晓倒计时4个 -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="fitEnd"
-                android:src="@drawable/home_navigation_limited" />
+                android:background="@color/white"
+                android:orientation="horizontal" >
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/count1_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/home_navigation_recharge" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="倒计时"
+                        android:textColor="@color/gray"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/count1_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/shape_background_gray"
+                        android:gravity="center"
+                        android:text="02:55:33"
+                        android:textColor="@color/orange"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/count2_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/home_navigation_recharge" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="倒计时"
+                        android:textColor="@color/gray"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/count2_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/shape_background_gray"
+                        android:gravity="center"
+                        android:text="02:55:33"
+                        android:textColor="@color/orange"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/count3_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/home_navigation_recharge" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="倒计时"
+                        android:textColor="@color/gray"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/count3_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/shape_background_gray"
+                        android:gravity="center"
+                        android:text="02:55:33"
+                        android:textColor="@color/orange"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/count4_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/home_navigation_recharge" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="倒计时"
+                        android:textColor="@color/gray"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/count4_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/shape_background_gray"
+                        android:gravity="center"
+                        android:text="02:55:33"
+                        android:textColor="@color/orange"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 最新揭晓倒计时4个 -->
+
+
+            <!-- 新品推荐title -->
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:gravity="center"
-                android:text="限购"
-                android:textColor="@color/gray_dark"
-                android:textSize="10sp" />
-        </LinearLayout>
+                android:orientation="horizontal" >
 
-        <LinearLayout
-           android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:background="@color/gray_dark" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="fitEnd"
-                android:src="@drawable/home_navigation_share_post" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/home_new_arrivals" />
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="新品推荐"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:background="@color/gray_dark" />
+            </LinearLayout>
+            <!-- 新品推荐title -->
+
+
+            <!-- 新品推荐3个产品 -->
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="晒单"
-                android:textColor="@color/gray_dark"
-                android:textSize="10sp" />
-        </LinearLayout>
+                android:layout_height="200dp"
+                android:orientation="horizontal" >
 
-        <LinearLayout
-           android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="fitEnd"
-                android:src="@drawable/home_navigation_new_commer" />
+                    <TextView
+                        android:id="@+id/new_arrivals1_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="苹果"
+                        android:textColor="@color/gray_dark"
+                        android:textSize="10sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="新手"
-                android:textColor="@color/gray_dark"
-                android:textSize="10sp" />
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/new_arrivals1_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="全新 AirPods,无线,无繁琐,只有妙不可言!"
+                        android:textColor="@color/gray_dark"
+                        android:textSize="10sp" />
 
-        <LinearLayout
-           android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+                    <ImageView
+                        android:id="@+id/new_arrivals1_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/home_new_arrivals" />
+                </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="fitEnd"
-                android:src="@drawable/home_navigation_recharge" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_light" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="充值"
-                android:textColor="@color/gray_dark"
-                android:textSize="10sp" />
-        </LinearLayout>
-    </LinearLayout>
-<!-- 五个按钮 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
 
-<!-- 当前开奖 -->
-    <com.android.yybg.view.LampView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:minHeight="40dp" />
-<!-- 当前开奖 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
 
-<!-- 最新揭晓倒计时4个 -->
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/white"
-         >
-       <LinearLayout
-           android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+                        <TextView
+                            android:id="@+id/new_arrivals2_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="魅族"
+                            android:textColor="@color/gray_dark"
+                            android:textSize="10sp" />
 
-            <ImageView
-                android:id="@+id/count1_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="fitEnd"
-                android:src="@drawable/home_navigation_recharge" />
+                        <TextView
+                            android:id="@+id/new_arrivals2_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="全新 AirPods,无线,无繁琐,只有妙不可言!"
+                            android:textColor="@color/gray_dark"
+                            android:textSize="10sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="倒计时"
-                android:textColor="@color/gray"
-                android:textSize="10sp" />
+                        <ImageView
+                            android:id="@+id/new_arrivals2_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/home_new_arrivals" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_light" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/new_arrivals3_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="苹果"
+                            android:textColor="@color/gray_dark"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/new_arrivals3_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="全新 AirPods,无线,无繁琐,只有妙不可言!"
+                            android:textColor="@color/gray_dark"
+                            android:textSize="10sp" />
+
+                        <ImageView
+                            android:id="@+id/new_arrivals3_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/home_new_arrivals" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 新品推荐3个产品 -->
             
-           <TextView
-                android:id="@+id/count1_time"
+            <!-- 猜你喜欢title -->
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:gravity="center"
-                android:text="02:55:33"
-                android:background="@drawable/shape_background_gray"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:textColor="@color/orange"
-                android:textSize="10sp" />
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:background="@color/gray_dark" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/home_recommend" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="猜你喜欢"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:background="@color/gray_dark" />
+            </LinearLayout>
+            <!-- 猜你喜欢title -->
+            
+            
+<GridView 
+    android:id="@+id/gridview_recommend"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:numColumns="2"
+    android:gravity="center"
+/>
             
         </LinearLayout>
-        
-               <LinearLayout
-           android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:id="@+id/count2_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="fitEnd"
-                android:src="@drawable/home_navigation_recharge" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="倒计时"
-                android:textColor="@color/gray"
-                android:textSize="10sp" />
-            
-           <TextView
-               android:id="@+id/count2_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="02:55:33"
-                                android:background="@drawable/shape_background_gray"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:textColor="@color/orange"
-                android:textSize="10sp" />
-            
-        </LinearLayout>
-               <LinearLayout
-           android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:id="@+id/count3_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="fitEnd"
-                android:src="@drawable/home_navigation_recharge" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="倒计时"
-                android:textColor="@color/gray"
-                android:textSize="10sp" />
-            
-           <TextView
-                android:id="@+id/count3_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="02:55:33"
-                                android:background="@drawable/shape_background_gray"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:textColor="@color/orange"
-                android:textSize="10sp" />
-            
-        </LinearLayout>
-               <LinearLayout
-           android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:id="@+id/count4_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="fitEnd"
-                android:src="@drawable/home_navigation_recharge" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="倒计时"
-                android:textColor="@color/gray"
-                android:textSize="10sp" />
-            
-           <TextView
-                android:id="@+id/count4_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="02:55:33"
-                android:background="@drawable/shape_background_gray"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:textColor="@color/orange"
-                android:textSize="10sp" />
-            
-        </LinearLayout>
-        
-    </LinearLayout>
-<!-- 最新揭晓倒计时4个 -->
-
+       
+    </ScrollView>
 
 </LinearLayout>
