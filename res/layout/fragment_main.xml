@@ -111,121 +111,12 @@
 
             <!-- 五个按钮 -->
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="horizontal" >
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="fitEnd"
-                        android:src="@drawable/home_navigation_new_goods" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="新品"
-                        android:textColor="@color/gray_dark"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="fitEnd"
-                        android:src="@drawable/home_navigation_limited" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="限购"
-                        android:textColor="@color/gray_dark"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="fitEnd"
-                        android:src="@drawable/home_navigation_share_post" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="晒单"
-                        android:textColor="@color/gray_dark"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="fitEnd"
-                        android:src="@drawable/home_navigation_new_commer" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="新手"
-                        android:textColor="@color/gray_dark"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:scaleType="fitEnd"
-                        android:src="@drawable/home_navigation_recharge" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="充值"
-                        android:textColor="@color/gray_dark"
-                        android:textSize="10sp" />
-                </LinearLayout>
+             <LinearLayout android:orientation="horizontal" android:id="@+id/layout_home_navigation" android:background="@color/background_main" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/text_xlittle" android:textColor="@color/text_black" android:gravity="center" android:id="@+id/tv_home_navigation_new_goods" android:paddingTop="@dimen/padding_normal" android:paddingBottom="@dimen/padding_normal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/home_navigation_new_goods" android:drawableTop="@drawable/home_navigation_new_goods" android:drawablePadding="@dimen/text_leading" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/text_xlittle" android:textColor="@color/text_black" android:gravity="center" android:id="@+id/tv_home_navigation_limited" android:paddingTop="@dimen/padding_normal" android:paddingBottom="@dimen/padding_normal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/home_navigation_limite" android:drawableTop="@drawable/home_navigation_limited" android:drawablePadding="@dimen/text_leading" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/text_xlittle" android:textColor="@color/text_black" android:gravity="center" android:id="@+id/tv_home_navigation_post" android:paddingTop="@dimen/padding_normal" android:paddingBottom="@dimen/padding_normal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/home_navigation_share_post" android:drawableTop="@drawable/home_navigation_share_post" android:drawablePadding="@dimen/text_leading" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/text_xlittle" android:textColor="@color/text_black" android:gravity="center" android:id="@+id/tv_home_navigation_newcomer" android:paddingTop="@dimen/padding_normal" android:paddingBottom="@dimen/padding_normal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/home_navigation_newcomer" android:drawableTop="@drawable/home_navigation_new_commer" android:drawablePadding="@dimen/text_leading" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/text_xlittle" android:textColor="@color/text_black" android:gravity="center" android:id="@+id/tv_home_navigation_recharge" android:paddingTop="@dimen/padding_normal" android:paddingBottom="@dimen/padding_normal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/home_navigation_recharge" android:drawableTop="@drawable/home_navigation_recharge" android:drawablePadding="@dimen/text_leading" android:layout_weight="1.0" />
             </LinearLayout>
             <!-- 五个按钮 -->
 
