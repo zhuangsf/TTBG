@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@color/orange" >
 
         <LinearLayout
@@ -19,11 +19,11 @@
             android:layout_weight="1" >
 
             <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:scaleType="fitStart"
+                android:scaleType="fitCenter"
                 android:src="@drawable/titlebar_search_white" />
         </LinearLayout>
 
@@ -35,10 +35,12 @@
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:scaleType="fitStart"
+                android:scaleType="fitCenter"
                 android:src="@drawable/titlebar_logo" />
         </LinearLayout>
 
@@ -46,12 +48,13 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:gravity="right"
             android:orientation="horizontal" >
 
             <ImageView
                 android:id="@+id/message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
                 android:scaleType="fitEnd"
@@ -59,12 +62,12 @@
 
             <ImageView
                 android:id="@+id/add_menus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
                 android:scaleType="fitEnd"
-                android:src="@drawable/titlebar_logo" />
+                android:src="@drawable/titlebar_add" />
         </LinearLayout>
     </LinearLayout>
     <!-- title -->
@@ -573,14 +576,15 @@
             <!-- 猜你喜欢title -->
             
             
-<GridView 
+                    <!-- 猜你喜欢商品gridview -->
+<com.android.yybg.view.NoScroolGridView
     android:id="@+id/gridview_recommend"
-    android:layout_width="fill_parent" 
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:numColumns="2"
     android:gravity="center"
-/>
-            
+    android:numColumns="2"
+     />
+                    <!-- 猜你喜欢商品gridview -->
         </LinearLayout>
        
     </ScrollView>

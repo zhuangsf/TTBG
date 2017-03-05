@@ -75,7 +75,7 @@ public class MainFragment extends BaseFragment {
         for (int i = 0; i < 8; i++) {
 
             GoodsRecommandItem goodsRecommandItem = new GoodsRecommandItem();
-            goodsRecommandItem.setGoodsRecommandItem(getActivity(), "测试测试测试", null, i*10, i*100, i*90);
+            goodsRecommandItem.setGoodsRecommandItem(getActivity(), "测试测    "+i+"   试测试", null, i*10, i*100, i*90);
             hashMapList.add(goodsRecommandItem);
 
         }

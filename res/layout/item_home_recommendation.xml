@@ -63,14 +63,14 @@
  -->
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_below="@id/pn_goods"
         android:layout_marginTop="@dimen/padding_normal" >
 
         <LinearLayout
             android:id="@+id/ll_add_to_cart"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:orientation="vertical"
             android:paddingRight="@dimen/padding_large" >
@@ -78,16 +78,16 @@
             <ImageView
                 android:id="@+id/iv_add_to_cart"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 android:src="@drawable/add_to_cart" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_buynow"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/padding_large"
