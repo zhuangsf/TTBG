@@ -234,7 +234,8 @@ public class MainFragment extends BaseFragment {
         for (int i = 0; i < pageViews.size(); i++) {
             // 创建一个ImageView, 并设置宽高. 将该对象放入到数组中
             imageView = new ImageView(getActivity());
-            imageView.setLayoutParams(new LayoutParams(10, 10));
+            imageView.setLayoutParams(new LayoutParams(15, 15));
+            imageView.setPadding(4, 0, 4, 0);  
             imageViews[i] = imageView;
             // 初始值, 默认第0个选中
             if (i == 0) {
