@@ -1336,9 +1336,9 @@
     <string name="wxlogin">微信登录</string>
     <string name="you_join_the_group">您已加入本群</string>
     <string name="your_choice_of_goods_robbed">啊哦~！被抢光啦！</string>
-    <string name="yyg_friends">云购小伙伴</string>
-    <string name="yyg_group">QQ空间</string>
-    <string name="yyyg_friend">云购小伙伴</string>
+    <string name="ttbg_friends">云购小伙伴</string>
+    <string name="ttbg_group">QQ空间</string>
+    <string name="ttbg_friend">云购小伙伴</string>
     <string name="zxing_wx_fricircle">朋友圈</string>
     <string name="zxing_wx_friend">微信好友</string>
 </resources>

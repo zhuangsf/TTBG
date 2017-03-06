@@ -24,7 +24,7 @@
 -keepclassmembers class * {
    public <init> (org.json.JSONObject);
 }
--keep public class com.android.yybg.R$*{
+-keep public class com.android.ttbg.R$*{
 public static final int *;
 }
 -keepclassmembers enum * {
