@@ -1,9 +1,11 @@
 package com.android.yybg;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.analytics.MobclickAgent.EScenarioType;
 
 /**
  * 
@@ -17,7 +19,7 @@ import android.os.Handler;
  *  
  *  
  */
-public class BootActivity extends Activity {
+public class BootActivity extends ActivityPack {
 
     //延迟3秒 
     private static final long SPLASH_DELAY_MILLIS = 1000;
@@ -33,6 +35,9 @@ public class BootActivity extends Activity {
                 goHome();
             }
         }, SPLASH_DELAY_MILLIS);
+        
+        //add for umeng
+        MobclickAgent.setScenarioType(this, EScenarioType.E_UM_NORMAL);
     }
 
     private void goHome() {

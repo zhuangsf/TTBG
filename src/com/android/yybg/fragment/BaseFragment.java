@@ -1,5 +1,7 @@
 package com.android.yybg.fragment;
 
+import com.umeng.analytics.MobclickAgent;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -93,4 +95,24 @@ public abstract class BaseFragment extends Fragment{
      * 非延迟加载
      */
     protected void onInvisible() {}
+    
+    
+    
+
+    public void onPause() {
+        super.onPause();
+        
+        //add for umeng
+        MobclickAgent.onPageEnd(getPageName());
+    }
+
+    public void onResume() {
+        super.onResume();
+        
+        //add for umeng
+        MobclickAgent.onPageStart(getPageName());
+    }
+    
+    //add for umeng
+    protected abstract String getPageName();
 }

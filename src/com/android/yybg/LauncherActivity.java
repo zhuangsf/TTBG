@@ -28,7 +28,7 @@ import android.widget.TextView;
  * @create time 2016-04-15
  */
 @SuppressLint("ResourceAsColor")
-public class LauncherActivity extends FragmentActivity implements ILauncherView {
+public class LauncherActivity extends FragmentActivityPack implements ILauncherView {
 	private ViewPager viewpagerLauncher;
 	private LauncherPagerAdapter adapter;
 

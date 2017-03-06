@@ -18,7 +18,7 @@ import java.util.List;
 
 import com.android.yybg.R;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivityPack {
     private RadioGroup mRadioGroup;
     private List<BaseFragment> mBaseFragments;
     private int position; //当前选中的位置

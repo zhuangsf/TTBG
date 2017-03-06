@@ -27,4 +27,10 @@ public class PersonFragment extends BaseFragment {
         super.initData();
     }
 
+    
+    
+    @Override
+   	protected String getPageName() {
+   		return PersonFragment.class.getName();
+   	}
 }

@@ -27,4 +27,9 @@ public class CareAboutFragment extends BaseFragment {
         Log.e(TAG, "关心页面Fragment页面数据被初始化了...");
         super.initData();
     }
+
+	@Override
+	protected String getPageName() {
+		return CareAboutFragment.class.getName();
+	}
 }

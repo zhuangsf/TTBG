@@ -332,5 +332,8 @@ public class MainFragment extends BaseFragment {
     }    
     
     
-    
+    @Override
+	protected String getPageName() {
+		return MainFragment.class.getName();
+	}
 }
