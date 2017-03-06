@@ -18,13 +18,13 @@ public class CareAboutFragment extends BaseFragment {
 
     @Override
     protected View initView() {
-        Log.e(TAG, "关心页面Fragment页面被初始化了...");
+        Log.e(TAG, "CareAboutFragment  initView...");
         return View.inflate(mContext, R.layout.fragment_care_about, null);
     }
 
     @Override
     protected void initData() {
-        Log.e(TAG, "关心页面Fragment页面数据被初始化了...");
+        Log.e(TAG, "CareAboutFragment  initData...");
         super.initData();
     }
 

@@ -8,7 +8,10 @@ import android.content.SharedPreferences.Editor;
  * 基本功能：存储和访问SharedPreferences  
  * 创建：Jason  
  */  
-public class OperatingSharedPreferences {  
+public class OperatingSharedPreferences { 
+	public static final String PREFERENCE_NAME="TTBG";
+	public static final String PREFERENCE_FIRSTOPEN="FIRSTOPEN";
+	
     /**  
      * <pre>  
      * 基本功能：保存启动标识到SharedPreferences  
@@ -19,9 +22,9 @@ public class OperatingSharedPreferences {
      */  
     public static void setBooleanFirstBoot(Context context) {  
         SharedPreferences sharedPreferences = context.getSharedPreferences(  
-                "ttbg", Context.MODE_PRIVATE);  
+        		OperatingSharedPreferences.PREFERENCE_NAME, Context.MODE_PRIVATE);  
         Editor editor = sharedPreferences.edit();// 获取编辑器  
-        editor.putBoolean("firstopen", false);  
+        editor.putBoolean(OperatingSharedPreferences.PREFERENCE_FIRSTOPEN, false);  
         editor.commit();// 提交修改  
     }  
   
@@ -35,9 +38,9 @@ public class OperatingSharedPreferences {
      */  
     public static boolean getBooleanFirstBoot(Context context) {  
         SharedPreferences sharedPreferences = context.getSharedPreferences(  
-                "ttbg", Context.MODE_PRIVATE);  
+        		OperatingSharedPreferences.PREFERENCE_NAME, Context.MODE_PRIVATE);  
         // getString()第二个参数为缺省值，如果preference中不存在该key，将返回缺省值true  
-        boolean firstopen = sharedPreferences.getBoolean("firstopen", true);  
+        boolean firstopen = sharedPreferences.getBoolean(OperatingSharedPreferences.PREFERENCE_FIRSTOPEN, true);  
         return firstopen;  
     }  
 }  
