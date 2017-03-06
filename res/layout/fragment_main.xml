@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/background_gray"
     android:orientation="vertical" >
 
     <!-- title -->
@@ -119,15 +119,31 @@
                 <TextView android:textSize="@dimen/text_xlittle" android:textColor="@color/text_black" android:gravity="center" android:id="@+id/tv_home_navigation_recharge" android:paddingTop="@dimen/padding_normal" android:paddingBottom="@dimen/padding_normal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/home_navigation_recharge" android:drawableTop="@drawable/home_navigation_recharge" android:drawablePadding="@dimen/text_leading" android:layout_weight="1.0" />
             </LinearLayout>
             <!-- 五个按钮 -->
-
-
+<!-- 我是分割符 -->
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:background="@color/background_gray"
+                />
+<!-- 我是分割符 -->
             <!-- 当前开奖 -->
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/layout_home_newest_switcher" android:background="@color/white" android:paddingBottom="@dimen/padding_normal" android:layout_width="fill_parent" android:layout_height="wrap_content" >
+                <View android:background="@color/theme" android:layout_width="@dimen/padding_mircro" android:layout_height="@dimen/padding_xlarge" android:layout_marginLeft="0.0dip" />
 
-            <com.android.yybg.view.LampView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:minHeight="40dp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginBottom="@dimen/text_leading"
+                    android:layout_marginLeft="@dimen/padding_normal"
+                    android:layout_marginRight="@dimen/padding_normal"
+                    android:layout_marginTop="@dimen/text_leading"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newest_switcher" />
+
+                <TextView android:textSize="@dimen/text_little" android:textColor="@color/text_gray" android:id="@+id/tv_newest_info" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_newest_text_switcher_point" />
+                <TextSwitcher android:id="@+id/ts_newest_info" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginRight="@dimen/padding_normal" android:src="@drawable/arrows_gray" />
+            </LinearLayout>
             <!-- 当前开奖 -->
 
 
