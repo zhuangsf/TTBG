@@ -1,46 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="UTF-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <FrameLayout
-        android:id="@+id/fl_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/background_gray"
+        android:orientation="vertical" >
 
-    <RadioGroup
-        android:id="@+id/rg_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="0"
-        android:background="#dbdbdb"
-        android:orientation="horizontal">
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0" />
 
-        <RadioButton
-            android:id="@+id/rb_main"
-            style="@+style/RadioButton_Style"
-            android:drawableTop="@drawable/iv_main_drawable_selector"
-            android:text="首页" />
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:visibility="gone" />
 
-        <RadioButton
-            android:id="@+id/rb_video"
-            style="@+style/RadioButton_Style"
-            android:drawableTop="@drawable/iv_video_drawable_selector"
-            android:text="视频" />
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
-        <RadioButton
-            android:id="@+id/rb_care_about"
-            style="@+style/RadioButton_Style"
-            android:drawableTop="@drawable/iv_care_about_drawable_selector"
-            android:text="关心" />
+            <RadioGroup
+                android:id="@+id/main_tab_group"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:background="@color/white"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                 >
 
-        <RadioButton
-            android:id="@+id/rb_person"
-            style="@+style/RadioButton_Style"
-            android:drawableTop="@drawable/iv_person_drawable_selector"
-            android:text="我的" />
-    </RadioGroup>
-</LinearLayout>
+                <RadioButton
+                    android:id="@+id/main_tab_home"
+                    style="@style/MMTabButton"
+                    android:layout_weight="1.0"    
+                    android:drawableTop="@drawable/icon_main_tab_home"
+                    android:text="首页" />
+
+                <RadioButton
+                    android:id="@+id/main_tab_allgoods"
+                    style="@style/MMTabButton"
+                    android:layout_weight="1.0"
+                    android:checked="true"
+                    android:drawableTop="@drawable/icon_main_tab_allgoods"
+                    android:text="所有商品" />
+
+                <RadioButton
+                    android:id="@+id/main_tab_newest"
+                    style="@style/MMTabButton"
+                    android:layout_weight="1.0"
+                    android:drawableTop="@drawable/icon_main_tab_newest"
+                    android:text="最新揭晓" />
+
+                <RadioButton
+                    android:id="@+id/main_tab_cart"
+                    style="@style/MMTabButton"
+                    android:layout_weight="1.0"   
+                    android:drawableTop="@drawable/icon_main_tab_cart"
+                    android:text="购物车" />
+                
+               <RadioButton
+                    android:id="@+id/main_tab_mine"
+                    style="@style/MMTabButton"
+                    android:layout_weight="1.0"   
+                    android:drawableTop="@drawable/icon_main_tab_mine"
+                    android:text="我的云购" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/main_tab_new_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_marginLeft="60dip"
+                android:layout_marginTop="1dip"
+                android:background="@drawable/tips"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#ffffff"
+                android:textSize="10sp"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+
+</TabHost>
