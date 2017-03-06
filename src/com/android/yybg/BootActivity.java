@@ -15,7 +15,6 @@ import android.os.Handler;
  * @Version 1.0
  * @Author <a href="mailto:gaolei_xj@163.com">Leo</a>   
  *  
- *
  */
 public class BootActivity extends Activity {
 
