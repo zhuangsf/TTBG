@@ -4,6 +4,7 @@ package com.android.yybg.fragment;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.android.yybg.R;
@@ -12,7 +13,10 @@ import com.android.yybg.util.TimerUtil;
 import com.android.yybg.view.GoodsRecommandItem;
 
 
+
+import android.app.AlertDialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
@@ -20,17 +24,23 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewSwitcher.ViewFactory;
 
 
 
-public class MainFragment extends BaseFragment {
+public class MainFragment extends BaseFragment implements ViewFactory{
     private static final String TAG = MainFragment.class.getSimpleName();
     private View mainFragmentView;
 
@@ -52,7 +62,30 @@ public class MainFragment extends BaseFragment {
     private TextView count3_time;
     private TextView count4_time;
     
+    private TextSwitcher switcher;
     
+    private static final int MSG_TEST_SWITCHER_TEST=0;
+    
+    private Handler mHandler= new Handler()
+    {
+   		@Override
+   		public void handleMessage(Message msg) {
+   			switch (msg.what) {
+   			case MSG_TEST_SWITCHER_TEST:
+   			{
+   				if(switcher != null)
+   				{
+   					switcher.setText("恭喜你中了"+String.valueOf(new Random().nextInt())+"万元,得瑟去吧");  
+   				}
+   				Message new_msg = new Message();
+   				new_msg.what = MSG_TEST_SWITCHER_TEST;
+   				mHandler.sendMessageDelayed(new_msg, 2000);
+   			}
+   			break;
+   			
+   			}
+   		}
+   	};
     @Override
     protected View initView() {
         //Log.e(TAG, "首页页面Fragment页面被初始化了...");
@@ -61,11 +94,37 @@ public class MainFragment extends BaseFragment {
         if(mainFragmentView != null)
         {
         	initADPager(mainFragmentView);      //初始化页眉广告条
+        	initNewestSwitcher(mainFragmentView);
         	initCountDownPage(mainFragmentView);
         	intiGoodsItems(mainFragmentView);
         }
         return mainFragmentView;
     }
+    
+    private void initNewestSwitcher(View v) {
+    	switcher = (TextSwitcher) v.findViewById(R.id.ts_newest_info);  
+    	switcher.setFactory(this); 
+    	
+		Message msg = new Message();
+		msg.what = MSG_TEST_SWITCHER_TEST;
+		mHandler.sendMessageDelayed(msg, 2000);
+    }
+    
+    
+    @Override  
+    public void onStop()
+    {
+    	super.onStop();
+    	mHandler.removeCallbacksAndMessages(null);
+    }
+    
+    @Override  
+    public View makeView() {   
+        TextView textView = new TextView(getActivity());   
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        textView.setTextColor(0xff222222);  
+        return textView;   
+    }  
     
     private void intiGoodsItems(View v) {
     	GridView gridView = (GridView) v.findViewById(R.id.gridview_recommend);
