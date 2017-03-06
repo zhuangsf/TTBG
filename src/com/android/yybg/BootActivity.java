@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.analytics.MobclickAgent.EScenarioType;
 
@@ -38,6 +39,10 @@ public class BootActivity extends ActivityPack {
         
         //add for umeng
         MobclickAgent.setScenarioType(this, EScenarioType.E_UM_NORMAL);
+        
+        
+        //add for bugly
+        CrashReport.initCrashReport(getApplicationContext(), "b5993e5675", false);
     }
 
     private void goHome() {
