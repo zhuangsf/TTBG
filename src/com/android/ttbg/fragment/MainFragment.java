@@ -12,11 +12,13 @@ import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.AnimationUtils;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -96,6 +98,10 @@ public class MainFragment extends BaseFragment implements ViewFactory{
     	switcher = (TextSwitcher) v.findViewById(R.id.ts_newest_info);  
     	switcher.setFactory(this); 
     	
+    	switcher.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));  
+        // 设置切出动画  
+    	switcher.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_out_up));  
+    	
 		Message msg = new Message();
 		msg.what = MSG_TEST_SWITCHER_TEST;
 		mHandler.sendMessageDelayed(msg, 2000);
@@ -112,8 +118,10 @@ public class MainFragment extends BaseFragment implements ViewFactory{
     @Override  
     public View makeView() {   
         TextView textView = new TextView(getActivity());   
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        textView.setSingleLine(true);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
         textView.setTextColor(0xff222222);  
+        textView.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
         return textView;   
     }  
     

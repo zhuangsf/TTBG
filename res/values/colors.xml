@@ -265,7 +265,8 @@
     <color name="black">#ff000000</color>
     <color name="orange">#ffff6600</color>
     <color name="gray_dark">#ff222222</color>
-    <color name="gray_light">#55222222</color>
+    <color name="gray_light">#22222222</color>
+    <color name="gray_middle">#33333333</color>
     <color name="yan">#ff22aaff</color>
     <color name="yan_press">#ff1d91d9</color>
 </resources>

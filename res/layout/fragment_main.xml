@@ -58,7 +58,7 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
                 android:scaleType="fitEnd"
-                android:src="@drawable/titlebar_search_white" />
+                android:src="@drawable/message_notice" />
 
             <ImageView
                 android:id="@+id/add_menus"
@@ -302,32 +302,65 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="36.0dip"
                 android:gravity="center"
+                android:background="@color/background_gray"
                 android:orientation="horizontal" >
 
+               <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal" >
                 <View
-                    android:layout_width="20dp"
-                    android:layout_height="2dp"
-                    android:background="@color/gray_dark" />
-
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"
+                />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray_middle" />
+                </LinearLayout>
+                <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal" >
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/home_new_arrivals" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="新品推荐"
-                    android:textColor="@color/gray_dark"
-                    android:textSize="10sp" />
-
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_small" />
+				</LinearLayout>
+                <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                
                 <View
-                    android:layout_width="20dp"
-                    android:layout_height="2dp"
-                    android:background="@color/gray_dark" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray_middle" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"
+                />
+
+                </LinearLayout>
             </LinearLayout>
             <!-- 新品推荐title -->
 
@@ -343,34 +376,17 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical" >
 
-                    <TextView
-                        android:id="@+id/new_arrivals1_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="苹果"
-                        android:textColor="@color/gray_dark"
-                        android:textSize="10sp" />
+    <TextView android:text="正在上架" android:textSize="@dimen/text_large" android:textColor="@color/text_black" android:ellipsize="end" android:gravity="center" android:id="@+id/tv_home_new_arrivals_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginRight="@dimen/padding_normal" android:maxLines="1" />
+    <TextView android:text="尽请期待,最新最全的商品,只要一元就可以拿回家" android:textSize="@dimen/text_mircro" android:textColor="@color/text_gray" android:ellipsize="end" android:gravity="center" android:id="@+id/tv_home_new_arrivals_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginTop="@dimen/padding_little" android:layout_marginRight="@dimen/padding_normal" android:maxLines="2" android:lineSpacingMultiplier="1.2" />
+    <ImageView android:id="@+id/iv_home_new_arrivals_pic" android:layout_width="180.0dip" android:layout_height="90.0dip" android:layout_marginTop="@dimen/padding_normal" android:src="@drawable/goods_pic_default" android:scaleType="centerInside" />
 
-                    <TextView
-                        android:id="@+id/new_arrivals1_content"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="全新 AirPods,无线,无繁琐,只有妙不可言!"
-                        android:textColor="@color/gray_dark"
-                        android:textSize="10sp" />
-
-                    <ImageView
-                        android:id="@+id/new_arrivals1_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/home_new_arrivals" />
                 </LinearLayout>
 
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="0.2dp"
                     android:layout_height="match_parent"
                     android:background="@color/gray_light" />
 
@@ -380,70 +396,34 @@
                     android:layout_weight="1"
                     android:orientation="vertical" >
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                         >
 
-                        <TextView
-                            android:id="@+id/new_arrivals2_title"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="魅族"
-                            android:textColor="@color/gray_dark"
-                            android:textSize="10sp" />
+    <ImageView android:id="@+id/iv_home_new_arrivals_small_pic1" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginLeft="@dimen/padding_little" android:layout_marginTop="@dimen/padding_mlarge" android:src="@drawable/goods_pic_default" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
+    <TextView android:text="正在上架" android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:ellipsize="end" android:gravity="left|center" android:id="@+id/iv_home_new_arrivals_small_title1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:layout_toLeftOf="@id/iv_home_new_arrivals_small_pic1" android:layout_alignTop="@id/iv_home_new_arrivals_small_pic1" />
+    <TextView android:text="尽请期待,最新最全的商品,只要一元就可以拿回家" android:textSize="@dimen/text_mircro" android:textColor="@color/text_gray" android:ellipsize="end" android:gravity="left|center" android:id="@+id/iv_home_new_arrivals_small_content1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_below="@id/iv_home_new_arrivals_small_title1" android:layout_alignRight="@id/iv_home_new_arrivals_small_title1" android:lineSpacingMultiplier="1.2" />
 
-                        <TextView
-                            android:id="@+id/new_arrivals2_content"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="全新 AirPods,无线,无繁琐,只有妙不可言!"
-                            android:textColor="@color/gray_dark"
-                            android:textSize="10sp" />
-
-                        <ImageView
-                            android:id="@+id/new_arrivals2_image"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/home_new_arrivals" />
-                    </LinearLayout>
+                    </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="0.2dp"
                         android:background="@color/gray_light" />
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                         >
 
-                        <TextView
-                            android:id="@+id/new_arrivals3_title"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="苹果"
-                            android:textColor="@color/gray_dark"
-                            android:textSize="10sp" />
+    <ImageView android:id="@+id/iv_home_new_arrivals_small_pic2" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginLeft="@dimen/padding_little" android:layout_marginTop="@dimen/padding_mlarge" android:src="@drawable/goods_pic_default" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
+    <TextView android:text="正在上架" android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:ellipsize="end" android:gravity="left|center" android:id="@+id/iv_home_new_arrivals_small_title2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:layout_toLeftOf="@id/iv_home_new_arrivals_small_pic2" android:layout_alignTop="@id/iv_home_new_arrivals_small_pic2" />
+    <TextView android:text="尽请期待,最新最全的商品,只要一元就可以拿回家" android:textSize="@dimen/text_mircro" android:textColor="@color/text_gray" android:ellipsize="end" android:gravity="left|center" android:id="@+id/iv_home_new_arrivals_small_content2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_below="@id/iv_home_new_arrivals_small_title2" android:layout_alignRight="@id/iv_home_new_arrivals_small_title2" android:lineSpacingMultiplier="1.2" />
 
-                        <TextView
-                            android:id="@+id/new_arrivals3_content"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="全新 AirPods,无线,无繁琐,只有妙不可言!"
-                            android:textColor="@color/gray_dark"
-                            android:textSize="10sp" />
-
-                        <ImageView
-                            android:id="@+id/new_arrivals3_image"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/home_new_arrivals" />
-                    </LinearLayout>
+                    </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
 
@@ -453,33 +433,67 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="36.0dip"
                 android:gravity="center"
+                android:background="@color/background_gray"
                 android:orientation="horizontal" >
 
+               <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal" >
                 <View
-                    android:layout_width="20dp"
-                    android:layout_height="2dp"
-                    android:background="@color/gray_dark" />
-
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"
+                />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray_middle" />
+                </LinearLayout>
+                <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal" >
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/home_recommend" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="猜你喜欢"
-                    android:textColor="@color/gray_dark"
-                    android:textSize="10sp" />
-
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_small" />
+				</LinearLayout>
+                <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                
                 <View
-                    android:layout_width="20dp"
-                    android:layout_height="2dp"
-                    android:background="@color/gray_dark" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray_middle" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"
+                />
+
+                </LinearLayout>
             </LinearLayout>
+
             <!-- 猜你喜欢title -->
             
             
@@ -492,6 +506,12 @@
     android:numColumns="2"
      />
                     <!-- 猜你喜欢商品gridview -->
+      <!--加载更多 --> 
+       <ImageView android:layout_gravity="center_horizontal" android:id="@+id/iv_home_to_check_more" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/padding_little" android:src="@drawable/image_see_more" android:scaleType="centerCrop" />
+      <!-- 加载更多 -->  
+                    
+                    
+                    
         </LinearLayout>
        
     </ScrollView>
