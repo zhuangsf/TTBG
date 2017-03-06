@@ -1,10 +1,9 @@
-package com.android.yybg.fragment;
+package com.android.ttbg.fragment;
 
 import android.util.Log;
 import android.view.View;
 
-import com.android.yybg.R;
-import com.android.yybg.fragment.BaseFragment;
+import com.android.ttbg.R;
 
 /**
  * 作者：哇牛Aaron

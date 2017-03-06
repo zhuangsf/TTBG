@@ -1,4 +1,4 @@
-package com.android.yybg.util;
+package com.android.ttbg.util;
 
 import java.util.Formatter;
 import java.util.Locale;

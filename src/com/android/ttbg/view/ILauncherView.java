@@ -1,4 +1,4 @@
-package com.android.yybg.view;
+package com.android.ttbg.view;
 
 public interface ILauncherView {
 	public void gotoVisit();

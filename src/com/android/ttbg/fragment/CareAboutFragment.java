@@ -1,9 +1,9 @@
-package com.android.yybg.fragment;
-
-import com.android.yybg.R;
+package com.android.ttbg.fragment;
 
 import android.util.Log;
 import android.view.View;
+
+import com.android.ttbg.R;
 
 
 

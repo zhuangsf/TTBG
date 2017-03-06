@@ -1,10 +1,7 @@
-package com.android.yybg.adapter;
+package com.android.ttbg.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.android.yybg.R;
-import com.android.yybg.view.ILauncherView;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -14,6 +11,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.android.ttbg.R;
+import com.android.ttbg.view.ILauncherView;
 
 
 /**

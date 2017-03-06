@@ -1,10 +1,6 @@
-package com.android.yybg.adapter;
+package com.android.ttbg.adapter;
 
 import java.util.List;
-
-import com.android.yybg.R;
-import com.android.yybg.util.Utils;
-import com.android.yybg.view.GoodsRecommandItem;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.android.ttbg.R;
+import com.android.ttbg.util.Utils;
+import com.android.ttbg.view.GoodsRecommandItem;
 
 public class GoodsRecommendAdapter extends BaseAdapter
 {

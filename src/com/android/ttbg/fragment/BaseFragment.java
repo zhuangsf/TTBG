@@ -1,4 +1,4 @@
-package com.android.yybg.fragment;
+package com.android.ttbg.fragment;
 
 import com.umeng.analytics.MobclickAgent;
 
@@ -99,14 +99,16 @@ public abstract class BaseFragment extends Fragment{
     
     
 
-    public void onPause() {
+    @Override
+	public void onPause() {
         super.onPause();
         
         //add for umeng
         MobclickAgent.onPageEnd(getPageName());
     }
 
-    public void onResume() {
+    @Override
+	public void onResume() {
         super.onResume();
         
         //add for umeng

@@ -1,11 +1,9 @@
-package com.android.yybg.view;
-
-import com.android.yybg.R;
+package com.android.ttbg.view;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.android.ttbg.R;
 
 public class GoodsRecommandItem
 {   

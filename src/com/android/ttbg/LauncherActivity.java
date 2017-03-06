@@ -1,23 +1,19 @@
-package com.android.yybg;
+package com.android.ttbg;
 
-import com.android.yybg.adapter.LauncherPagerAdapter;
-import com.android.yybg.util.OperatingSharedPreferences;
-import com.android.yybg.view.ILauncherView;
+import com.android.ttbg.adapter.LauncherPagerAdapter;
+import com.android.ttbg.util.OperatingSharedPreferences;
+import com.android.ttbg.view.ILauncherView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 
 
@@ -78,7 +74,7 @@ public class LauncherActivity extends FragmentActivityPack implements ILauncherV
 		public void onPageSelected(int index) {
 			setImageBackground(index);// 改变点点点的切换效果
 
-			View btnLayout = (View) adapter.getViews().get(index).findViewById(R.id.btnLayout);
+			View btnLayout = adapter.getViews().get(index).findViewById(R.id.btnLayout);
 			if (index == tips.length - 1) {// 最后一个
 				btnLayout.setVisibility(View.VISIBLE);
 			} else {

@@ -1,22 +1,11 @@
-package com.android.yybg.fragment;
+package com.android.ttbg.fragment;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.android.yybg.R;
-import com.android.yybg.adapter.GoodsRecommendAdapter;
-import com.android.yybg.util.TimerUtil;
-import com.android.yybg.view.GoodsRecommandItem;
-
-
-
-import android.app.AlertDialog;
-import android.content.Context;
-import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
@@ -25,18 +14,20 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher.ViewFactory;
+
+import com.android.ttbg.R;
+import com.android.ttbg.adapter.GoodsRecommendAdapter;
+import com.android.ttbg.util.TimerUtil;
+import com.android.ttbg.view.GoodsRecommandItem;
 
 
 

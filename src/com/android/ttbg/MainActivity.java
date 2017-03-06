@@ -1,22 +1,19 @@
-package com.android.yybg;
+package com.android.ttbg;
 
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
-import com.android.yybg.fragment.BaseFragment;
-import com.android.yybg.fragment.CareAboutFragment;
-import com.android.yybg.fragment.MainFragment;
-import com.android.yybg.fragment.PersonFragment;
-import com.android.yybg.fragment.VideoFragment;
+import com.android.ttbg.fragment.BaseFragment;
+import com.android.ttbg.fragment.CareAboutFragment;
+import com.android.ttbg.fragment.MainFragment;
+import com.android.ttbg.fragment.PersonFragment;
+import com.android.ttbg.fragment.VideoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.android.yybg.R;
 
 public class MainActivity extends FragmentActivityPack {
     private RadioGroup mRadioGroup;

@@ -1,4 +1,4 @@
-package com.android.yybg;
+package com.android.ttbg;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +32,8 @@ public class BootActivity extends ActivityPack {
 
         // 使用Handler的postDelayed方法，3秒后执行跳转到MainActivity 
         new Handler().postDelayed(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 goHome();
             }
         }, SPLASH_DELAY_MILLIS);

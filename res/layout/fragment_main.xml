@@ -484,7 +484,7 @@
             
             
                     <!-- 猜你喜欢商品gridview -->
-<com.android.yybg.view.NoScroolGridView
+<com.android.ttbg.view.NoScroolGridView
     android:id="@+id/gridview_recommend"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
