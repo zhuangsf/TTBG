@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.umeng.analytics.MobclickAgent;
 
+
 public abstract class ActivityPack extends Activity {
 
 	@Override
