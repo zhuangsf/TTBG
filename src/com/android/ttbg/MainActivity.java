@@ -10,7 +10,7 @@ import com.android.ttbg.fragment.BaseFragment;
 import com.android.ttbg.fragment.CareAboutFragment;
 import com.android.ttbg.fragment.MainFragment;
 import com.android.ttbg.fragment.PersonFragment;
-import com.android.ttbg.fragment.VideoFragment;
+import com.android.ttbg.fragment.AllGoodsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ public class MainActivity extends FragmentActivityPack {
     private void initData() {
         mBaseFragments = new ArrayList<>();
         mBaseFragments.add(new MainFragment());
-        mBaseFragments.add(new VideoFragment());
+        mBaseFragments.add(new AllGoodsFragment());
         mBaseFragments.add(new CareAboutFragment());
         mBaseFragments.add(new PersonFragment());
         mBaseFragments.add(new PersonFragment());

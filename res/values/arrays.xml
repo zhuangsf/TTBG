@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_item">
+        <item>云购记录</item>
+        <item>获得的商品</item>
+        <item>我的晒单</item>
+        <item>我的钱包</item>
+    </string-array>
+    <string-array name="account_other_item">
+        <item>帮助与反馈</item>
+        <item>二维码分享</item>
+    </string-array>
+    <array name="allgood_sort_id">
+        <item>@drawable/background_allgoods_classify1</item>
+        <item>@drawable/background_allgoods_classify2</item>
+        <item>@drawable/background_allgoods_classify3</item>
+        <item>@drawable/background_allgoods_classify4</item>
+        <item>@drawable/background_allgoods_classify5</item>
+        <item>@drawable/background_allgoods_classify6</item>
+        <item>@drawable/background_allgoods_classify7</item>
+        <item>@drawable/background_allgoods_classify8</item>
+        <item>@drawable/background_allgoods_classify9</item>
+        <item>@drawable/background_allgoods_classify10</item>
+        <item>@drawable/background_allgoods_classify11</item>
+        <item>@drawable/background_allgoods_classify12</item>
+        <item>@drawable/background_allgoods_classify13</item>
+        <item>@drawable/background_allgoods_classify14</item>
+        <item>@drawable/background_allgoods_classify15</item>
+        <item>@drawable/background_allgoods_classify16</item>
+    </array>
+    <string-array name="classify_string">
+        <item>全部</item>
+        <item>手机数码</item>
+        <item>电脑办公</item>
+        <item>钟表首饰</item>
+        <item>家用电器</item>
+        <item>化妆个护</item>
+        <item>食品饮料</item>
+        <item>家居家纺</item>
+        <item>礼品箱包</item>
+        <item>运动户外</item>
+        <item>营养保健</item>
+        <item>母婴</item>
+        <item>汽车</item>
+        <item>房子</item>
+        <item>其它商品</item>
+        <item>限购</item>
+    </string-array>
+    <string-array name="deal_im_image">
+        <item>保存到手机</item>
+    </string-array>
+    <string-array name="exception_detail_account">
+        <item>无法登录</item>
+        <item>自动退出登录</item>
+        <item>频繁需要重新登录</item>
+        <item>帐号被盗</item>
+        <item>无法修改、设置密码</item>
+        <item>无法绑定或解绑</item>
+        <item>其它</item>
+    </string-array>
+    <string-array name="exception_detail_cart">
+        <item>无法进入结算页</item>
+        <item>无法完成支付</item>
+        <item>交易异常</item>
+        <item>快捷支付异常</item>
+        <item>其它</item>
+    </string-array>
+    <string-array name="exception_detail_order">
+        <item>收货地址、身份证件提交问题</item>
+        <item>发货问题</item>
+        <item>商品问题</item>
+        <item>其它</item>
+    </string-array>
+    <string-array name="exception_detail_our">
+        <item>无法充值</item>
+        <item>充值未到账</item>
+        <item>余额、福分、佣金异常</item>
+        <item>云购记录异常</item>
+        <item>晒单无法提交</item>
+        <item>其它</item>
+    </string-array>
+    <string-array name="exception_detail_stop">
+        <item>闪退</item>
+        <item>卡顿</item>
+        <item>界面错位</item>
+        <item>无法刷新</item>
+        <item>网络差</item>
+    </string-array>
+    <string-array name="exception_tab_name">
+        <item>闪退、卡顿等-</item>
+        <item>账户与安全-登录、账户安全</item>
+        <item>购物车及支付-结算、支付</item>
+        <item>我的云购-充值、余额、福分</item>
+        <item>订单发货-收货、发货问题</item>
+    </string-array>
+    <string-array name="find_group_tabs">
+        <item>推荐群</item>
+        <item>官方群</item>
+    </string-array>
+    <array name="flow_radio_id" />
+    <array name="google_colors">
+        <item>@color/theme</item>
+        <item>@color/yan</item>
+        <item>@color/stroke</item>
+        <item>@color/background_gray</item>
+    </array>
+    <string-array name="home_navigations">
+        <item>@string/home_navigation_new_goods</item>
+        <item>@string/home_navigation_limite</item>
+        <item>@string/home_navigation_share_post</item>
+        <item>@string/home_navigation_newcomer</item>
+        <item>@string/home_navigation_recharge</item>
+    </string-array>
+    <string-array name="new_friend">
+        <item>批量删除</item>
+        <item>清空</item>
+    </string-array>
+    <string-array name="order_address_tips">
+        <item>*办理证件时需要核验身份信息，请务必保证收货人姓名与身份证信息一致且准确无误</item>
+        <item>*海关清关需收货人姓名与身份信息一致且准确无误</item>
+    </string-array>
+    <integer-array name="order_id">
+        <item>10</item>
+        <item>20</item>
+        <item>50</item>
+        <item>30</item>
+        <item>31</item>
+    </integer-array>
+    <string-array name="order_state">
+        <item>完善收货信息</item>
+        <item>审核中...</item>
+        <item>信息审核未通过</item>
+        <item>待发货</item>
+        <item>已发货</item>
+        <item>已完成</item>
+    </string-array>
+    
+    <!--  
+    <array name="order_state_drawable">
+        <item>@drawable/order_state_edit</item>
+        <item>@drawable/order_state_review_ing</item>
+        <item>@drawable/order_state_review_fail</item>
+        <item>@drawable/order_state_send_wait</item>
+        <item>@drawable/order_state_send_has</item>
+        <item>@drawable/order_state_success</item>
+    </array>
+    -->
+    <string-array name="order_state_tips">
+        <item>恭喜您成为幸运获得者，请及时完善收货信息</item>
+        <item>正在审核您的收货信息，请耐心等待！</item>
+        <item>您的身份证信息审核未通过，请重新提交</item>
+        <item>收货信息已提交，正在整装待发，请耐心等待！</item>
+        <item>发货啦，请注意签收哦！</item>
+        <item>感谢您使用一元云购，愿惊喜与您天天见！</item>
+    </string-array>
+    <string-array name="recipit_filter">
+        <item>2,先生</item>
+        <item>2,小姐</item>
+        <item>2,女士</item>
+        <item>0,老</item>
+        <item>0,大</item>
+        <item>0,小</item>
+        <item>0,啊</item>
+        <item>0,阿</item>
+    </string-array>
+    <string-array name="search_item">
+        <item>iphone7</item>
+        <item>黄金</item>
+        <item>小米</item>
+        <item>汽车</item>
+    </string-array>
+    <integer-array name="sort_id">
+        <item>0</item>
+        <item>100</item>
+        <item>106</item>
+        <item>222</item>
+        <item>104</item>
+        <item>2</item>
+        <item>397</item>
+        <item>213</item>
+        <item>251</item>
+        <item>276</item>
+        <item>428</item>
+        <item>310</item>
+        <item>305</item>
+        <item>617</item>
+        <item>312</item>
+        <item>-1</item>
+    </integer-array>
+</resources>
