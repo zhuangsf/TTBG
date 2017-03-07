@@ -1,93 +1,98 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/tabhost"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jockey="http://schemas.android.com/apk/res/com.android.ttbg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@color/background_gray"
-        android:orientation="vertical" >
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
-        <FrameLayout
-            android:id="@android:id/tabcontent"
-            android:layout_width="fill_parent"
-            android:layout_height="0.0dip"
-            android:layout_weight="1.0" />
-
-        <TabWidget
-            android:id="@android:id/tabs"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:gravity="bottom"
+        android:layout_weight="0" >
+        <RadioGroup
+            android:id="@+id/main_tab_group"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.0"
-            android:visibility="gone" />
+            android:background="@color/white"
+            android:gravity="bottom"
+            android:orientation="horizontal" >
 
-        <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            <com.android.ttbg.view.MyRadioButton
+                android:id="@+id/main_tab_home"
+                style="@style/MMTabButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:text="首页"
+                jockey:drawableTop="@drawable/icon_main_tab_home"
+                jockey:drawableTopHeight="@dimen/icon_main_tab_size"
+                jockey:drawableTopWidth="@dimen/icon_main_tab_size" />
 
-            <RadioGroup
-                android:id="@+id/main_tab_group"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="bottom"
-                android:background="@color/white"
-                android:gravity="bottom"
-                android:orientation="horizontal"
-                 >
+            <com.android.ttbg.view.MyRadioButton
+                android:id="@+id/main_tab_allgoods"
+                style="@style/MMTabButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:text="所有商品"
+                jockey:drawableTop="@drawable/icon_main_tab_allgoods"
+                jockey:drawableTopHeight="@dimen/icon_main_tab_size"
+                jockey:drawableTopWidth="@dimen/icon_main_tab_size" />
 
-                <RadioButton
-                    android:id="@+id/main_tab_home"
-                    style="@style/MMTabButton"
-                    android:layout_weight="1.0"    
-                    android:drawableTop="@drawable/icon_main_tab_home"
-                    android:text="首页" />
+            <com.android.ttbg.view.MyRadioButton
+                android:id="@+id/main_tab_newest"
+                style="@style/MMTabButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:text="最新揭晓"
+                jockey:drawableTop="@drawable/icon_main_tab_newest"
+                jockey:drawableTopHeight="@dimen/icon_main_tab_size"
+                jockey:drawableTopWidth="@dimen/icon_main_tab_size" />
 
-                <RadioButton
-                    android:id="@+id/main_tab_allgoods"
-                    style="@style/MMTabButton"
-                    android:layout_weight="1.0"
-                    android:checked="true"
-                    android:drawableTop="@drawable/icon_main_tab_allgoods"
-                    android:text="所有商品" />
+            <com.android.ttbg.view.MyRadioButton
+                android:id="@+id/main_tab_cart"
+                style="@style/MMTabButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:text="购物车"
+                jockey:drawableTop="@drawable/icon_main_tab_cart"
+                jockey:drawableTopHeight="@dimen/icon_main_tab_size"
+                jockey:drawableTopWidth="@dimen/icon_main_tab_size" />
 
-                <RadioButton
-                    android:id="@+id/main_tab_newest"
-                    style="@style/MMTabButton"
-                    android:layout_weight="1.0"
-                    android:drawableTop="@drawable/icon_main_tab_newest"
-                    android:text="最新揭晓" />
-
-                <RadioButton
-                    android:id="@+id/main_tab_cart"
-                    style="@style/MMTabButton"
-                    android:layout_weight="1.0"   
-                    android:drawableTop="@drawable/icon_main_tab_cart"
-                    android:text="购物车" />
+            <com.android.ttbg.view.MyRadioButton
+                android:id="@+id/main_tab_mine"
+                style="@style/MMTabButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:text="我的云购"
+                jockey:drawableTop="@drawable/icon_main_tab_mine"
+                jockey:drawableTopHeight="@dimen/icon_main_tab_size"
+                jockey:drawableTopWidth="@dimen/icon_main_tab_size" />
                 
-               <RadioButton
-                    android:id="@+id/main_tab_mine"
-                    style="@style/MMTabButton"
-                    android:layout_weight="1.0"   
-                    android:drawableTop="@drawable/icon_main_tab_mine"
-                    android:text="我的云购" />
-            </RadioGroup>
+        </RadioGroup>
 
-            <TextView
-                android:id="@+id/main_tab_new_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|top"
-                android:layout_marginLeft="60dip"
-                android:layout_marginTop="1dip"
-                android:background="@drawable/tips"
-                android:gravity="center"
-                android:text="1"
-                android:textColor="#ffffff"
-                android:textSize="10sp"
-                android:visibility="gone" />
-        </FrameLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/main_tab_new_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="15dip"
+            android:layout_marginLeft="60dip"
+            android:background="@drawable/tips"
+            android:gravity="center"
+            android:text="100"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_xlittle" />
+    </FrameLayout>
 
-</TabHost>
+</LinearLayout>

@@ -492,4 +492,5 @@
     <dimen name="user_header_size_small">38.0dip</dimen>
     <dimen name="vertical_margin_normal">8.0dip</dimen>
     <dimen name="viewpager_indicator_height">1.0dip</dimen>
+     <dimen name="icon_main_tab_size">10.0dip</dimen>
 </resources>
