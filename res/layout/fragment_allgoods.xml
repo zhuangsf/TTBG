@@ -76,7 +76,13 @@
             <TextView android:textSize="@dimen/text_little" android:textColor="@color/crop__button_text" android:gravity="right" android:layout_gravity="center_vertical" android:id="@+id/tv_allgoods_price" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/allgoods_orderby_price" android:drawableRight="@drawable/icon_allgoods_price_default" android:drawablePadding="5.0dip" />
         </LinearLayout>
     </LinearLayout>
-
+        <View android:id="@+id/space_groupby" android:background="@color/divider_new" android:layout_width="fill_parent" android:layout_height="@dimen/divider_vertical" android:layout_marginLeft="@dimen/padding_large" android:layout_marginRight="@dimen/padding_large" android:layout_toRightOf="@id/sv_allgoods_classify" android:layout_below="@id/ll_allgoods_orderby" />
+    
+    <com.yyg.cloudshopping.ui.custom.widget.pulltorefresh.PulltoRefreshLayout android:id="@id/prl_allgoods" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/sv_allgoods_classify" android:layout_below="@id/space_groupby">
+        <android.support.v7.widget.RecyclerView android:id="@id/rv_allgoods_goods" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/sv_allgoods_classify" android:layout_below="@id/ll_allgoods_orderby" />
+    </com.yyg.cloudshopping.ui.custom.widget.pulltorefresh.PulltoRefreshLayout>  
+        
+        
 </RelativeLayout>
 
     </LinearLayout>
