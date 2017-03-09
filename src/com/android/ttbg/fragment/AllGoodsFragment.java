@@ -1,35 +1,85 @@
 package com.android.ttbg.fragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextSwitcher;
 
+import com.android.ttbg.MyListener;
 import com.android.ttbg.R;
+import com.android.ttbg.adapter.AllGoodsContentsAdapter;
 import com.android.ttbg.util.Utils;
+import com.android.ttbg.view.PullToRefreshLayout;
+import com.android.ttbg.view.PullableListView;
 
 public class AllGoodsFragment extends BaseFragment {
 	private static final String TAG = AllGoodsFragment.class.getSimpleName();
 	private View allGoodsFragment;
 	private RadioGroup mRadioGroup;
 	private String[] mStringLabel;
-
+	private PullableListView allgoods_content_listview;
+	private PullToRefreshLayout ptrl;
+	private boolean isFirstIn = true;
+	
 	@Override
 	protected View initView() {
 		allGoodsFragment = View.inflate(mContext, R.layout.fragment_allgoods, null);
 		mStringLabel = getActivity().getResources().getStringArray(R.array.classify_string);
 		if (allGoodsFragment != null) {
 			initRadioGroup(allGoodsFragment);
+			initAllGoodsContentView(allGoodsFragment);
 		}
 		return allGoodsFragment;
 	}
+	private void initAllGoodsContentView(View v) {
+		ptrl = ((PullToRefreshLayout) v.findViewById(R.id.prl_allgoods));
+		ptrl.setOnRefreshListener(new MyListener());
+		allgoods_content_listview = (PullableListView) v.findViewById(R.id.allgoods_content_listview);
+		initContentListView();
+	}
+	private void initContentListView()
+	{
+		List<String> items = new ArrayList<String>();
+		for (int i = 0; i < 30; i++)
+		{
+			items.add("测试测试" + i);
+		}
+		AllGoodsContentsAdapter adapter = new AllGoodsContentsAdapter(getActivity(), items);
+		allgoods_content_listview.setAdapter(adapter);
+		allgoods_content_listview.setOnItemLongClickListener(new OnItemLongClickListener()
+		{
 
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id)
+			{
+				return true;
+			}
+		});
+		allgoods_content_listview.setOnItemClickListener(new OnItemClickListener()
+		{
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id)
+			{
+			}
+		});
+	}
+	
 	private void initRadioGroup(View v) {
 		// TODO Auto-generated method stub
 		mRadioGroup = (RadioGroup) v.findViewById(R.id.rg_allgoods_classify);
