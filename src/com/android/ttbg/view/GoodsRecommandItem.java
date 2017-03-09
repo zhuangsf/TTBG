@@ -14,13 +14,18 @@ public class GoodsRecommandItem
     private int participated_num;   //已参与人数
     private int total_num;			//总人数
     private int surplus_num;		//剩余人数
+    private String goods_price;
       
-    public GoodsRecommandItem()   
+    public String getGoods_price() {
+		return goods_price;
+	}
+
+	public GoodsRecommandItem()   
     {   
         super();   
     }   
    
-    public void setGoodsRecommandItem(Context context,String goods_lable, Drawable imageDrawable,int participated_num,int total_num,int surplus_num)   
+    public void setGoodsRecommandItem(Context context,String goods_lable, Drawable imageDrawable,int participated_num,int total_num,int surplus_num,String goods_price)   
     {   
         this.goods_lable = goods_lable;   
         if(imageDrawable == null)
@@ -34,6 +39,7 @@ public class GoodsRecommandItem
         this.participated_num = participated_num;  
         this.total_num = total_num;
         this.surplus_num = surplus_num;
+        this.goods_price = goods_price;
     }   
    
     

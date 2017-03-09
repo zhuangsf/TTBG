@@ -78,15 +78,16 @@
     </LinearLayout>
         <View android:id="@+id/space_groupby" android:background="@color/divider_new" android:layout_width="fill_parent" android:layout_height="@dimen/divider_vertical" android:layout_marginLeft="@dimen/padding_large" android:layout_marginRight="@dimen/padding_large" android:layout_toRightOf="@id/sv_allgoods_classify" android:layout_below="@id/ll_allgoods_orderby" />
     
-     <com.android.ttbg.view.PullToRefreshLayout android:id="@+id/prl_allgoods" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/sv_allgoods_classify" android:layout_below="@id/space_groupby">
+     <com.android.ttbg.view.PullToRefreshLayout android:id="@+id/prl_allgoods" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/sv_allgoods_classify" android:layout_below="@id/space_groupby"          android:layout_marginLeft="@dimen/padding_large" >
              <include layout="@layout/refresh_head" />
                  <com.android.ttbg.view.PullableListView
         android:id="@+id/allgoods_content_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:divider="@color/gray"
-        android:dividerHeight="1dp" />
+        android:divider="@color/divider_new"
+        android:scrollbars="none"
+        android:dividerHeight="@dimen/divider_vertical" />
              
  <!--        <android.support.v7.widget.RecyclerView android:id="@+id/rv_allgoods_goods" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/sv_allgoods_classify" android:layout_below="@id/ll_allgoods_orderby" /> -->
     		<include layout="@layout/load_more" />

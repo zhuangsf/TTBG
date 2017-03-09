@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/rl_allgood_root" android:background="@color/white" android:paddingLeft="@dimen/padding_normal" android:paddingTop="@dimen/padding_normal" android:paddingBottom="@dimen/padding_normal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@+id/iv_allgood_pic_list" android:layout_width="@dimen/allgoods_goods_list_goodspic_height" android:layout_height="@dimen/allgoods_goods_list_goodspic_height" android:src="@drawable/goods_pic_default" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:text="test" android:id="@+id/tv_allgoods_list_label" android:layout_alignLeft="@id/iv_allgood_pic_list" android:layout_alignTop="@id/iv_allgood_pic_list" style="@style/TextView.Limit" />
+    <TextView android:text="(第50106云)红米4 16G 全网通 标准版 4G手机 只要一元啦" android:textSize="@dimen/text_little" android:textColor="@color/text_title" android:ellipsize="end" android:id="@+id/tv_allgood_name_list" android:paddingRight="@dimen/padding_normal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:maxLines="2" android:lines="2" android:layout_toRightOf="@id/iv_allgood_pic_list" android:layout_alignTop="@id/iv_allgood_pic_list" />
+    <TextView android:text="价值:¥ 888.88" android:textSize="@dimen/text_little" android:textColor="@color/text_gray" android:id="@+id/tv_allgood_price_list" android:paddingRight="@dimen/padding_normal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginTop="@dimen/padding_xlittle" android:singleLine="true" android:layout_toRightOf="@id/iv_allgood_pic_list" android:layout_below="@id/tv_allgood_name_list" />
+    <LinearLayout android:orientation="vertical" android:id="@+id/ll_allgood_add_list" android:paddingLeft="@dimen/padding_normal" android:paddingTop="@dimen/padding_normal" android:paddingRight="@dimen/padding_normal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/tv_allgood_name_list" android:layout_alignParentRight="true">
+        <ImageView android:id="@+id/riv_allgood_add_list" android:layout_width="35dp" android:layout_height="35dp" android:src="@drawable/add_to_cart" android:scaleType="fitCenter" />
+    </LinearLayout>
+
+   <ProgressBar
+       android:id="@+id/pb_participation"
+       style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="4.0dip"
+        android:layout_alignLeft="@id/tv_allgood_name_list"
+        android:layout_below="@id/tv_allgood_price_list"
+        android:layout_marginRight="@dimen/allgoods_goods_list_process_margin_top"
+        android:layout_toLeftOf="@id/ll_allgood_add_list"
+        android:layout_marginTop="@dimen/padding_xlittle"
+       android:max="100"
+       android:progress="30"
+       android:progressDrawable="@drawable/progress_horizontal_cloudbar" />
+
+<!--     <com.yyg.cloudshopping.ui.custom.widget.ParticipationNum
+        android:id="@id/cpb_allgood_list_item"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_allgood_name_list"
+        android:layout_below="@id/tv_allgood_price_list"
+        android:layout_marginRight="@dimen/allgoods_goods_list_process_margin_top"
+        android:layout_marginTop="@dimen/padding_xlittle"
+        android:layout_toLeftOf="@id/ll_allgood_add_list" /> -->
+
+</RelativeLayout>
