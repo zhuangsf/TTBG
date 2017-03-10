@@ -9,7 +9,7 @@ import android.widget.RadioGroup;
 import com.android.ttbg.fragment.BaseFragment;
 import com.android.ttbg.fragment.CareAboutFragment;
 import com.android.ttbg.fragment.MainFragment;
-import com.android.ttbg.fragment.PersonFragment;
+import com.android.ttbg.fragment.NewestFragment;
 import com.android.ttbg.fragment.AllGoodsFragment;
 
 import java.util.ArrayList;
@@ -45,9 +45,12 @@ public class MainActivity extends FragmentActivityPack {
         mBaseFragments = new ArrayList<>();
         mBaseFragments.add(new MainFragment());
         mBaseFragments.add(new AllGoodsFragment());
+        mBaseFragments.add(new NewestFragment());
+        
+        
+        
         mBaseFragments.add(new CareAboutFragment());
-        mBaseFragments.add(new PersonFragment());
-        mBaseFragments.add(new PersonFragment());
+        mBaseFragments.add(new NewestFragment());
     }
 
     private void initView() {

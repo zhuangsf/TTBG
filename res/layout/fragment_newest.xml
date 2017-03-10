@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    
+    
+    <!-- title -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/white" >
+
+
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:text="@string/title_tab_allgoods"
+    android:textColor="@color/crop__button_text"
+    android:textSize="@dimen/text_title" />
+
+    </LinearLayout>   
+<RelativeLayout android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent">
+<com.android.ttbg.view.PullToRefreshLayout android:id="@+id/ptr_newest_refresh" android:layout_width="fill_parent" android:layout_height="fill_parent" >
+   <!--  <android.support.v7.widget.RecyclerView android:id="@id/rv_newest" android:background="@color/background_gray" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" /> -->
+<include layout="@layout/refresh_head" />
+ <com.android.ttbg.view.NoScroolGridView
+    android:id="@+id/gridview_newest"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:numColumns="2"
+     /> 
+
+<include layout="@layout/load_more" />
+</com.android.ttbg.view.PullToRefreshLayout>
+        
+</RelativeLayout>
+</LinearLayout>
