@@ -24,20 +24,17 @@
     android:textSize="@dimen/text_title" />
 
     </LinearLayout>   
-<RelativeLayout android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent">
 <com.android.ttbg.view.PullToRefreshLayout android:id="@+id/ptr_newest_refresh" android:layout_width="fill_parent" android:layout_height="fill_parent" >
    <!--  <android.support.v7.widget.RecyclerView android:id="@id/rv_newest" android:background="@color/background_gray" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" /> -->
 <include layout="@layout/refresh_head" />
- <com.android.ttbg.view.NoScroolGridView
+  <com.android.ttbg.view.PullableGridView
     android:id="@+id/gridview_newest"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:numColumns="2"
-     /> 
-
+    android:layout_height="match_parent"
+        android:gravity="center"
+        android:numColumns="2"
+     />
 <include layout="@layout/load_more" />
 </com.android.ttbg.view.PullToRefreshLayout>
         
-</RelativeLayout>
 </LinearLayout>

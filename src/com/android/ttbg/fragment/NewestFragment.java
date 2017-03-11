@@ -15,10 +15,13 @@ import android.widget.TextSwitcher;
 
 import com.android.ttbg.MyListener;
 import com.android.ttbg.R;
+import com.android.ttbg.adapter.AllGoodsContentsAdapter;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.view.GoodsRecommandItem;
 import com.android.ttbg.view.NoScroolGridView;
 import com.android.ttbg.view.PullToRefreshLayout;
+import com.android.ttbg.view.PullableGridView;
+import com.android.ttbg.view.PullableListView;
 
 /**
  * 作者：哇牛Aaron
@@ -29,7 +32,7 @@ import com.android.ttbg.view.PullToRefreshLayout;
 public class NewestFragment extends BaseFragment {
     private static final String TAG = NewestFragment.class.getSimpleName();
     private View newestFragmentView;
-    private NoScroolGridView newestGridView;
+    private PullableGridView newestGridView;
 	private PullToRefreshLayout ptrl;
     @Override
     protected View initView() {
@@ -40,13 +43,16 @@ public class NewestFragment extends BaseFragment {
         if(newestFragmentView != null)
         {
         	intiNewestGoodsItems(newestFragmentView);
+        //	initAllGoodsContentView(newestFragmentView);
         }
         return newestFragmentView;
     }
 
     
     private void intiNewestGoodsItems(View v) {
-    	newestGridView = (NoScroolGridView) v.findViewById(R.id.gridview_newest);
+  
+    	
+   	newestGridView = (PullableGridView) v.findViewById(R.id.gridview_newest);
 		ptrl = ((PullToRefreshLayout) v.findViewById(R.id.ptr_newest_refresh));
 		ptrl.setOnRefreshListener(new MyListener());
     	List<GoodsRecommandItem> hashMapList = new ArrayList<GoodsRecommandItem>();
