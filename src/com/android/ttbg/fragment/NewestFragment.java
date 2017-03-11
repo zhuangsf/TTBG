@@ -17,6 +17,7 @@ import com.android.ttbg.MyListener;
 import com.android.ttbg.R;
 import com.android.ttbg.adapter.AllGoodsContentsAdapter;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
+import com.android.ttbg.adapter.NewestGoodsAdapter;
 import com.android.ttbg.view.GoodsRecommandItem;
 import com.android.ttbg.view.NoScroolGridView;
 import com.android.ttbg.view.PullToRefreshLayout;
@@ -65,9 +66,9 @@ public class NewestFragment extends BaseFragment {
 
         }
 
-        GoodsRecommendAdapter goodsRecommendAdapter = new GoodsRecommendAdapter(getActivity(), hashMapList);
+        NewestGoodsAdapter newestGoodsAdapter = new NewestGoodsAdapter(getActivity(), hashMapList);
 
-        newestGridView.setAdapter(goodsRecommendAdapter);
+        newestGridView.setAdapter(newestGoodsAdapter);
         newestGridView.setOnItemLongClickListener(new OnItemLongClickListener()
 		{
 

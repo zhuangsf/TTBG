@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/white"  android:padding="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@+id/iv_pic_newest_countdown_grid" style="@style/ImageView.Large" />
+    <TextView android:text="我送你黄金万两如何" android:textSize="@dimen/text_little" android:textColor="@color/text_title" android:gravity="left" android:id="@+id/tv_goodsname_newest_countdown_grid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_mircro" android:singleLine="true" />
+    <TextView android:textSize="@dimen/text_little" android:textColor="@color/text_hint" android:gravity="left" android:id="@+id/tv_price_newest_countdown_grid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_mircro" android:singleLine="true" />
+    <TextView android:textSize="@dimen/text_little" android:textColor="@color/text_hint" android:gravity="left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_mircro" android:text="@string/neweast_cut_down" android:singleLine="true" />
+  <!--   <com.android.ttbg.view.NewestCountDownView android:id="@+id/ncdv_countdown_newest_countdown_grid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_mircro" /> -->
+ 
+    <com.android.ttbg.view.countdownview.CountdownView
+            android:id="@+id/newest_countdown_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/padding_mircro"
+            app:isHideTimeBackground="false"
+            app:isShowDay="false"
+            app:isShowHour="false"
+            app:isShowMillisecond="true"
+            app:isShowMinute="true"
+            app:isShowSecond="true"
+            app:isShowTimeBgBorder="true"
+            app:suffixGravity="center"
+            app:suffixLRMargin="5dp"
+            app:suffixTextColor="#FC903E"
+            app:suffixTextSize="17sp"
+            app:timeBgBorderColor="#E8E8E8"
+            app:timeBgBorderRadius="3dp"
+            app:timeBgBorderSize="2dp"
+            app:timeBgColor="#FFFFFF"
+            app:timeBgDivisionLineSize="1dp"
+            app:timeBgRadius="3dp"
+            app:timeBgSize="30dp"
+            app:timeTextColor="#FC903E"
+            app:timeTextSize="17sp"
+    />
+ 
+ 
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/text_middle" android:textColor="@color/arc_orange" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@+id/tv_news_announceing" android:paddingLeft="@dimen/padding_large" android:paddingTop="@dimen/padding_little" android:paddingRight="@dimen/padding_large" android:paddingBottom="@dimen/padding_little" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_mircro" android:text="@string/calculating" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>
