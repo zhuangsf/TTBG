@@ -30,6 +30,7 @@ import com.android.ttbg.R;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.util.TimerUtil;
 import com.android.ttbg.view.GoodsRecommandItem;
+import com.android.ttbg.view.NoScroolGridView;
 
 
 
@@ -126,7 +127,7 @@ public class MainFragment extends BaseFragment implements ViewFactory{
     }  
     
     private void intiGoodsItems(View v) {
-    	GridView gridView = (GridView) v.findViewById(R.id.gridview_recommend);
+    	NoScroolGridView gridView = (NoScroolGridView) v.findViewById(R.id.gridview_recommend);
     	
     	List<GoodsRecommandItem> hashMapList = new ArrayList<GoodsRecommandItem>();
         //测试数据

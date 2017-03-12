@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/white" android:paddingBottom="@dimen/padding_little" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" >
+    <ImageView android:id="@+id/iv_search_recommend" android:layout_width="@dimen/search_recommend_image_width" android:layout_height="@dimen/search_recommend_image_height" android:layout_marginTop="@dimen/search_recommend_image_margin_top" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/text_little" android:textColor="@color/text_title" android:gravity="left" android:id="@+id/tv_search_recommend_goodname" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/search_recommend_left_margin" android:layout_marginTop="@dimen/search_recommend_image_margin_top" android:layout_marginRight="@dimen/search_recommend_right_margin" android:singleLine="true" android:layout_below="@id/iv_search_recommend" />
+
+    <ImageView
+        android:id="@+id/tv_search_recommend_add_cart"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_search_recommend_goodname"
+        android:layout_marginBottom="@dimen/search_recommend_bottom_margin"
+        android:layout_marginRight="@dimen/search_recommend_right_margin"
+         android:layout_marginTop="@dimen/search_recommend_image_margin_top" 
+        android:scaleType="fitCenter"
+        android:src="@drawable/add_to_cart_normal" />
+
+    <TextView android:textSize="@dimen/text_mircro" android:textColor="@color/text_gray" android:gravity="left" android:id="@+id/tv_search_recommend_price" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/search_recommend_left_margin" android:layout_marginTop="@dimen/search_recommend_image_margin_top" android:layout_toLeftOf="@id/tv_search_recommend_add_cart" android:layout_below="@id/tv_search_recommend_goodname" />
+<!--     <com.yyg.cloudshopping.ui.custom.widget.CloudProgressBar android:id="@id/pb_search_recommend" android:background="@color/background_pale_grey" android:layout_width="fill_parent" android:layout_height="@dimen/padding_little" android:layout_marginLeft="@dimen/search_recommend_left_margin" android:layout_marginRight="@dimen/padding_little" android:layout_toLeftOf="@id/tv_search_recommend_add_cart" android:layout_below="@id/tv_search_recommend_price" app:isDrawText="false" /> -->
+
+   <ProgressBar
+       android:id="@+id/pb_search_recommend"
+       style="?android:attr/progressBarStyleHorizontal"
+       android:layout_width="fill_parent"
+       android:layout_height="@dimen/padding_little"
+       android:layout_below="@id/tv_search_recommend_price"
+       android:layout_marginLeft="@dimen/search_recommend_left_margin"
+       android:layout_marginRight="@dimen/padding_little"
+ android:layout_marginTop="@dimen/search_recommend_image_margin_top" 
+       android:layout_toLeftOf="@id/tv_search_recommend_add_cart"
+       android:background="@color/background_pale_grey"
+       android:max="100"
+       android:progress="30"
+       android:progressDrawable="@drawable/progress_horizontal_cloudbar" />
+
+</RelativeLayout>

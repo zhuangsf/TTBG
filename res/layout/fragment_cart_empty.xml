@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <!-- title -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/titlebar_white" >
+
+
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:text="@string/title_tab_cart"
+    android:textColor="@color/crop__button_text"
+    android:textSize="@dimen/text_title" />
+
+    </LinearLayout>   
+
+<com.android.ttbg.view.PullToRefreshLayout android:id="@+id/ptr_cart_refresh" android:layout_width="fill_parent" android:layout_height="fill_parent" >
+    <include layout="@layout/refresh_head" />
+    <com.android.ttbg.view.PullableScrollView android:id="@+id/layout_empty_cart" android:background="@color/background_main" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:paddingBottom="@dimen/padding_xxlarge" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@+id/view1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cart_image_margintop" android:src="@drawable/blank_cart" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/text_little" android:textColor="@color/text_topic_hint" android:id="@+id/view2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_mlarge" android:layout_marginBottom="@dimen/margin_big" android:text="@string/cart_is_empty" android:layout_below="@id/view1" android:layout_centerHorizontal="true" />
+                       <!-- 人气推荐 -->
+
+            <LinearLayout
+                 android:id="@+id/view3" 
+                android:layout_width="match_parent"
+                android:layout_height="36.0dip"
+                android:gravity="center"
+                android:background="@color/background_gray"
+                android:layout_below="@id/view2"
+                android:orientation="horizontal" >
+
+               <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"
+                />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray_middle" />
+                </LinearLayout>
+                <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/image_recommendation" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="人气推荐"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_small" />
+				</LinearLayout>
+                <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray_middle" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"
+                />
+
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 人气推荐-->
+
+<com.android.ttbg.view.NoScroolGridView
+    android:id="@+id/gridview_hot_recommend"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:numColumns="2"
+                    android:layout_below="@id/view3"
+     />
+
+
+        </RelativeLayout>
+    </com.android.ttbg.view.PullableScrollView>
+    <include layout="@layout/load_more" />
+</com.android.ttbg.view.PullToRefreshLayout>
+
+
+    </LinearLayout>  

@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import com.android.ttbg.fragment.BaseFragment;
-import com.android.ttbg.fragment.CareAboutFragment;
+import com.android.ttbg.fragment.CartFragment;
 import com.android.ttbg.fragment.MainFragment;
 import com.android.ttbg.fragment.NewestFragment;
 import com.android.ttbg.fragment.AllGoodsFragment;
@@ -46,10 +46,9 @@ public class MainActivity extends FragmentActivityPack {
         mBaseFragments.add(new MainFragment());
         mBaseFragments.add(new AllGoodsFragment());
         mBaseFragments.add(new NewestFragment());
+        mBaseFragments.add(new CartFragment());
         
-        
-        
-        mBaseFragments.add(new CareAboutFragment());
+
         mBaseFragments.add(new NewestFragment());
     }
 
