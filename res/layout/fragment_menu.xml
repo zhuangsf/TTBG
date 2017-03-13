@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:background="@drawable/item_click_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/background_main" android:paddingTop="@dimen/stroke_width" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@+id/layout_user_info" android:background="@drawable/item_click_bg" android:paddingLeft="@dimen/padding_left_slide_menu" android:layout_width="fill_parent" android:layout_height="120.0dip">
+            <ImageView android:id="@+id/riv_user_header" android:layout_width="@dimen/iv_middle" android:layout_height="@dimen/iv_middle" android:layout_marginLeft="@dimen/padding_normal" android:src="@drawable/ic_launcher" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/ImageView" />
+            <TextView android:textSize="@dimen/text_large" android:textColor="@color/text_black" android:id="@+id/tv_arrows" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/padding_normal" android:text=">" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/padding_normal" android:layout_toLeftOf="@id/tv_arrows" android:layout_toRightOf="@id/riv_user_header" android:layout_centerVertical="true">
+                <TextView android:id="@+id/tv_user_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="云购云购我爱你" style="@style/TextView.MenuUserName" />
+                <TextView android:id="@+id/tv_user_empirical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="经验值：654624" style="@style/TextView.MenuUserEpl" />
+            </LinearLayout>
+            <View android:background="@color/background_stroke" android:layout_width="fill_parent" android:layout_height="@dimen/stroke_width" android:layout_alignLeft="@id/riv_user_header" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@+id/layout_my_obtain_goods" android:background="@drawable/item_click_bg" android:paddingLeft="@dimen/padding_left_slide_menu" android:layout_width="fill_parent" android:layout_height="@dimen/menu_height">
+            <TextView android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/menu_obtain_goods" style="@style/TextView.MenuItem" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layout_my_post" android:background="@drawable/item_click_bg" android:paddingLeft="@dimen/padding_left_slide_menu" android:layout_width="fill_parent" android:layout_height="@dimen/menu_height">
+            <TextView android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/menu_my_post" style="@style/TextView.MenuItem" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layout_my_attention" android:background="@drawable/item_click_bg" android:paddingLeft="@dimen/padding_left_slide_menu" android:layout_width="fill_parent" android:layout_height="@dimen/menu_height">
+            <TextView android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/menu_my_attention" style="@style/TextView.MenuItem" />
+        </LinearLayout>
+        <View android:background="@color/background_stroke" android:layout_width="fill_parent" android:layout_height="@dimen/stroke_width" android:layout_marginLeft="@dimen/padding_large" />
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layout_my_wallet" android:background="@drawable/item_click_bg" android:paddingLeft="@dimen/padding_left_slide_menu" android:layout_width="fill_parent" android:layout_height="@dimen/menu_height">
+            <TextView android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/menu_my_wallet" style="@style/TextView.MenuItem" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layout_my_address" android:background="@drawable/item_click_bg" android:paddingLeft="@dimen/padding_left_slide_menu" android:layout_width="fill_parent" android:layout_height="@dimen/menu_height">
+            <TextView android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/menu_my_address" style="@style/TextView.MenuItem" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layout_invite_friends" android:background="@drawable/item_click_bg" android:paddingLeft="@dimen/padding_left_slide_menu" android:layout_width="fill_parent" android:layout_height="@dimen/menu_height">
+            <TextView android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/menu_invite_friends" style="@style/TextView.MenuItem" />
+        </LinearLayout>
+        <View android:background="@color/background_stroke" android:layout_width="fill_parent" android:layout_height="@dimen/stroke_width" android:layout_marginLeft="@dimen/padding_large" />
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layout_setting" android:background="@drawable/item_click_bg" android:paddingLeft="@dimen/padding_left_slide_menu" android:layout_width="fill_parent" android:layout_height="@dimen/menu_height">
+            <TextView android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/menu_setting" style="@style/TextView.MenuItem" />
+        </LinearLayout>
+        <TextView android:id="@+id/tv_menu_tel" android:background="@drawable/item_click_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/menu_tel" style="@style/TextView.MenuTips" />
+    </LinearLayout>
+</ScrollView>

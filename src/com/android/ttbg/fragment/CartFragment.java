@@ -18,12 +18,7 @@ import com.android.ttbg.view.PullToRefreshLayout;
 
 
 
-/**
- * 作者：哇牛Aaron
- * 作者简书文章地址: http://www.jianshu.com/users/07a8b5386866/latest_articles
- * 时间: 2016/10/24
- * 功能描述: 关心页面Fragment
- */
+
 public class CartFragment extends BaseFragment {
     private static final String TAG = CartFragment.class.getSimpleName();
 	private View cartFragment;

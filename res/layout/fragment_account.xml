@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView android:background="@color/background_gray" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="180.0dip">
+            <RelativeLayout android:id="@+id/rly_account_online" android:background="@color/white" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <RelativeLayout android:id="@+id/layout_account_value_click" android:background="@drawable/account_online_bg" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="130.0dip">
+                    <ImageView android:id="@+id/iv_account_icon" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="@dimen/padding_xlarge" android:layout_marginBottom="@dimen/padding_normal" android:src="@drawable/account_pic_default" android:layout_alignParentBottom="true" />
+                    <TextView android:gravity="center_vertical" android:id="@+id/tv_account_name" android:paddingTop="@dimen/padding_normal" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="@dimen/padding_normal" android:layout_toRightOf="@id/iv_account_icon" android:layout_alignTop="@id/iv_account_icon" style="@style/TextView.AccountName" />
+                    <TextView android:gravity="center_vertical" android:id="@+id/tv_account_grade" android:paddingBottom="@dimen/padding_normal" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="@dimen/padding_normal" android:layout_toRightOf="@id/iv_account_icon" android:layout_alignBottom="@id/iv_account_icon" style="@style/TextView.AccountDegree" />
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/lly_qr_code" android:paddingLeft="@dimen/padding_normal" android:paddingRight="@dimen/padding_mlarge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/padding_normal" android:layout_alignTop="@id/iv_account_icon" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+                        <ImageView android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qr_code" />
+                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:src="@drawable/arrow_right_white" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <LinearLayout android:orientation="horizontal" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+                    <TextView android:text="福分\n20" android:textSize="@dimen/text_little" android:textColor="@color/text_topic_hint" android:ellipsize="end" android:gravity="center" android:id="@+id/tv_account_score" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="110.0dip" android:maxLines="2" android:layout_weight="1.0" />
+                    <View android:id="@+id/ignore_divider" android:background="@color/stroke" android:layout_width="@dimen/stroke" android:layout_height="fill_parent" android:layout_marginTop="@dimen/padding_normal" android:layout_marginBottom="@dimen/padding_normal" android:layout_toRightOf="@id/tv_account_score" android:layout_centerVertical="true" />
+                    <TextView android:text="余额(元)\n0.00"  android:textSize="@dimen/text_little" android:textColor="@color/text_topic_hint" android:ellipsize="end" android:gravity="center" android:id="@+id/tv_account_balance" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="120.0dip" android:maxLines="2" android:layout_weight="1.0" android:layout_toRightOf="@id/ignore_divider" />
+                    <Button android:layout_gravity="center_vertical" android:id="@+id/btn_account_to_charge" android:background="@drawable/selector_btn_post_corner" android:layout_width="90.0dip" android:layout_height="36.0dip" android:layout_marginLeft="@dimen/margin_large" android:layout_marginRight="@dimen/padding_normal" android:text="@string/account_to_charge" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" style="@style/TextView.Button.White" />
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout android:id="@+id/rly_account_offline" android:background="@color/theme" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="horizontal" android:id="@+id/ignore_account_login" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+                    <Button android:textColor="@color/theme" android:id="@+id/btn_account_login" android:background="@drawable/selector_stork_null_bg_white_to_gray" android:layout_width="@dimen/button_login_width" android:layout_height="@dimen/button_height_large" android:text="@string/account_login" />
+                    <Button android:textColor="@color/theme" android:id="@+id/btn_account_register" android:background="@drawable/selector_stork_null_bg_white_to_gray" android:layout_width="@dimen/button_login_width" android:layout_height="@dimen/button_height_large" android:layout_marginLeft="@dimen/padding_large" android:text="@string/account_register" />
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/padding_large" android:text="@string/account_welcome" android:layout_above="@id/ignore_account_login" android:layout_centerHorizontal="true" style="@style/TextView.Button.White" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/titlebar_height" android:layout_alignParentRight="true" android:layout_alignParentEnd="true">
+                <ImageView android:id="@+id/btn_account_message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_account_msg" android:scaleType="centerInside" android:layout_centerVertical="true" />
+                <TextView android:textSize="9.0dip" android:textColor="@color/text_orange" android:gravity="center" android:id="@+id/tv_account_message" android:background="@drawable/bg_white_round_orange_corner" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_alignTop="@id/btn_account_message" android:layout_alignRight="@id/btn_account_message" />
+                <ImageView android:id="@+id/btn_account_setting" android:layout_width="46.0dip" android:layout_height="fill_parent" android:src="@drawable/setting_white" android:scaleType="centerInside" android:layout_toRightOf="@id/btn_account_message" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@+id/linear_account_function" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_normal"  >
+            <RelativeLayout  android:clickable="true" android:id="@+id/account_record" 
+                android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp">
+                <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                <ImageView android:layout_marginLeft="@dimen/padding_xlarge" android:layout_centerVertical="true"   android:id="@+id/account_record_img"  android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/account_jili" android:scaleType="centerInside" android:layout_alignParentLeft="true"/>
+                <TextView  android:layout_marginLeft="@dimen/padding_normal" android:text="云购记录" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/account_record_img"/>
+                <ImageView
+                   android:layout_marginRight="@dimen/padding_xlarge"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:scaleType="centerInside"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/arrows_gray" />
+
+            </RelativeLayout>
+
+                <RelativeLayout  android:clickable="true" android:id="@+id/account_obtain_goods" android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp" >
+                <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                <ImageView android:layout_marginLeft="@dimen/padding_xlarge" android:layout_centerVertical="true"   android:id="@+id/account_obtain_goods_img"  android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/account_huojiang" android:scaleType="centerInside" android:layout_alignParentLeft="true"/>
+                <TextView  android:layout_marginLeft="@dimen/padding_normal" android:text="获得的商品" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/account_obtain_goods_img"/>
+                <ImageView
+                   android:layout_marginRight="@dimen/padding_xlarge"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:scaleType="centerInside"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/arrows_gray" />
+
+            </RelativeLayout>
+                <RelativeLayout  android:clickable="true" android:id="@+id/account_my_post" android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp" >
+                <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                <ImageView android:layout_marginLeft="@dimen/padding_xlarge" android:layout_centerVertical="true"   android:id="@+id/account_my_post_img"  android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/account_saidan" android:scaleType="centerInside" android:layout_alignParentLeft="true"/>
+                <TextView  android:layout_marginLeft="@dimen/padding_normal" android:text="我的晒单" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/account_my_post_img"/>
+                <ImageView
+                   android:layout_marginRight="@dimen/padding_xlarge"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:scaleType="centerInside"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/arrows_gray" />
+
+            </RelativeLayout>
+                                   <RelativeLayout  android:clickable="true" android:id="@+id/account_my_wallet" android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp" >
+               <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                                       <ImageView android:layout_marginLeft="@dimen/padding_xlarge" android:layout_centerVertical="true"   android:id="@+id/account_my_wallet_img"  android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/account_qianbao" android:scaleType="centerInside" android:layout_alignParentLeft="true"/>
+                <TextView  android:layout_marginLeft="@dimen/padding_normal" android:text="我的钱包" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/account_my_wallet_img"/>
+                <ImageView
+                   android:layout_marginRight="@dimen/padding_xlarge"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:scaleType="centerInside"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/arrows_gray" />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout  android:orientation="vertical" android:id="@+id/linear_account_other" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_normal" android:layout_marginBottom="@dimen/padding_normal">
+                            <RelativeLayout android:id="@+id/account_help"
+                                android:clickable="true"
+            android:background="@drawable/ll_customer_selector"
+android:layout_width="fill_parent" android:layout_height="45dp">
+                <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                <ImageView android:layout_marginLeft="@dimen/padding_xlarge" android:layout_centerVertical="true"   android:id="@+id/account_help_img"  android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/account_fankui" android:scaleType="centerInside" android:layout_alignParentLeft="true"/>
+                <TextView  android:layout_marginLeft="@dimen/padding_normal" android:text="帮助与反馈" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/account_help_img"/>
+                <ImageView
+                   android:layout_marginRight="@dimen/padding_xlarge"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:scaleType="centerInside"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/arrows_gray" />
+                 </RelativeLayout>
+                                            <RelativeLayout android:id="@+id/account_share" android:clickable="true" android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp" >
+                <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                <ImageView android:layout_marginLeft="@dimen/padding_xlarge" android:layout_centerVertical="true"   android:id="@+id/account_share_img"  android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/account_erweim" android:scaleType="centerInside" android:layout_alignParentLeft="true"/>
+                <TextView  android:layout_marginLeft="@dimen/padding_normal" android:text="我的晒单" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/account_share_img"/>
+                <ImageView
+                   android:layout_marginRight="@dimen/padding_xlarge"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:scaleType="centerInside"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/arrows_gray" />
+                 </RelativeLayout>
+                 </LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

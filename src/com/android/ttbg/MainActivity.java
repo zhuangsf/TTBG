@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 
 import com.android.ttbg.fragment.BaseFragment;
 import com.android.ttbg.fragment.CartFragment;
+import com.android.ttbg.fragment.CountFragment;
 import com.android.ttbg.fragment.MainFragment;
 import com.android.ttbg.fragment.NewestFragment;
 import com.android.ttbg.fragment.AllGoodsFragment;
@@ -47,9 +48,7 @@ public class MainActivity extends FragmentActivityPack {
         mBaseFragments.add(new AllGoodsFragment());
         mBaseFragments.add(new NewestFragment());
         mBaseFragments.add(new CartFragment());
-        
-
-        mBaseFragments.add(new NewestFragment());
+        mBaseFragments.add(new CountFragment());
     }
 
     private void initView() {

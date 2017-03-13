@@ -2,13 +2,13 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
@@ -27,7 +27,8 @@
         <item name="android:drawablePadding">3dp</item>
         <item name="android:padding">3dp</item>
         <item name="android:textSize">10sp</item>
-    </style>    
+    </style>
+
     <style name="ImageView">
         <item name="android:background">@null</item>
         <item name="android:layout_width">@dimen/iv_middle</item>
@@ -35,17 +36,18 @@
         <item name="android:src">@drawable/goods_pic_default</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
+
     <style name="ImageView.Large" parent="@style/ImageView">
         <item name="android:layout_width">@dimen/iv_large</item>
         <item name="android:layout_height">@dimen/iv_large</item>
         <item name="android:src">@drawable/goods_pic_default</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
-    
-    
+
     <style name="TextView">
         <item name="android:background">@android:color/transparent</item>
-    </style>    
+    </style>
+
     <style name="TextView.Limit" parent="@style/TextView">
         <item name="android:textSize">@dimen/text_mircro</item>
         <item name="android:textColor">@color/text_white</item>
@@ -57,16 +59,54 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">@string/limit_shopping</item>
-    </style>    
-    
-    
-      <style name="MMTabButton">
-		<item name="android:textSize">@dimen/text_small</item>
-		<item name="android:gravity">center_horizontal</item>
-		<item name="android:background">@color/white</item>
-		<item name="android:button">@null</item>
-		<item name="android:textColor">@color/text_gray</item>
-		<item name="android:paddingBottom">2.0dip</item>
-		<item name="android:paddingTop">2.0dip</item>
-	</style>  
+    </style>
+
+    <style name="MMTabButton">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:paddingBottom">2.0dip</item>
+        <item name="android:paddingTop">2.0dip</item>
+    </style>
+        <style name="TextView.Button" parent="@style/TextView">
+        <item name="android:textSize">@dimen/text_middle</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:gravity">center</item>
+    </style>
+        <style name="TextView.MenuUserEpl" parent="@style/TextView">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:gravity">left|center</item>
+    </style>
+        <style name="TextView.MenuItem" parent="@style/TextView">
+        <item name="android:textSize">@dimen/text_middle</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:padding">@dimen/padding_normal</item>
+    </style>
+            <style name="TextView.MenuUserName" parent="@style/TextView">
+        <item name="android:textSize">@dimen/text_middle</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:gravity">left|center</item>
+    </style>
+    <style name="TextView.Button.White" parent="@style/TextView.Button">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextView.AccountDegree" parent="@style/TextView">
+        <item name="android:textSize">@dimen/text_little</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextView.MenuTips" parent="@style/TextView">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:padding">16.0dip</item>
+    </style>
+    <style name="TextView.AccountName" parent="@style/TextView">
+        <item name="android:textSize">@dimen/text_middle</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

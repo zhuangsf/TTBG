@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@android:color/white" />
+            <size android:height="@dimen/stroke" />
+        </shape>
+    </item>
+    <item android:left="@dimen/padding_large" android:right="@dimen/padding_large">
+        <shape>
+            <solid android:color="@color/stroke" />
+            <size android:height="@dimen/stroke" />
+        </shape>
+    </item>
+</layer-list>

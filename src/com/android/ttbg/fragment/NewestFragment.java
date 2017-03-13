@@ -24,12 +24,7 @@ import com.android.ttbg.view.PullToRefreshLayout;
 import com.android.ttbg.view.PullableGridView;
 import com.android.ttbg.view.PullableListView;
 
-/**
- * 作者：哇牛Aaron
- * 作者简书文章地址: http://www.jianshu.com/users/07a8b5386866/latest_articles
- * 时间: 2016/10/24
- * 功能描述: 个人页面Fragment
- */
+
 public class NewestFragment extends BaseFragment {
     private static final String TAG = NewestFragment.class.getSimpleName();
     private View newestFragmentView;
