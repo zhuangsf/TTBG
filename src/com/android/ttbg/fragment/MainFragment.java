@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
@@ -16,6 +17,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AnimationUtils;
@@ -27,6 +29,7 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
 
 import com.android.ttbg.R;
+import com.android.ttbg.SearchActivity;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.util.TimerUtil;
 import com.android.ttbg.view.GoodsRecommandItem;
@@ -34,7 +37,7 @@ import com.android.ttbg.view.NoScroolGridView;
 
 
 
-public class MainFragment extends BaseFragment implements ViewFactory{
+public class MainFragment extends BaseFragment implements ViewFactory,OnClickListener{
     private static final String TAG = MainFragment.class.getSimpleName();
     private View mainFragmentView;
 
@@ -58,6 +61,7 @@ public class MainFragment extends BaseFragment implements ViewFactory{
     
     private TextSwitcher switcher;
     
+    private View searchButton;
     private static final int MSG_TEST_SWITCHER_TEST=0;
     
     private Handler mHandler= new Handler()
@@ -87,6 +91,7 @@ public class MainFragment extends BaseFragment implements ViewFactory{
         
         if(mainFragmentView != null)
         {
+        	initSearchView(mainFragmentView); 
         	initADPager(mainFragmentView);      //初始化页眉广告条
         	initNewestSwitcher(mainFragmentView);
         	initCountDownPage(mainFragmentView);
@@ -94,8 +99,24 @@ public class MainFragment extends BaseFragment implements ViewFactory{
         }
         return mainFragmentView;
     }
+
     
-    private void initNewestSwitcher(View v) {
+    private void initSearchView(View v) {
+		// TODO Auto-generated method stub
+		View searchButton = (View)v.findViewById(R.id.search);  
+		searchButton.setOnClickListener(this);
+	}
+
+    
+	@Override
+	public void onClick(View v) {
+       if (v.getId() == R.id.search) {
+			Intent intent = new Intent(getActivity(), SearchActivity.class);
+			startActivity(intent);
+		}
+	}
+    
+	private void initNewestSwitcher(View v) {
     	switcher = (TextSwitcher) v.findViewById(R.id.ts_newest_info);  
     	switcher.setFactory(this); 
     	
