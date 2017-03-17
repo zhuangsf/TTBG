@@ -46,7 +46,7 @@ public class SearchActivity extends Activity {
 			if (bgId > 0) {
 				actionBar.setBackgroundDrawable(act.getResources().getDrawable(bgId));
 			}
-			actionBar.setTitle(title);
+		//	actionBar.setTitle(title);
 		} else {
 			Toast.makeText(act, "无法获得ActionBar", Toast.LENGTH_SHORT).show();
 		}
@@ -59,7 +59,7 @@ public class SearchActivity extends Activity {
 	        Log.d(TAG, "Fail to get SearchView.");
 	    } else {
 	    	//设置搜索框默认自动缩小为图标
-	    	searchView.setIconifiedByDefault(true);
+	    	searchView.setIconifiedByDefault(false);
 	    	//设置是否显示搜索按钮。搜索按钮只显示一个箭头图标，Android暂不支持显示文本。
 	    	//查看Android源码，搜索按钮用的控件是ImageView，所以。。。
 	    	searchView.setSubmitButtonEnabled(true);
@@ -134,9 +134,7 @@ public class SearchActivity extends Activity {
 		} else if (id == R.id.menu_about) {
 			Toast.makeText(this, "这个是顶部导航栏的演示demo", Toast.LENGTH_LONG).show();
 			return true;
-		} else if (id == R.id.menu_quit) {
-			finish();
-		}
+		} 
 		return super.onOptionsItemSelected(item);
 	}
 }

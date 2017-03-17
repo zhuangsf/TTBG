@@ -3,6 +3,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+        <!-- title -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/titlebar_white" 
+        android:orientation="horizontal">
+
+         <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/iconl_titlebacknormal" />
+
+        <TextView
+            android:id="@+id/title_tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:text="搜索"
+            android:textColor="@color/bt_orange"
+            android:textSize="@dimen/text_title" />
+
+    </RelativeLayout>   
+    
+    
     <TextView
         android:id="@+id/tv_search"
         android:layout_width="match_parent"
