@@ -1,10 +1,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white" 
     android:orientation="vertical" >
 
         <!-- title -->
-
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+        
+        <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" 
+    android:orientation="vertical" >
+        
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/titlebar_height"
@@ -47,7 +58,7 @@
              <ImageView
                  android:layout_width="15dp"
                  android:layout_height="15dp"
-                 android:layout_gravity="center"
+                android:layout_gravity="center"
                  android:layout_marginLeft="10dp"
                  android:scaleType="fitCenter"
                  android:src="@drawable/ic_search" />
@@ -65,15 +76,40 @@
 
     </RelativeLayout>   
     
-    
-    <TextView
-        android:id="@+id/tv_search"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="这里是搜索导航页"
-        android:textColor="#000000"
-        android:textSize="17sp" />
 
+<LinearLayout android:orientation="vertical" android:id="@+id/ll_hot"  android:paddingTop="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content"
+ >
+    <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_hint" android:paddingLeft="@dimen/search_hotsearch_tv_margin_left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hot_search" />
+   
+    <View android:layout_marginTop="@dimen/padding_large" android:background="@color/stroke" android:layout_width="fill_parent" android:layout_height="@dimen/divider_vertical" />
+    
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+   <TextView android:layout_marginLeft="10dp" android:textSize="@dimen/text_little" android:textColor="@color/text_gray" android:layout_gravity="center" android:id="@+id/bt_search_gold" android:background="@drawable/btn_search_hot" android:paddingLeft="@dimen/padding_large" android:paddingTop="@dimen/padding_xlittle" android:paddingRight="@dimen/padding_large" android:paddingBottom="@dimen/padding_xlittle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/search_clearhis_margin_top" android:layout_marginBottom="@dimen/search_clearhis_margin_top" android:text="黄金" />
+      <TextView android:layout_marginLeft="10dp" android:textSize="@dimen/text_little" android:textColor="@color/text_gray" android:layout_gravity="center" android:id="@+id/bt_search_xiaomi" android:background="@drawable/btn_search_hot" android:paddingLeft="@dimen/padding_large" android:paddingTop="@dimen/padding_xlittle" android:paddingRight="@dimen/padding_large" android:paddingBottom="@dimen/padding_xlittle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/search_clearhis_margin_top" android:layout_marginBottom="@dimen/search_clearhis_margin_top" android:text="小米" />
+   <TextView android:layout_marginLeft="10dp" android:textSize="@dimen/text_little" android:textColor="@color/text_gray" android:layout_gravity="center" android:id="@+id/bt_search_car" android:background="@drawable/btn_search_hot" android:paddingLeft="@dimen/padding_large" android:paddingTop="@dimen/padding_xlittle" android:paddingRight="@dimen/padding_large" android:paddingBottom="@dimen/padding_xlittle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/search_clearhis_margin_top" android:layout_marginBottom="@dimen/search_clearhis_margin_top" android:text="汽车" />
+ 
+    </LinearLayout>
+        <View android:background="@color/stroke" android:layout_width="fill_parent" android:layout_height="@dimen/divider_vertical" />
+  
+        <TextView android:text="@string/search_history" android:textSize="@dimen/text_small" android:textColor="@color/text_hint" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@+id/tv_search_history"  android:paddingLeft="@dimen/search_hotsearch_hotbt_left_margin" android:paddingRight="@dimen/search_hotsearch_hotbt_left_margin" android:layout_width="fill_parent" android:layout_height="@dimen/search_history_height" />
+        
+        
+            <ListView
+        android:id="@+id/lv"
+        android:divider="@color/stroke"
+        android:dividerHeight="@dimen/divider_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+        
+        
+        <View android:background="@color/stroke" android:layout_width="fill_parent" android:layout_height="@dimen/divider_vertical" />
+    <TextView android:textSize="@dimen/text_little" android:textColor="@color/text_gray" android:gravity="center" android:layout_gravity="center" android:id="@+id/bt_search_clear_his" android:background="@drawable/btn_search_hot" android:paddingLeft="@dimen/padding_large" android:paddingTop="@dimen/padding_xlittle" android:paddingRight="@dimen/padding_large" android:paddingBottom="@dimen/padding_xlittle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/search_clearhis_margin_top" android:layout_marginBottom="@dimen/search_clearhis_margin_top" android:text="@string/clear_record" />
+    
+</LinearLayout>
+</LinearLayout>
+    </ScrollView>
 </LinearLayout>
