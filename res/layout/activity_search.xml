@@ -10,7 +10,16 @@
         android:layout_height="@dimen/titlebar_height"
         android:background="@color/titlebar_white" 
         android:orientation="horizontal">
-
+        <TextView
+            android:id="@+id/title_tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="搜索"
+            android:textColor="@color/bt_orange"
+            android:textSize="@dimen/text_title" />
          <ImageView
                 android:id="@+id/title_back"
                 android:layout_width="20dp"
@@ -21,15 +30,38 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/iconl_titlebacknormal" />
 
-        <TextView
-            android:id="@+id/title_tv_search"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:gravity="center"
-            android:layout_alignParentRight="true"
-            android:text="搜索"
-            android:textColor="@color/bt_orange"
-            android:textSize="@dimen/text_title" />
+         
+         
+                  <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+           android:layout_toLeftOf="@id/title_tv_search"
+       android:layout_toRightOf="@id/title_back"
+       android:background="@drawable/shape_titlebar_edit_background"
+       android:layout_marginTop="8dp"
+       android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+       android:layout_marginBottom="8dp"
+    android:orientation="horizontal" >
+
+             <ImageView
+                 android:layout_width="15dp"
+                 android:layout_height="15dp"
+                 android:layout_gravity="center"
+                 android:layout_marginLeft="10dp"
+                 android:scaleType="fitCenter"
+                 android:src="@drawable/ic_search" />
+         
+   <com.android.ttbg.view.EditTextWithDel
+       android:layout_width="match_parent"
+       android:layout_height="fill_parent"
+       android:layout_marginLeft="5dp"
+       android:hint="请输入iphone7试试"
+       android:background="@null"
+       android:textSize="@dimen/text_xsmall"
+       android:singleLine="true" />
+   </LinearLayout>
+
 
     </RelativeLayout>   
     

@@ -269,4 +269,11 @@
     <color name="gray_middle">#33333333</color>
     <color name="yan">#ff22aaff</color>
     <color name="yan_press">#ff1d91d9</color>
+    
+    
+    <color name="very_light_gray">#fffafafa</color>
+     <color name="light_gray">#f4f4f4</color>
+      <color name="dark_gray">#666666</color>
+       <color name="black_gray">#313131</color>
+    
 </resources>
