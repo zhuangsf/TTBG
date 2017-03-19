@@ -29,7 +29,8 @@
             </RelativeLayout>
             <RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/titlebar_height" android:layout_alignParentRight="true" android:layout_alignParentEnd="true">
                 <ImageView android:id="@+id/btn_account_message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_account_msg" android:scaleType="centerInside" android:layout_centerVertical="true" />
-                <TextView android:textSize="9.0dip" android:textColor="@color/text_orange" android:gravity="center" android:id="@+id/tv_account_message" android:background="@drawable/bg_white_round_orange_corner" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_alignTop="@id/btn_account_message" android:layout_alignRight="@id/btn_account_message" />
+               <!--  有消息的时候打开这个 -->
+                <TextView android:textSize="9.0dip" android:textColor="@color/text_orange" android:gravity="center"  android:visibility="gone" android:id="@+id/tv_account_message" android:background="@drawable/bg_white_round_orange_corner" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_alignTop="@id/btn_account_message" android:layout_alignRight="@id/btn_account_message" />
                 <ImageView android:id="@+id/btn_account_setting" android:layout_width="46.0dip" android:layout_height="fill_parent" android:src="@drawable/setting_white" android:scaleType="centerInside" android:layout_toRightOf="@id/btn_account_message" android:layout_centerVertical="true" />
             </RelativeLayout>
         </RelativeLayout>

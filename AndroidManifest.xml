@@ -35,6 +35,7 @@
         <activity android:name=".HistoryActivity" />
         <activity android:name=".AddExamActivity" />
         <activity android:name=".ObtainGoodsActivity" />
+        <activity android:name=".MessageCenterActivity" />
         
         <activity
             android:name=".SearchActivity"

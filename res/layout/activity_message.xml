@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray" 
+    android:orientation="vertical" >
+    
+           
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/titlebar_white" 
+        android:orientation="horizontal">
+     
+       
+       <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:text="消息中心"
+    android:textColor="@color/crop__button_text"
+    android:textSize="@dimen/text_title" />
+       
+         <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/iconl_titlebacknormal" />
+    </RelativeLayout>   
+    
+<RelativeLayout android:id="@+id/layout_message" android:background="@color/background_gray" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  >
+<!--     <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:id="@id/tv_login_notice" android:background="#fffeefb8" android:paddingLeft="@dimen/padding_large" android:paddingTop="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:paddingBottom="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/message_center_notice_login" android:drawableLeft="@drawable/message_center_notice_left" android:drawableRight="@drawable/message_center_notice_right" android:drawablePadding="@dimen/padding_little" />
+    <com.yyg.cloudshopping.ui.custom.widget.pulltorefresh.PulltoRefreshLayout android:id="@id/ptr_message_refresh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/tv_login_notice" app:ptr_resistance="1.7" app:ptr_ratio_of_header_height_to_refresh="1.2" app:ptr_duration_to_close="300" app:ptr_duration_to_close_header="2000" app:ptr_pull_to_fresh="false" app:ptr_keep_header_when_refresh="true">
+        <android.support.v7.widget.RecyclerView android:id="@id/lv_message" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.yyg.cloudshopping.ui.custom.widget.pulltorefresh.PulltoRefreshLayout> -->
+    <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_hint" android:gravity="center_horizontal" android:id="@+id/view_empty"  android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="主银，您还没有消息哦~" android:drawableTop="@drawable/blank_message" android:drawablePadding="@dimen/padding_large" android:layout_centerInParent="true" />
+</RelativeLayout>
+
+    
+    </LinearLayout>

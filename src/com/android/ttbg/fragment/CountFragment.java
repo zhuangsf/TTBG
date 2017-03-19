@@ -8,10 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.android.ttbg.*;
-import com.android.ttbg.R;
-import com.android.ttbg.SearchActivity;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.adapter.HotRecommendAdapter;
 import com.android.ttbg.adapter.NewestGoodsAdapter;
@@ -46,6 +45,15 @@ public class CountFragment extends BaseFragment {
 				@Override
 				public void onClick(View v) {
 					Intent intent = new Intent(getActivity(), ObtainGoodsActivity.class);
+					startActivity(intent);
+				}
+			});
+		   
+		   ImageView btn_account_message = (ImageView)CountFragment.findViewById(R.id.btn_account_message);  
+		   btn_account_message.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(getActivity(), MessageCenterActivity.class);
 					startActivity(intent);
 				}
 			});
