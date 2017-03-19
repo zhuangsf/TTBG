@@ -9,8 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.GridView;
 
-import com.android.ttbg.HistoryActivity;
-import com.android.ttbg.MyListener;
+import com.android.ttbg.*;
 import com.android.ttbg.R;
 import com.android.ttbg.SearchActivity;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
@@ -40,6 +39,16 @@ public class CountFragment extends BaseFragment {
 						startActivity(intent);
 					}
 				});
+			
+			
+		   View account_obtain_goods = (View)CountFragment.findViewById(R.id.account_obtain_goods);  
+		   account_obtain_goods.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(getActivity(), ObtainGoodsActivity.class);
+					startActivity(intent);
+				}
+			});
 		}
 		return CountFragment;
     }

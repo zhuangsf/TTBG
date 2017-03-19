@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="@color/background_post_press" />
+            <corners android:radius="@dimen/corner_radiu_title" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="@color/background_post" />
+            <corners android:radius="@dimen/corner_radiu_title" />
+        </shape>
+    </item>
+</selector>

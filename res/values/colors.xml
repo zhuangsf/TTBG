@@ -15,6 +15,13 @@
 -->
 
 <resources>
+    
+        
+    <color name="very_light_gray">#fffafafa</color>
+     <color name="light_gray">#f4f4f4</color>
+      <color name="dark_gray">#666666</color>
+       <color name="black_gray">#313131</color>
+    
     <color name="crop__selector_pressed">#1a000000</color>
     <color name="abc_input_method_navigation_guard">@android:color/black</color>
     <color name="abc_search_url_text_normal">#ff7fa87f</color>
@@ -270,10 +277,6 @@
     <color name="yan">#ff22aaff</color>
     <color name="yan_press">#ff1d91d9</color>
     
-    
-    <color name="very_light_gray">#fffafafa</color>
-     <color name="light_gray">#f4f4f4</color>
-      <color name="dark_gray">#666666</color>
-       <color name="black_gray">#313131</color>
+
     
 </resources>

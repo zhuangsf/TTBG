@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray" 
+    android:orientation="vertical" >
+
+        <!-- title -->
+
+        
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/titlebar_white" 
+        android:orientation="horizontal">
+     
+       
+       <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:text="获得的商品"
+    android:textColor="@color/crop__button_text"
+    android:textSize="@dimen/text_title" />
+       
+         <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/iconl_titlebacknormal" />
+    </RelativeLayout>   
+    
+         <TextView android:layout_marginTop="@dimen/padding_large" android:textSize="@dimen/text_middle" android:textColor="@color/dark_gray" android:paddingLeft="@dimen/search_hotsearch_tv_margin_left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="你总共获得10000件商品" />
+
+        <ListView
+            android:layout_marginTop="@dimen/padding_large" 
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_gray"
+        android:divider="@color/divider_new"
+        android:scrollbars="none"/>
+
+
+    
+    
+    
+    
+    </LinearLayout>

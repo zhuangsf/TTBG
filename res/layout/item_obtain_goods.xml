@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_gray"
+    android:orientation="vertical" >
+
+<RelativeLayout android:id="@+id/rl_obtain_goods_body" android:background="@drawable/item_click_bg" android:paddingTop="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <RelativeLayout android:id="@+id/ignore_obtain_goods" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/iv_obtain_goods_pic" android:layout_width="@dimen/pic_small" android:layout_height="@dimen/pic_small" android:layout_marginRight="@dimen/padding_normal" android:src="@drawable/goods_pic_default" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:text="1231" android:id="@+id/tv_obtain_goods_is_limit" android:layout_alignLeft="@id/iv_record_pic" android:layout_alignTop="@id/iv_record_pic" style="@style/TextView.Limit" />
+        <TextView android:text="1232" android:textSize="@dimen/text_small" android:textColor="@color/text_title" android:ellipsize="end" android:id="@+id/tv_obtain_goods_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_toRightOf="@id/iv_obtain_goods_pic" android:layout_alignParentTop="true" android:layout_toEndOf="@id/iv_obtain_goods_pic" />
+        <TextView android:text="1233" android:ellipsize="end" android:id="@+id/tv_obtain_goods_code" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/tv_obtain_goods_name" android:layout_alignLeft="@id/tv_obtain_goods_name" android:layout_alignStart="@id/tv_obtain_goods_name" style="@style/TextView.GoodsTime" />
+        <TextView android:text="1234" android:ellipsize="end" android:gravity="center_vertical" android:id="@+id/tv_obtain_goods_join_num" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/tv_obtain_goods_code" android:layout_alignLeft="@id/tv_obtain_goods_code" android:layout_alignStart="@id/tv_obtain_goods_code" style="@style/TextView.GoodsTime" />
+        <TextView android:text="1235" android:ellipsize="end" android:id="@+id/tv_obtain_goods_end_time" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/iv_obtain_goods_pic" android:layout_below="@id/tv_obtain_goods_join_num" style="@style/TextView.GoodsTime" />
+    </RelativeLayout>
+    <View android:id="@+id/ignore_obtain_goods_divider" android:background="@color/stroke" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="@dimen/stroke" android:layout_marginTop="@dimen/padding_normal" android:layout_below="@id/ignore_obtain_goods" />
+    <RelativeLayout android:id="@+id/ignore_obtain_bottom_layout" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="@dimen/item_account" android:layout_below="@id/ignore_obtain_goods_divider">
+        <TextView android:text="1236" android:textSize="@dimen/text_small" android:textColor="@color/text_gray" android:gravity="center_vertical" android:id="@+id/tv_obtain_order_number" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+            <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_topic_hint" android:layout_gravity="center_vertical" android:id="@+id/tv_obtain_state_success" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_large" android:text="@string/obtain_success" />
+            <TextView android:text="1237" android:textSize="@dimen/text_small" android:textColor="@color/theme" android:layout_gravity="center_vertical" android:id="@+id/tv_obtain_state_wait" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_large" />
+            <Button android:text="1237" android:textSize="@dimen/text_small" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_vertical" android:id="@+id/btn_obtain_logistic" android:background="@drawable/selector_stork_gary_bg_white" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/btn_obtain_goods_height" android:layout_marginLeft="@dimen/padding_large" />
+            <Button android:text="1237" android:textSize="@dimen/text_small" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_vertical" android:id="@+id/btn_obtain_receive" android:background="@drawable/selector_stork_orange_bg_white" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/btn_obtain_goods_height" android:layout_marginLeft="@dimen/padding_large" />
+            <Button android:text="1237" android:textSize="@dimen/text_small" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_vertical" android:id="@+id/btn_obtain_continue" android:background="@drawable/selector_stork_null_bg_orange" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/btn_obtain_goods_height" android:layout_marginLeft="@dimen/padding_large" />
+        </LinearLayout>
+    </RelativeLayout>
+    <View android:id="@+id/obtain_bottom_divider" android:background="@color/divider_post" android:layout_width="fill_parent" android:layout_height="@dimen/padding_large" android:layout_below="@id/ignore_obtain_bottom_layout" />
+</RelativeLayout>
+       <TextView
+    android:id="@+id/tv_norecord_hint"
+    android:layout_width="fill_parent"
+    android:layout_height="40dp"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:text="最近三个月无更多记录啦!"
+    android:textColor="@color/dark_gray"
+    android:textSize="@dimen/text_middle"
+    android:visibility="gone" />
+
+</LinearLayout>
