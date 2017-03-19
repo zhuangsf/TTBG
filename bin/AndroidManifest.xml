@@ -33,7 +33,8 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".AddExamActivity" />
-                <activity
+        <activity
+            android:theme="@style/AppBaseTheme"
             android:name=".SearchActivity"
             android:exported="false"
             android:screenOrientation="portrait" >

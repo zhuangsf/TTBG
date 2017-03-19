@@ -16,6 +16,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
@@ -32,6 +34,7 @@ import com.android.ttbg.R;
 import com.android.ttbg.SearchActivity;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.util.TimerUtil;
+import com.android.ttbg.view.AddPopWindow;
 import com.android.ttbg.view.GoodsRecommandItem;
 import com.android.ttbg.view.NoScroolGridView;
 
@@ -62,7 +65,11 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     private TextSwitcher switcher;
     
     private View searchButton;
+    private PopupMenu popupMenu;
+    
     private static final int MSG_TEST_SWITCHER_TEST=0;
+    
+    private ImageView add_menus;
     
     private Handler mHandler= new Handler()
     {
@@ -105,6 +112,16 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 		// TODO Auto-generated method stub
 		View searchButton = (View)v.findViewById(R.id.search);  
 		searchButton.setOnClickListener(this);
+		
+		
+		 add_menus = (ImageView) v.findViewById(R.id.add_menus);
+		 add_menus.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					AddPopWindow addPopWindow = new AddPopWindow(getActivity());
+					addPopWindow.showPopupWindow(add_menus);
+				}
+			});
 	}
 
     

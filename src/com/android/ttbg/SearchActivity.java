@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -22,6 +23,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -33,11 +35,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.android.ttbg.util.Utils;
+
 
 public class SearchActivity extends Activity {
 	private static final String TAG = "SearchActivity";
     private ImageView  title_back;
 
+    private ImageView add_menus;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -77,6 +82,9 @@ public class SearchActivity extends Activity {
 		        	finish();
 		        }  
 		  }); 
+		 
+		 
+
 		 
 	}
 
