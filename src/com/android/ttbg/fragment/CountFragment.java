@@ -57,6 +57,17 @@ public class CountFragment extends BaseFragment {
 					startActivity(intent);
 				}
 			});
+		   
+		   ImageView btn_account_setting = (ImageView)CountFragment.findViewById(R.id.btn_account_setting);  
+		   btn_account_setting.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(getActivity(), SettingActivity.class);
+					startActivity(intent);
+				}
+			});
+		   
+		   
 		}
 		return CountFragment;
     }

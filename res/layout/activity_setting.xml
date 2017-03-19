@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray" 
+    android:orientation="vertical" >
+    
+           
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/titlebar_white" 
+        android:orientation="horizontal">
+     
+       
+       <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:text="设置"
+    android:textColor="@color/crop__button_text"
+    android:textSize="@dimen/text_title" />
+       
+         <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/iconl_titlebacknormal" />
+    </RelativeLayout>   
+
+        <LinearLayout android:orientation="vertical" android:id="@+id/linear_account_function" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_normal"  >
+            <RelativeLayout  android:clickable="true" android:id="@+id/item_setting_edit" 
+                android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp">
+                <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                <TextView  android:layout_marginLeft="@dimen/padding_xlarge" android:text="编辑个人资料" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+                <ImageView
+                   android:layout_marginRight="@dimen/padding_xlarge"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:scaleType="centerInside"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/arrows_gray" />
+
+            </RelativeLayout>
+            <RelativeLayout  android:clickable="true" android:id="@+id/item_setting_invite" 
+                android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp">
+                <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                <TextView  android:layout_marginLeft="@dimen/padding_xlarge" android:text="邀请有奖" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+                <ImageView
+                   android:layout_marginRight="@dimen/padding_xlarge"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:scaleType="centerInside"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/arrows_gray" />
+
+            </RelativeLayout>
+            
+                        <RelativeLayout  android:clickable="true" android:id="@+id/item_setting_safe"  android:layout_marginTop="@dimen/padding_normal"
+                android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp">
+                <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                <TextView  android:layout_marginLeft="@dimen/padding_xlarge" android:text="安全设置" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+                <ImageView
+                   android:layout_marginRight="@dimen/padding_xlarge"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:scaleType="centerInside"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/arrows_gray" />
+            </RelativeLayout>
+           <RelativeLayout  android:clickable="true" android:id="@+id/item_setting_switch_light"
+                android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp">
+                <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                <TextView  android:layout_marginLeft="@dimen/padding_xlarge" android:text="亮度调节" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+             	        <ToggleButton
+	            android:id="@+id/alarm_switch"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@android:color/transparent"
+	            android:button="@drawable/toggle_btn"
+	            android:checked="false"
+	          android:layout_centerVertical="true"
+                  android:layout_alignParentRight="true"
+                   android:layout_marginRight="@dimen/padding_xlarge"
+	            android:text=""
+	            android:textOff=""
+	            android:textOn="" />
+            </RelativeLayout>
+            
+            <LinearLayout android:orientation="horizontal" android:id="@+id/rly_setting_light" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="start|center" android:id="@+id/iv_setting_light_desc" android:paddingLeft="@dimen/padding_xxlarge" android:layout_width="wrap_content" android:layout_height="@dimen/item_account" android:src="@drawable/night" />
+            <SeekBar android:layout_marginRight="@dimen/padding_xlarge" android:layout_marginLeft="@dimen/padding_xlarge" android:layout_gravity="center_vertical" android:id="@+id/progress_setting_light" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="4.0dip" android:progressDrawable="@drawable/background_progress_setting_light" android:minHeight="4.0dip" android:layout_weight="1.0" />
+            <ImageView android:layout_gravity="end|center" android:id="@+id/iv_setting_light_asc" android:paddingRight="@dimen/padding_xxlarge" android:layout_width="wrap_content" android:layout_height="@dimen/item_account" android:src="@drawable/daytime" />
+            </LinearLayout>
+           
+           <RelativeLayout  android:clickable="true" android:id="@+id/item_setting_clear"
+                android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp">
+    <TextView android:text="清除缓存" android:layout_alignParentLeft="true" android:textSize="@dimen/text_middle" android:textColor="@color/text_title" android:gravity="center_vertical" android:id="@+id/tv_account_item_name" android:layout_width="wrap_content" android:layout_height="@dimen/item_account" android:layout_marginLeft="@dimen/padding_xlarge" android:layout_centerVertical="true" />
+    <ImageView android:id="@+id/iv_account_item_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginRight="@dimen/padding_mlarge" android:src="@drawable/arrows_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:text="17.54MB" android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:id="@+id/tv_account_item_tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_toLeftOf="@id/iv_account_item_arrow"  android:layout_centerVertical="true" />
+ </RelativeLayout>
+           <RelativeLayout  android:clickable="true" android:id="@+id/item_setting_update"
+                android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp">
+    <TextView android:text="版本更新" android:layout_alignParentLeft="true" android:textSize="@dimen/text_middle" android:textColor="@color/text_title" android:gravity="center_vertical" android:id="@+id/tv_update" android:layout_width="wrap_content" android:layout_height="@dimen/item_account" android:layout_marginLeft="@dimen/padding_xlarge" android:layout_centerVertical="true" />
+    <ImageView android:id="@+id/iv_update_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginRight="@dimen/padding_mlarge" android:src="@drawable/arrows_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:text="当前版本4.2.0" android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:id="@+id/tv_setting_tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_toLeftOf="@id/iv_update_arrow"  android:layout_centerVertical="true" />
+ </RelativeLayout>
+            
+                             <RelativeLayout  android:clickable="true" android:id="@+id/item_setting_about"  android:layout_marginTop="@dimen/padding_normal"
+                android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp">
+                <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
+                <TextView  android:layout_marginLeft="@dimen/padding_xlarge" android:text="关于我们" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+                <ImageView
+                   android:layout_marginRight="@dimen/padding_xlarge"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:scaleType="centerInside"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/arrows_gray" />
+            </RelativeLayout>      
+           
+                      <RelativeLayout  android:clickable="true" android:id="@+id/item_setting_service"
+                android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp">
+    <TextView android:text="客服热线" android:layout_alignParentLeft="true" android:textSize="@dimen/text_middle" android:textColor="@color/text_title" android:gravity="center_vertical" android:id="@+id/tv_service" android:layout_width="wrap_content" android:layout_height="@dimen/item_account" android:layout_marginLeft="@dimen/padding_xlarge" android:layout_centerVertical="true" />
+    <ImageView android:id="@+id/iv_service_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginRight="@dimen/padding_mlarge" android:src="@drawable/arrows_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:text="4000-588-688" android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:id="@+id/tv_service_tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_toLeftOf="@id/iv_service_arrow"  android:layout_centerVertical="true" />
+        </RelativeLayout>    
+    
+    
+      <Button android:gravity="center" android:id="@+id/btn_setting_out" android:background="@drawable/selector_stork_null_bg_orange" android:layout_width="fill_parent" android:layout_height="@dimen/button_height_large" android:layout_marginLeft="@dimen/padding_large" android:layout_marginTop="@dimen/padding_xxlarge" android:layout_marginRight="@dimen/padding_large" android:layout_marginBottom="@dimen/padding_xxlarge" android:text="@string/setting_out" style="@style/TextView.Button.White" />
+                      
+    
+    </LinearLayout>
+    </LinearLayout>
