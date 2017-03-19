@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_gray"
+    android:orientation="vertical" >
+<RelativeLayout android:id="@+id/rl_body" android:background="@drawable/item_click_bg" android:paddingLeft="@dimen/padding_large" android:paddingTop="@dimen/padding_large" android:paddingBottom="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  >
+    <ImageView android:id="@+id/iv_record_pic" android:layout_width="@dimen/pic_small" android:layout_height="@dimen/pic_small" android:layout_marginRight="@dimen/padding_normal" android:src="@drawable/goods_pic_default" android:layout_alignParentLeft="true" />
+    <TextView android:text="1234" android:id="@+id/tv_record_is_limit" android:layout_alignLeft="@id/iv_record_pic" android:layout_alignTop="@id/iv_record_pic" style="@style/TextView.Limit" />
+    <TextView android:text="1235" android:ellipsize="end" android:id="@+id/tv_record_name" android:paddingRight="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/iv_record_pic" android:layout_alignParentTop="true" android:lineSpacingMultiplier="1.1" android:layout_toEndOf="@id/iv_record_pic" style="@style/TextView.GoodsName" />
+    <TextView android:text="1236" android:ellipsize="end" android:gravity="center_vertical" android:id="@+id/tv_record_join_num" android:paddingTop="@dimen/text_leading" android:paddingRight="@dimen/padding_large" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/tv_record_name" android:layout_alignLeft="@id/tv_record_name" android:layout_alignStart="@id/tv_record_name" style="@style/TextView.GoodsTime" />
+    <TextView android:text="1237" android:ellipsize="end" android:id="@+id/tv_record_owner" android:paddingTop="@dimen/text_leading" android:paddingRight="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/tv_record_join_num" android:layout_alignLeft="@id/tv_record_name" android:layout_alignStart="@id/tv_record_name" style="@style/TextView.GoodsTime" />
+    <TextView android:text="1238" android:ellipsize="end" android:id="@+id/tv_record_end_time" android:paddingTop="@dimen/text_leading" android:paddingRight="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/iv_record_pic" android:layout_below="@id/tv_record_owner" style="@style/TextView.GoodsTime" />
+    <TextView android:text="1239" android:textSize="@dimen/text_little" android:textColor="@color/theme" android:ellipsize="end" android:id="@+id/tv_record_last" android:paddingTop="@dimen/text_leading" android:paddingRight="@dimen/padding_large" android:paddingBottom="@dimen/text_leading" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/iv_record_pic" android:layout_below="@id/tv_record_end_time" />
+    <LinearLayout android:id="@+id/ll__record_add_cart" android:paddingRight="@dimen/padding_large" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignRight="@id/tv_record_last" android:layout_alignBottom="@id/tv_record_last">
+        <ImageView android:id="@+id/iv_record_add_cart" android:layout_width="35dp" android:layout_height="35dp" android:src="@drawable/add_to_cart" />
+    </LinearLayout>
+</RelativeLayout>
+
+       <TextView
+    android:id="@+id/tv_norecord_hint"
+    android:layout_width="fill_parent"
+    android:layout_height="40dp"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:text="最近三个月无更多记录啦!"
+    android:textColor="@color/dark_gray"
+    android:textSize="@dimen/text_middle"
+    android:visibility="gone" />
+
+</LinearLayout>

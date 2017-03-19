@@ -50,7 +50,14 @@
         <item name="android:src">@drawable/goods_pic_default</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
-
+    <style name="TextView.GoodsName" parent="@style/TextView">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/text_title</item>
+    </style>
+        <style name="TextView.GoodsTime" parent="@style/TextView">
+        <item name="android:textSize">@dimen/text_little</item>
+        <item name="android:textColor">@color/text_gray</item>
+    </style>
     <style name="TextView">
         <item name="android:background">@android:color/transparent</item>
     </style>

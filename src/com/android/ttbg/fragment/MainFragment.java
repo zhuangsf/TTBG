@@ -110,27 +110,26 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     
     private void initSearchView(View v) {
 		// TODO Auto-generated method stub
-		View searchButton = (View)v.findViewById(R.id.search);  
+    	LinearLayout searchButton = (LinearLayout)v.findViewById(R.id.title_search);  
 		searchButton.setOnClickListener(this);
 		
 		
 		 add_menus = (ImageView) v.findViewById(R.id.add_menus);
-		 add_menus.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					AddPopWindow addPopWindow = new AddPopWindow(getActivity());
-					addPopWindow.showPopupWindow(add_menus);
-				}
-			});
+		 add_menus.setOnClickListener(this);
 	}
 
     
 	@Override
 	public void onClick(View v) {
-       if (v.getId() == R.id.search) {
+       if (v.getId() == R.id.title_search) {
 			Intent intent = new Intent(getActivity(), SearchActivity.class);
 			startActivity(intent);
 		}
+       else if(v.getId() == R.id.add_menus)
+       {
+			AddPopWindow addPopWindow = new AddPopWindow(getActivity());
+			addPopWindow.showPopupWindow(add_menus);
+       }
 	}
     
 	private void initNewestSwitcher(View v) {

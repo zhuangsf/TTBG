@@ -32,9 +32,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".HistoryActivity" />
         <activity android:name=".AddExamActivity" />
         <activity
-            android:theme="@style/AppBaseTheme"
             android:name=".SearchActivity"
             android:exported="false"
             android:screenOrientation="portrait" >

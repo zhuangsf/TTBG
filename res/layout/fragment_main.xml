@@ -13,7 +13,7 @@
         android:background="@color/orange" >
 
         <LinearLayout
-            android:id="@+id/search"
+            android:id="@+id/title_search"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1" >

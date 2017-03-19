@@ -3,15 +3,20 @@ package com.android.ttbg.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.GridView;
 
+import com.android.ttbg.HistoryActivity;
 import com.android.ttbg.MyListener;
 import com.android.ttbg.R;
+import com.android.ttbg.SearchActivity;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.adapter.HotRecommendAdapter;
 import com.android.ttbg.adapter.NewestGoodsAdapter;
+import com.android.ttbg.view.AddPopWindow;
 import com.android.ttbg.view.GoodsRecommandItem;
 import com.android.ttbg.view.NoScroolGridView;
 import com.android.ttbg.view.PullToRefreshLayout;
@@ -25,9 +30,16 @@ public class CountFragment extends BaseFragment {
     @Override
     protected View initView() {
     	CountFragment = View.inflate(mContext, R.layout.fragment_account, null);
-    //	CountFragment = View.inflate(mContext, R.layout.fragment_menu, null);
 		if (CountFragment != null) {
-
+			View account_record = (View)CountFragment.findViewById(R.id.account_record);  
+			
+			account_record.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(getActivity(), HistoryActivity.class);
+						startActivity(intent);
+					}
+				});
 		}
 		return CountFragment;
     }
