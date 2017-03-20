@@ -98,7 +98,7 @@
             
             <LinearLayout android:orientation="horizontal" android:id="@+id/rly_setting_light" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <ImageView android:layout_gravity="start|center" android:id="@+id/iv_setting_light_desc" android:paddingLeft="@dimen/padding_xxlarge" android:layout_width="wrap_content" android:layout_height="@dimen/item_account" android:src="@drawable/night" />
-            <SeekBar android:layout_marginRight="@dimen/padding_xlarge" android:layout_marginLeft="@dimen/padding_xlarge" android:layout_gravity="center_vertical" android:id="@+id/progress_setting_light" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="4.0dip" android:progressDrawable="@drawable/background_progress_setting_light" android:minHeight="4.0dip" android:layout_weight="1.0" />
+            <SeekBar android:layout_marginRight="@dimen/padding_xlarge" android:layout_marginLeft="@dimen/padding_xlarge" android:layout_gravity="center_vertical" android:id="@+id/progress_setting_light" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="4.0dip" android:thumb="@drawable/seekbar_thumb_normal" android:progressDrawable="@drawable/background_progress_setting_light" android:minHeight="4.0dip" android:layout_weight="1.0" />
             <ImageView android:layout_gravity="end|center" android:id="@+id/iv_setting_light_asc" android:paddingRight="@dimen/padding_xxlarge" android:layout_width="wrap_content" android:layout_height="@dimen/item_account" android:src="@drawable/daytime" />
             </LinearLayout>
            
