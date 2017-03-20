@@ -37,6 +37,7 @@
         <activity android:name=".ObtainGoodsActivity" />
         <activity android:name=".MessageCenterActivity" />
         <activity android:name=".SettingActivity" />
+        <activity android:name=".SettingEditActivity" />
         
         
         <activity
