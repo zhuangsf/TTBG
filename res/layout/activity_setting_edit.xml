@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_gray" 
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:id="@+id/main_layout" >
     
            
     <RelativeLayout
@@ -143,6 +144,7 @@
     android:id="@+id/layout_item_edit_signature"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
     android:layout_marginBottom="@dimen/padding_xxlarge"
     android:layout_marginTop="@dimen/padding_large"
     android:background="@drawable/item_click_bg" >

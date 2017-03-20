@@ -11,7 +11,7 @@ import android.content.SharedPreferences.Editor;
 public class OperatingSharedPreferences { 
 	public static final String PREFERENCE_NAME="TTBG";
 	public static final String PREFERENCE_FIRSTOPEN="FIRSTOPEN";
-	
+	public static final String PREFERENCE_USER_IMAGE="AVATAR";
     /**  
      * <pre>  
      * 基本功能：保存启动标识到SharedPreferences  
@@ -43,4 +43,16 @@ public class OperatingSharedPreferences {
         boolean firstopen = sharedPreferences.getBoolean(OperatingSharedPreferences.PREFERENCE_FIRSTOPEN, true);  
         return firstopen;  
     }  
+    
+    public static void saveUserImage(Context context,String urlpath) {  
+    SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		OperatingSharedPreferences.PREFERENCE_NAME, Context.MODE_PRIVATE);  
+    Editor editor = sharedPreferences.edit();// 获取编辑器  
+    editor.putString(OperatingSharedPreferences.PREFERENCE_USER_IMAGE, urlpath);
+    editor.commit();
+    }
+    
+    
+    
+    
 }  
