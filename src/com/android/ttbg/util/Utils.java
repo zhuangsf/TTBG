@@ -1,11 +1,13 @@
 package com.android.ttbg.util;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.os.Environment;
 import android.os.storage.StorageManager;
 import android.util.Log;
 
@@ -36,6 +38,27 @@ public class Utils {
 		if (isDebug) {
 		Log.d(tag, s);
 		}
+	}
+	
+	public static String getInternelStoragePath() {
+		try{
+Log("Environment.getExternalStorageState() = "+Environment.getExternalStorageState()+" Environment.MEDIA_MOUNTED = "+Environment.MEDIA_MOUNTED);
+
+		if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
+		{
+			File sdCardDir = Environment.getExternalStorageDirectory();
+			Log("sdCardDir = "+sdCardDir);
+			if(sdCardDir != null)
+			{
+				Log("sdCardDirPath = "+sdCardDir.getCanonicalPath()+"/TTBG/");
+				return sdCardDir.getCanonicalPath()+"/TTBG/";
+			}
+		}
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public static String getInternelStoragePath(Context context) {

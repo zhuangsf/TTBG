@@ -144,7 +144,7 @@ public class SettingEditActivity extends Activity {
 			// Bitmap photo = extras.getParcelable("data");
 			Bitmap photo = getBitmapFromUri(getCropPicSaveUri(), context);
 			Drawable drawable = new BitmapDrawable(null, photo);
-			urlpath = FileUtil.saveFile(context, Utils.getInternelStoragePath(context), IMAGE_FILE_NAME, photo);
+			urlpath = FileUtil.saveFile(context, Utils.getInternelStoragePath(SettingEditActivity.this), IMAGE_FILE_NAME, photo);
 			OperatingSharedPreferences.saveUserImage(context,urlpath);
 			// 更新头像
 			updateUserHead(drawable);
@@ -191,8 +191,16 @@ public class SettingEditActivity extends Activity {
 		String filePath = Utils.getInternelStoragePath(SettingEditActivity.this);
 		Utils.Log("getTakePicSaveUri filePath = " + filePath);
 		File file = new File(filePath);
-		if (!file.exists()) {
-			file.mkdirs();
+		Utils.Log("getTakePicSaveUri file = " + file);
+		
+		if(file != null)
+		{
+			Utils.Log("getTakePicSaveUri file.exists() = " + file.exists());
+		}
+		
+		if (file != null && !file.exists()) {
+			boolean createSuccess = file.mkdirs();
+			Utils.Log("getTakePicSaveUri createSuccess  = " + createSuccess);
 		}
 
 		return Uri.fromFile(new File(filePath, IMAGE_FILE_NAME));
@@ -219,6 +227,9 @@ public class SettingEditActivity extends Activity {
 				// 下面这句指定调用相机拍照后的照片存储的路径
 				takeIntent.putExtra(MediaStore.EXTRA_OUTPUT, getTakePicSaveUri());
 				startActivityForResult(takeIntent, REQUESTCODE_TAKE);
+				
+				
+			//	getTakePicSaveUri();
 				break;
 			// 相册选择图片
 			case R.id.pickPhotoBtn:
