@@ -28,12 +28,13 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class SettingEditActivity extends Activity {
 	
     private ImageView  title_back;
     private LinearLayout mainLayout;
-    private View item_edit_icon;
+
 	private static final int REQUESTCODE_PICK = 0; // 相册选图标记
 	private static final int REQUESTCODE_TAKE = 1; // 相机拍照标记
 	private static final int REQUESTCODE_CUTTING = 2; // 图片裁切标记
@@ -43,7 +44,7 @@ public class SettingEditActivity extends Activity {
 	private String urlpath; // 图片本地路径
 	
 	private ImageView userHead;
-	
+	private TextView tv_user_name;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,19 +61,43 @@ public class SettingEditActivity extends Activity {
 		 
 		 
 		 mainLayout = (LinearLayout) findViewById(R.id.main_layout);
-		 item_edit_icon = (View)findViewById(R.id.item_edit_icon);
+		 View item_edit_icon = (View)findViewById(R.id.item_edit_icon);
 		 item_edit_icon.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
 					menuWindow = new SelectPicPopupWindow(SettingEditActivity.this, itemsOnClick);
 					menuWindow.showAtLocation(mainLayout, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 		        }  
 		  }); 
-		 
 		 //用户头像
 		 userHead = (ImageView) findViewById(R.id.iv_setting_item_icon);
+		 
+		 
+		 View item_setting_edit = (View)findViewById(R.id.item_edit_name);
+		 item_setting_edit.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+					Intent intent = new Intent(SettingEditActivity.this, SettingNameActivity.class);
+					startActivity(intent);
+		        }  
+		  }); 
+		  //昵称的值
+		 tv_user_name = (TextView)findViewById(R.id.tv_setting_item_tips);
+		 updateUserName();
 	}
 	
-	
+	@Override
+    public void onResume() {
+        super.onResume();
+        
+        updateUserName();
+    }
+	private void updateUserName()
+	{
+		if(tv_user_name != null)
+		{
+			String user_name = OperatingSharedPreferences.getUserName(SettingEditActivity.this);
+			tv_user_name.setText(user_name);
+		}
+	}
 	private void updateUserHead(Drawable drawable)
 	{
 		if(userHead != null)

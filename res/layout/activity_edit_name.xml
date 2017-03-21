@@ -1,0 +1,59 @@
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      android:background="@color/background_gray" 
+  xmlns:android="http://schemas.android.com/apk/res/android">
+ 
+          <!-- title -->
+
+        
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/titlebar_white" 
+        android:orientation="horizontal">
+     
+       <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:text="修改昵称"
+    android:textColor="@color/crop__button_text"
+    android:textSize="@dimen/text_title" />
+       
+         <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/iconl_titlebacknormal" />
+         
+                <TextView
+                    android:id="@+id/title_finish"
+    android:layout_width="40dp"
+    android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+    android:text="完成"
+    android:textColor="@color/text_orange"
+    android:textSize="@dimen/text_title" />
+         
+         
+         
+    </RelativeLayout>     
+    
+    
+       <com.android.ttbg.view.EditTextWithDel
+           android:id="@+id/edt_edit_name_input"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:hint="@string/edit_name_hint"
+       android:singleLine="true" android:maxLength="20" style="@style/EditText.Setting"
+       />
+    
+    <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_gray" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_large" android:text="@string/edit_name_tips" />
+</LinearLayout>

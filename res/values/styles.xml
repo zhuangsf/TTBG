@@ -69,7 +69,19 @@
     <style name="TextView">
         <item name="android:background">@android:color/transparent</item>
     </style>
-
+    <style name="EditText">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    <style name="EditText.Setting" parent="@style/EditText">
+        <item name="android:textSize">@dimen/text_middle</item>
+        <item name="android:textColorHint">@color/hint_color</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:paddingTop">@dimen/padding_large</item>
+        <item name="android:paddingRight">@dimen/padding_large</item>
+        <item name="android:paddingBottom">@dimen/padding_large</item>
+        <item name="android:layout_marginTop">@dimen/padding_xxlarge</item>
+    </style>
     <style name="TextView.Limit" parent="@style/TextView">
         <item name="android:textSize">@dimen/text_mircro</item>
         <item name="android:textColor">@color/text_white</item>

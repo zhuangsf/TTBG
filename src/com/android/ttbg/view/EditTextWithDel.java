@@ -61,10 +61,10 @@ public class EditTextWithDel extends EditText {
 	
 
 	private void setDrawable() {
-		if(length() < 1)
+		if(length() > 0)
+		{
 			setCompoundDrawablesWithIntrinsicBounds(null, null, imgInable, null);
-		else
-			setCompoundDrawablesWithIntrinsicBounds(null, null, imgAble, null);
+		}
 	}
 	
 

@@ -12,6 +12,9 @@ public class OperatingSharedPreferences {
 	public static final String PREFERENCE_NAME="TTBG";
 	public static final String PREFERENCE_FIRSTOPEN="FIRSTOPEN";
 	public static final String PREFERENCE_USER_IMAGE="AVATAR";
+	
+	public static final String PREFERENCE_SETTING_USER_NAME="USER_NAME";
+	
     /**  
      * <pre>  
      * 基本功能：保存启动标识到SharedPreferences  
@@ -52,7 +55,19 @@ public class OperatingSharedPreferences {
     editor.commit();
     }
     
-    
+    public static void saveUserName(Context context,String name) {  
+    SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		OperatingSharedPreferences.PREFERENCE_NAME, Context.MODE_PRIVATE);  
+    Editor editor = sharedPreferences.edit();
+    editor.putString(OperatingSharedPreferences.PREFERENCE_SETTING_USER_NAME, name);
+    editor.commit();
+    }
+    public static String getUserName(Context context) {  
+        SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		OperatingSharedPreferences.PREFERENCE_NAME, Context.MODE_PRIVATE);  
+        String username = sharedPreferences.getString(OperatingSharedPreferences.PREFERENCE_SETTING_USER_NAME, "");  
+        return username;  
+    }  
     
     
 }  
