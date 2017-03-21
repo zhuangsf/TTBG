@@ -33,16 +33,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".AddExamActivity" />
-        <activity android:name=".ObtainGoodsActivity" />
-        <activity android:name=".MessageCenterActivity" />
-        <activity android:name=".SettingActivity" />
-        <activity android:name=".SettingEditActivity" />
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".HistoryActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AddExamActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ObtainGoodsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".MessageCenterActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SettingActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SettingEditActivity" android:screenOrientation="portrait"/>
         
         
-        <activity
+        <activity 
             android:name=".SearchActivity"
             android:exported="false"
             android:screenOrientation="portrait" >
