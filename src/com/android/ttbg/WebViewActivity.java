@@ -1,6 +1,9 @@
 package com.android.ttbg;
 
 
+import com.android.ttbg.util.Urls;
+import com.android.ttbg.util.Utils;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,15 +17,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class AccoundHelpActivity extends Activity {
+public class WebViewActivity extends Activity {
 	
     private ImageView  title_back;
 	private WebView webView;
 	private ProgressBar progressBar;
+	private String titleString;
+	private String urlString;
+	private TextView tv_title;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_accound_help);
+		setContentView(R.layout.activity_web_view);
 		
 		
 		 title_back = (ImageView)findViewById(R.id.title_back);
@@ -33,9 +39,26 @@ public class AccoundHelpActivity extends Activity {
 		  }); 
 		 
 		 
+		tv_title  = (TextView)findViewById(R.id.tv_title);
+		 
+		 
+	    Bundle bundle = getIntent().getExtras();
+	    if(bundle!=null){
+	        	titleString = bundle.getString(Urls.URL_TITLE);
+	        	urlString = bundle.getString(Urls.URL_CONTENT);
+	    }
+		 
 		 init();
-		 webView.loadUrl("http://www.baidu.com");
-
+		 
+		 Utils.Log("urlString = "+urlString+" titleString = "+titleString );
+		 if(urlString != null)
+		 {
+			 webView.loadUrl(urlString);
+		 }
+		 if(titleString != null)
+		 {
+			 tv_title.setText(titleString);
+		 }
 		 
 
 		 

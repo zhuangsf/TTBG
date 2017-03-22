@@ -14,6 +14,7 @@ import com.android.ttbg.*;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.adapter.HotRecommendAdapter;
 import com.android.ttbg.adapter.NewestGoodsAdapter;
+import com.android.ttbg.util.Urls;
 import com.android.ttbg.view.AddPopWindow;
 import com.android.ttbg.view.GoodsRecommandItem;
 import com.android.ttbg.view.NoScroolGridView;
@@ -53,7 +54,9 @@ public class CountFragment extends BaseFragment {
 		   account_help.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					Intent intent = new Intent(getActivity(), AccoundHelpActivity.class);
+					Intent intent = new Intent(getActivity(), WebViewActivity.class);
+			        intent.putExtra(Urls.URL_TITLE, "帮助与反馈");
+			        intent.putExtra(Urls.URL_CONTENT, Urls.URL_HELP);
 					startActivity(intent);
 				}
 			});
