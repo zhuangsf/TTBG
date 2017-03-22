@@ -49,6 +49,14 @@ public class CountFragment extends BaseFragment {
 				}
 			});
 		   
+		   View account_help = (View)CountFragment.findViewById(R.id.account_help);  
+		   account_help.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(getActivity(), AccoundHelpActivity.class);
+					startActivity(intent);
+				}
+			});
 		   ImageView btn_account_message = (ImageView)CountFragment.findViewById(R.id.btn_account_message);  
 		   btn_account_message.setOnClickListener(new OnClickListener() {
 				@Override

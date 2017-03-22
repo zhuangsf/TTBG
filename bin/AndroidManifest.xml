@@ -42,6 +42,7 @@
         <activity android:name=".SettingActivity" android:screenOrientation="portrait"/>
         <activity android:name=".SettingEditActivity" android:screenOrientation="portrait"/>
         <activity android:name=".SettingNameActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AccoundHelpActivity" android:screenOrientation="portrait"/>
         
         <activity 
             android:name=".SearchActivity"
