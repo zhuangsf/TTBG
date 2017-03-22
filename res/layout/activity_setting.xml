@@ -82,7 +82,7 @@
                 <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
                 <TextView  android:layout_marginLeft="@dimen/padding_xlarge" android:text="亮度调节" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
              	        <ToggleButton
-	            android:id="@+id/alarm_switch"
+	            android:id="@+id/toggle_switch"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:background="@android:color/transparent"
