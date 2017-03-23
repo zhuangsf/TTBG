@@ -29,7 +29,7 @@ public class LoaderImpl {
     private Map<String, SoftReference<Bitmap>> imageCache;  
       
     //是否缓存图片至本地文件  
-    private boolean cache2FileFlag = false;  
+    private boolean cache2FileFlag = true;  
       
     //缓存目录,默认是/data/data/package/cache/目录  
     private String cachedDir;  

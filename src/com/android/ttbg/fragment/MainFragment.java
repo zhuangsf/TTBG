@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
@@ -29,6 +30,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AnimationUtils;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextSwitcher;
@@ -44,6 +46,9 @@ import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.AddPopWindow;
 import com.android.ttbg.view.GoodsRecommandItem;
 import com.android.ttbg.view.NoScroolGridView;
+import com.finddreams.adbanner.ImagePagerAdapter;
+import com.finddreams.bannerview.CircleFlowIndicator;
+import com.finddreams.bannerview.ViewFlow;
 
 
 
@@ -51,21 +56,12 @@ import com.android.ttbg.view.NoScroolGridView;
 public class MainFragment extends BaseFragment implements ViewFactory,OnClickListener{
     private static final String TAG = MainFragment.class.getSimpleName();
     private View mainFragmentView;
-
-    private ViewPager adViewPager;
-    private LinearLayout pagerLayout;
-    private List<View> pageViews;
-    private ImageView[] imageViews;
-    private ImageView imageView;
-    private AdPageAdapter adapter;
-    private AtomicInteger atomicInteger = new AtomicInteger(0);
-    private boolean isContinue = true;   
+    private AsyncImageLoader imageLoader;
     
-    ImageView ad_image1;
-    ImageView ad_image2;
-    ImageView ad_image3;
-    ImageView ad_image4;
-    
+	private ViewFlow mViewFlow;     //广告页控件
+	private CircleFlowIndicator mFlowIndicator;   //指示点点
+	private ArrayList<String> imageUrlList = new ArrayList<String>();
+	ArrayList<String> linkUrlArray= new ArrayList<String>();
     
     private ImageView count1_image;
     private ImageView count2_image;
@@ -113,6 +109,14 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
    			}
    		}
    	};
+   	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        imageLoader = new AsyncImageLoader(mContext);  
+    }
+   	
+   	
     @Override
     protected View initView() {
         //Log.e(TAG, "首页页面Fragment页面被初始化了...");
@@ -144,7 +148,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 	@Override
 	public void onClick(View v) {
        if (v.getId() == R.id.title_search) {
-			Intent intent = new Intent(getActivity(), SearchActivity.class);
+			Intent intent = new Intent(mContext, SearchActivity.class);
 			startActivity(intent);
 		}
        else if(v.getId() == R.id.add_menus)
@@ -158,9 +162,9 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     	switcher = (TextSwitcher) v.findViewById(R.id.ts_newest_info);  
     	switcher.setFactory(this); 
     	
-    	switcher.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));  
+    	switcher.setInAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_in_bottom));  
         // 设置切出动画  
-    	switcher.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_out_up));  
+    	switcher.setOutAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_out_up));  
     	
 		Message msg = new Message();
 		msg.what = MSG_TEST_SWITCHER_TEST;
@@ -177,7 +181,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     
     @Override  
     public View makeView() {   
-        TextView textView = new TextView(getActivity());   
+        TextView textView = new TextView(mContext);   
         textView.setSingleLine(true);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
         textView.setTextColor(0xff222222);  
@@ -193,12 +197,12 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         for (int i = 0; i < 8; i++) {
 
             GoodsRecommandItem goodsRecommandItem = new GoodsRecommandItem();
-            goodsRecommandItem.setGoodsRecommandItem(getActivity(), "测试测    "+i+"   试测试", null, i*10, i*100, i*90,"价值:¥ 888.88");
+            goodsRecommandItem.setGoodsRecommandItem(mContext, "测试测    "+i+"   试测试", null, i*10, i*100, i*90,"价值:¥ 888.88");
             hashMapList.add(goodsRecommandItem);
 
         }
 
-        GoodsRecommendAdapter goodsRecommendAdapter = new GoodsRecommendAdapter(getActivity(), hashMapList);
+        GoodsRecommendAdapter goodsRecommendAdapter = new GoodsRecommendAdapter(mContext, hashMapList);
 
         gridView.setAdapter(goodsRecommendAdapter);
     }
@@ -270,235 +274,51 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     }
 
     private void initADPager(View v) {
+
+		mViewFlow = (ViewFlow) v.findViewById(R.id.viewflow);
+		mFlowIndicator = (CircleFlowIndicator) v.findViewById(R.id.viewflowindic);
     	
-    	Context context = getActivity();
-    	
-        // 从布局文件中获取ViewPager父容器
-        pagerLayout = (LinearLayout) v.findViewById(R.id.view_pager_content);
-        // 创建ViewPager
-        adViewPager = new ViewPager(getActivity());
-        // 获取屏幕像素相关信息
-        DisplayMetrics dm = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        // 根据屏幕信息设置ViewPager广告容器的宽高
-        adViewPager.setLayoutParams(new LayoutParams(dm.widthPixels,
-                dm.heightPixels * 2 / 5));
-        // 将ViewPager容器设置到布局文件父容器中
-        pagerLayout.addView(adViewPager);
-        initPageAdapter(v);
-        adViewPager.setAdapter(adapter);
-        adViewPager.setOnPageChangeListener(new AdPageChangeListener());
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    if (isContinue) {
-                        viewHandler.sendEmptyMessage(atomicInteger.get());
-                        atomicOption();
-                    }
-                }
-            }
-        }).start();
-        
-        
-/*        String imgUrl = "http://i03.pic.sogou.com/1223d97ec8923cfd";  
-        
-        //for test  
-        AsyncImageLoader loader = new AsyncImageLoader(context);  
-          
-        //将图片缓存至外部文件中  
-        loader.setCache2File(true);
-        //设置外部缓存文件夹  
-        
-        Utils.Log("context.getCacheDir().getAbsolutePath() = "+context.getCacheDir().getAbsolutePath());
-        
-        loader.setCachedDir(context.getCacheDir().getAbsolutePath());  
-          
+		imageUrlList
+		.add("http://b.hiphotos.baidu.com/image/pic/item/d01373f082025aaf95bdf7e4f8edab64034f1a15.jpg");
+imageUrlList
+		.add("http://g.hiphotos.baidu.com/image/pic/item/6159252dd42a2834da6660c459b5c9ea14cebf39.jpg");
+imageUrlList
+		.add("http://d.hiphotos.baidu.com/image/pic/item/adaf2edda3cc7cd976427f6c3901213fb80e911c.jpg");
+imageUrlList
+		.add("http://g.hiphotos.baidu.com/image/pic/item/b3119313b07eca80131de3e6932397dda1448393.jpg");
+
+linkUrlArray
+.add("http://blog.csdn.net/finddreams/article/details/44301359");
+linkUrlArray
+.add("http://blog.csdn.net/finddreams/article/details/43486527");
+linkUrlArray
+.add("http://blog.csdn.net/finddreams/article/details/44648121");
+linkUrlArray
+.add("http://blog.csdn.net/finddreams/article/details/44619589");
         //下载图片，第二个参数是否缓存至内存中  
-        loader.downloadImage(imgUrl,new AsyncImageLoader.ImageCallback() {  
-            @Override  
-            public void onImageLoaded(Bitmap bitmap, String imageUrl) {  
-                if(bitmap != null){  
-                //	ad_image1.setImageBitmap(bitmap);	
-                }else{  
-                    //下载失败，设置默认图片  
-                }  
-            }  
-        });  */
+    //    imageLoader.downloadImage(imgUrl,ad_image1);  
+
+mViewFlow.setAdapter(new ImagePagerAdapter(mContext, imageUrlList,
+		linkUrlArray).setInfiniteLoop(true));
+mViewFlow.setmSideBuffer(imageUrlList.size()); // 实际图片张数，
+												// 我的ImageAdapter实际图片张数为3
+
+mViewFlow.setFlowIndicator(mFlowIndicator);
+mViewFlow.setTimeSpan(4500);
+mViewFlow.setSelection(imageUrlList.size() * 1000); // 设置初始位置
+mViewFlow.startAutoFlowTimer(); // 启动自动播放
         
     }    
-    
-    private void atomicOption() {
-    	
-    	if(imageViews == null)
-    	{
-    		return;
-    	}
-    	
-        atomicInteger.incrementAndGet();
-        if (atomicInteger.get() > imageViews.length - 1) {
-            atomicInteger.getAndAdd(-5);
-        }
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
- 
-        }
-    }
-    /*
-     * 每隔固定时间切换广告栏图片
-     */
-    private final Handler viewHandler = new Handler() {
- 
-        @Override
-        public void handleMessage(Message msg) {
-            adViewPager.setCurrentItem(msg.what);
-            super.handleMessage(msg);
-        }
- 
-    };
+
     
     @Override
     protected void initData() {
         super.initData();
     }
     
-    private void initPageAdapter(View v) {
-        pageViews = new ArrayList<View>();
-        adapter = new AdPageAdapter(pageViews);
-        
-        ad_image1 = new ImageView(getActivity());
-        ad_image1.setBackgroundResource(R.drawable.welcome1);
-        pageViews.add(ad_image1);
-        ad_image2 = new ImageView(getActivity());
-        ad_image2.setBackgroundResource(R.drawable.welcome2);
-        pageViews.add(ad_image2);
-        ad_image3 = new ImageView(getActivity());
-        ad_image3.setBackgroundResource(R.drawable.welcome3);
-        pageViews.add(ad_image3);
-        ad_image4 = new ImageView(getActivity());
-        ad_image4.setBackgroundResource(R.drawable.welcome4);
-        pageViews.add(ad_image4);
-        adapter = new AdPageAdapter(pageViews);
-        
-        initCirclePoint(v);
-    }
- 
-    private void initCirclePoint(View v) {
-        ViewGroup group = (ViewGroup) v.findViewById(R.id.viewGroup);
-        group.removeAllViews();
-        
-        if(pageViews.size() == 0)
-        {
-        	return;
-        }
-        imageViews = new ImageView[pageViews.size()];
-        // 广告栏的小圆点图标
-        for (int i = 0; i < pageViews.size(); i++) {
-            // 创建一个ImageView, 并设置宽高. 将该对象放入到数组中
-            imageView = new ImageView(getActivity());
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(15,15);
-            lp.setMargins(18, 0,18, 0);
-            imageView.setLayoutParams(lp);
-            imageViews[i] = imageView;
-            // 初始值, 默认第0个选中
-            if (i == 0) {
-                imageViews[i].setBackgroundResource(R.drawable.dot01);
-            } else {
-                imageViews[i].setBackgroundResource(R.drawable.dot02);
-            }
-            // 将小圆点放入到布局中
-            group.addView(imageViews[i]);
-        }
-    }    
+
     
-    
-    /**
-     * ViewPager 页面改变监听器
-     */
-    private final class AdPageChangeListener implements OnPageChangeListener {
- 
-        /**
-         * 页面滚动状态发生改变的时候触发
-         */
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-        }
- 
-        /**
-         * 页面滚动的时候触发
-         */
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-        }
- 
-        /**
-         * 页面选中的时候触发
-         */
-        @Override
-        public void onPageSelected(int arg0) {
-            // 获取当前显示的页面是哪个页面
-            atomicInteger.getAndSet(arg0);
-            // 重新设置原点布局集合
-            for (int i = 0; i < imageViews.length; i++) {
-                imageViews[arg0]
-                        .setBackgroundResource(R.drawable.dot01);
-                if (arg0 != i) {
-                    imageViews[i]
-                            .setBackgroundResource(R.drawable.dot02);
-                }
-            }
-        }
-    }
- 
-    private final class AdPageAdapter extends PagerAdapter {
-        private List<View> views = null;
- 
-        /**
-         * 初始化数据源, 即View数组
-         */
-        public AdPageAdapter(List<View> views) {
-            this.views = views;
-        }
- 
-        
-        public void setData(List<View> views) {
-            this.views = views;
-        }
-        
-        /**
-         * 从ViewPager中删除集合中对应索引的View对象
-         */
-        @Override
-        public void destroyItem(View container, int position, Object object) {
-            ((ViewPager) container).removeView(views.get(position));
-        }
- 
-        /**
-         * 获取ViewPager的个数
-         */
-        @Override
-        public int getCount() {
-            return views.size();
-        }
- 
-        /**
-         * 从View集合中获取对应索引的元素, 并添加到ViewPager中
-         */
-        @Override
-        public Object instantiateItem(View container, int position) {
-            ((ViewPager) container).addView(views.get(position), 0);
-            return views.get(position);
-        }
- 
-        /**
-         * 是否将显示的ViewPager页面与instantiateItem返回的对象进行关联 这个方法是必须实现的
-         */
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
-    }    
+   
     
     
     @Override

@@ -22,6 +22,7 @@ import com.android.ttbg.MyListener;
 import com.android.ttbg.R;
 import com.android.ttbg.adapter.AllGoodsContentsAdapter;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
+import com.android.ttbg.tools.DataCleanManager;
 import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.GoodsRecommandItem;
 import com.android.ttbg.view.PullToRefreshLayout;
@@ -44,6 +45,7 @@ public class AllGoodsFragment extends BaseFragment {
 			initRadioGroup(allGoodsFragment);
 			initAllGoodsContentView(allGoodsFragment);
 		}
+		
 		return allGoodsFragment;
 	}
 	private void initAllGoodsContentView(View v) {

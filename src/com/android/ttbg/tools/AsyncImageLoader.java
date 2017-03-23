@@ -13,6 +13,7 @@ import android.content.Context;
 import android.graphics.Bitmap;  
 import android.os.Handler;  
 import android.util.Log;  
+import android.widget.ImageView;
   
 public class AsyncImageLoader {  
     //保存正在下载的图片URL集合，避免重复下载用  
@@ -130,13 +131,39 @@ public class AsyncImageLoader {
         }  
     }  
       
-    /** 
-     * 预加载下一张图片，缓存至memory中 
-     * @param url  
-     */  
-    public void preLoadNextImage(final String url){  
-        //将callback置为空，只将bitmap缓存到memory即可。  
-        downloadImage(url, null);  
-    }  
+    
+    public void downloadImage(final String url, final ImageView imageView){  
+        if(sDownloadingSet.contains(url)){  
+            Log.i("AsyncImageLoader", "###该图片正在下载，不能重复下载！");  
+            return;  
+        }  
+          
+        Bitmap bitmap = impl.getBitmapFromMemory(url);  
+        
+        Utils.Log("downloadImage getBitmapFromMemory = "+bitmap);
+
+        
+        if(bitmap != null){  
+        	imageView.setImageBitmap(bitmap);
+        }else{  
+            //从网络端下载图片  
+            sDownloadingSet.add(url);  
+            sExecutorService.submit(new Runnable(){  
+                @Override  
+                public void run() {  
+                    final Bitmap bitmap = impl.getBitmapFromUrl(url, false);  
+                    handler.post(new Runnable(){  
+                        @Override  
+                        public void run(){  
+                        	imageView.setImageBitmap(bitmap);
+                            sDownloadingSet.remove(url);  
+                        }  
+                    });  
+                }  
+            });  
+        }  
+    }      
+    
+
       
 }  
