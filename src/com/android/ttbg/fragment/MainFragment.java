@@ -15,7 +15,10 @@ import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.MenuItem;
@@ -91,7 +94,15 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
    			{
    				if(switcher != null)
    				{
-   					switcher.setText("恭喜你中了"+String.valueOf(new Random().nextInt())+"万元,得瑟去吧");  
+   		            int fstart,fend;
+   		            
+   		            String hintText = "恭喜你中了"+String.valueOf(new Random().nextInt())+"万元,得瑟去吧";
+   		            fstart="恭喜你中了".length();  
+   		            fend=("恭喜你中了"+String.valueOf(new Random().nextInt())).length(); 
+   		            SpannableStringBuilder style=new SpannableStringBuilder(hintText);     
+   		            style.setSpan(new ForegroundColorSpan(0xffff7700),fstart,fend,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);   
+
+   					switcher.setText(style);  
    				}
    				Message new_msg = new Message();
    				new_msg.what = MSG_TEST_SWITCHER_TEST;
@@ -274,8 +285,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
                 dm.heightPixels * 2 / 5));
         // 将ViewPager容器设置到布局文件父容器中
         pagerLayout.addView(adViewPager);
-        initPageAdapter();
-        initCirclePoint(v);
+        initPageAdapter(v);
         adViewPager.setAdapter(adapter);
         adViewPager.setOnPageChangeListener(new AdPageChangeListener());
         new Thread(new Runnable() {
@@ -291,7 +301,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         }).start();
         
         
-        String imgUrl = "http://i03.pic.sogou.com/1223d97ec8923cfd";  
+/*        String imgUrl = "http://i03.pic.sogou.com/1223d97ec8923cfd";  
         
         //for test  
         AsyncImageLoader loader = new AsyncImageLoader(context);  
@@ -309,16 +319,22 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
             @Override  
             public void onImageLoaded(Bitmap bitmap, String imageUrl) {  
                 if(bitmap != null){  
-                	ad_image1.setImageBitmap(bitmap);	
+                //	ad_image1.setImageBitmap(bitmap);	
                 }else{  
                     //下载失败，设置默认图片  
                 }  
             }  
-        });  
+        });  */
         
     }    
     
     private void atomicOption() {
+    	
+    	if(imageViews == null)
+    	{
+    		return;
+    	}
+    	
         atomicInteger.incrementAndGet();
         if (atomicInteger.get() > imageViews.length - 1) {
             atomicInteger.getAndAdd(-5);
@@ -347,8 +363,10 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         super.initData();
     }
     
-    private void initPageAdapter() {
+    private void initPageAdapter(View v) {
         pageViews = new ArrayList<View>();
+        adapter = new AdPageAdapter(pageViews);
+        
         ad_image1 = new ImageView(getActivity());
         ad_image1.setBackgroundResource(R.drawable.welcome1);
         pageViews.add(ad_image1);
@@ -362,17 +380,26 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         ad_image4.setBackgroundResource(R.drawable.welcome4);
         pageViews.add(ad_image4);
         adapter = new AdPageAdapter(pageViews);
+        
+        initCirclePoint(v);
     }
  
     private void initCirclePoint(View v) {
         ViewGroup group = (ViewGroup) v.findViewById(R.id.viewGroup);
+        group.removeAllViews();
+        
+        if(pageViews.size() == 0)
+        {
+        	return;
+        }
         imageViews = new ImageView[pageViews.size()];
         // 广告栏的小圆点图标
         for (int i = 0; i < pageViews.size(); i++) {
             // 创建一个ImageView, 并设置宽高. 将该对象放入到数组中
             imageView = new ImageView(getActivity());
-            imageView.setLayoutParams(new LayoutParams(15, 15));
-            imageView.setPadding(4, 0, 4, 0);  
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(15,15);
+            lp.setMargins(18, 0,18, 0);
+            imageView.setLayoutParams(lp);
             imageViews[i] = imageView;
             // 初始值, 默认第0个选中
             if (i == 0) {
@@ -434,6 +461,11 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
             this.views = views;
         }
  
+        
+        public void setData(List<View> views) {
+            this.views = views;
+        }
+        
         /**
          * 从ViewPager中删除集合中对应索引的View对象
          */
