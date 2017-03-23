@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
@@ -33,10 +35,13 @@ import android.widget.ViewSwitcher.ViewFactory;
 import com.android.ttbg.R;
 import com.android.ttbg.SearchActivity;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
+import com.android.ttbg.tools.AsyncImageLoader;
 import com.android.ttbg.util.TimerUtil;
+import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.AddPopWindow;
 import com.android.ttbg.view.GoodsRecommandItem;
 import com.android.ttbg.view.NoScroolGridView;
+
 
 
 
@@ -52,6 +57,12 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     private AdPageAdapter adapter;
     private AtomicInteger atomicInteger = new AtomicInteger(0);
     private boolean isContinue = true;   
+    
+    ImageView ad_image1;
+    ImageView ad_image2;
+    ImageView ad_image3;
+    ImageView ad_image4;
+    
     
     private ImageView count1_image;
     private ImageView count2_image;
@@ -248,6 +259,9 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     }
 
     private void initADPager(View v) {
+    	
+    	Context context = getActivity();
+    	
         // 从布局文件中获取ViewPager父容器
         pagerLayout = (LinearLayout) v.findViewById(R.id.view_pager_content);
         // 创建ViewPager
@@ -275,6 +289,33 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
                 }
             }
         }).start();
+        
+        
+        String imgUrl = "http://i03.pic.sogou.com/1223d97ec8923cfd";  
+        
+        //for test  
+        AsyncImageLoader loader = new AsyncImageLoader(context);  
+          
+        //将图片缓存至外部文件中  
+        loader.setCache2File(true);
+        //设置外部缓存文件夹  
+        
+        Utils.Log("context.getCacheDir().getAbsolutePath() = "+context.getCacheDir().getAbsolutePath());
+        
+        loader.setCachedDir(context.getCacheDir().getAbsolutePath());  
+          
+        //下载图片，第二个参数是否缓存至内存中  
+        loader.downloadImage(imgUrl,new AsyncImageLoader.ImageCallback() {  
+            @Override  
+            public void onImageLoaded(Bitmap bitmap, String imageUrl) {  
+                if(bitmap != null){  
+                	ad_image1.setImageBitmap(bitmap);	
+                }else{  
+                    //下载失败，设置默认图片  
+                }  
+            }  
+        });  
+        
     }    
     
     private void atomicOption() {
@@ -308,18 +349,18 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     
     private void initPageAdapter() {
         pageViews = new ArrayList<View>();
-        ImageView img1 = new ImageView(getActivity());
-        img1.setBackgroundResource(R.drawable.welcome1);
-        pageViews.add(img1);
-        ImageView img2 = new ImageView(getActivity());
-        img2.setBackgroundResource(R.drawable.welcome2);
-        pageViews.add(img2);
-        ImageView img3 = new ImageView(getActivity());
-        img3.setBackgroundResource(R.drawable.welcome3);
-        pageViews.add(img3);
-        ImageView img4 = new ImageView(getActivity());
-        img4.setBackgroundResource(R.drawable.welcome4);
-        pageViews.add(img4);
+        ad_image1 = new ImageView(getActivity());
+        ad_image1.setBackgroundResource(R.drawable.welcome1);
+        pageViews.add(ad_image1);
+        ad_image2 = new ImageView(getActivity());
+        ad_image2.setBackgroundResource(R.drawable.welcome2);
+        pageViews.add(ad_image2);
+        ad_image3 = new ImageView(getActivity());
+        ad_image3.setBackgroundResource(R.drawable.welcome3);
+        pageViews.add(ad_image3);
+        ad_image4 = new ImageView(getActivity());
+        ad_image4.setBackgroundResource(R.drawable.welcome4);
+        pageViews.add(ad_image4);
         adapter = new AdPageAdapter(pageViews);
     }
  
