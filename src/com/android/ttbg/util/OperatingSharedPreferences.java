@@ -86,4 +86,46 @@ public class OperatingSharedPreferences {
         return bOn;  
     }  
     
+    
+    
+    
+    
+    
+    //前面的就算了,后续的统一接口
+    public static void setBoolean(Context context,String key,boolean bOn)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		PREFERENCE_NAME, Context.MODE_PRIVATE);  
+        Editor editor = sharedPreferences.edit();// 获取编辑器  
+        editor.putBoolean(key, bOn);  
+        editor.commit();// 提交修改  
+    }
+    
+    public static boolean getBoolean(Context context,String key,boolean bDefault)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		PREFERENCE_NAME, Context.MODE_PRIVATE);  
+        boolean retrunBoolean = sharedPreferences.getBoolean(key, bDefault);  
+        return retrunBoolean;  
+    }
+    
+    public static void setString(Context context,String key,String keyValue)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		PREFERENCE_NAME, Context.MODE_PRIVATE);  
+        Editor editor = sharedPreferences.edit();// 获取编辑器  
+        editor.putString(key, keyValue);  
+        editor.commit();// 提交修改  
+    }
+    
+    public static String getString(Context context,String key,String keyValueDefault)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		PREFERENCE_NAME, Context.MODE_PRIVATE);  
+        String retrunString = sharedPreferences.getString(key, keyValueDefault);  
+        return retrunString;  
+    }    
+    
+    
+    
 }  
