@@ -114,38 +114,49 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
    			{
             	JSONObject jsonObject=(JSONObject)msg.obj;
             	Utils.Log("login success jsonObject:"+jsonObject);
-            	
+            	if(jsonObject == null)
+            	{
+            		return;
+            	}
         		JSONObject result;
-				try {
-					result = new JSONObject(jsonObject.toString());
-	        		String bSuccess = result.optString("success","");
-	        		
-	        		Utils.Log("getJson bSuccess "+bSuccess);
-	        		
-	        		String lastTime = result.optString("lastTime","");
-	        		
-	        		Utils.Log("getJson lastTime "+lastTime);
-	        		JSONArray banners = result.getJSONArray("banners");
-	        		int len = banners.length();
-	        		for(int i =0;i<len;i++){
-	        		JSONObject obj = banners.getJSONObject(i);
-	        		
-	        		
-	        		
-	        		String title = obj.getString("title");
-	        		String link = obj.getString("link");
-	        		String img = obj.getString("img");
-	        		Utils.Log("getJson banners["+i+"].title = "+title);
-	        		Utils.Log("getJson banners["+i+"].link = "+link);
-	        		Utils.Log("getJson banners["+i+"].img = "+img);
-	      
-	        		}
-	        		
-					
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+        		switch(msg.arg1)
+        		{
+        		case JsonControl.JSON_TYPE_BANNER:
+        		{
+    				try {
+    					result = new JSONObject(jsonObject.toString());
+    	        		String bSuccess = result.optString("success","");
+    	        		
+    	        		Utils.Log("getJson bSuccess "+bSuccess);
+    	        		
+    	        		String lastTime = result.optString("lasttime","");
+    	        		
+    	        		Utils.Log("getJson lastTime "+lastTime);
+    	        		JSONArray banners = result.getJSONArray("banners");
+    	        		int len = banners.length();
+    	        		for(int i =0;i<len;i++){
+    	        		JSONObject obj = banners.getJSONObject(i);
+    	        		
+    	        		String title = obj.getString("title");
+    	        		String link = obj.getString("link");
+    	        		String img = obj.getString("img");
+    	        		Utils.Log("getJson banners["+i+"].title = "+title);
+    	        		Utils.Log("getJson banners["+i+"].link = "+link);
+    	        		Utils.Log("getJson banners["+i+"].img = "+img);
+    	      
+    	        		}
+    	        		
+    					
+    				} catch (JSONException e) {
+    					// TODO Auto-generated catch block
+    					e.printStackTrace();
+    				}
+        		}
+        			break;
+        		default:
+        			break;
+        		}
+
 
             	
    			}
@@ -182,7 +193,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         new Thread(new Runnable() {
 			@Override
 			public void run() {
-				JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getBanner", mHandler);
+				JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getBanner", mHandler,JsonControl.JSON_TYPE_BANNER);
 			}
 		}).start();
         

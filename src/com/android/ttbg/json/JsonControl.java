@@ -28,8 +28,13 @@ public class JsonControl {
 	public static final int UPLOAD_SUCCESS_MSG=0x8005; //put success msg
 	
 	
+	
+	//从网络上获取的json类型,用来在同一个handler里面处理不同的回调
+	public static final int JSON_TYPE_BANNER=1; //put success msg
+	
+	
 	  @SuppressWarnings("deprecation")
-	public static void httpGet(String url,Handler mHandler) {
+	public static void httpGet(String url,Handler mHandler,int jsonType) {
 		Utils.Log(" xxxxxxxxxxxxxxxxxxxxx http httpGet url:"+url);
 			HttpGet httpGet = new HttpGet(url);
 			try {
@@ -48,7 +53,7 @@ public class JsonControl {
 					if (mHandler != null) {
 					Message msg=new Message();
 					msg.what=GET_SUCCESS_MSG;
-					msg.arg1=1;
+					msg.arg1=jsonType;
 					msg.obj=jsonObject;
 //					mHandler.sendEmptyMessage(1);
 					mHandler.sendMessage(msg);
