@@ -17,6 +17,9 @@ import android.os.Message;
 
 public class JsonControl {
 	
+	public final static String HOME_PAGE = "http://www.1ybgo.com/";
+	
+	
 	//msg define
 	public static final int COUNT_DOWN_MSG=0x8001; //login count down msg
 	public static final int GET_SUCCESS_MSG=0x8002; //get success msg

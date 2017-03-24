@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -40,6 +44,7 @@ import android.widget.ViewSwitcher.ViewFactory;
 import com.android.ttbg.R;
 import com.android.ttbg.SearchActivity;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
+import com.android.ttbg.json.JsonControl;
 import com.android.ttbg.tools.AsyncImageLoader;
 import com.android.ttbg.util.TimerUtil;
 import com.android.ttbg.util.Utils;
@@ -78,7 +83,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     private PopupMenu popupMenu;
     
     private static final int MSG_TEST_SWITCHER_TEST=0;
-    
+
     private ImageView add_menus;
     
     private Handler mHandler= new Handler()
@@ -105,8 +110,48 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
    				mHandler.sendMessageDelayed(new_msg, 2000);
    			}
    			break;
-   			
+   			case JsonControl.GET_SUCCESS_MSG:
+   			{
+            	JSONObject jsonObject=(JSONObject)msg.obj;
+            	Utils.Log("login success jsonObject:"+jsonObject);
+            	
+        		JSONObject result;
+				try {
+					result = new JSONObject(jsonObject.toString());
+	        		String bSuccess = result.optString("success","");
+	        		
+	        		Utils.Log("getJson bSuccess "+bSuccess);
+	        		
+	        		String lastTime = result.optString("lastTime","");
+	        		
+	        		Utils.Log("getJson lastTime "+lastTime);
+	        		JSONArray banners = result.getJSONArray("banners");
+	        		int len = banners.length();
+	        		for(int i =0;i<len;i++){
+	        		JSONObject obj = banners.getJSONObject(i);
+	        		
+	        		
+	        		
+	        		String title = obj.getString("title");
+	        		String link = obj.getString("link");
+	        		String img = obj.getString("img");
+	        		Utils.Log("getJson banners["+i+"].title = "+title);
+	        		Utils.Log("getJson banners["+i+"].link = "+link);
+	        		Utils.Log("getJson banners["+i+"].img = "+img);
+	      
+	        		}
+	        		
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+            	
    			}
+   			break;
+   		  }
+   			
    		}
    	};
    	
@@ -130,6 +175,17 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         	initCountDownPage(mainFragmentView);
         	intiGoodsItems(mainFragmentView);
         }
+        
+        
+
+        
+        new Thread(new Runnable() {
+			@Override
+			public void run() {
+				JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getBanner", mHandler);
+			}
+		}).start();
+        
         return mainFragmentView;
     }
 
@@ -301,7 +357,7 @@ linkUrlArray
 mViewFlow.setAdapter(new ImagePagerAdapter(mContext, imageUrlList,
 		linkUrlArray).setInfiniteLoop(true));
 mViewFlow.setmSideBuffer(imageUrlList.size()); // 实际图片张数，
-												// 我的ImageAdapter实际图片张数为3
+												
 
 mViewFlow.setFlowIndicator(mFlowIndicator);
 mViewFlow.setTimeSpan(4500);
@@ -326,3 +382,4 @@ mViewFlow.startAutoFlowTimer(); // 启动自动播放
 		return MainFragment.class.getName();
 	}
 }
+
