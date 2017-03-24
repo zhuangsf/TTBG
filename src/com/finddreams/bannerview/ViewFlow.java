@@ -17,6 +17,7 @@ package com.finddreams.bannerview;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import com.android.ttbg.R;
 
@@ -509,6 +510,11 @@ public class ViewFlow extends AdapterView<Adapter> {
 	@Override
 	public void setAdapter(Adapter adapter) {
 		setAdapter(adapter, 0);
+	}
+	
+	public void setData(List<String> imageIdList,List<String> urllist)
+	{
+		
 	}
 	
 	public void setAdapter(Adapter adapter, int initialPosition) {

@@ -56,7 +56,10 @@ import com.finddreams.adbanner.ImagePagerAdapter;
 import com.finddreams.bannerview.CircleFlowIndicator;
 import com.finddreams.bannerview.ViewFlow;
 
+//todo
 
+
+// 还需要写一个在当前界面打开网络的接口
 
 
 public class MainFragment extends BaseFragment implements ViewFactory,OnClickListener{
@@ -137,19 +140,33 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     	        		Utils.Log("getJson lastTime "+lastTime);
     	        		JSONArray banners = result.getJSONArray("banners");
     	        		int len = banners.length();
+    	        		
+    	        		imageUrlList.clear();
+    	        		linkUrlArray.clear();
+    	        		
     	        		for(int i =0;i<len;i++){
     	        		JSONObject obj = banners.getJSONObject(i);
     	        		
     	        		String title = obj.getString("title");
     	        		String link = obj.getString("link");
     	        		String img = obj.getString("img");
+    	        		
+    	        		imageUrlList.add(img);
+    	        		linkUrlArray.add(link);
     	        		Utils.Log("getJson banners["+i+"].title = "+title);
     	        		Utils.Log("getJson banners["+i+"].link = "+link);
     	        		Utils.Log("getJson banners["+i+"].img = "+img);
     	      
     	        		}
     	        		
-    					
+    	        		//放在这里,如果没网络,那么会显示为空
+    	        		if(mViewFlow != null)
+    	        		{
+	    	        		mViewFlow.setAdapter(new ImagePagerAdapter(mContext, imageUrlList,
+	    	        				linkUrlArray).setInfiniteLoop(true));
+	    	        		mViewFlow.setmSideBuffer(imageUrlList.size()); // 实际图片张数，
+	    	        		mViewFlow.startAutoFlowTimer(); // 启动自动播放
+    	        		}
     				} catch (JSONException e) {
     					// TODO Auto-generated catch block
     					e.printStackTrace();
@@ -348,37 +365,10 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 
 		mViewFlow = (ViewFlow) v.findViewById(R.id.viewflow);
 		mFlowIndicator = (CircleFlowIndicator) v.findViewById(R.id.viewflowindic);
-    	
-		imageUrlList
-		.add("http://b.hiphotos.baidu.com/image/pic/item/d01373f082025aaf95bdf7e4f8edab64034f1a15.jpg");
-imageUrlList
-		.add("http://g.hiphotos.baidu.com/image/pic/item/6159252dd42a2834da6660c459b5c9ea14cebf39.jpg");
-imageUrlList
-		.add("http://d.hiphotos.baidu.com/image/pic/item/adaf2edda3cc7cd976427f6c3901213fb80e911c.jpg");
-imageUrlList
-		.add("http://g.hiphotos.baidu.com/image/pic/item/b3119313b07eca80131de3e6932397dda1448393.jpg");
+		mViewFlow.setFlowIndicator(mFlowIndicator);
+		mViewFlow.setTimeSpan(4500);
+		mViewFlow.setSelection(imageUrlList.size() * 1000); // 设置初始位置
 
-linkUrlArray
-.add("http://blog.csdn.net/finddreams/article/details/44301359");
-linkUrlArray
-.add("http://blog.csdn.net/finddreams/article/details/43486527");
-linkUrlArray
-.add("http://blog.csdn.net/finddreams/article/details/44648121");
-linkUrlArray
-.add("http://blog.csdn.net/finddreams/article/details/44619589");
-        //下载图片，第二个参数是否缓存至内存中  
-    //    imageLoader.downloadImage(imgUrl,ad_image1);  
-
-mViewFlow.setAdapter(new ImagePagerAdapter(mContext, imageUrlList,
-		linkUrlArray).setInfiniteLoop(true));
-mViewFlow.setmSideBuffer(imageUrlList.size()); // 实际图片张数，
-												
-
-mViewFlow.setFlowIndicator(mFlowIndicator);
-mViewFlow.setTimeSpan(4500);
-mViewFlow.setSelection(imageUrlList.size() * 1000); // 设置初始位置
-mViewFlow.startAutoFlowTimer(); // 启动自动播放
-        
     }    
 
     
