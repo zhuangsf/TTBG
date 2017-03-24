@@ -1,6 +1,6 @@
 package com.android.ttbg;
 
-import com.android.ttbg.util.OperatingSharedPreferences;
+import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.view.EditTextWithDel;
 
 import android.app.Activity;
@@ -37,7 +37,7 @@ public class SettingNameActivity extends Activity {
 		        public void onClick(View v) {  
 		        	if(edt_edit_name_input != null)
 		        	{
-		        		OperatingSharedPreferences.saveUserName(SettingNameActivity.this, edt_edit_name_input.getText().toString());
+		        		OperatingSP.saveUserName(SettingNameActivity.this, edt_edit_name_input.getText().toString());
 		        		finish();
 		        	}
 		        }  

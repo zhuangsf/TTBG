@@ -2,7 +2,7 @@ package com.android.ttbg;
 
 
 
-import com.android.ttbg.util.OperatingSharedPreferences;
+import com.android.ttbg.util.OperatingSP;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -44,7 +44,7 @@ public class SettingActivity extends Activity {
 		  }); 
 		 
 		 rly_setting_light = (View)findViewById(R.id.rly_setting_light);
-		 boolean bOn = OperatingSharedPreferences.getLightSetting(SettingActivity.this);
+		 boolean bOn = OperatingSP.getLightSetting(SettingActivity.this);
 		 
 		 if(bOn)
 		 {
@@ -62,7 +62,7 @@ public class SettingActivity extends Activity {
 				public void onCheckedChanged(CompoundButton buttonView,
 						boolean isChecked) {
 					// TODO Auto-generated method stub
-					OperatingSharedPreferences.setLightSetting(SettingActivity.this,isChecked);
+					OperatingSP.setLightSetting(SettingActivity.this,isChecked);
 					 if(isChecked)
 					 {
 						 rly_setting_light.setVisibility(View.VISIBLE);

@@ -46,6 +46,7 @@ import com.android.ttbg.SearchActivity;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.json.JsonControl;
 import com.android.ttbg.tools.AsyncImageLoader;
+import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.util.TimerUtil;
 import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.AddPopWindow;
@@ -129,6 +130,8 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     	        		
     	        		Utils.Log("getJson bSuccess "+bSuccess);
     	        		
+    	        		
+    	        		//这个变量实际没什么用,图片下载已经用本地缓存来判断,如果文件名改变,会自动下载,否则用缓存的图片
     	        		String lastTime = result.optString("lasttime","");
     	        		
     	        		Utils.Log("getJson lastTime "+lastTime);
@@ -193,6 +196,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         new Thread(new Runnable() {
 			@Override
 			public void run() {
+				//读取服务器广告条数据
 				JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getBanner", mHandler,JsonControl.JSON_TYPE_BANNER);
 			}
 		}).start();

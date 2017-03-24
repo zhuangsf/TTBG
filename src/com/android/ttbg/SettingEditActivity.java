@@ -4,7 +4,7 @@ package com.android.ttbg;
 import java.io.File;
 
 import com.android.ttbg.util.FileUtil;
-import com.android.ttbg.util.OperatingSharedPreferences;
+import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.SelectPicPopupWindow;
 
@@ -94,7 +94,7 @@ public class SettingEditActivity extends Activity {
 	{
 		if(tv_user_name != null)
 		{
-			String user_name = OperatingSharedPreferences.getUserName(SettingEditActivity.this);
+			String user_name = OperatingSP.getUserName(SettingEditActivity.this);
 			tv_user_name.setText(user_name);
 		}
 	}
@@ -170,7 +170,7 @@ public class SettingEditActivity extends Activity {
 			Bitmap photo = getBitmapFromUri(getCropPicSaveUri(), context);
 			Drawable drawable = new BitmapDrawable(null, photo);
 			urlpath = FileUtil.saveFile(context, Utils.getInternelStoragePath(SettingEditActivity.this), IMAGE_FILE_NAME, photo);
-			OperatingSharedPreferences.saveUserImage(context,urlpath);
+			OperatingSP.saveUserImage(context,urlpath);
 			// 更新头像
 			updateUserHead(drawable);
 			

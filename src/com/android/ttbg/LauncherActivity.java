@@ -1,7 +1,7 @@
 package com.android.ttbg;
 
 import com.android.ttbg.adapter.LauncherPagerAdapter;
-import com.android.ttbg.util.OperatingSharedPreferences;
+import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.view.ILauncherView;
 
 import android.annotation.SuppressLint;
@@ -100,9 +100,9 @@ public class LauncherActivity extends FragmentActivityPack implements ILauncherV
 
 
 	private boolean isFirst() {
-		Boolean user_first = OperatingSharedPreferences.getBooleanFirstBoot(LauncherActivity.this);
+		Boolean user_first = OperatingSP.getBooleanFirstBoot(LauncherActivity.this);
 		if (user_first) {// 第一次
-			OperatingSharedPreferences.setBooleanFirstBoot(LauncherActivity.this);
+			OperatingSP.setBooleanFirstBoot(LauncherActivity.this);
 			return true;
 		} else {
 			return false;

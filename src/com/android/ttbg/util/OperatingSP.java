@@ -8,7 +8,7 @@ import android.content.SharedPreferences.Editor;
  * 基本功能：存储和访问SharedPreferences  
  * 创建：Jason  
  */  
-public class OperatingSharedPreferences { 
+public class OperatingSP { 
 	public static final String PREFERENCE_NAME="TTBG";
 	public static final String PREFERENCE_FIRSTOPEN="FIRSTOPEN";
 	public static final String PREFERENCE_USER_IMAGE="AVATAR";
@@ -18,6 +18,12 @@ public class OperatingSharedPreferences {
 	//设置里亮度调节
 	public static final String PREFERENCE_SETTING_LIGHT_SETTING="LIGHT_SETTING";
 	public static final boolean PREFERENCE_SETTING_LIGHT_SETTING_DEFAULT=false;
+	
+	
+	
+	//首页广告条的更新时间
+	public static final String PREFERENCE_BANNER_LASTTIME="LAST_TIME";
+	public static final String PREFERENCE_BANNER_LASTTIME_DEFAULT="";
     /**  
      * <pre>  
      * 基本功能：保存启动标识到SharedPreferences  
@@ -81,7 +87,7 @@ public class OperatingSharedPreferences {
     }
     public static boolean getLightSetting(Context context) {  
         SharedPreferences sharedPreferences = context.getSharedPreferences(  
-        		OperatingSharedPreferences.PREFERENCE_NAME, Context.MODE_PRIVATE);  
+        		OperatingSP.PREFERENCE_NAME, Context.MODE_PRIVATE);  
         Boolean bOn = sharedPreferences.getBoolean(PREFERENCE_SETTING_LIGHT_SETTING, PREFERENCE_SETTING_LIGHT_SETTING_DEFAULT);  
         return bOn;  
     }  
