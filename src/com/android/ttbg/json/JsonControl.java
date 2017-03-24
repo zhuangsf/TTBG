@@ -30,8 +30,10 @@ public class JsonControl {
 	
 	
 	//从网络上获取的json类型,用来在同一个handler里面处理不同的回调
-	public static final int JSON_TYPE_BANNER=1; //put success msg
-	
+	//广告栏
+	public static final int JSON_TYPE_BANNER=1; 
+	//最新揭晓的数据
+	public static final int JSON_TYPE_NEWEST=2; 
 	
 	  @SuppressWarnings("deprecation")
 	public static void httpGet(String url,Handler mHandler,int jsonType) {

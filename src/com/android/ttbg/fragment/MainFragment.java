@@ -173,6 +173,19 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     				}
         		}
         			break;
+        			
+        			
+        		case JsonControl.JSON_TYPE_NEWEST:
+        		{
+        			try {
+        			result = new JSONObject(jsonObject.toString());
+        			Utils.Log("JsonControl.JSON_TYPE_NEWEST  result = "+result);
+        			} catch (JSONException e) {
+    					// TODO Auto-generated catch block
+    					e.printStackTrace();
+    				}
+        		}
+        		break;
         		default:
         			break;
         		}
@@ -210,13 +223,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         
 
         
-        new Thread(new Runnable() {
-			@Override
-			public void run() {
-				//读取服务器广告条数据
-				JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getBanner", mHandler,JsonControl.JSON_TYPE_BANNER);
-			}
-		}).start();
+
         
         return mainFragmentView;
     }
@@ -257,6 +264,16 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 		Message msg = new Message();
 		msg.what = MSG_TEST_SWITCHER_TEST;
 		mHandler.sendMessageDelayed(msg, 2000);
+		
+		
+        new Thread(new Runnable() {
+			@Override
+			public void run() {
+				//读取最新揭晓
+				JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getLotteryList/0/0/10/1", mHandler,JsonControl.JSON_TYPE_NEWEST);
+			}
+		}).start();
+		
     }
     
     
@@ -369,6 +386,14 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 		mViewFlow.setTimeSpan(4500);
 		mViewFlow.setSelection(imageUrlList.size() * 1000); // 设置初始位置
 
+        new Thread(new Runnable() {
+			@Override
+			public void run() {
+				//读取服务器广告条数据
+				JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getBanner", mHandler,JsonControl.JSON_TYPE_BANNER);
+			}
+		}).start();
+		
     }    
 
     
