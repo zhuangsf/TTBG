@@ -16,7 +16,7 @@ import com.android.ttbg.adapter.HotRecommendAdapter;
 import com.android.ttbg.adapter.NewestGoodsAdapter;
 import com.android.ttbg.util.Urls;
 import com.android.ttbg.view.AddPopWindow;
-import com.android.ttbg.view.GoodsRecommandItem;
+import com.android.ttbg.view.GoodsProperty;
 import com.android.ttbg.view.NoScroolGridView;
 import com.android.ttbg.view.PullToRefreshLayout;
 

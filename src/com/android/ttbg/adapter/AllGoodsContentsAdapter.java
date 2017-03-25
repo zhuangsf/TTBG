@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.android.ttbg.R;
 import com.android.ttbg.util.Utils;
-import com.android.ttbg.view.GoodsRecommandItem;
+import com.android.ttbg.view.GoodsProperty;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -18,14 +18,14 @@ import android.widget.TextView;
 public class AllGoodsContentsAdapter extends BaseAdapter {
 
 	private Context mContext;
-    private List<GoodsRecommandItem> goodsRecommandItems = null;
-    public AllGoodsContentsAdapter(Context context, List<GoodsRecommandItem> goodsRecommandItems)
+    private List<GoodsProperty> goodsRecommandItems = null;
+    public AllGoodsContentsAdapter(Context context, List<GoodsProperty> goodsRecommandItems)
     {
         mContext = context;
         this.goodsRecommandItems = goodsRecommandItems;
     }
 
-    public void setData(List<GoodsRecommandItem> goodsRecommandItems)
+    public void setData(List<GoodsProperty> goodsRecommandItems)
     {
     	this.goodsRecommandItems = goodsRecommandItems;
     }
@@ -42,9 +42,9 @@ public class AllGoodsContentsAdapter extends BaseAdapter {
     }
 
     @Override
-    public GoodsRecommandItem getItem(int position)
+    public GoodsProperty getItem(int position)
     {
-    	GoodsRecommandItem item = null;
+    	GoodsProperty item = null;
 
         if (null != goodsRecommandItems)
         {
@@ -82,12 +82,12 @@ public class AllGoodsContentsAdapter extends BaseAdapter {
 
         // set item values to the viewHolder:
 
-        GoodsRecommandItem goodsRecommandItem = getItem(position);
+        GoodsProperty goodsRecommandItem = getItem(position);
         Utils.Log("goodsRecommandItem = "+goodsRecommandItem);
         if (null != goodsRecommandItem)
         {
             viewHolder.imageView.setImageDrawable(goodsRecommandItem.getImageDrawable());
-            viewHolder.tv_goods_label.setText(goodsRecommandItem.getGoodsLable());
+            viewHolder.tv_goods_label.setText(goodsRecommandItem.getGoodsTitle());
             viewHolder.tv_goods_price.setText(goodsRecommandItem.getGoods_price());
         }
 

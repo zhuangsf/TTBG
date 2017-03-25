@@ -50,7 +50,7 @@ import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.util.TimerUtil;
 import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.AddPopWindow;
-import com.android.ttbg.view.GoodsRecommandItem;
+import com.android.ttbg.view.GoodsProperty;
 import com.android.ttbg.view.NoScroolGridView;
 import com.finddreams.adbanner.ImagePagerAdapter;
 import com.finddreams.bannerview.CircleFlowIndicator;
@@ -131,7 +131,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     					result = new JSONObject(jsonObject.toString());
     	        		String bSuccess = result.optString("success","");
     	        		
-    	        		Utils.Log("getJson bSuccess "+bSuccess);
+    	        		Utils.Log("getJson JSON_TYPE_BANNER bSuccess "+bSuccess);
     	        		
     	        		
     	        		//这个变量实际没什么用,图片下载已经用本地缓存来判断,如果文件名改变,会自动下载,否则用缓存的图片
@@ -143,6 +143,12 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     	        		
     	        		imageUrlList.clear();
     	        		linkUrlArray.clear();
+    	        		
+    	        		if(len == 0)
+    	        		{
+    	        			return;
+    	        		}
+    	        		
     	        		
     	        		for(int i =0;i<len;i++){
     	        		JSONObject obj = banners.getJSONObject(i);
@@ -180,6 +186,34 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         			try {
         			result = new JSONObject(jsonObject.toString());
         			Utils.Log("JsonControl.JSON_TYPE_NEWEST  result = "+result);
+        			String bSuccess = result.optString("success","");
+        			Utils.Log("getJson JSON_TYPE_NEWEST bSuccess = "+bSuccess);
+        			
+        			int count = Integer.parseInt(result.optString("count","0"));
+        			Utils.Log("getJson JSON_TYPE_NEWEST count = "+count);
+
+        			JSONArray shoplists = result.getJSONArray("shoplists");
+	        		int len = shoplists.length();
+	        		Utils.Log("getJson JSON_TYPE_NEWEST len = "+len);
+	        		if(len == 0)
+	        		{
+	        			return;
+	        		}
+	        		for(int i =0;i<len;i++){
+    	        		JSONObject obj = shoplists.getJSONObject(i);
+    	        		
+    	        		String title = obj.getString("title");
+    	        		String link = obj.getString("link");
+    	        		String img = obj.getString("img");
+    	        		
+    	        		imageUrlList.add(img);
+    	        		linkUrlArray.add(link);
+    	        		Utils.Log("getJson banners["+i+"].title = "+title);
+    	        		Utils.Log("getJson banners["+i+"].link = "+link);
+    	        		Utils.Log("getJson banners["+i+"].img = "+img);
+    	      
+    	        		}
+        			
         			} catch (JSONException e) {
     					// TODO Auto-generated catch block
     					e.printStackTrace();
@@ -288,7 +322,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     public View makeView() {   
         TextView textView = new TextView(mContext);   
         textView.setSingleLine(true);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
         textView.setTextColor(0xff222222);  
         textView.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
         return textView;   
@@ -297,11 +331,11 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     private void intiGoodsItems(View v) {
     	NoScroolGridView gridView = (NoScroolGridView) v.findViewById(R.id.gridview_recommend);
     	
-    	List<GoodsRecommandItem> hashMapList = new ArrayList<GoodsRecommandItem>();
+    	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
         //测试数据
         for (int i = 0; i < 8; i++) {
 
-            GoodsRecommandItem goodsRecommandItem = new GoodsRecommandItem();
+            GoodsProperty goodsRecommandItem = new GoodsProperty();
             goodsRecommandItem.setGoodsRecommandItem(mContext, "测试测    "+i+"   试测试", null, i*10, i*100, i*90,"价值:¥ 888.88");
             hashMapList.add(goodsRecommandItem);
 

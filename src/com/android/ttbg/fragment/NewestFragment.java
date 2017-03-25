@@ -18,7 +18,7 @@ import com.android.ttbg.R;
 import com.android.ttbg.adapter.AllGoodsContentsAdapter;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.adapter.NewestGoodsAdapter;
-import com.android.ttbg.view.GoodsRecommandItem;
+import com.android.ttbg.view.GoodsProperty;
 import com.android.ttbg.view.NoScroolGridView;
 import com.android.ttbg.view.PullToRefreshLayout;
 import com.android.ttbg.view.PullableGridView;
@@ -51,11 +51,11 @@ public class NewestFragment extends BaseFragment {
    	newestGridView = (PullableGridView) v.findViewById(R.id.gridview_newest);
 		ptrl = ((PullToRefreshLayout) v.findViewById(R.id.ptr_newest_refresh));
 		ptrl.setOnRefreshListener(new MyListener());
-    	List<GoodsRecommandItem> hashMapList = new ArrayList<GoodsRecommandItem>();
+    	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
         //测试数据
         for (int i = 0; i < 18; i++) {
 
-            GoodsRecommandItem goodsRecommandItem = new GoodsRecommandItem();
+            GoodsProperty goodsRecommandItem = new GoodsProperty();
             goodsRecommandItem.setGoodsRecommandItem(getActivity(), "测试测    "+i+"   试测试", null, i*10, i*100, i*90,"价值:¥ 888.88");
             hashMapList.add(goodsRecommandItem);
 

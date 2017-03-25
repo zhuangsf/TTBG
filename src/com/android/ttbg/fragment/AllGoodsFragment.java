@@ -24,7 +24,7 @@ import com.android.ttbg.adapter.AllGoodsContentsAdapter;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.tools.DataCleanManager;
 import com.android.ttbg.util.Utils;
-import com.android.ttbg.view.GoodsRecommandItem;
+import com.android.ttbg.view.GoodsProperty;
 import com.android.ttbg.view.PullToRefreshLayout;
 import com.android.ttbg.view.PullableListView;
 
@@ -56,11 +56,11 @@ public class AllGoodsFragment extends BaseFragment {
 	}
 	private void initContentListView()
 	{
-	   	List<GoodsRecommandItem> hashMapList = new ArrayList<GoodsRecommandItem>();
+	   	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
         //测试数据
         for (int i = 0; i < 8; i++) {
 
-            GoodsRecommandItem goodsRecommandItem = new GoodsRecommandItem();
+            GoodsProperty goodsRecommandItem = new GoodsProperty();
             goodsRecommandItem.setGoodsRecommandItem(getActivity(), "(第"+i+"云)红米4 16G 全网通 标准版 4G手机 只要一元啦 一元啦一元啦", null, i*10, i*100, i*90,"价值:¥ 888.88");
             hashMapList.add(goodsRecommandItem);
 

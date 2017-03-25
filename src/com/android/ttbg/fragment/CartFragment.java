@@ -12,7 +12,7 @@ import com.android.ttbg.R;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.adapter.HotRecommendAdapter;
 import com.android.ttbg.adapter.NewestGoodsAdapter;
-import com.android.ttbg.view.GoodsRecommandItem;
+import com.android.ttbg.view.GoodsProperty;
 import com.android.ttbg.view.NoScroolGridView;
 import com.android.ttbg.view.PullToRefreshLayout;
 
@@ -39,11 +39,11 @@ public class CartFragment extends BaseFragment {
 		// TODO Auto-generated method stub
     	NoScroolGridView gridView = (NoScroolGridView) v.findViewById(R.id.gridview_hot_recommend);
     	
-    	List<GoodsRecommandItem> hashMapList = new ArrayList<GoodsRecommandItem>();
+    	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
         //测试数据
         for (int i = 0; i < 8; i++) {
 
-            GoodsRecommandItem goodsRecommandItem = new GoodsRecommandItem();
+            GoodsProperty goodsRecommandItem = new GoodsProperty();
             goodsRecommandItem.setGoodsRecommandItem(getActivity(), "测试测    "+i+"   试测试,要两行啊要两行,这么多字够了吗", null, i*10, i*100, i*90,"价值:¥ 888.88");
             hashMapList.add(goodsRecommandItem);
 

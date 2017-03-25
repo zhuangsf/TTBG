@@ -7,7 +7,7 @@ import com.android.ttbg.adapter.AllGoodsContentsAdapter;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.adapter.HistoryContentsAdapter;
 import com.android.ttbg.adapter.ObtainGoodsAdapter;
-import com.android.ttbg.view.GoodsRecommandItem;
+import com.android.ttbg.view.GoodsProperty;
 import com.android.ttbg.view.HistoryItem;
 import com.android.ttbg.view.NoScroolGridView;
 import com.android.ttbg.view.ObtainGoodsItem;

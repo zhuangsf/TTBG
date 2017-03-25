@@ -12,20 +12,20 @@ import android.widget.TextView;
 
 import com.android.ttbg.R;
 import com.android.ttbg.util.Utils;
-import com.android.ttbg.view.GoodsRecommandItem;
+import com.android.ttbg.view.GoodsProperty;
 
 public class GoodsRecommendAdapter extends BaseAdapter
 {
     private Context mContext = null;
-    private List<GoodsRecommandItem> goodsRecommandItems = null;
+    private List<GoodsProperty> goodsRecommandItems = null;
 
-    public GoodsRecommendAdapter(Context context, List<GoodsRecommandItem> goodsRecommandItems)
+    public GoodsRecommendAdapter(Context context, List<GoodsProperty> goodsRecommandItems)
     {
         mContext = context;
         this.goodsRecommandItems = goodsRecommandItems;
     }
 
-    public void setData(List<GoodsRecommandItem> goodsRecommandItems)
+    public void setData(List<GoodsProperty> goodsRecommandItems)
     {
     	this.goodsRecommandItems = goodsRecommandItems;
     }
@@ -42,9 +42,9 @@ public class GoodsRecommendAdapter extends BaseAdapter
     }
 
     @Override
-    public GoodsRecommandItem getItem(int position)
+    public GoodsProperty getItem(int position)
     {
-    	GoodsRecommandItem item = null;
+    	GoodsProperty item = null;
 
         if (null != goodsRecommandItems)
         {
@@ -86,11 +86,11 @@ public class GoodsRecommendAdapter extends BaseAdapter
 
         // set item values to the viewHolder:
 
-        GoodsRecommandItem goodsRecommandItem = getItem(position);
+        GoodsProperty goodsRecommandItem = getItem(position);
         if (null != goodsRecommandItem)
         {
             viewHolder.imageView.setImageDrawable(goodsRecommandItem.getImageDrawable());
-            viewHolder.tv_goods_label.setText(goodsRecommandItem.getGoodsLable());
+            viewHolder.tv_goods_label.setText(goodsRecommandItem.getGoodsTitle());
             viewHolder.tv_participated_num.setText(goodsRecommandItem.getParticipatedNum()+"");
             viewHolder.tv_total_num.setText(goodsRecommandItem.getTotalNum()+"");
             viewHolder.tv_surplus_num.setText(goodsRecommandItem.getSurplusNum()+"");
