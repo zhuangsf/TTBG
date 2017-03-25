@@ -72,6 +72,10 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 	private ArrayList<String> imageUrlList = new ArrayList<String>();
 	ArrayList<String> linkUrlArray= new ArrayList<String>();
     
+	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();   //用于显示最新揭晓的数据
+	private int currentShowNewestID = 0;    //用于指示当前刷到哪个最新揭晓的数据
+	
+	
     private ImageView count1_image;
     private ImageView count2_image;
     private ImageView count3_image;
@@ -87,7 +91,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     private PopupMenu popupMenu;
     
     private static final int MSG_TEST_SWITCHER_TEST=0;
-
+    private static final int MSG_JSON_TYPE_NEWEST_UPDATE=1;
     private ImageView add_menus;
     
     private Handler mHandler= new Handler()
@@ -97,23 +101,63 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
    			switch (msg.what) {
    			case MSG_TEST_SWITCHER_TEST:
    			{
-   				if(switcher != null)
+   				GoodsProperty item;
+   				
+   				
+   				if(hashMapList.size() == 0)
+   				{
+   					switcher.setVisibility(View.INVISIBLE);
+   					
+   	   				Message new_msg = new Message();
+   	   				new_msg.what = MSG_TEST_SWITCHER_TEST;
+   	   				mHandler.sendMessageDelayed(new_msg, 2000);
+   					
+   					return;
+   				}
+   				
+   				switcher.setVisibility(View.VISIBLE);
+   				if(currentShowNewestID >= hashMapList.size())
+   		    	{
+   					currentShowNewestID = 0;
+   		    	}
+   				item = hashMapList.get(currentShowNewestID);
+   				if(hashMapList.size() > 0 && switcher != null)
    				{
    		            int fstart,fend;
    		            
-   		            String hintText = "恭喜你中了"+String.valueOf(new Random().nextInt())+"万元,得瑟去吧";
-   		            fstart="恭喜你中了".length();  
-   		            fend=("恭喜你中了"+String.valueOf(new Random().nextInt())).length(); 
+   		            String hintText = "恭喜"+item.getUsername()+"获得"+item.getGoodsTitle();
+   		            fstart="恭喜".length();  
+   		            fend=("恭喜"+item.getUsername()).length(); 
    		            SpannableStringBuilder style=new SpannableStringBuilder(hintText);     
    		            style.setSpan(new ForegroundColorSpan(0xffff7700),fstart,fend,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);   
-
+   		            fstart = ("恭喜"+item.getUsername()+"获得").length();
+   		            fend = hintText.length();
+   		            style.setSpan(new ForegroundColorSpan(0xffff7700),fstart,fend,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);   
    					switcher.setText(style);  
+   					
+   					currentShowNewestID ++;
    				}
+   				
+
+   				
    				Message new_msg = new Message();
    				new_msg.what = MSG_TEST_SWITCHER_TEST;
    				mHandler.sendMessageDelayed(new_msg, 2000);
    			}
    			break;
+   			
+       		case MSG_JSON_TYPE_NEWEST_UPDATE:
+       		{
+       			Utils.Log("MSG_JSON_TYPE_NEWEST_UPDATE ");
+       	        new Thread(new Runnable() {
+       				@Override
+       				public void run() {
+       					//读取最新揭晓
+       					JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getLotteryList/0/0/10/1", mHandler,JsonControl.JSON_TYPE_NEWEST);
+       				}
+       			}).start();
+       		}
+    			break;
    			case JsonControl.GET_SUCCESS_MSG:
    			{
             	JSONObject jsonObject=(JSONObject)msg.obj;
@@ -179,8 +223,6 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     				}
         		}
         			break;
-        			
-        			
         		case JsonControl.JSON_TYPE_NEWEST:
         		{
         			try {
@@ -199,21 +241,56 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 	        		{
 	        			return;
 	        		}
+	        		
+	        		hashMapList.clear();
+	        		
+	        		
+	        		//后续点击,把这个goodsItem传进去,就可以用于直接显示,不用再重新读网络
 	        		for(int i =0;i<len;i++){
+	        			
     	        		JSONObject obj = shoplists.getJSONObject(i);
-    	        		
+    	        		Utils.Log("getJson hashMapList["+i+"] = "+obj.toString());
+
+    	        		String id = obj.getString("id");
+    	        		String sid = obj.getString("sid");
     	        		String title = obj.getString("title");
-    	        		String link = obj.getString("link");
-    	        		String img = obj.getString("img");
+    	        		String title2 = obj.getString("title2");
+    	        		String qishu = obj.getString("qishu");
+    	        		String money = obj.getString("money");    	        		
+    	        		String yunjiage = obj.getString("yunjiage");
+    	        		String thumb = obj.getString("thumb");
+    	        		String q_end_time = obj.getString("q_end_time");
+    	        		String q_uid = obj.getString("q_uid");
+    	        		String username = obj.getString("username");
+    	        		String userphoto = obj.getString("userphoto");
+    	        		String q_buynum = obj.getString("q_buynum");
+    	        		String q_user_code = obj.getString("q_user_code");
     	        		
-    	        		imageUrlList.add(img);
-    	        		linkUrlArray.add(link);
-    	        		Utils.Log("getJson banners["+i+"].title = "+title);
-    	        		Utils.Log("getJson banners["+i+"].link = "+link);
-    	        		Utils.Log("getJson banners["+i+"].img = "+img);
+    	        		GoodsProperty goodsItem = new GoodsProperty();
+    	        		goodsItem.setId(id);
+    	        		goodsItem.setSid(sid);
+    	        		goodsItem.setTitle(title);
+    	        		goodsItem.setTitle2(title2);
+    	        		goodsItem.setQishu(qishu);
+    	        		goodsItem.setMoney(money);
+    	        		goodsItem.setYunjiage(yunjiage);
+    	        		goodsItem.setThumb(thumb);
+    	        		goodsItem.setQ_end_time(q_end_time);
+    	        		goodsItem.setQ_uid(q_uid);
+    	        		goodsItem.setUsername(username);
+    	        		goodsItem.setUserphoto(userphoto);
+    	        		goodsItem.setQ_buynum(q_buynum);
+    	        		goodsItem.setQ_user_code(q_user_code);
+    	                hashMapList.add(goodsItem);
     	      
     	        		}
-        			
+	        		//重新读取数据,归零
+	        		currentShowNewestID = 0; 
+	            	
+	        		Message msg1 = new Message();
+	        		msg1.what = MSG_TEST_SWITCHER_TEST;
+	        		mHandler.sendMessageDelayed(msg1, 15000);  //15秒刷新一下数组
+	        		
         			} catch (JSONException e) {
     					// TODO Auto-generated catch block
     					e.printStackTrace();

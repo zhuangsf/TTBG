@@ -18,18 +18,27 @@ public class GoodsProperty
     private int total_num;			//总人数
     private int surplus_num;		//剩余人数
     private String goods_price;     //	商品单价
-      
     
-    private String id;	//商品id
-	private String sid;	//	商品系列id
-    private String cateid;	//	分类id
-    private String title;	//	商品标题
-    private String title2;	//	商品标题2
-    private String qishu;	//	期数
-    private String money;	//	价值
-    private String thumb;	//	商品图片
-    private String brandid;	//	品牌id
-    private String brandname;	//	品牌名称
+    
+
+    private String id;   //	商品id
+    private String sid;   //	商品系列id
+    private String title;   //	商品标题
+    private String title2;   //	商品标题2
+    private String qishu;   //	期数
+    private String money;   //	价值
+    private String yunjiage;   //	商品单价
+    private String thumb;   //	商品图片
+    private String q_end_time;   //	商品揭晓时间
+    private String q_uid;   //	中奖用户id
+    private String username;   //	中奖用户名称
+    private String userphoto;   //	中奖用户头像
+    private String q_buynum;   //	中奖用户购买次数
+    private String q_user_code;   //	中奖用户中奖码
+
+
+
+    
     
     
     public String getId() {
@@ -48,12 +57,12 @@ public class GoodsProperty
 		this.sid = sid;
 	}
 
-	public String getCateid() {
-		return cateid;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setCateid(String cateid) {
-		this.cateid = cateid;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getTitle2() {
@@ -80,6 +89,13 @@ public class GoodsProperty
 		this.money = money;
 	}
 
+	public String getYunjiage() {
+		return yunjiage;
+	}
+
+	public void setYunjiage(String yunjiage) {
+		this.yunjiage = yunjiage;
+	}
 
 	public String getThumb() {
 		return thumb;
@@ -89,28 +105,55 @@ public class GoodsProperty
 		this.thumb = thumb;
 	}
 
-	public String getBrandid() {
-		return brandid;
+	public String getQ_end_time() {
+		return q_end_time;
 	}
 
-	public void setBrandid(String brandid) {
-		this.brandid = brandid;
+	public void setQ_end_time(String q_end_time) {
+		this.q_end_time = q_end_time;
 	}
 
-	public String getBrandname() {
-		return brandname;
+	public String getQ_uid() {
+		return q_uid;
 	}
 
-	public void setBrandname(String brandname) {
-		this.brandname = brandname;
+	public void setQ_uid(String q_uid) {
+		this.q_uid = q_uid;
 	}
 
+	public String getUsername() {
+		return username;
+	}
 
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    
-    
-    
-    public String getGoods_price() {
+	public String getUserphoto() {
+		return userphoto;
+	}
+
+	public void setUserphoto(String userphoto) {
+		this.userphoto = userphoto;
+	}
+
+	public String getQ_buynum() {
+		return q_buynum;
+	}
+
+	public void setQ_buynum(String q_buynum) {
+		this.q_buynum = q_buynum;
+	}
+
+	public String getQ_user_code() {
+		return q_user_code;
+	}
+
+	public void setQ_user_code(String q_user_code) {
+		this.q_user_code = q_user_code;
+	}
+
+	public String getGoods_price() {
 		return goods_price;
 	}
 
