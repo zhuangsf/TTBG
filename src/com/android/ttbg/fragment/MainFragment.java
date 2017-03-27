@@ -129,10 +129,10 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
    		            fstart="恭喜".length();  
    		            fend=("恭喜"+item.getUsername()).length(); 
    		            SpannableStringBuilder style=new SpannableStringBuilder(hintText);     
-   		            style.setSpan(new ForegroundColorSpan(0xffff7700),fstart,fend,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);   
+   		            style.setSpan(new ForegroundColorSpan(0xffaaaaaa),fstart,fend,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);   
    		            fstart = ("恭喜"+item.getUsername()+"获得").length();
    		            fend = hintText.length();
-   		            style.setSpan(new ForegroundColorSpan(0xffff7700),fstart,fend,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);   
+   		            style.setSpan(new ForegroundColorSpan(0xffaaaaaa),fstart,fend,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);   
    					switcher.setText(style);  
    					
    					currentShowNewestID ++;
@@ -156,6 +156,11 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
        					JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getLotteryList/0/0/10/1", mHandler,JsonControl.JSON_TYPE_NEWEST);
        				}
        			}).start();
+       	        
+       	        
+        		Message msg1 = new Message();
+        		msg1.what = MSG_JSON_TYPE_NEWEST_UPDATE;
+        		mHandler.sendMessageDelayed(msg1, 15000);  //15秒刷新一下数组
        		}
     			break;
    			case JsonControl.GET_SUCCESS_MSG:
@@ -288,7 +293,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 	        		currentShowNewestID = 0; 
 	            	
 	        		Message msg1 = new Message();
-	        		msg1.what = MSG_TEST_SWITCHER_TEST;
+	        		msg1.what = MSG_JSON_TYPE_NEWEST_UPDATE;
 	        		mHandler.sendMessageDelayed(msg1, 15000);  //15秒刷新一下数组
 	        		
         			} catch (JSONException e) {
@@ -400,7 +405,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         TextView textView = new TextView(mContext);   
         textView.setSingleLine(true);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
-        textView.setTextColor(0xff222222);  
+        textView.setTextColor(0xff666666);  
         textView.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
         return textView;   
     }  
