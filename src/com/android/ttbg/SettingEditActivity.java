@@ -82,6 +82,16 @@ public class SettingEditActivity extends Activity {
 		  //昵称的值
 		 tv_user_name = (TextView)findViewById(R.id.tv_setting_item_tips);
 		 updateUserName();
+		 
+		 
+		 //收货地址
+		 View item_edit_receive_address = (View)findViewById(R.id.item_edit_receive_address);
+		 item_edit_receive_address.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+					Intent intent = new Intent(SettingEditActivity.this, AddressManagerActivity.class);
+					startActivity(intent);
+		        }  
+		  }); 
 	}
 	
 	@Override
