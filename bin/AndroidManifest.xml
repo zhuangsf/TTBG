@@ -44,6 +44,7 @@
         <activity android:name=".SettingNameActivity" android:screenOrientation="portrait"/>
         <activity android:name=".WebViewActivity" android:screenOrientation="portrait"/>
         <activity android:name=".AddressManagerActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AddressEditActivity" android:screenOrientation="portrait"/>
         
         <activity 
             android:name=".SearchActivity"

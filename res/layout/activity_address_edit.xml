@@ -1,0 +1,117 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background_gray"
+    android:orientation="vertical"
+    android:padding="6dp" >
+ 
+          <!-- title -->
+
+        
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/titlebar_white" 
+        android:orientation="horizontal">
+     
+       <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:text="填写收货地址"
+    android:textColor="@color/crop__button_text"
+    android:textSize="@dimen/text_title" />
+       
+         <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/iconl_titlebacknormal" />
+         
+                <TextView
+                    android:id="@+id/title_finish"
+    android:layout_width="40dp"
+    android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+    android:text="保存"
+    android:textColor="@color/text_orange"
+    android:textSize="@dimen/text_title" />
+    </RelativeLayout>    
+
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <ScrollView android:id="@+id/scroll_edit_addr" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_tips_recriptor_name_error"
+                    android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                    android:background="@color/background_error_tip"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:padding="@dimen/padding_normal"
+                    android:text="@string/receipt_address_tips"
+                    android:textColor="@color/theme"
+                    android:textSize="@dimen/text_small"
+                 />
+
+      <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="0dp"  android:layout_weight="1" android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:gravity="center" android:background="@drawable/background_item_bottom_stroke_tran" android:paddingTop="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:paddingBottom="@dimen/padding_large" android:layout_height="@dimen/item_account" android:layout_marginLeft="@dimen/padding_large" android:text="@string/address_edit_receiptor"  />
+                <EditText android:layout_width="0dp"  android:layout_weight="3" android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:textColorHint="@color/hint_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@+id/et_address_name" android:background="@drawable/background_item_bottom_stroke_tran" android:padding="@dimen/padding_large" android:layout_height="@dimen/item_account" android:hint="@string/address_edit_receiptor_hint" android:maxLines="1" android:singleLine="true" android:maxLength="5" android:imeOptions="actionNext"  />
+             </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:layout_height="@dimen/item_account" android:layout_width="0dp"  android:layout_weight="1" android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:gravity="center" android:background="@drawable/background_item_bottom_stroke_tran" android:paddingTop="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:paddingBottom="@dimen/padding_large" android:layout_marginLeft="@dimen/padding_large" android:text="@string/address_edit_phone" />
+                <EditText   android:layout_weight="3" android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:textColorHint="@color/hint_color" android:gravity="center_vertical" android:id="@+id/et_address_phone" android:background="@drawable/background_item_bottom_stroke_tran" android:padding="@dimen/padding_large" android:layout_width="0.0dip" android:layout_height="@dimen/item_account" android:hint="@string/address_edit_phone_hint" android:maxLines="1" android:singleLine="true" android:maxLength="11" android:digits="\ 1324567890" android:editable="true" android:inputType="phone" android:imeOptions="actionNext" />
+              </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="0dp"  android:layout_weight="1" android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:gravity="center" android:background="@drawable/background_item_bottom_stroke_tran" android:paddingTop="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:paddingBottom="@dimen/padding_large" android:layout_height="@dimen/item_account" android:layout_marginLeft="@dimen/padding_large" android:text="@string/address_edit_area" />
+                <EditText  android:layout_weight="3" android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:textColorHint="@color/hint_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@+id/et_address_area" android:background="@drawable/background_item_bottom_stroke_tran" android:padding="@dimen/padding_large" android:focusable="false" android:layout_width="0.0dip" android:layout_height="@dimen/item_account" android:hint="@string/address_edit_area_hint" android:maxLines="2" android:editable="false" android:imeOptions="actionNext" />
+           </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="0dp"  android:layout_weight="1" android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:gravity="center" android:background="@drawable/background_item_bottom_stroke_tran" android:padding="@dimen/padding_large" android:layout_height="@dimen/item_account" android:text="@string/address_edit_addr"  />
+                <EditText  android:layout_height="@dimen/item_account" android:layout_weight="3" android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:textColorHint="@color/hint_color" android:gravity="center_vertical" android:id="@+id/et_address_addr" android:background="@drawable/background_item_bottom_stroke_tran" android:paddingLeft="@dimen/padding_large" android:paddingTop="14.0dip" android:paddingRight="@dimen/padding_large" android:paddingBottom="14.0dip" android:layout_width="0.0dip" android:minHeight="@dimen/item_account" android:hint="@string/address_edit_addr_hint" android:maxLength="30" android:editable="true" android:imeOptions="actionNext" />
+           </LinearLayout>
+         <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="0dp"  android:layout_weight="1"   android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:gravity="center" android:padding="@dimen/padding_large" android:layout_height="@dimen/item_account" android:text="@string/address_edit_zip" />
+                <EditText   android:layout_weight="3"    android:enabled="true" android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:textColorHint="@color/hint_color" android:gravity="center_vertical" android:id="@+id/et_address_zip" android:background="@null" android:padding="@dimen/padding_large" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="@dimen/item_account" android:hint="@string/address_edit_zip_hint" android:maxLines="1" android:singleLine="true" android:maxLength="6" android:editable="true" android:inputType="number" android:imeOptions="actionDone"  />
+  </LinearLayout>
+  
+         
+                             <LinearLayout android:orientation="horizontal" android:id="@+id/layout_edit_address_set_default" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="@dimen/item_account" android:layout_marginTop="@dimen/padding_large">
+                <TextView android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:layout_gravity="center_vertical" android:padding="@dimen/padding_large" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/address_edit_is_default" />
+  
+                             	        <ToggleButton
+	            android:id="@+id/sb_edit_address_set_default"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:background="@android:color/transparent"
+	            android:button="@drawable/toggle_btn"
+	            android:checked="false"
+	            android:text=""
+	            android:textOff=""
+	            android:textOn="" />
+                </LinearLayout>
+            <TextView android:textSize="@dimen/text_middle" android:textColor="@color/theme" android:gravity="center" android:id="@+id/tv_delete_address" android:background="@drawable/item_click_bg" android:layout_width="fill_parent" android:layout_height="@dimen/item_account" android:layout_marginTop="@dimen/padding_large" android:layout_marginBottom="@dimen/padding_large" android:text="@string/address_edit_delete_this" />
+        
+         
+        </LinearLayout>
+        
+ 
+    </ScrollView>
+</RelativeLayout>
+    
+
+
+
+
+</LinearLayout>

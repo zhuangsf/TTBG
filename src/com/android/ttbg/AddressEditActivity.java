@@ -10,11 +10,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class AddressManagerActivity extends Activity {
+public class AddressEditActivity extends Activity {
 	
     private ImageView  title_back;
 
@@ -22,7 +21,7 @@ public class AddressManagerActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_addressmanager);
+		setContentView(R.layout.activity_address_edit);
 		
 		
 		 title_back = (ImageView)findViewById(R.id.title_back);
@@ -31,15 +30,6 @@ public class AddressManagerActivity extends Activity {
 		        	finish();
 		        }  
 		  }); 
-		 
-		 TextView title_back = (TextView)findViewById(R.id.title_add_address);
-		 title_back.setOnClickListener(new View.OnClickListener() {  
-		        public void onClick(View v) {  
-					Intent intent = new Intent(AddressManagerActivity.this, AddressEditActivity.class);
-					startActivity(intent);
-		        }  
-		  }); 
-		 
 	}
 		 
 
