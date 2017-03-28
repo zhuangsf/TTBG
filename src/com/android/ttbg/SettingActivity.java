@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class SettingActivity extends Activity {
+public class SettingActivity extends ActivityPack {
 	
     private ImageView  title_back;
     private View item_setting_edit;

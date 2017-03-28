@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class AddressEditActivity extends Activity {
+public class AddressEditActivity extends ActivityPack {
 	
     private ImageView  title_back;
 

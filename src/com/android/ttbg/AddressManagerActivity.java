@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class AddressManagerActivity extends Activity {
+public class AddressManagerActivity extends ActivityPack {
 	
     private ImageView  title_back;
 

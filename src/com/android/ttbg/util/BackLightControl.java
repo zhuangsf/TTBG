@@ -9,7 +9,7 @@ import android.provider.Settings;
 
 public class BackLightControl {
 
-	private int getBrightNess(Context context) {
+	public int getBrightNess(Context context) {
 
 		int screenMode = -1;
 		int screenBrightness = -1;
@@ -34,14 +34,16 @@ public class BackLightControl {
     }
 	
 	
-    private void setBrightness(Window window,float brightness) {
-    	
-    	Utils.Log("setBrightness brightness = " + brightness);
-    	
-    	WindowManager.LayoutParams mParams = window.getAttributes();
-        mParams.screenBrightness = brightness;
-        window.setAttributes(mParams);
-    }
+	public static void setBrightness(Activity context, float brightness) {
+        WindowManager.LayoutParams lp = context.getWindow().getAttributes();
+        lp.screenBrightness = Float.valueOf(brightness) * (1f / 255f);
+        context.getWindow().setAttributes(lp);
+        
+        //保存当前值
+        OperatingSP.setFloat(context, OperatingSP.PREFERENCE_SETTING_LIGHT_SETTING_SEEKBAR, brightness);
+}
+	
+
 	
 	
 }

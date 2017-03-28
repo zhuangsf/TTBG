@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 
 
-public class MessageCenterActivity extends Activity {
+public class MessageCenterActivity extends ActivityPack {
 	
     private ImageView  title_back;
 

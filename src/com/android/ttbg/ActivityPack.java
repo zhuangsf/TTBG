@@ -12,6 +12,10 @@ public abstract class ActivityPack extends Activity {
 		super.onResume();
 	    //add for umeng
 		MobclickAgent.onResume(this);
+		
+		
+		
+		
 	}
 
 	@Override

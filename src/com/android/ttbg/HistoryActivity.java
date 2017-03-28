@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
-public class HistoryActivity extends Activity {
+public class HistoryActivity extends ActivityPack {
 	
     private ImageView  title_back;
 	private PullToRefreshLayout ptrl;

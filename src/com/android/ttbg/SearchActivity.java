@@ -38,7 +38,7 @@ import java.util.Map;
 import com.android.ttbg.util.Utils;
 
 
-public class SearchActivity extends Activity {
+public class SearchActivity extends ActivityPack {
 	private static final String TAG = "SearchActivity";
     private ImageView  title_back;
 

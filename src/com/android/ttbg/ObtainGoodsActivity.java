@@ -25,7 +25,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 
-public class ObtainGoodsActivity extends Activity {
+public class ObtainGoodsActivity extends ActivityPack {
 	
     private ImageView  title_back;
 	private ListView list_view;

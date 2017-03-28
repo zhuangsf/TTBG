@@ -19,7 +19,8 @@ public class OperatingSP {
 	public static final String PREFERENCE_SETTING_LIGHT_SETTING="LIGHT_SETTING";
 	public static final boolean PREFERENCE_SETTING_LIGHT_SETTING_DEFAULT=false;
 	
-	
+	public static final String PREFERENCE_SETTING_LIGHT_SETTING_SEEKBAR="SEEK_BAR_SETTING";
+	public static final float PREFERENCE_SETTING_LIGHT_SETTING_SEEKBAR_DEFAULT=100f;
 	
 	//首页广告条的更新时间
 	public static final String PREFERENCE_BANNER_LASTTIME="LAST_TIME";
@@ -132,6 +133,21 @@ public class OperatingSP {
         return retrunString;  
     }    
     
+    public static void setFloat(Context context,String key,float keyValue)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		PREFERENCE_NAME, Context.MODE_PRIVATE);  
+        Editor editor = sharedPreferences.edit();// 获取编辑器  
+        editor.putFloat(key, keyValue);  
+        editor.commit();// 提交修改  
+    }
     
+    public static float getFloat(Context context,String key,float keyValueDefault)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		PREFERENCE_NAME, Context.MODE_PRIVATE);  
+        float retrunfloat = sharedPreferences.getFloat(key, keyValueDefault);  
+        return retrunfloat;  
+    }    
     
 }  

@@ -3,6 +3,7 @@ package com.android.ttbg;
 
 import java.io.File;
 
+import com.android.ttbg.util.BackLightControl;
 import com.android.ttbg.util.FileUtil;
 import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.util.Utils;
@@ -28,9 +29,10 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class SettingEditActivity extends Activity {
+public class SettingEditActivity extends ActivityPack {
 	
     private ImageView  title_back;
     private LinearLayout mainLayout;
@@ -93,8 +95,25 @@ public class SettingEditActivity extends Activity {
 		        }  
 		  }); 
 		 
-		 
-		 
+		 SeekBar progress_setting_light = (SeekBar)findViewById(R.id.progress_setting_light);
+		 progress_setting_light.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+	            @Override
+	            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+	                    float brightness = progress / 100f;
+	                    BackLightControl.setBrightness(SettingEditActivity.this,brightness);
+
+	            }
+
+	            @Override
+	            public void onStartTrackingTouch(SeekBar seekBar) {
+
+	            }
+
+	            @Override
+	            public void onStopTrackingTouch(SeekBar seekBar) {
+
+	            }
+	        });
 		 
 	}
 	

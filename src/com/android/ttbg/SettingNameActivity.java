@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SettingNameActivity extends Activity {
+public class SettingNameActivity extends ActivityPack {
 	
     private ImageView  title_back;
     private TextView tv_finish;

@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class WebViewActivity extends Activity {
+public class WebViewActivity extends ActivityPack {
 	
     private ImageView  title_back;
 	private WebView webView;
