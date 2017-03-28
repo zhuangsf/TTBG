@@ -92,6 +92,10 @@ public class SettingEditActivity extends Activity {
 					startActivity(intent);
 		        }  
 		  }); 
+		 
+		 
+		 
+		 
 	}
 	
 	@Override
