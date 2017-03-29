@@ -139,16 +139,64 @@ public class SettingActivity extends ActivityPack {
 		 View item_setting_clear = (View)findViewById(R.id.item_setting_clear);
 		 item_setting_clear.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
-		        	showDialog();
+		        	showClearCacheDialog();
+		        }  
+		  }); 
+		 
+		 
+		 View item_setting_update = (View)findViewById(R.id.item_setting_update);
+		 item_setting_update.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+		        	showUpdateDialog();
 		        }  
 		  }); 
 		 
 		 
 	}
 	
+
+	public void showUpdateDialog(){         
+	       // AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.Translucent_NoTitle);  
+	        
+			mDialog = new Dialog(this, R.style.Translucent_NoTitle);
+	        LayoutInflater inflater = getLayoutInflater();  
+	        final View layout = inflater.inflate(R.layout.dialog_base, null);//获取自定义布局  
+
+	       // builder.setIcon(R.drawable.ic_launcher);//设置标题图标  
+	       // builder.setTitle(R.string.hello_world);//设置标题内容  
+	        //builder.setMessage("");//显示自定义布局内容  
+	          
+	        TextView tv_message = (TextView)layout.findViewById(R.id.stub_base_dialog);  
+	        tv_message.setText("已是最新版本啦!");
+	        
+	        Button button_cancel = (Button)layout.findViewById(R.id.btn_base_dialog_cancel);  
+	        button_cancel.setVisibility(View.GONE);
+
+	        Button button_ok = (Button)layout.findViewById(R.id.btn_base_dialog_measure);  
+	        button_ok.setOnClickListener(new OnClickListener() {  
+	              
+	            @Override  
+	            public void onClick(View arg0) {  
+	                // TODO Auto-generated method stub  
+	            	mDialog.dismiss();
+	            }  
+	        });  
+
+	        mDialog.setContentView(layout);  
+	        mDialog.show();  
+	        
+	        WindowManager m = getWindowManager();  
+	        Display display = m.getDefaultDisplay();  //为获取屏幕宽、高  
+	        android.view.WindowManager.LayoutParams p = mDialog.getWindow().getAttributes();  //获取对话框当前的参数值  
+	        //p.height = (int) (display.getHeight() * 0.3);   //高度设置为屏幕的0.3
+	        p.width = (int) (display.getWidth() * 0.8);    //宽度设置为屏幕的0.5 
+	        mDialog.getWindow().setAttributes(p);     //设置生效  
+	        
+	     }  
 	
 	
-	public void showDialog(){         
+	
+	public void showClearCacheDialog(){         
        // AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.Translucent_NoTitle);  
         
 		mDialog = new Dialog(this, R.style.Translucent_NoTitle);
