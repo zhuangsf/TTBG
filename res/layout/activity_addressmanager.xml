@@ -70,6 +70,7 @@
     android:textSize="@dimen/text_small" />
 
                                 <Button
+                                    android:id="@+id/button_address_add"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"

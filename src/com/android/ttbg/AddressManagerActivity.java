@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,6 +35,16 @@ public class AddressManagerActivity extends ActivityPack {
 		 
 		 TextView title_back = (TextView)findViewById(R.id.title_add_address);
 		 title_back.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+					Intent intent = new Intent(AddressManagerActivity.this, AddressEditActivity.class);
+					startActivity(intent);
+		        }  
+		  }); 
+		 
+		 
+		 
+		 Button button_address_add = (Button)findViewById(R.id.button_address_add);
+		 button_address_add.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
 					Intent intent = new Intent(AddressManagerActivity.this, AddressEditActivity.class);
 					startActivity(intent);
