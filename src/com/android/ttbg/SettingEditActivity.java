@@ -95,25 +95,7 @@ public class SettingEditActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
-		 SeekBar progress_setting_light = (SeekBar)findViewById(R.id.progress_setting_light);
-		 progress_setting_light.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-	            @Override
-	            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-	                    float brightness = progress / 100f;
-	                    BackLightControl.setBrightness(SettingEditActivity.this,brightness);
 
-	            }
-
-	            @Override
-	            public void onStartTrackingTouch(SeekBar seekBar) {
-
-	            }
-
-	            @Override
-	            public void onStopTrackingTouch(SeekBar seekBar) {
-
-	            }
-	        });
 		 
 	}
 	

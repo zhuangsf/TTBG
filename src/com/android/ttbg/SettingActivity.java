@@ -2,6 +2,7 @@ package com.android.ttbg;
 
 
 
+import com.android.ttbg.util.BackLightControl;
 import com.android.ttbg.util.OperatingSP;
 
 import android.app.Activity;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
@@ -73,6 +75,32 @@ public class SettingActivity extends ActivityPack {
 					 }
 				}
 		 });
+		 
+		 
+		 SeekBar progress_setting_light = (SeekBar)findViewById(R.id.progress_setting_light);
+		 int currentBrightness = BackLightControl.getBrightNess(SettingActivity.this);
+		 progress_setting_light.setMax(255);
+		 progress_setting_light.setProgress(currentBrightness);
+		 
+		 progress_setting_light.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+	            @Override
+	            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+	                    int brightness = progress;
+	                    BackLightControl.setBrightness(SettingActivity.this,brightness);
+
+	            }
+
+	            @Override
+	            public void onStartTrackingTouch(SeekBar seekBar) {
+
+	            }
+
+	            @Override
+	            public void onStopTrackingTouch(SeekBar seekBar) {
+
+	            }
+	        });
+		 
 	}
 	
 	

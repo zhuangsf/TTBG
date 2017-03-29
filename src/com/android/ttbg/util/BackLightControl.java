@@ -1,15 +1,18 @@
 package com.android.ttbg.util;
 
+import com.android.ttbg.BuildConfig;
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.os.Build;
 import android.provider.Settings;
 
 public class BackLightControl {
 
-	public int getBrightNess(Context context) {
+	public static int getBrightNess(Context context) {
 
 		int screenMode = -1;
 		int screenBrightness = -1;
@@ -34,13 +37,30 @@ public class BackLightControl {
     }
 	
 	
-	public static void setBrightness(Activity context, float brightness) {
-        WindowManager.LayoutParams lp = context.getWindow().getAttributes();
-        lp.screenBrightness = Float.valueOf(brightness) * (1f / 255f);
-        context.getWindow().setAttributes(lp);
+	 /**
+     * @param mode 1:自动调节亮度，0为手动调节亮度
+     *             需要 <uses-permission android:name="android.permission.WRITE_SETTINGS" />”权限
+     */
+    private static void setBrightnessMode(Context context ,int mode) {
+        Settings.System.putInt(context.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE, mode);
+    }
+	
+	
+	public static void setBrightness(Activity context, int brightness) {
         
-        //保存当前值
-        OperatingSP.setFloat(context, OperatingSP.PREFERENCE_SETTING_LIGHT_SETTING_SEEKBAR, brightness);
+		if(brightness < 1)
+		{
+			brightness = 1;
+		}
+		else if(brightness > 255)
+		{
+			brightness = 254;
+		}
+		
+        setBrightnessMode(context,0);
+        
+        Settings.System.putInt(context.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, brightness);
+        
 }
 	
 
