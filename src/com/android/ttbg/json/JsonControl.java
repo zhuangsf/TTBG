@@ -37,7 +37,7 @@ public class JsonControl {
 	
 	  @SuppressWarnings("deprecation")
 	public static void httpGet(String url,Handler mHandler,int jsonType) {
-		Utils.Log(" xxxxxxxxxxxxxxxxxxxxx http httpGet url:"+url);
+		Utils.Log("http httpGet url:"+url);
 			HttpGet httpGet = new HttpGet(url);
 			try {
 				HttpClient httpClinet = new DefaultHttpClient();
@@ -45,7 +45,7 @@ public class JsonControl {
 				HttpEntity entity = httpResponse.getEntity();
 				if (entity != null) {
 					Utils.Log(" httpGet status " + httpResponse.getStatusLine());
-					Utils.Log(" xxxxxxxxxxxxxxxxxxxxx http httpGet start output 2");
+					Utils.Log(" http httpGet start output 2");
 					String result=EntityUtils.toString(entity, "UTF-8");
 					// 下面这种方式写法更简单，可是没换行。
 					Utils.Log("httpGet 2" + result);

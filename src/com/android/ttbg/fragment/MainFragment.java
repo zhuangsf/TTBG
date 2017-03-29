@@ -149,18 +149,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
        		case MSG_JSON_TYPE_NEWEST_UPDATE:
        		{
        			Utils.Log("MSG_JSON_TYPE_NEWEST_UPDATE ");
-       	        new Thread(new Runnable() {
-       				@Override
-       				public void run() {
-       					//读取最新揭晓
-       					JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getLotteryList/0/0/10/1", mHandler,JsonControl.JSON_TYPE_NEWEST);
-       				}
-       			}).start();
-       	        
-       	        
-        		Message msg1 = new Message();
-        		msg1.what = MSG_JSON_TYPE_NEWEST_UPDATE;
-        		mHandler.sendMessageDelayed(msg1, 15000);  //15秒刷新一下数组
+       			new Thread(runnable).start();	
        		}
     			break;
    			case JsonControl.GET_SUCCESS_MSG:
@@ -233,6 +222,15 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         			try {
         			result = new JSONObject(jsonObject.toString());
         			Utils.Log("JsonControl.JSON_TYPE_NEWEST  result = "+result);
+        			
+        			if(result.toString().contains("连接不成功"))
+        			{
+    	        		Message msg1 = new Message();
+    	        		msg1.what = MSG_JSON_TYPE_NEWEST_UPDATE;
+    	        		mHandler.sendMessageDelayed(msg1, 15000);  //15秒刷新一下数组
+        				return;
+        			}
+        			
         			String bSuccess = result.optString("success","");
         			Utils.Log("getJson JSON_TYPE_NEWEST bSuccess = "+bSuccess);
         			
@@ -381,18 +379,21 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 		msg.what = MSG_TEST_SWITCHER_TEST;
 		mHandler.sendMessageDelayed(msg, 2000);
 		
-		
-        new Thread(new Runnable() {
-			@Override
-			public void run() {
-				//读取最新揭晓
-				JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getLotteryList/0/0/10/1", mHandler,JsonControl.JSON_TYPE_NEWEST);
-			}
-		}).start();
+		new Thread(runnable).start();		
 		
     }
     
-    
+	Runnable runnable = new Runnable(){
+		  @Override
+		  public void run() {
+		    //
+		    // TODO: http request.
+		    //
+			JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getLotteryList/0/0/10/1", mHandler,JsonControl.JSON_TYPE_NEWEST);
+		  }
+	};
+	
+	
     @Override  
     public void onStop()
     {
