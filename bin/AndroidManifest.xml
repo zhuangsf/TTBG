@@ -45,18 +45,13 @@
         <activity android:name=".WebViewActivity" android:screenOrientation="portrait"/>
         <activity android:name=".AddressManagerActivity" android:screenOrientation="portrait"/>
         <activity android:name=".AddressEditActivity" android:screenOrientation="portrait"/>
-        
-        <activity 
-            android:name=".SearchActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" >
-        </activity>
+        <activity android:name=".AboutUsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SearchActivity" android:exported="false" android:screenOrientation="portrait" />
+
 
         <activity android:name=".LauncherActivity" 
         android:screenOrientation="portrait"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
-        
-        
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>       
          <meta-data android:value="58bcd23fc62dca07710011e0" android:name="UMENG_APPKEY"></meta-data>
          <meta-data android:value="TTBG_Common" android:name="UMENG_CHANNEL"/>
     </application>

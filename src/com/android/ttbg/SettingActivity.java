@@ -50,7 +50,7 @@ public class SettingActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
-
+		 //编辑个人资料
 		 View item_setting_edit = (View)findViewById(R.id.item_setting_edit);
 		 item_setting_edit.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
@@ -59,6 +59,8 @@ public class SettingActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
+		 
+		//亮度调节
 		 rly_setting_light = (View)findViewById(R.id.rly_setting_light);
 		 boolean bOn = OperatingSP.getLightSetting(SettingActivity.this);
 		 
@@ -91,6 +93,7 @@ public class SettingActivity extends ActivityPack {
 		 });
 		 
 		 
+		//亮度进度条调节
 		 SeekBar progress_setting_light = (SeekBar)findViewById(R.id.progress_setting_light);
 		 int currentBrightness = BackLightControl.getBrightNess(SettingActivity.this);
 		 progress_setting_light.setMax(255);
@@ -116,19 +119,8 @@ public class SettingActivity extends ActivityPack {
 	        });
 		 
 		 
-		 item_setting_edit = (View)findViewById(R.id.item_setting_edit);
-		 item_setting_edit.setOnClickListener(new View.OnClickListener() {  
-		        public void onClick(View v) {  
-					Intent intent = new Intent(SettingActivity.this, SettingEditActivity.class);
-					startActivity(intent);
-		        }  
-		  }); 
-		 
-		 
-		 
-		 
+		 //设置缓存数值大小
 		 tv_account_item_tips = (TextView)findViewById(R.id.tv_account_item_tips);
-		 
 		 try{
 			 tv_account_item_tips.setText(DataCleanManager.getCacheSize(SettingActivity.this));
 		 }catch (Exception e) {  
@@ -136,6 +128,7 @@ public class SettingActivity extends ActivityPack {
              e.printStackTrace();  
          }  
 		 
+		 //清除缓存功能
 		 View item_setting_clear = (View)findViewById(R.id.item_setting_clear);
 		 item_setting_clear.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
@@ -143,7 +136,7 @@ public class SettingActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
-		 
+		 //版本更新
 		 View item_setting_update = (View)findViewById(R.id.item_setting_update);
 		 item_setting_update.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
@@ -151,6 +144,14 @@ public class SettingActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
+		 //关于我们菜单
+		 View item_setting_about = (View)findViewById(R.id.item_setting_about);
+		 item_setting_about.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+					Intent intent = new Intent(SettingActivity.this, AboutUsActivity.class);
+					startActivity(intent);
+		        }  
+		  });
 		 
 	}
 	
