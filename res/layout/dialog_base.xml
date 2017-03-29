@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@+id/layout_root"  android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/dialog_im_bg">
+    <TextView android:textSize="@dimen/text_large" android:textColor="@color/text_black" android:text="text" android:id="@+id/stub_base_dialog" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingTop="18.0dip" android:paddingBottom="18.0dip" android:gravity="center"/>
+    <LinearLayout android:orientation="horizontal" android:id="@+id/layout_confirm_dialog_button" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" >
+        <Button android:textSize="@dimen/text_middle" android:textColor="@color/text_black" android:id="@+id/btn_base_dialog_cancel" android:background="@null" android:padding="@dimen/padding_xlarge" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/cancel" android:layout_weight="1.0" />
+        <Button android:textSize="@dimen/text_middle" android:textColor="@color/text_orange" android:id="@+id/btn_base_dialog_measure" android:background="@drawable/background_dialog_button_right" android:padding="@dimen/padding_xlarge" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/measure" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

@@ -202,8 +202,8 @@ public class DataCleanManager {
     }  
       
       
-    public static String getCacheSize(File file) throws Exception {  
-        return getFormatSize(getFolderSize(file));  
+    public static String getCacheSize(Context context) throws Exception {  
+        return getFormatSize(getFolderSize(context.getCacheDir()));  
     }  
       
 }  

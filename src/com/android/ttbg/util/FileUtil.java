@@ -47,7 +47,7 @@ public class FileUtil {
 		try {
 			String suffix = "";
 			if (filePath == null || filePath.trim().length() == 0) {
-				filePath = Environment.getExternalStorageDirectory() + "/8CUP/" + dateFolder + "/";
+				filePath = Environment.getExternalStorageDirectory() + "/TTBG/" + dateFolder + "/";
 			}
 			File file = new File(filePath);
 			if (!file.exists()) {
