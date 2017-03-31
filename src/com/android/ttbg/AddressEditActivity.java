@@ -13,12 +13,15 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.google.gson.Gson;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.InputType;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -229,8 +232,14 @@ public class AddressEditActivity extends ActivityPack {
 		 mHandler.sendEmptyMessage(MSG_LOAD_DATA);
 		 
 		 EditText et_address_area = (EditText)findViewById(R.id.et_address_area);
+		 et_address_area.setInputType(InputType.TYPE_NULL);
+		 InputMethodManager imm=(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		 imm.hideSoftInputFromWindow(et_address_area.getWindowToken(),0); 
 		 et_address_area.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
+		        	InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		        	 
+		        	inputMethodManager.hideSoftInputFromWindow(AddressEditActivity.this.getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
 		        	if (isLoaded){
 	                    ShowPickerView();
 	                }else {
