@@ -56,7 +56,9 @@ public class AddressEditActivity extends ActivityPack {
     private EditText et_address_area;
     private EditText et_address_addr;
     private EditText et_address_zip;
-    
+    private TextView tv_delete_address;
+    private Boolean bEdit;
+    private Boolean isOnlyOne;
     private TextView tv_tips_recriptor_name_error;
     
     private ToggleButton sb_edit_address_set_default;
@@ -208,6 +210,8 @@ public class AddressEditActivity extends ActivityPack {
 	    Bundle bundle = getIntent().getExtras();
 	    if(bundle!=null){
 	    	sharePreferenceID = bundle.getInt("sharePreferenceID",-1);
+	    	bEdit = bundle.getBoolean("EditMode",false);
+	    	isOnlyOne = bundle.getBoolean("OnlyOne",false);
 	    }
 	    else{
 	    	finish();
@@ -297,6 +301,24 @@ public class AddressEditActivity extends ActivityPack {
 				}
 		 });
 		 //如果只有1个地址时,删除的按钮跟设置为默认的按钮都清空
+		 tv_delete_address = (TextView)findViewById(R.id.tv_delete_address);
+		 if(bEdit)
+		 {
+			 tv_delete_address.setVisibility(View.GONE);
+		 }
+		 else
+		 {
+			 tv_delete_address.setVisibility(View.VISIBLE);
+		 }
+		 
+		 if(isOnlyOne)
+		 {
+			 sb_edit_address_set_default.setVisibility(View.GONE);
+		 }
+		 else
+		 {
+			 sb_edit_address_set_default.setVisibility(View.VISIBLE);
+		 }
 	}
 		 
 
@@ -335,7 +357,14 @@ public class AddressEditActivity extends ActivityPack {
 		OperatingSP.setString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_AREA+sharePreferenceID, et_address_area.getText().toString());
 		OperatingSP.setString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_ADDRESS+sharePreferenceID, et_address_addr.getText().toString());
 		OperatingSP.setString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_CODE+sharePreferenceID, et_address_zip.getText().toString());
-		OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+sharePreferenceID, sb_edit_address_set_default.isChecked());
+		if(isOnlyOne)
+		{
+		    OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+sharePreferenceID, true);
+		}
+		else
+		{
+			OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+sharePreferenceID, sb_edit_address_set_default.isChecked());
+		}
 		OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_ACTIVE+sharePreferenceID, true);
 	}  
 	
