@@ -25,6 +25,17 @@ public class OperatingSP {
 	//首页广告条的更新时间
 	public static final String PREFERENCE_BANNER_LASTTIME="LAST_TIME";
 	public static final String PREFERENCE_BANNER_LASTTIME_DEFAULT="";
+	
+	
+	//收货人信息
+	public static final String PREFERENCE_ADDRESS_NAME="ADDRESS_NAME";
+	public static final String PREFERENCE_ADDRESS_PHONE="ADDRESS_PHONE";
+	public static final String PREFERENCE_ADDRESS_AREA="ADDRESS_AREA";
+	public static final String PREFERENCE_ADDRESS_ADDRESS="ADDRESS_ADDRESS";
+	public static final String PREFERENCE_ADDRESS_CODE="ADDRESS_CODE";
+	public static final String PREFERENCE_ADDRESS_DEFAULT="ADDRESS_DEFAULT";
+	public static final String PREFERENCE_ADDRESS_ACTIVE="ADDRESS_ACTIVE";   //用于表示在数组里是否可用
+
     /**  
      * <pre>  
      * 基本功能：保存启动标识到SharedPreferences  

@@ -33,8 +33,8 @@ public class AddressManagerActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
-		 TextView title_back = (TextView)findViewById(R.id.title_add_address);
-		 title_back.setOnClickListener(new View.OnClickListener() {  
+		 TextView title_add_address = (TextView)findViewById(R.id.title_add_address);
+		 title_add_address.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
 					Intent intent = new Intent(AddressManagerActivity.this, AddressEditActivity.class);
 					startActivity(intent);
@@ -47,6 +47,9 @@ public class AddressManagerActivity extends ActivityPack {
 		 button_address_add.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
 					Intent intent = new Intent(AddressManagerActivity.this, AddressEditActivity.class);
+					
+			        intent.putExtra("sharePreferenceID", 1);     //先默认是1,后续要改
+					
 					startActivity(intent);
 		        }  
 		  }); 

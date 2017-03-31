@@ -47,7 +47,7 @@ public class AddressEditActivity extends ActivityPack {
 
     private boolean isLoaded = false;
 	
-	
+	private int sharePreferenceID = -1;   //-1 或者 >3 则异常
 	
     private ImageView  title_back;
     private TextView  title_save;
@@ -68,7 +68,7 @@ public class AddressEditActivity extends ActivityPack {
                 case MSG_LOAD_DATA:
                     if (thread==null){//如果已创建就不再重新创建子线程了
 
-                        Toast.makeText(AddressEditActivity.this,"开始解析数据",Toast.LENGTH_SHORT).show();
+                     //   Toast.makeText(AddressEditActivity.this,"开始解析数据",Toast.LENGTH_SHORT).show();
                         thread = new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -81,12 +81,12 @@ public class AddressEditActivity extends ActivityPack {
                     break;
 
                 case MSG_LOAD_SUCCESS:
-                    Toast.makeText(AddressEditActivity.this,"解析数据成功",Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(AddressEditActivity.this,"解析数据成功",Toast.LENGTH_SHORT).show();
                     isLoaded = true;
                     break;
 
                 case MSG_LOAD_FAILED:
-                    Toast.makeText(AddressEditActivity.this,"解析数据失败",Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(AddressEditActivity.this,"解析数据失败",Toast.LENGTH_SHORT).show();
                     break;
 
             }
@@ -205,6 +205,21 @@ public class AddressEditActivity extends ActivityPack {
 		setContentView(R.layout.activity_address_edit);
 		
 		
+	    Bundle bundle = getIntent().getExtras();
+	    if(bundle!=null){
+	    	sharePreferenceID = bundle.getInt("sharePreferenceID",-1);
+	    }
+	    else{
+	    	finish();
+	    	return;
+	    }
+		
+	    if(sharePreferenceID == -1 || sharePreferenceID > 3)
+	    {
+	    	finish();
+	    	return;
+	    }
+	    
 		 title_back = (ImageView)findViewById(R.id.title_back);
 		 title_back.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
@@ -223,19 +238,23 @@ public class AddressEditActivity extends ActivityPack {
 
 		  }); 
 		 
-		 
 		 et_address_name = (EditText)findViewById(R.id.et_address_name);
+		 et_address_name.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_NAME+sharePreferenceID, ""));
 		 et_address_phone = (EditText)findViewById(R.id.et_address_phone);
+		 et_address_phone.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_PHONE+sharePreferenceID, ""));
 		 et_address_area = (EditText)findViewById(R.id.et_address_area);
+		 et_address_area.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_AREA+sharePreferenceID, ""));
 		 et_address_addr = (EditText)findViewById(R.id.et_address_addr);
+		 et_address_addr.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_ADDRESS+sharePreferenceID, ""));
 		 et_address_zip = (EditText)findViewById(R.id.et_address_zip);
+		 et_address_zip.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_CODE+sharePreferenceID, ""));
 		 tv_tips_recriptor_name_error = (TextView)findViewById(R.id.tv_tips_recriptor_name_error);
 		 tv_tips_recriptor_name_error.setVisibility(View.GONE);
 		 
 		 
 		 mHandler.sendEmptyMessage(MSG_LOAD_DATA);
 		 
-		 EditText et_address_area = (EditText)findViewById(R.id.et_address_area);
+
 		 et_address_area.setInputType(InputType.TYPE_NULL);
 		 InputMethodManager imm=(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		 imm.hideSoftInputFromWindow(et_address_area.getWindowToken(),0); 
@@ -254,6 +273,29 @@ public class AddressEditActivity extends ActivityPack {
 
 		  }); 
 		 
+		 sb_edit_address_set_default = (ToggleButton)findViewById(R.id.sb_edit_address_set_default);
+		 sb_edit_address_set_default.setChecked(OperatingSP.getBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+sharePreferenceID,false));
+		 sb_edit_address_set_default.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView,
+						boolean isChecked) {
+					// TODO Auto-generated method stub
+					//OperatingSP.setLightSetting(SettingActivity.this,isChecked);
+					OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+0,false);
+					OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+1,false);
+					OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+2,false);
+					OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+3,false);
+					 if(isChecked)
+					 {
+						 OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+sharePreferenceID,true);
+					 }
+					 else
+					 {
+						 OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+sharePreferenceID,false);
+					 }
+				}
+		 });
 		 //如果只有1个地址时,删除的按钮跟设置为默认的按钮都清空
 	}
 		 
@@ -282,7 +324,19 @@ public class AddressEditActivity extends ActivityPack {
 		{
 			Toast.makeText(AddressEditActivity.this, "邮编格式错误", 2000).show();
 			return;
+		}else if(et_address_area.getText().toString().length() == 0)
+		{
+			Toast.makeText(AddressEditActivity.this, "请选择所在地区", 2000).show();
+			return;
 		}
+		
+		OperatingSP.setString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_NAME+sharePreferenceID, et_address_name.getText().toString());
+		OperatingSP.setString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_PHONE+sharePreferenceID, et_address_phone.getText().toString());
+		OperatingSP.setString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_AREA+sharePreferenceID, et_address_area.getText().toString());
+		OperatingSP.setString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_ADDRESS+sharePreferenceID, et_address_addr.getText().toString());
+		OperatingSP.setString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_CODE+sharePreferenceID, et_address_zip.getText().toString());
+		OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+sharePreferenceID, sb_edit_address_set_default.isChecked());
+		OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_ACTIVE+sharePreferenceID, true);
 	}  
 	
 	
