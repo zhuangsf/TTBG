@@ -103,15 +103,19 @@ public class AddressEditActivity extends ActivityPack {
                         options2Items.get(options1).get(options2)+
                         options3Items.get(options1).get(options2).get(options3);
 
-                Toast.makeText(AddressEditActivity.this,tx,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AddressEditActivity.this,tx,Toast.LENGTH_SHORT).show();
+                et_address_area.setText(tx);
+                
             }
         })
 
-                .setTitleText("城市选择")
+                .setTitleText("所在地区")
+                .setSubmitColor(0xffff7700)
+                .setCancelColor(0xff999999)
                 .setDividerColor(Color.BLACK)
                 .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
-                .setContentTextSize(20)
-                .setOutSideCancelable(false)// default is true
+                .setContentTextSize(18)
+                .setOutSideCancelable(true)// default is true
                 .build();
 
         /*pvOptions.setPicker(options1Items);//一级选择器
