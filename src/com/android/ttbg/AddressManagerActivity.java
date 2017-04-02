@@ -50,7 +50,13 @@ public class AddressManagerActivity extends ActivityPack {
 		 title_add_address.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
 					Intent intent = new Intent(AddressManagerActivity.this, AddressEditActivity.class);
-					intent.putExtra("sharePreferenceID", 2);     //先默认是1,后续要改
+					
+					int emptyShareIndex = getEmptyShareIndex();
+					if(emptyShareIndex != -1)
+			        {	
+						intent.putExtra("sharePreferenceID", emptyShareIndex);    
+			        }
+					
 					startActivity(intent);
 		        }  
 		  }); 
@@ -62,7 +68,11 @@ public class AddressManagerActivity extends ActivityPack {
 		        public void onClick(View v) {  
 					Intent intent = new Intent(AddressManagerActivity.this, AddressEditActivity.class);
 					
-			        intent.putExtra("sharePreferenceID", 2);     //先默认是1,后续要改
+					int emptyShareIndex = getEmptyShareIndex();
+					if(emptyShareIndex != -1)
+			        {	
+						intent.putExtra("sharePreferenceID", emptyShareIndex);    
+			        }
 					
 					startActivity(intent);
 		        }  
@@ -91,6 +101,17 @@ public class AddressManagerActivity extends ActivityPack {
 	        addressManagerAdapter = new AddressManagerAdapter(AddressManagerActivity.this, hashMapList);
 	        list_view.setAdapter(addressManagerAdapter);
 
+	}
+	
+	private int getEmptyShareIndex()
+	{
+		for (int i = 0; i < MAX_ADDRESS_COUNT; i++) {
+			if(OperatingSP.getBoolean(AddressManagerActivity.this, OperatingSP.PREFERENCE_ADDRESS_ACTIVE+i, OperatingSP.PREFERENCE_ADDRESS_ACTIVE_DEFAULT) == false)
+			{
+				return i;
+			}
+		}
+		return -1;//-1表示4个满了
 	}
 		 
 	private void reflashListView()

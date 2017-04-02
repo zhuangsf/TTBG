@@ -2,6 +2,7 @@ package com.android.ttbg.adapter;
 
 import java.util.List;
 
+import com.android.ttbg.AddressEditActivity;
 import com.android.ttbg.AddressManagerActivity;
 import com.android.ttbg.R;
 import com.android.ttbg.R.color;
@@ -13,6 +14,7 @@ import com.android.ttbg.view.GoodsProperty;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -156,6 +158,32 @@ public class AddressManagerAdapter extends BaseAdapter {
             viewHolder.edit.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
 		        	
+		        	int activeCountIndex = 0;
+			        for (int i = 0; i < AddressManagerActivity.MAX_ADDRESS_COUNT; i++) {
+		        	
+			        	if(OperatingSP.getBoolean(mContext, OperatingSP.PREFERENCE_ADDRESS_ACTIVE+i,OperatingSP.PREFERENCE_ADDRESS_ACTIVE_DEFAULT))
+			        	{
+			        		
+			        		//怎么知道点击了哪个?
+			        		if(activeCountIndex == position)
+			        		{
+								Intent intent = new Intent(mContext, AddressEditActivity.class);
+								intent.putExtra("sharePreferenceID", i);     //先默认是1,后续要改
+								intent.putExtra("EditMode", true);     //先默认是1,后续要改
+								mContext.startActivity(intent);
+			        			return;
+			        		}
+			        		activeCountIndex++;
+			        	}
+			        	
+			        }
+		        	
+		        	
+		        
+		        	
+		        	
+		        	
+
 
 		        }
             });

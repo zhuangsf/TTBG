@@ -13,6 +13,7 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.google.gson.Gson;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,8 +21,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.InputType;
+import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -58,11 +64,11 @@ public class AddressEditActivity extends ActivityPack {
     private EditText et_address_zip;
     private TextView tv_delete_address;
     private Boolean bEdit = false;
-    private Boolean isOnlyOne = true;
+    private Boolean isOnlyOne = true; //用来控制是否要显示设为默认
     private TextView tv_tips_recriptor_name_error;
-    
+	private Dialog mDialog;
     private ToggleButton sb_edit_address_set_default;
-    
+    private View layout_edit_address_set_default;
     
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -211,7 +217,7 @@ public class AddressEditActivity extends ActivityPack {
 	    if(bundle!=null){
 	    	sharePreferenceID = bundle.getInt("sharePreferenceID",-1);
 	    	bEdit = bundle.getBoolean("EditMode",false);
-	    	isOnlyOne = bundle.getBoolean("OnlyOne",false);
+	    	//isOnlyOne = bundle.getBoolean("OnlyOne",false);
 	    }
 	    else{
 	    	finish();
@@ -223,6 +229,14 @@ public class AddressEditActivity extends ActivityPack {
 	    	finish();
 	    	return;
 	    }
+	    
+	    if(getActiveShareCount() > 1 || (getActiveShareCount() == 1 && !bEdit) )
+	    {
+	    	isOnlyOne = false;
+	    }
+	    
+
+	    
 	    
 		 title_back = (ImageView)findViewById(R.id.title_back);
 		 title_back.setOnClickListener(new View.OnClickListener() {  
@@ -243,17 +257,22 @@ public class AddressEditActivity extends ActivityPack {
 		  }); 
 		 
 		 et_address_name = (EditText)findViewById(R.id.et_address_name);
-		 et_address_name.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_NAME+sharePreferenceID, ""));
 		 et_address_phone = (EditText)findViewById(R.id.et_address_phone);
-		 et_address_phone.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_PHONE+sharePreferenceID, ""));
 		 et_address_area = (EditText)findViewById(R.id.et_address_area);
-		 et_address_area.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_AREA+sharePreferenceID, ""));
 		 et_address_addr = (EditText)findViewById(R.id.et_address_addr);
-		 et_address_addr.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_ADDRESS+sharePreferenceID, ""));
 		 et_address_zip = (EditText)findViewById(R.id.et_address_zip);
-		 et_address_zip.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_CODE+sharePreferenceID, ""));
+		 
 		 tv_tips_recriptor_name_error = (TextView)findViewById(R.id.tv_tips_recriptor_name_error);
 		 tv_tips_recriptor_name_error.setVisibility(View.GONE);
+		 
+		 if(bEdit)
+		 {
+			 et_address_name.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_NAME+sharePreferenceID, ""));
+			 et_address_phone.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_PHONE+sharePreferenceID, ""));
+			 et_address_area.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_AREA+sharePreferenceID, ""));
+			 et_address_addr.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_ADDRESS+sharePreferenceID, ""));
+			 et_address_zip.setText(OperatingSP.getString(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_CODE+sharePreferenceID, ""));
+		 }
 		 
 		 
 		 mHandler.sendEmptyMessage(MSG_LOAD_DATA);
@@ -302,25 +321,98 @@ public class AddressEditActivity extends ActivityPack {
 		 });
 		 //如果只有1个地址时,删除的按钮跟设置为默认的按钮都清空
 		 tv_delete_address = (TextView)findViewById(R.id.tv_delete_address);
+		 tv_delete_address.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+		        	showDeleteDialog(sharePreferenceID);
+		        	return;
+		        }
+
+
+		  }); 
+		 layout_edit_address_set_default = (View)findViewById(R.id.layout_edit_address_set_default);
 		 if(bEdit)
 		 {
+			 //编辑的时候,删除按钮可见
+			 tv_delete_address.setVisibility(View.VISIBLE);
+		 }
+		 else
+		 {
+			 tv_delete_address.setVisibility(View.GONE);
+		 }
+
+		 if(isOnlyOne)
+		 {
+			 layout_edit_address_set_default.setVisibility(View.GONE);
 			 tv_delete_address.setVisibility(View.GONE);
 		 }
 		 else
 		 {
-			 tv_delete_address.setVisibility(View.VISIBLE);
+			 layout_edit_address_set_default.setVisibility(View.VISIBLE);
+		 }
+		 //如果是默认地址,则不可删除
+		 if(OperatingSP.getBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+sharePreferenceID,false))
+		 {
+			 layout_edit_address_set_default.setVisibility(View.GONE);
+			 tv_delete_address.setVisibility(View.GONE);
 		 }
 		 
-		 if(isOnlyOne)
-		 {
-			 sb_edit_address_set_default.setVisibility(View.GONE);
-		 }
-		 else
-		 {
-			 sb_edit_address_set_default.setVisibility(View.VISIBLE);
-		 }
+		 
 	}
-		 
+	public void showDeleteDialog(final int indexInSharePerference){         
+	       // AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.Translucent_NoTitle);  
+	        
+			mDialog = new Dialog(AddressEditActivity.this, R.style.Translucent_NoTitle);
+	        LayoutInflater inflater = getLayoutInflater();  
+	        final View layout = inflater.inflate(R.layout.dialog_base, null);//获取自定义布局  
+	          
+	        TextView tv_message = (TextView)layout.findViewById(R.id.stub_base_dialog);  
+	        tv_message.setText("确认删除?");
+	        
+	        Button button_cancel = (Button)layout.findViewById(R.id.btn_base_dialog_cancel);  
+	        button_cancel.setOnClickListener(new OnClickListener() {  
+	            @Override  
+	            public void onClick(View arg0) {  
+	                // TODO Auto-generated method stub  
+	            	mDialog.dismiss();
+	            }  
+	        });     
+
+	        Button button_ok = (Button)layout.findViewById(R.id.btn_base_dialog_measure);  
+	        button_ok.setOnClickListener(new OnClickListener() {  
+	              
+	            @Override  
+	            public void onClick(View arg0) {  
+	                // TODO Auto-generated method stub  
+	            	
+              	mDialog.dismiss();
+	            	OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_ACTIVE+indexInSharePerference,false);
+	            	finish();
+	            }  
+	        });  
+
+	        mDialog.setContentView(layout);  
+	        mDialog.show();  
+	        
+	        WindowManager m = getWindowManager();  
+	        Display display = m.getDefaultDisplay();  //为获取屏幕宽、高  
+	        android.view.WindowManager.LayoutParams p = mDialog.getWindow().getAttributes();  //获取对话框当前的参数值  
+	        //p.height = (int) (display.getHeight() * 0.3);   //高度设置为屏幕的0.3
+	        p.width = (int) (display.getWidth() * 0.8);    //宽度设置为屏幕的0.5 
+	        mDialog.getWindow().setAttributes(p);     //设置生效  
+	        
+	     }   
+	
+	private int getActiveShareCount()
+	{
+		int activityCount = 0;
+		for (int i = 0; i < AddressManagerActivity.MAX_ADDRESS_COUNT; i++) {
+			if(OperatingSP.getBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_ACTIVE+i, OperatingSP.PREFERENCE_ADDRESS_ACTIVE_DEFAULT) == true)
+			{
+				activityCount++;
+			}
+		}
+		return activityCount;//-1表示4个满了
+	}
 
 	private void checkAndSave() {
 		// TODO Auto-generated method stub
