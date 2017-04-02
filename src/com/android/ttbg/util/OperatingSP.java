@@ -34,7 +34,9 @@ public class OperatingSP {
 	public static final String PREFERENCE_ADDRESS_ADDRESS="ADDRESS_ADDRESS";
 	public static final String PREFERENCE_ADDRESS_CODE="ADDRESS_CODE";
 	public static final String PREFERENCE_ADDRESS_DEFAULT="ADDRESS_DEFAULT";
+	public static final boolean PREFERENCE_ADDRESS_DEFAULT_BSET=false;
 	public static final String PREFERENCE_ADDRESS_ACTIVE="ADDRESS_ACTIVE";   //用于表示在数组里是否可用
+	public static final boolean PREFERENCE_ADDRESS_ACTIVE_DEFAULT=false;
 
     /**  
      * <pre>  

@@ -83,7 +83,6 @@ public class AllGoodsContentsAdapter extends BaseAdapter {
         // set item values to the viewHolder:
 
         GoodsProperty goodsRecommandItem = getItem(position);
-        Utils.Log("goodsRecommandItem = "+goodsRecommandItem);
         if (null != goodsRecommandItem)
         {
             viewHolder.imageView.setImageDrawable(goodsRecommandItem.getImageDrawable());

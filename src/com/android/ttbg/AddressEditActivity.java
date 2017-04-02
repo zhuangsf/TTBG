@@ -57,8 +57,8 @@ public class AddressEditActivity extends ActivityPack {
     private EditText et_address_addr;
     private EditText et_address_zip;
     private TextView tv_delete_address;
-    private Boolean bEdit;
-    private Boolean isOnlyOne;
+    private Boolean bEdit = false;
+    private Boolean isOnlyOne = true;
     private TextView tv_tips_recriptor_name_error;
     
     private ToggleButton sb_edit_address_set_default;
@@ -101,8 +101,8 @@ public class AddressEditActivity extends ActivityPack {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
                 //返回的分别是三个级别的选中位置
-                String tx = options1Items.get(options1).getPickerViewText()+
-                        options2Items.get(options1).get(options2)+
+                String tx = options1Items.get(options1).getPickerViewText()+" "+
+                        options2Items.get(options1).get(options2)+" "+
                         options3Items.get(options1).get(options2).get(options3);
 
                 //Toast.makeText(AddressEditActivity.this,tx,Toast.LENGTH_SHORT).show();
@@ -366,6 +366,11 @@ public class AddressEditActivity extends ActivityPack {
 			OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_DEFAULT+sharePreferenceID, sb_edit_address_set_default.isChecked());
 		}
 		OperatingSP.setBoolean(AddressEditActivity.this, OperatingSP.PREFERENCE_ADDRESS_ACTIVE+sharePreferenceID, true);
+		
+		
+		finish();
+		//todo  这边还要加个上传服务器的操作
+		
 	}  
 	
 	
