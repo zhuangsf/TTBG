@@ -8,7 +8,29 @@
         <TextView android:text="12324" android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:gravity="center_vertical" android:id="@+id/tv_my_address_detail" android:paddingBottom="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_little" android:layout_below="@id/tv_my_address_name" android:layout_alignLeft="@id/tv_my_address_name" android:layout_alignRight="@id/tv_my_address_phone" />
     </RelativeLayout>
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="38.0dip">
-        <TextView android:textSize="@dimen/text_little" android:textColor="@color/text_gray" android:gravity="center" android:id="@+id/tv_my_address_check" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/my_address_set_default" android:drawableLeft="@drawable/check_box_agreement_nochecked" android:drawablePadding="@dimen/padding_normal" android:layout_alignParentLeft="true" />
+
+        <RelativeLayout android:id="@+id/rl_check_defult" android:layout_alignParentLeft="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView
+            android:id="@+id/iv_check_defult"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/check_box_agreement_nochecked" />
+
+        <TextView
+            android:id="@+id/tv_my_address_check"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/iv_check_defult"
+            android:gravity="center"
+            android:paddingLeft="4dp"
+            android:text="@string/my_address_set_default"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_little" />
+        </RelativeLayout>
         <TextView android:textSize="@dimen/text_little" android:gravity="center" android:id="@+id/tv_my_address_delete" android:paddingLeft="@dimen/padding_little" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/delete" android:drawableLeft="@drawable/delete_my_address" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
         <TextView android:textSize="@dimen/text_little" android:gravity="center" android:id="@+id/tv_my_address_edit" android:paddingRight="@dimen/padding_little" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/edit" android:drawableLeft="@drawable/edit_my_address" android:layout_toLeftOf="@id/tv_my_address_delete" android:layout_centerVertical="true" />
     </RelativeLayout>

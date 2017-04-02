@@ -15,6 +15,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -30,7 +32,7 @@ public class AddressManagerActivity extends ActivityPack {
     
     private View empty_view_address;
     private AddressManagerAdapter addressManagerAdapter;
-    private final int MAX_ADDRESS_COUNT = 4;
+    public final static int MAX_ADDRESS_COUNT = 4;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,8 +89,8 @@ public class AddressManagerActivity extends ActivityPack {
 	        }
 	        
 	        addressManagerAdapter = new AddressManagerAdapter(AddressManagerActivity.this, hashMapList);
-
 	        list_view.setAdapter(addressManagerAdapter);
+
 	}
 		 
 	private void reflashListView()
