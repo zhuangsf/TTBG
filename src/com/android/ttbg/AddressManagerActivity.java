@@ -31,8 +31,10 @@ public class AddressManagerActivity extends ActivityPack {
     private ListView list_view;
     
     private View empty_view_address;
+    private TextView max_count_hint;
     private AddressManagerAdapter addressManagerAdapter;
     public final static int MAX_ADDRESS_COUNT = 4;
+    TextView title_add_address;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,7 +48,15 @@ public class AddressManagerActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
-		 TextView title_add_address = (TextView)findViewById(R.id.title_add_address);
+		 title_add_address = (TextView)findViewById(R.id.title_add_address);
+		 if(getEmptyShareIndex() == -1)
+		 {
+			 title_add_address.setTextColor(0xff999999);
+		 }
+		 else
+		 {
+			 title_add_address.setTextColor(0xffff7700); 
+		 }
 		 title_add_address.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
 					Intent intent = new Intent(AddressManagerActivity.this, AddressEditActivity.class);
@@ -56,6 +66,9 @@ public class AddressManagerActivity extends ActivityPack {
 			        {	
 						intent.putExtra("sharePreferenceID", emptyShareIndex);    
 			        }
+					else{
+						return;
+					}
 					
 					startActivity(intent);
 		        }  
@@ -78,6 +91,7 @@ public class AddressManagerActivity extends ActivityPack {
 		        }  
 		  }); 
 		 empty_view_address = (View)findViewById(R.id.empty_view_address);
+		 max_count_hint = (TextView)findViewById(R.id.max_count_hint);
 		 list_view = ((ListView) findViewById(R.id.lv_address));
 		 List<AddressItem> hashMapList = new ArrayList<AddressItem>();
 	        //最多4个地址
@@ -144,17 +158,26 @@ public class AddressManagerActivity extends ActivityPack {
 	protected void onResume() {
 		super.onResume();
 
+		 if(getEmptyShareIndex() == -1)
+		 {
+			 title_add_address.setTextColor(0xff999999);
+		 }
+		 else
+		 {
+			 title_add_address.setTextColor(0xffff7700); 
+		 }
 		
 		if(checkEmptyAddress())
 		{
 			list_view.setVisibility(View.GONE);
 			empty_view_address.setVisibility(View.VISIBLE);
+			max_count_hint.setVisibility(View.GONE);
 		}
 		else
 		{
 			list_view.setVisibility(View.VISIBLE);
 			empty_view_address.setVisibility(View.GONE);
-			
+			max_count_hint.setVisibility(View.VISIBLE);
 			reflashListView();
 		}
 		

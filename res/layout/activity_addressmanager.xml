@@ -47,8 +47,18 @@
     
     </RelativeLayout>    
      
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-    <ListView android:id="@+id/lv_address" android:paddingTop="@dimen/padding_normal" android:visibility="gone" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@android:color/transparent" android:dividerHeight="@dimen/padding_normal" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <ListView android:id="@+id/lv_address" android:paddingTop="@dimen/padding_normal" android:visibility="gone" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@android:color/transparent" android:dividerHeight="@dimen/padding_normal" />
+
+                <TextView
+                    android:id="@+id/max_count_hint"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="top|center"
+                    android:paddingTop="10dp"
+                    android:text="最多可增加4个收货地址"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_small" />
 
 <LinearLayout android:orientation="vertical" android:paddingTop="130dp" android:id="@+id/empty_view_address" android:layout_width="fill_parent" android:layout_height="fill_parent">
 
