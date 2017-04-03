@@ -8,6 +8,7 @@ import com.android.ttbg.util.FileUtil;
 import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.SelectPicPopupWindow;
+import com.android.ttbg.view.SelectSexPopupWindow;
 
 
 
@@ -41,12 +42,15 @@ public class SettingEditActivity extends ActivityPack {
 	private static final int REQUESTCODE_TAKE = 1; // 相机拍照标记
 	private static final int REQUESTCODE_CUTTING = 2; // 图片裁切标记
 	private SelectPicPopupWindow menuWindow; // 自定义的头像编辑弹出框
+	private SelectSexPopupWindow menuWindow_sex; // 自定义的头像编辑弹出框
 	private static final String IMAGE_FILE_NAME = "avatarImage.jpg";// 头像文件名称
 	private static final String IMAGE_FILE_NAME_CROP = "avatarImage_crop.jpg";// 头像文件名称
 	private String urlpath; // 图片本地路径
 	
 	private ImageView userHead;
 	private TextView tv_user_name;
+	
+	private TextView tv_setting_item_tips5;  //显示性别的信息
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -95,7 +99,16 @@ public class SettingEditActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
-
+		 View item_edit_sex = (View)findViewById(R.id.item_edit_sex);
+		 tv_setting_item_tips5 = (TextView)findViewById(R.id.tv_setting_item_tips5);
+		 tv_setting_item_tips5.setText( OperatingSP.getString(SettingEditActivity.this,OperatingSP.PREFERENCE_SETTING_SEX,OperatingSP.PREFERENCE_SETTING_SEX_DEFAULT));
+		
+		 item_edit_sex.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+					menuWindow_sex = new SelectSexPopupWindow(SettingEditActivity.this, itemsOnClick);
+					menuWindow_sex.showAtLocation(mainLayout, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+		        }  
+		  }); 
 		 
 	}
 	
@@ -259,7 +272,16 @@ public class SettingEditActivity extends ActivityPack {
 	private OnClickListener itemsOnClick = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			menuWindow.dismiss();
+			if(menuWindow != null)
+			{
+				menuWindow.dismiss();
+			}
+			if(menuWindow_sex != null)
+			{
+				menuWindow_sex.dismiss();
+			}
+			
+					
 			switch (v.getId()) {
 			// 拍照
 			case R.id.takePhotoBtn:
@@ -277,6 +299,18 @@ public class SettingEditActivity extends ActivityPack {
 				// 如果朋友们要限制上传到服务器的图片类型时可以直接写如："image/jpeg 、 image/png等的类型"
 				pickIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
 				startActivityForResult(pickIntent, REQUESTCODE_PICK);
+				break;
+			case R.id.sex_man:
+				tv_setting_item_tips5.setText("男");
+				OperatingSP.setString(SettingEditActivity.this,OperatingSP.PREFERENCE_SETTING_SEX,"男");
+				break;
+			case R.id.sex_women:
+				tv_setting_item_tips5.setText("女");
+				OperatingSP.setString(SettingEditActivity.this,OperatingSP.PREFERENCE_SETTING_SEX,"女");
+				break;
+			case R.id.sex_unknow:
+				tv_setting_item_tips5.setText("保密");
+				OperatingSP.setString(SettingEditActivity.this,OperatingSP.PREFERENCE_SETTING_SEX,"保密");
 				break;
 			default:
 				break;

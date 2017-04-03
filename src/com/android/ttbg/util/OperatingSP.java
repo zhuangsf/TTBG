@@ -15,6 +15,9 @@ public class OperatingSP {
 	
 	//个人资料里用户名称
 	public static final String PREFERENCE_SETTING_USER_NAME="USER_NAME";
+	//性别信息
+	public static final String PREFERENCE_SETTING_SEX="SEX";
+	public static final String PREFERENCE_SETTING_SEX_DEFAULT="保密";
 	//设置里亮度调节
 	public static final String PREFERENCE_SETTING_LIGHT_SETTING="LIGHT_SETTING";
 	public static final boolean PREFERENCE_SETTING_LIGHT_SETTING_DEFAULT=false;
@@ -37,6 +40,8 @@ public class OperatingSP {
 	public static final boolean PREFERENCE_ADDRESS_DEFAULT_BSET=false;
 	public static final String PREFERENCE_ADDRESS_ACTIVE="ADDRESS_ACTIVE";   //用于表示在数组里是否可用
 	public static final boolean PREFERENCE_ADDRESS_ACTIVE_DEFAULT=false;
+	
+
 
     /**  
      * <pre>  

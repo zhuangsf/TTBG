@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#312E3F"
+        android:background="#00000000"
         android:gravity="center_horizontal"
         android:orientation="vertical" >
 
@@ -21,27 +21,37 @@
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
             android:layout_marginTop="10dp"
-            android:background="#373447"
+            android:background="@drawable/ll_customer_selector"
             android:padding="10dp"
             android:text="拍照"
-            android:textColor="#CEC9E7"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <View            
+             android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+           android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@color/very_light_gray"
+            />
         <Button
             android:id="@+id/pickPhotoBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
-            android:layout_marginTop="5dp"
-            android:background="#373447"
+            android:background="@drawable/ll_customer_selector"
             android:padding="10dp"
             android:text="从相册选择"
-            android:textColor="#CEC9E7"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
-
+        <View            
+             android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#00000000"
+            />
         <Button
             android:id="@+id/cancelBtn"
             android:layout_width="match_parent"
@@ -49,11 +59,10 @@
             android:layout_marginBottom="15dip"
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
-            android:layout_marginTop="20dp"
-            android:background="@android:color/white"
+            android:background="@drawable/ll_customer_selector"
             android:padding="10dp"
             android:text="取消"
-            android:textColor="#373447"
+            android:textColor="#ff5ecbff"
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>

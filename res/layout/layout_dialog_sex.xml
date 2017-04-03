@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#00000000"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/sex_man"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ll_customer_selector"
+            android:padding="10dp"
+            android:text="男"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View            
+             android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+           android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@color/very_light_gray"
+            />
+        <Button
+            android:id="@+id/sex_women"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/ll_customer_selector"
+            android:padding="10dp"
+            android:text="女"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+         <View            
+             android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+           android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@color/very_light_gray"
+            />
+        <Button
+            android:id="@+id/sex_unknow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/ll_customer_selector"
+            android:padding="10dp"
+            android:text="保密"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />       
+        
+        
+        <View            
+             android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#00000000"
+            />
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/ll_customer_selector"
+            android:padding="10dp"
+            android:text="取消"
+            android:textColor="#ff5ecbff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>
