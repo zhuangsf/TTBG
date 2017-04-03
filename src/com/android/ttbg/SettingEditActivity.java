@@ -69,6 +69,8 @@ public class SettingEditActivity extends ActivityPack {
 	private TextView tv_setting_item_tips7; //QQ
 	private TextView tv_setting_item_tips8; //现居地
 	private TextView tv_setting_item_tips9;//家乡
+	private TextView tv_setting_signature;//个人签名
+	
 	private TextView tv_setting_item_tips5;  //显示性别的信息
 	private TextView tv_setting_item_tips6;//显示生日
 	
@@ -106,16 +108,17 @@ public class SettingEditActivity extends ActivityPack {
 		 
 		 
 		 View item_setting_edit = (View)findViewById(R.id.item_edit_name);
+		  //昵称的值
+		 tv_user_name = (TextView)findViewById(R.id.tv_setting_item_tips);
+		 tv_user_name.setText(OperatingSP.getUserName(SettingEditActivity.this));
 		 item_setting_edit.setOnClickListener(new View.OnClickListener() {  
 		        public void onClick(View v) {  
 					Intent intent = new Intent(SettingEditActivity.this, SettingNameActivity.class);
 					startActivity(intent);
 		        }  
 		  }); 
-		  //昵称的值
-		 tv_user_name = (TextView)findViewById(R.id.tv_setting_item_tips);
-		 updateUserName();
-		 
+
+ 
 		 
 		 //收货地址
 		 View item_edit_receive_address = (View)findViewById(R.id.item_edit_receive_address);
@@ -253,7 +256,16 @@ public class SettingEditActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
-		 
+		 //个性签名
+		 View layout_item_edit_signature = (View)findViewById(R.id.layout_item_edit_signature);
+		 tv_setting_signature = (TextView)findViewById(R.id.tv_setting_signature);
+		 tv_setting_signature.setText(OperatingSP.getString(SettingEditActivity.this, OperatingSP.PREFERENCE_SETTING_SIGNATURE  ,OperatingSP.PREFERENCE_SETTING_SIGNATURE_DEFAULT));
+		 layout_item_edit_signature.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+					Intent intent = new Intent(SettingEditActivity.this, SettingSignature.class);
+					startActivity(intent);
+		        }  
+		  });  
 		 
 	}
 	
@@ -398,26 +410,29 @@ public class SettingEditActivity extends ActivityPack {
     public void onResume() {
         super.onResume();
         
-        updateUserName();
-        updateQQ();
+        updateData();
+
     }
-	private void updateUserName()
+	private void updateData()
 	{
 		if(tv_user_name != null)
 		{
 			String user_name = OperatingSP.getUserName(SettingEditActivity.this);
 			tv_user_name.setText(user_name);
 		}
-	}
-	
-	private void updateQQ()
-	{
 		if(tv_setting_item_tips7 != null)
 		{
 			String qq = OperatingSP.getString(SettingEditActivity.this, OperatingSP.PREFERENCE_SETTING_QQ  ,OperatingSP.PREFERENCE_SETTING_QQ_DEFAULT);
 			tv_setting_item_tips7.setText(qq);
 		}
+		if(tv_setting_signature != null)
+		{
+			String signature = OperatingSP.getString(SettingEditActivity.this, OperatingSP.PREFERENCE_SETTING_SIGNATURE,OperatingSP.PREFERENCE_SETTING_SIGNATURE_DEFAULT);
+			tv_setting_signature.setText(signature);
+		}
 	}
+	
+
 	private void updateUserHead(Drawable drawable)
 	{
 		if(userHead != null)

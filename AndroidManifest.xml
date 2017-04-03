@@ -48,6 +48,7 @@
         <activity android:name=".AddressEditActivity" android:screenOrientation="portrait"/>
         <activity android:name=".AboutUsActivity" android:screenOrientation="portrait"/>
         <activity android:name=".SettingQQActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SettingSignature" android:screenOrientation="portrait"/>
         
         <activity android:name=".SearchActivity" android:exported="false" android:screenOrientation="portrait" />
 

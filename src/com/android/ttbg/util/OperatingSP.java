@@ -24,6 +24,9 @@ public class OperatingSP {
 	//QQ
 	public static final String PREFERENCE_SETTING_QQ="QQ";
 	public static final String PREFERENCE_SETTING_QQ_DEFAULT="";
+	//个性签名
+	public static final String PREFERENCE_SETTING_SIGNATURE="SIGNATURE";
+	public static final String PREFERENCE_SETTING_SIGNATURE_DEFAULT="";
 	//现居地
 	public static final String PREFERENCE_SETTING_LIVE="LIVE";
 	public static final String PREFERENCE_SETTING_LIVE_DEFAULT="";

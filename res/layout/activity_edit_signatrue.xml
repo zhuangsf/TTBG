@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="top"
+    android:background="@color/background_gray"
+    android:orientation="vertical" >
+ 
+          <!-- title -->
+
+        
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/titlebar_white" 
+        android:orientation="horizontal">
+     
+       <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:text="QQ"
+    android:textColor="@color/crop__button_text"
+    android:textSize="@dimen/text_title" />
+       
+         <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/iconl_titlebacknormal" />
+         
+                <TextView
+                    android:id="@+id/title_finish"
+    android:layout_width="40dp"
+    android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+    android:text="完成"
+    android:textColor="@color/text_orange"
+    android:textSize="@dimen/text_title" />
+         
+         
+         
+    </RelativeLayout>     
+    
+       <EditText
+           android:id="@+id/edt_edit_input"
+           style="@style/EditText.Setting"
+           android:layout_width="fill_parent"
+           android:layout_height="100dp"
+           android:layout_gravity="top"
+           android:gravity="top"
+           android:hint="个性签名"
+           android:maxLength="60" />
+
+</LinearLayout>
