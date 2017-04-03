@@ -18,6 +18,9 @@ public class OperatingSP {
 	//性别信息
 	public static final String PREFERENCE_SETTING_SEX="SEX";
 	public static final String PREFERENCE_SETTING_SEX_DEFAULT="保密";
+	//生日
+	public static final String PREFERENCE_SETTING_BIRTHDAY="BIRTHDAY";
+	public static final String PREFERENCE_SETTING_BIRTHDAY_DEFAULT="";
 	//设置里亮度调节
 	public static final String PREFERENCE_SETTING_LIGHT_SETTING="LIGHT_SETTING";
 	public static final boolean PREFERENCE_SETTING_LIGHT_SETTING_DEFAULT=false;

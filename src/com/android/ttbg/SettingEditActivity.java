@@ -2,6 +2,8 @@ package com.android.ttbg;
 
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.android.ttbg.util.BackLightControl;
 import com.android.ttbg.util.FileUtil;
@@ -9,6 +11,8 @@ import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.SelectPicPopupWindow;
 import com.android.ttbg.view.SelectSexPopupWindow;
+import com.bigkoo.pickerview.OptionsPickerView;
+import com.bigkoo.pickerview.TimePickerView;
 
 
 
@@ -18,6 +22,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -32,6 +37,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SettingEditActivity extends ActivityPack {
 	
@@ -51,6 +57,7 @@ public class SettingEditActivity extends ActivityPack {
 	private TextView tv_user_name;
 	
 	private TextView tv_setting_item_tips5;  //显示性别的信息
+	private TextView tv_setting_item_tips6;//显示生日
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -99,6 +106,8 @@ public class SettingEditActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
+		 
+		 //性别信息编辑
 		 View item_edit_sex = (View)findViewById(R.id.item_edit_sex);
 		 tv_setting_item_tips5 = (TextView)findViewById(R.id.tv_setting_item_tips5);
 		 tv_setting_item_tips5.setText( OperatingSP.getString(SettingEditActivity.this,OperatingSP.PREFERENCE_SETTING_SEX,OperatingSP.PREFERENCE_SETTING_SEX_DEFAULT));
@@ -110,7 +119,57 @@ public class SettingEditActivity extends ActivityPack {
 		        }  
 		  }); 
 		 
+		 
+		//生日信息编辑
+		 View item_edit_birthday = (View)findViewById(R.id.item_edit_birthday);
+		 tv_setting_item_tips6 = (TextView)findViewById(R.id.tv_setting_item_tips6);
+		 tv_setting_item_tips6.setText( OperatingSP.getString(SettingEditActivity.this,OperatingSP.PREFERENCE_SETTING_BIRTHDAY,OperatingSP.PREFERENCE_SETTING_BIRTHDAY_DEFAULT));
+		
+		 item_edit_birthday.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+		        	if(OperatingSP.getString(SettingEditActivity.this,OperatingSP.PREFERENCE_SETTING_BIRTHDAY,OperatingSP.PREFERENCE_SETTING_BIRTHDAY_DEFAULT).equals(OperatingSP.PREFERENCE_SETTING_BIRTHDAY_DEFAULT))
+		        	{
+		        		ShowTimePickerView();
+		        	}
+		        	else
+		        	{
+		        		Toast.makeText(SettingEditActivity.this, "一年内只能修改一次", 2000).show();
+		        	}
+		        }  
+		  }); 
 	}
+	
+    private void ShowTimePickerView() {// 弹出选择器
+
+    	TimePickerView  timePickerView = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date,View v) {//选中事件回调
+             String dataString = getTime(date);
+    		 tv_setting_item_tips6.setText(dataString);
+    		 OperatingSP.setString(SettingEditActivity.this,OperatingSP.PREFERENCE_SETTING_BIRTHDAY,dataString);
+            }
+        })
+                .setType(TimePickerView.Type.YEAR_MONTH_DAY)//默认全部显示
+                .setCancelText("取消")//取消按钮文字
+                .setSubmitText("保存")//确认按钮文字
+                .setContentSize(18)//滚轮文字大小
+                .setTitleSize(20)//标题文字大小
+                .setTitleText(" ")//标题文字
+                .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
+                .setTitleColor(Color.BLACK)//标题文字颜色
+                .setSubmitColor(0xffff7700)
+                .setCancelColor(0xff999999)
+                .setTitleBgColor(0xFFffffff)//标题背景颜色 Night mode
+                .setBgColor(0xFFffffff)//滚轮背景颜色 Night mode
+                .setLabel("年","月","日","时","分","秒")
+                .isCenterLabel(false) //是否只显示中间选中项的 label 文字，false 则每项 item 全部都带有 label。
+                //.isDialog(true)//是否显示为对话框样式
+                .build();
+    	timePickerView.show();
+    	
+    	
+    }
+	
 	
 	@Override
     public void onResume() {
@@ -318,6 +377,10 @@ public class SettingEditActivity extends ActivityPack {
 		}
 	};
 	
-	
+    public static String getTime(Date date)  
+    {  
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");  
+        return format.format(date);  
+    }  
 
 }
