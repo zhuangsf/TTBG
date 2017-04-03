@@ -24,6 +24,12 @@ public class OperatingSP {
 	//QQ
 	public static final String PREFERENCE_SETTING_QQ="QQ";
 	public static final String PREFERENCE_SETTING_QQ_DEFAULT="";
+	//现居地
+	public static final String PREFERENCE_SETTING_LIVE="LIVE";
+	public static final String PREFERENCE_SETTING_LIVE_DEFAULT="";
+	//QQ
+	public static final String PREFERENCE_SETTING_HOME="HOME";
+	public static final String PREFERENCE_SETTING_HOME_DEFAULT="";
 	//设置里亮度调节
 	public static final String PREFERENCE_SETTING_LIGHT_SETTING="LIGHT_SETTING";
 	public static final boolean PREFERENCE_SETTING_LIGHT_SETTING_DEFAULT=false;
