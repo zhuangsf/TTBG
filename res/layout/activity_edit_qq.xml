@@ -17,7 +17,7 @@
     android:layout_gravity="center_horizontal"
     android:gravity="center"
     android:layout_centerInParent="true"
-    android:text="修改昵称"
+    android:text="QQ"
     android:textColor="@color/crop__button_text"
     android:textSize="@dimen/text_title" />
        
@@ -46,15 +46,13 @@
          
     </RelativeLayout>     
     
-       <com.android.ttbg.view.EditTextWithDel
-           android:id="@+id/edt_edit_name_input"
-           style="@style/EditText.Setting"
-           android:layout_width="fill_parent"
-           android:layout_height="wrap_content"
-           android:hint="@string/edit_name_hint"
-           android:inputType="number"
-           android:maxLength="20"
-           android:singleLine="true" />
     
-    <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_gray" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_large" android:text="@string/edit_name_tips" />
+       <com.android.ttbg.view.EditTextWithDel
+           android:id="@+id/edt_edit_qq_input"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:hint="请输入QQ号"
+       android:singleLine="true" android:maxLength="20" style="@style/EditText.Setting"
+       />
+
 </LinearLayout>

@@ -55,7 +55,7 @@ public class SettingEditActivity extends ActivityPack {
 	
 	private ImageView userHead;
 	private TextView tv_user_name;
-	
+	private TextView tv_setting_item_tips7; //QQ
 	private TextView tv_setting_item_tips5;  //显示性别的信息
 	private TextView tv_setting_item_tips6;//显示生日
 	@Override
@@ -137,6 +137,21 @@ public class SettingEditActivity extends ActivityPack {
 		        	}
 		        }  
 		  }); 
+		 
+		 
+		 //QQ
+		 View item_edit_qq = (View)findViewById(R.id.item_edit_qq);
+		 tv_setting_item_tips7 = (TextView)findViewById(R.id.tv_setting_item_tips7);
+		 tv_setting_item_tips7.setText(OperatingSP.getString(SettingEditActivity.this, OperatingSP.PREFERENCE_SETTING_QQ  ,OperatingSP.PREFERENCE_SETTING_QQ_DEFAULT));
+		 item_edit_qq.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+					Intent intent = new Intent(SettingEditActivity.this, SettingQQActivity.class);
+					startActivity(intent);
+		        }  
+		  }); 
+		 
+		 
+		 
 	}
 	
     private void ShowTimePickerView() {// 弹出选择器
@@ -176,6 +191,7 @@ public class SettingEditActivity extends ActivityPack {
         super.onResume();
         
         updateUserName();
+        updateQQ();
     }
 	private void updateUserName()
 	{
@@ -183,6 +199,15 @@ public class SettingEditActivity extends ActivityPack {
 		{
 			String user_name = OperatingSP.getUserName(SettingEditActivity.this);
 			tv_user_name.setText(user_name);
+		}
+	}
+	
+	private void updateQQ()
+	{
+		if(tv_setting_item_tips7 != null)
+		{
+			String qq = OperatingSP.getString(SettingEditActivity.this, OperatingSP.PREFERENCE_SETTING_QQ  ,OperatingSP.PREFERENCE_SETTING_QQ_DEFAULT);
+			tv_setting_item_tips7.setText(qq);
 		}
 	}
 	private void updateUserHead(Drawable drawable)
