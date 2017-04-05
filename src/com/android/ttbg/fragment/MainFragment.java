@@ -74,7 +74,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 	private ArrayList<String> imageUrlList = new ArrayList<String>();
 	ArrayList<String> linkUrlArray= new ArrayList<String>();
     
-	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();   //用于显示最新揭晓的数据
+	ArrayList<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();   //用于显示最新揭晓的数据
 	private int currentShowNewestID = 0;    //用于指示当前刷到哪个最新揭晓的数据
 	
 	
@@ -292,12 +292,15 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     	                hashMapList.add(goodsItem);
     	      
     	        		}
+	        		
+	        		Utils.Log("hashMapList size = "+hashMapList.size());
 	        		//重新读取数据,归零
 	        		currentShowNewestID = 0; 
 	            	
 	        		Message msg1 = new Message();
 	        		msg1.what = MSG_JSON_TYPE_NEWEST_UPDATE;
 	        		mHandler.sendMessageDelayed(msg1, 15000);  //15秒刷新一下数组
+	        		Utils.Log("start send sendMessageDelayed(msg1, 15000)");
 	        		CountDownPageReflash();
         			} catch (JSONException e) {
     					// TODO Auto-generated catch block
@@ -453,10 +456,25 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     			imageLoader.downloadImage(JsonControl.FILE_HEAD+hashMapList.get(i).getThumb(), countImages.get(i));
     		}
     		
-
+    		long timeUnixNow =  System.currentTimeMillis();    //服务器也是用的这个接口,来获取unix时间
+    		//1490327446.815   这个是服务端读出来的值,string类型
+    		//1491407081699  这个是timeUnixNow的值
+    		
+    		//1079635     1036800     42835
+    		
+    		long countDownTimeLeft =Long.parseLong( hashMapList.get(i).getQ_end_time().substring(0, 9) ) + 180000 - timeUnixNow;
+    		
+    		Utils.Log("System.currentTimeMillis() = "+timeUnixNow+" countDownTimeLeft = "+countDownTimeLeft);
+    		
+    		if(countDownTimeLeft < 0)
+    		{
+    			//已经过了开奖后的3分钟
+    			countTimes.get(i).setText("正在开奖");
+    			continue;
+    		}
+    		
     		if(countDownTimers.get(i) != null)
     		{
-    			countDownTimers.get(i).cancel();
     			countDownTimers.get(i).setTextView(countTimes.get(i));
     			countDownTimers.get(i).setCountDownTime(180000);
     			countDownTimers.get(i).start();
