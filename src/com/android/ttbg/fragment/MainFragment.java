@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -80,10 +81,13 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     private ImageView count2_image;
     private ImageView count3_image;
     private ImageView count4_image;
+    private ArrayList<ImageView> countImages = new ArrayList<ImageView>();
     private TextView count1_time;
     private TextView count2_time;
     private TextView count3_time;
     private TextView count4_time;
+    private ArrayList<TextView> countTimes = new ArrayList<TextView>();
+    private ArrayList<CountDownTimer> countDownTimers = new ArrayList<CountDownTimer>();
     
     private TextSwitcher switcher;
     
@@ -293,7 +297,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 	        		Message msg1 = new Message();
 	        		msg1.what = MSG_JSON_TYPE_NEWEST_UPDATE;
 	        		mHandler.sendMessageDelayed(msg1, 15000);  //15秒刷新一下数组
-	        		
+	        		CountDownPageReflash();
         			} catch (JSONException e) {
     					// TODO Auto-generated catch block
     					e.printStackTrace();
@@ -430,69 +434,69 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     }
     
     
-    
+    private void CountDownPageReflash() {
+    	
+    	//hashMapList
+    	
+    	for(int i = 0;i < 4;i++)
+    	{
+    		if(hashMapList.size() < i + 1)
+    		{
+    			//界面就不处理了,这边返回是为了防止数组越界
+    			return;
+    		}
+    		
+    		Drawable drawable;	
+    		if(imageLoader != null)
+    		{
+    			imageLoader.downloadImage(hashMapList.get(i).getThumb(), countImages.get(i));
+    		}
+    		
+    		final TextView tv_countTime = countTimes.get(i);
+            CountDownTimer countDowntimer = new CountDownTimer(180000+i*10000, 35) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                	tv_countTime.setText(TimerUtil.stringForTime(millisUntilFinished));
+                }
+                @Override
+                public void onFinish() {
+                	tv_countTime.setText("正在开奖");
+                }
+              };
+              countDowntimer.start();
+    	}
+    	
+
+    }
     
     private void initCountDownPage(View v) {
         count1_image = (ImageView) v.findViewById(R.id.count1_image);
         count2_image = (ImageView) v.findViewById(R.id.count1_image);
         count3_image = (ImageView) v.findViewById(R.id.count1_image);
         count4_image = (ImageView) v.findViewById(R.id.count1_image);
+        countImages.add(count1_image);
+        countImages.add(count2_image);
+        countImages.add(count3_image);
+        countImages.add(count4_image);
         count1_time = (TextView) v.findViewById(R.id.count1_time);
         count2_time = (TextView) v.findViewById(R.id.count2_time);
         count3_time = (TextView) v.findViewById(R.id.count3_time);
         count4_time = (TextView) v.findViewById(R.id.count4_time);
-        
+        countTimes.add(count1_time);
+        countTimes.add(count2_time);
+        countTimes.add(count3_time);
+        countTimes.add(count4_time);
+        CountDownTimer countDowntimer1 = null;
+        CountDownTimer countDowntimer2 = null;
+        CountDownTimer countDowntimer3 = null;
+        CountDownTimer countDowntimer4 = null;
+        countDownTimers.add(countDowntimer1);
+        countDownTimers.add(countDowntimer2);
+        countDownTimers.add(countDowntimer3);
+        countDownTimers.add(countDowntimer4);
+        CountDownPageReflash();
      
-        CountDownTimer timer1 = new CountDownTimer(180000, 35) {
-          @Override
-          public void onTick(long millisUntilFinished) {
-        	  count1_time.setText(TimerUtil.stringForTime(millisUntilFinished));
-          }
-          @Override
-          public void onFinish() {
-        	 count1_time.setText("正在开奖");
-          }
-        };
-     
-        
-        CountDownTimer timer2 = new CountDownTimer(170000, 35) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-          	  count2_time.setText(TimerUtil.stringForTime(millisUntilFinished));
-            }
-            @Override
-            public void onFinish() {
-          	 count2_time.setText("正在开奖");
-            }
-          };
-  
-          
-          CountDownTimer timer3 = new CountDownTimer(160000, 35) {
-              @Override
-              public void onTick(long millisUntilFinished) {
-            	  count3_time.setText(TimerUtil.stringForTime(millisUntilFinished));
-              }
-              @Override
-              public void onFinish() {
-            	 count3_time.setText("正在开奖");
-              }
-            };
 
-            
-            CountDownTimer timer4 = new CountDownTimer(150000, 35) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-              	  count4_time.setText(TimerUtil.stringForTime(millisUntilFinished));
-                }
-                @Override
-                public void onFinish() {
-              	 count4_time.setText("正在开奖");
-                }
-              };
-              timer1.start();
-              timer2.start();
-              timer3.start();
-              timer4.start();
     }
 
     private void initADPager(View v) {
