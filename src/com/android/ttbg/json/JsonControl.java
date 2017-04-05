@@ -18,6 +18,7 @@ import android.os.Message;
 public class JsonControl {
 	
 	public final static String HOME_PAGE = "http://www.1ybgo.com/";
+	public final static String FILE_HEAD= "http://file.1ybgou.com/";
 	
 	
 	//msg define

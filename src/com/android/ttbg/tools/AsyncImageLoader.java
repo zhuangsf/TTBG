@@ -97,10 +97,10 @@ public class AsyncImageLoader {
      * @param callback 
      */  
     public void downloadImage(final String url, final boolean cache2Memory, final ImageCallback callback){  
-        if(sDownloadingSet.contains(url)){  
-            Log.i("AsyncImageLoader", "###该图片正在下载，不能重复下载！");  
-            return;  
-        }  
+    //    if(sDownloadingSet.contains(url)){  
+    //        Log.i("AsyncImageLoader", "###该图片正在下载，不能重复下载！");  
+    //        return;  
+    //    }  
           
         Bitmap bitmap = impl.getBitmapFromMemory(url);  
         
@@ -133,14 +133,15 @@ public class AsyncImageLoader {
       
     
     public void downloadImage(final String url, final ImageView imageView){  
-        if(sDownloadingSet.contains(url)){  
-            Log.i("AsyncImageLoader", "###该图片正在下载，不能重复下载！");  
-            return;  
-        }  
+       
+    	//if(sDownloadingSet.contains(url)){  
+        //    Log.i("AsyncImageLoader", "该图片正在下载，不能重复下载！");  
+        //    return;  
+        //}  
           
         Bitmap bitmap = impl.getBitmapFromMemory(url);  
         
-        Utils.Log("downloadImage getBitmapFromMemory = "+bitmap);
+        Utils.Log("downloadImage getBitmapFromMemory = "+bitmap+" url = "+url);
 
         
         if(bitmap != null){  

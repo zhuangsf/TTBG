@@ -51,6 +51,7 @@ import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.util.TimerUtil;
 import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.AddPopWindow;
+import com.android.ttbg.view.CountDownTimerTextView;
 import com.android.ttbg.view.GoodsProperty;
 import com.android.ttbg.view.NoScroolGridView;
 import com.finddreams.adbanner.ImagePagerAdapter;
@@ -87,7 +88,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     private TextView count3_time;
     private TextView count4_time;
     private ArrayList<TextView> countTimes = new ArrayList<TextView>();
-    private ArrayList<CountDownTimer> countDownTimers = new ArrayList<CountDownTimer>();
+    private ArrayList<CountDownTimerTextView> countDownTimers = new ArrayList<CountDownTimerTextView>();
     
     private TextSwitcher switcher;
     
@@ -449,21 +450,17 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     		Drawable drawable;	
     		if(imageLoader != null)
     		{
-    			imageLoader.downloadImage(hashMapList.get(i).getThumb(), countImages.get(i));
+    			imageLoader.downloadImage(JsonControl.FILE_HEAD+hashMapList.get(i).getThumb(), countImages.get(i));
     		}
     		
-    		final TextView tv_countTime = countTimes.get(i);
-            CountDownTimer countDowntimer = new CountDownTimer(180000+i*10000, 35) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                	tv_countTime.setText(TimerUtil.stringForTime(millisUntilFinished));
-                }
-                @Override
-                public void onFinish() {
-                	tv_countTime.setText("正在开奖");
-                }
-              };
-              countDowntimer.start();
+
+    		if(countDownTimers.get(i) != null)
+    		{
+    			countDownTimers.get(i).cancel();
+    			countDownTimers.get(i).setTextView(countTimes.get(i));
+    			countDownTimers.get(i).setCountDownTime(180000);
+    			countDownTimers.get(i).start();
+    		}
     	}
     	
 
@@ -471,9 +468,9 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     
     private void initCountDownPage(View v) {
         count1_image = (ImageView) v.findViewById(R.id.count1_image);
-        count2_image = (ImageView) v.findViewById(R.id.count1_image);
-        count3_image = (ImageView) v.findViewById(R.id.count1_image);
-        count4_image = (ImageView) v.findViewById(R.id.count1_image);
+        count2_image = (ImageView) v.findViewById(R.id.count2_image);
+        count3_image = (ImageView) v.findViewById(R.id.count3_image);
+        count4_image = (ImageView) v.findViewById(R.id.count4_image);
         countImages.add(count1_image);
         countImages.add(count2_image);
         countImages.add(count3_image);
@@ -486,10 +483,10 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         countTimes.add(count2_time);
         countTimes.add(count3_time);
         countTimes.add(count4_time);
-        CountDownTimer countDowntimer1 = null;
-        CountDownTimer countDowntimer2 = null;
-        CountDownTimer countDowntimer3 = null;
-        CountDownTimer countDowntimer4 = null;
+        CountDownTimerTextView countDowntimer1 = new CountDownTimerTextView(180000, count1_time);
+        CountDownTimerTextView countDowntimer2 = new CountDownTimerTextView(180000, count2_time);
+        CountDownTimerTextView countDowntimer3 = new CountDownTimerTextView(180000, count3_time);
+        CountDownTimerTextView countDowntimer4 = new CountDownTimerTextView(180000, count4_time);
         countDownTimers.add(countDowntimer1);
         countDownTimers.add(countDowntimer2);
         countDownTimers.add(countDowntimer3);

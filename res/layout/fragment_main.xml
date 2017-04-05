@@ -140,7 +140,7 @@
                 />
 <!-- 我是分割符 -->
             <!-- 当前开奖 -->
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/layout_home_newest_switcher" android:background="@color/white" android:paddingBottom="@dimen/padding_normal" android:layout_width="fill_parent" android:layout_height="wrap_content" >
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/layout_home_newest_switcher" android:background="@color/white"  android:layout_width="fill_parent" android:layout_height="wrap_content" >
                 <View android:background="@color/theme" android:layout_width="@dimen/padding_mircro" android:layout_height="@dimen/padding_xlarge" android:layout_marginLeft="0.0dip" />
 
                 <ImageView
@@ -159,7 +159,10 @@
             </LinearLayout>
             <!-- 当前开奖 -->
 
-
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.2dp"
+                    android:background="@color/light_gray" />
             <!-- 最新揭晓倒计时4个 -->
 
             <LinearLayout
@@ -172,15 +175,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical" >
 
                     <ImageView
                         android:id="@+id/count1_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:scaleType="fitEnd"
-                        android:src="@drawable/home_navigation_recharge" />
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/goods_pic_default" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -194,28 +199,35 @@
                         android:id="@+id/count1_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
                         android:background="@drawable/shape_background_gray"
                         android:gravity="center"
                         android:text="02:55:33"
                         android:textColor="@color/orange"
                         android:textSize="10sp" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="0.2dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/light_gray" />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                                        android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical" >
 
                     <ImageView
                         android:id="@+id/count2_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:scaleType="fitEnd"
-                        android:src="@drawable/home_navigation_recharge" />
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/goods_pic_default" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -234,23 +246,30 @@
                         android:background="@drawable/shape_background_gray"
                         android:gravity="center"
                         android:text="02:55:33"
+                                                android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
                         android:textColor="@color/orange"
                         android:textSize="10sp" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="0.2dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/light_gray" />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                                        android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical" >
 
                     <ImageView
                         android:id="@+id/count3_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:scaleType="fitEnd"
-                        android:src="@drawable/home_navigation_recharge" />
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/goods_pic_default" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -269,23 +288,30 @@
                         android:background="@drawable/shape_background_gray"
                         android:gravity="center"
                         android:text="02:55:33"
+                                                android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
                         android:textColor="@color/orange"
                         android:textSize="10sp" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="0.2dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/light_gray" />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                                        android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical" >
 
                     <ImageView
                         android:id="@+id/count4_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:scaleType="fitEnd"
-                        android:src="@drawable/home_navigation_recharge" />
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/goods_pic_default" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -301,6 +327,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
+                                                android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
                         android:background="@drawable/shape_background_gray"
                         android:gravity="center"
                         android:text="02:55:33"
