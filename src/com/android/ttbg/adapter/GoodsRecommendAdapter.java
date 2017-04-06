@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.ttbg.R;
@@ -86,6 +87,8 @@ public class GoodsRecommendAdapter extends BaseAdapter
                     .findViewById(R.id.tv_total_num);
             viewHolder.tv_surplus_num = (TextView) convertView
                     .findViewById(R.id.tv_surplus_num);
+            
+            viewHolder.pb_participation = (ProgressBar)convertView.findViewById(R.id.pb_participation);
             convertView.setTag(viewHolder);
         }
         else
@@ -113,6 +116,8 @@ public class GoodsRecommendAdapter extends BaseAdapter
             viewHolder.tv_participated_num.setText(goodsRecommandItem.getParticipatedNum()+"");
             viewHolder.tv_total_num.setText(goodsRecommandItem.getTotalNum()+"");
             viewHolder.tv_surplus_num.setText(goodsRecommandItem.getSurplusNum()+"");
+            viewHolder.pb_participation.setMax(goodsRecommandItem.getTotalNum());
+            viewHolder.pb_participation.setProgress(goodsRecommandItem.getParticipatedNum());
         }
 
         return convertView;
@@ -125,6 +130,7 @@ public class GoodsRecommendAdapter extends BaseAdapter
         TextView tv_participated_num;
         TextView tv_total_num;
         TextView tv_surplus_num;
+        ProgressBar pb_participation;
     }
 
 
