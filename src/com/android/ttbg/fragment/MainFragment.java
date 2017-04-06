@@ -92,6 +92,19 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     
     private TextSwitcher switcher;
     
+    private TextView tv_home_new_arrivals_title;
+    private TextView tv_home_new_arrivals_content;
+    private ImageView iv_home_new_arrivals_pic;
+    private TextView tv_home_new_arrivals_title1;
+    private TextView tv_home_new_arrivals_content1;
+    private ImageView iv_home_new_arrivals_pic1;
+    private TextView tv_home_new_arrivals_title2;
+    private TextView tv_home_new_arrivals_content2;
+    private ImageView iv_home_new_arrivals_pic2;
+    private View home_new_arrivals;
+    private View home_new_arrivals1;
+    private View home_new_arrivals2;
+    
     private View searchButton;
     private PopupMenu popupMenu;
     
@@ -154,7 +167,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
        		case MSG_JSON_TYPE_NEWEST_UPDATE:
        		{
        			Utils.Log("MSG_JSON_TYPE_NEWEST_UPDATE ");
-       			new Thread(runnable).start();	
+       			new Thread(runnableNewest).start();	
        		}
     			break;
    			case JsonControl.GET_SUCCESS_MSG:
@@ -339,6 +352,8 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         	initADPager(mainFragmentView);      //初始化页眉广告条
         	initNewestSwitcher(mainFragmentView);
         	initCountDownPage(mainFragmentView);
+        	
+        	initNewArrivals(mainFragmentView);
         	intiGoodsItems(mainFragmentView);
         }
         
@@ -351,7 +366,26 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     }
 
     
-    private void initSearchView(View v) {
+    private void initNewArrivals(View v) {
+		// TODO Auto-generated method stub
+         tv_home_new_arrivals_title = (TextView)v.findViewById(R.id.tv_home_new_arrivals_title);
+         tv_home_new_arrivals_content = (TextView)v.findViewById(R.id.tv_home_new_arrivals_content);
+         iv_home_new_arrivals_pic = (ImageView)v.findViewById(R.id.iv_home_new_arrivals_pic);
+         tv_home_new_arrivals_title1 = (TextView)v.findViewById(R.id.iv_home_new_arrivals_small_title1);
+         tv_home_new_arrivals_content1 = (TextView)v.findViewById(R.id.iv_home_new_arrivals_small_content1);
+         iv_home_new_arrivals_pic1 = (ImageView)v.findViewById(R.id.iv_home_new_arrivals_small_pic1);
+         tv_home_new_arrivals_title2 = (TextView)v.findViewById(R.id.iv_home_new_arrivals_small_title2);
+         tv_home_new_arrivals_content2 = (TextView)v.findViewById(R.id.iv_home_new_arrivals_small_content2);
+         iv_home_new_arrivals_pic2 = (ImageView)v.findViewById(R.id.iv_home_new_arrivals_small_pic2);
+         
+         //还有3个view的点击事件
+         home_new_arrivals = (View)v.findViewById(R.id.home_new_arrivals);
+         home_new_arrivals1 = (View)v.findViewById(R.id.home_new_arrivals1);
+         home_new_arrivals2 = (View)v.findViewById(R.id.home_new_arrivals2);
+	}
+
+
+	private void initSearchView(View v) {
 		// TODO Auto-generated method stub
     	LinearLayout searchButton = (LinearLayout)v.findViewById(R.id.title_search);  
 		searchButton.setOnClickListener(this);
@@ -387,11 +421,13 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 		msg.what = MSG_TEST_SWITCHER_TEST;
 		mHandler.sendMessageDelayed(msg, 2000);
 		
-		new Thread(runnable).start();		
+		new Thread(runnableNewest).start();		
 		
     }
     
-	Runnable runnable = new Runnable(){
+	
+	//最新揭晓
+	Runnable runnableNewest = new Runnable(){
 		  @Override
 		  public void run() {
 		    //
@@ -401,6 +437,16 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 		  }
 	};
 	
+	//新品推荐
+	Runnable runnableArrivals = new Runnable(){
+		  @Override
+		  public void run() {
+		    //
+		    // TODO: http request.
+		    //
+			JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getShopList/0/90/0/3/0", mHandler,JsonControl.JSON_TYPE_ARRIVALS);
+		  }
+	};
 	
     @Override  
     public void onStop()

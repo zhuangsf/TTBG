@@ -35,6 +35,8 @@ public class JsonControl {
 	public static final int JSON_TYPE_BANNER=0x4001; 
 	//最新揭晓的数据
 	public static final int JSON_TYPE_NEWEST=0x4002; 
+	//新品推荐的数据
+	public static final int JSON_TYPE_ARRIVALS=0x4003; 
 	
 	  @SuppressWarnings("deprecation")
 	public static void httpGet(String url,Handler mHandler,int jsonType) {

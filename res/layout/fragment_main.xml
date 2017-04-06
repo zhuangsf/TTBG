@@ -418,10 +418,11 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:id="@+id/home_new_arrivals"
                     android:orientation="vertical" >
 
-    <TextView android:text="正在上架" android:textSize="@dimen/text_large" android:textColor="@color/text_black" android:ellipsize="end" android:gravity="center" android:id="@+id/tv_home_new_arrivals_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginRight="@dimen/padding_normal" android:maxLines="1" />
-    <TextView android:text="尽请期待,最新最全的商品,只要一元就可以拿回家" android:textSize="@dimen/text_mircro" android:textColor="@color/text_gray" android:ellipsize="end" android:gravity="center" android:id="@+id/tv_home_new_arrivals_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginTop="@dimen/padding_little" android:layout_marginRight="@dimen/padding_normal" android:maxLines="2" android:lineSpacingMultiplier="1.2" />
+    <TextView android:id="@+id/tv_home_new_arrivals_title"  android:text="正在上架" android:textSize="@dimen/text_large" android:textColor="@color/text_black" android:ellipsize="end" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginRight="@dimen/padding_normal" android:maxLines="1" />
+    <TextView android:id="@+id/tv_home_new_arrivals_content" android:text="尽请期待,最新最全的商品,只要一元就可以拿回家" android:textSize="@dimen/text_mircro" android:textColor="@color/text_gray" android:ellipsize="end" android:gravity="center"  android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/padding_normal" android:layout_marginTop="@dimen/padding_little" android:layout_marginRight="@dimen/padding_normal" android:maxLines="2" android:lineSpacingMultiplier="1.2" />
     <ImageView android:id="@+id/iv_home_new_arrivals_pic" android:layout_width="180.0dip" android:layout_height="90.0dip" android:layout_marginTop="@dimen/padding_normal" android:src="@drawable/goods_pic_default" android:scaleType="centerInside" />
 
                 </LinearLayout>
@@ -441,6 +442,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:id="@+id/home_new_arrivals1"
                          >
 
     <ImageView android:id="@+id/iv_home_new_arrivals_small_pic1" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginLeft="@dimen/padding_little" android:layout_marginTop="@dimen/padding_mlarge" android:src="@drawable/goods_pic_default" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
@@ -458,6 +460,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:id="@+id/home_new_arrivals2"
                          >
 
     <ImageView android:id="@+id/iv_home_new_arrivals_small_pic2" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginLeft="@dimen/padding_little" android:layout_marginTop="@dimen/padding_mlarge" android:src="@drawable/goods_pic_default" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
