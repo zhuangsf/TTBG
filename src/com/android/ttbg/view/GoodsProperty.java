@@ -12,9 +12,10 @@ public class GoodsProperty
 {   
 
     private Drawable imageDrawable;
+    private String drawableUrl;
 
 
-    private int participated_num;   //已参与人数
+	private int participated_num;   //已参与人数
     private int total_num;			//总人数
     private int surplus_num;		//剩余人数
     private String goods_price;     //	商品单价
@@ -39,7 +40,13 @@ public class GoodsProperty
 
 
     
-    
+    public String getDrawableUrl() {
+		return drawableUrl;
+	}
+
+	public void setDrawableUrl(String drawableUrl) {
+		this.drawableUrl = drawableUrl;
+	}
     
     public String getId() {
 		return id;
@@ -178,7 +185,15 @@ public class GoodsProperty
         this.surplus_num = surplus_num;
         this.goods_price = goods_price;
     }   
-   
+    public void setGoodsRecommandItemUrl(Context context,String title, String drawableUrl,int participated_num,int total_num,int surplus_num,String goods_price)   
+    {   
+        this.title = title;   
+        this.drawableUrl = drawableUrl;
+        this.participated_num = participated_num;  
+        this.total_num = total_num;
+        this.surplus_num = surplus_num;
+        this.goods_price = goods_price;
+    }   
     
     public Drawable getImageDrawable()
     {

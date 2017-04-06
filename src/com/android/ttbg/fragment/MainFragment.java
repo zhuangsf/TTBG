@@ -77,6 +77,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 	ArrayList<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();   //用于显示最新揭晓的数据
 	private int currentShowNewestID = 0;    //用于指示当前刷到哪个最新揭晓的数据
 	
+	ArrayList<GoodsProperty> hashMapListRecommend = new ArrayList<GoodsProperty>();
 	
     private ImageView count1_image;
     private ImageView count2_image;
@@ -111,6 +112,9 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     private static final int MSG_TEST_SWITCHER_TEST=0;
     private static final int MSG_JSON_TYPE_NEWEST_UPDATE=1;
     private ImageView add_menus;
+    
+    
+    private GoodsRecommendAdapter goodsRecommendAdapter;
     
     private Handler mHandler= new Handler()
     {
@@ -173,7 +177,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
    			case JsonControl.GET_SUCCESS_MSG:
    			{
             	JSONObject jsonObject=(JSONObject)msg.obj;
-            	Utils.Log("login success jsonObject:"+jsonObject);
+            	Utils.Log("GET_SUCCESS_MSG jsonObject:"+jsonObject+" msg.arg1 = "+msg.arg1);
             	if(jsonObject == null)
             	{
             		return;
@@ -393,21 +397,6 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 	        	    		}
     	        		}
     	        		
-    	        		/*        			
-    	        		id
-            			sid
-            			cateid
-            			title
-            			title2
-            			qishu
-            			money
-            			yunjiage
-            			thumb
-            			brandid
-            			brandname
-            			zongrenshu
-            			canyurenshu
-            			shenyurenshu*/
     	        		}
         			
         			
@@ -416,7 +405,63 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     					e.printStackTrace();
     				}
         		}
-        		
+        		break;
+        		case JsonControl.JSON_TYPE_RECOMMAND:
+        		{
+        			try {
+            			result = new JSONObject(jsonObject.toString());
+            			Utils.Log("JsonControl.JSON_TYPE_RECOMMAND  result = "+result);
+            			
+            			if(result.toString().contains("连接不成功"))
+            			{
+            				return;
+            			}
+            			
+            			JSONArray shoplists = result.getJSONArray("shoplists");
+    	        		int len = shoplists.length();
+    	        		Utils.Log("getJson JSON_TYPE_RECOMMAND len = "+len);
+    	        		
+    	        		if(len == 0)
+    	        		{
+    	        			return;
+    	        		}
+    	        		
+    	        		
+    	        		List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
+    	        		for(int i =0;i<len;i++){
+    	        			
+        	        		JSONObject obj = shoplists.getJSONObject(i);
+        	        		Utils.Log("getJson hashMapList["+i+"] = "+obj.toString());
+
+        	        		String id = obj.getString("id");
+        	        		String sid = obj.getString("sid");
+        	        		String cateid = obj.getString("cateid");
+        	        		String title = obj.getString("title");
+        	        		String title2 = obj.getString("title2");
+        	        		String qishu = obj.getString("qishu");
+        	        		String money = obj.getString("money");    	        		
+        	        		String yunjiage = obj.getString("yunjiage");
+        	        		String thumb = obj.getString("thumb");
+        	        		String brandid = obj.getString("brandid");
+        	        		String brandname = obj.getString("brandname");
+        	        		String zongrenshu = obj.getString("zongrenshu");
+        	        		String canyurenshu = obj.getString("canyurenshu");
+        	        		String shenyurenshu = obj.getString("shenyurenshu");
+        	        		
+    	                    GoodsProperty goodsRecommandItem = new GoodsProperty();
+    	                    goodsRecommandItem.setGoodsRecommandItemUrl(mContext, title, JsonControl.FILE_HEAD+thumb, Integer.parseInt(canyurenshu), Integer.parseInt(zongrenshu),Integer.parseInt(shenyurenshu),"价值:¥ "+money);
+    	                    hashMapListRecommend.add(goodsRecommandItem);
+    	        		}
+    	        		goodsRecommendAdapter.setData(hashMapListRecommend);
+    	        		goodsRecommendAdapter.notifyDataSetChanged();
+    	        		
+            			
+        			}catch (JSONException e) {
+         					// TODO Auto-generated catch block
+         					e.printStackTrace();
+         				}
+        		}
+        		break;
         		default:
         			break;
         		}
@@ -546,6 +591,17 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
 		  }
 	};
 	
+	//猜你喜欢
+	Runnable runnableRecommend = new Runnable(){
+		  @Override
+		  public void run() {
+		    //
+		    // TODO: http request.
+		    //
+			JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getShopList/0/91/0/10/0", mHandler,JsonControl.JSON_TYPE_RECOMMAND);
+		  }
+	};
+	
     @Override  
     public void onStop()
     {
@@ -566,19 +622,20 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     private void intiGoodsItems(View v) {
     	NoScroolGridView gridView = (NoScroolGridView) v.findViewById(R.id.gridview_recommend);
     	
-    	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
+/*    	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
         //测试数据
         for (int i = 0; i < 8; i++) {
 
             GoodsProperty goodsRecommandItem = new GoodsProperty();
             goodsRecommandItem.setGoodsRecommandItem(mContext, "测试测    "+i+"   试测试", null, i*10, i*100, i*90,"价值:¥ 888.88");
-            hashMapList.add(goodsRecommandItem);
+            hashMapListRecommend.add(goodsRecommandItem);
 
-        }
+        }*/
 
-        GoodsRecommendAdapter goodsRecommendAdapter = new GoodsRecommendAdapter(mContext, hashMapList);
+       goodsRecommendAdapter = new GoodsRecommendAdapter(mContext);
 
-        gridView.setAdapter(goodsRecommendAdapter);
+       gridView.setAdapter(goodsRecommendAdapter);
+       new Thread(runnableRecommend).start();	
     }
     
     
