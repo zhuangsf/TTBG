@@ -321,6 +321,102 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     				}
         		}
         		break;
+        		case JsonControl.JSON_TYPE_ARRIVALS:
+        		{
+        			try {
+        			result = new JSONObject(jsonObject.toString());
+        			Utils.Log("JsonControl.JSON_TYPE_ARRIVALS  result = "+result);
+        			
+        			if(result.toString().contains("连接不成功"))
+        			{
+        				return;
+        			}
+        			
+        			String bSuccess = result.optString("success","");
+        			Utils.Log("getJson JSON_TYPE_ARRIVALS bSuccess = "+bSuccess);
+
+        			JSONArray shoplists = result.getJSONArray("shoplists");
+	        		int len = shoplists.length();
+	        		Utils.Log("getJson JSON_TYPE_ARRIVALS len = "+len);
+	        		if(len <3)
+	        		{
+	        			//小于3,不对,返回
+	        			return;
+	        		}
+	        		
+	        		
+	        		//后续点击,把这个goodsItem传进去,就可以用于直接显示,不用再重新读网络
+	        		for(int i =0;i<len;i++){
+	        			
+    	        		JSONObject obj = shoplists.getJSONObject(i);
+    	        		Utils.Log("getJson hashMapList["+i+"] = "+obj.toString());
+
+    	        		String id = obj.getString("id");
+    	        		String sid = obj.getString("sid");
+    	        		String cateid = obj.getString("cateid");
+    	        		String title = obj.getString("title");
+    	        		String title2 = obj.getString("title2");
+    	        		String qishu = obj.getString("qishu");
+    	        		String money = obj.getString("money");    	        		
+    	        		String yunjiage = obj.getString("yunjiage");
+    	        		String thumb = obj.getString("thumb");
+    	        		String brandid = obj.getString("brandid");
+    	        		String brandname = obj.getString("brandname");
+    	        		String zongrenshu = obj.getString("zongrenshu");
+    	        		String canyurenshu = obj.getString("canyurenshu");
+    	        		String shenyurenshu = obj.getString("shenyurenshu");
+    	        		
+    	        		if(i == 0)
+    	        		{
+    	        	         tv_home_new_arrivals_title.setText(title);
+    	        	         tv_home_new_arrivals_content.setText(title2);
+	        	    		if(imageLoader != null && iv_home_new_arrivals_pic != null)
+	        	    		{
+	        	    			imageLoader.downloadImage(JsonControl.FILE_HEAD+thumb, iv_home_new_arrivals_pic);
+	        	    		}
+    	        	         
+    	        		}else if(i == 1)
+    	        		{
+   	        	         tv_home_new_arrivals_title1.setText(title);
+   	        	         tv_home_new_arrivals_content1.setText(title2);
+	        	    		if(imageLoader != null && iv_home_new_arrivals_pic1 != null)
+	        	    		{
+	        	    			imageLoader.downloadImage(JsonControl.FILE_HEAD+thumb, iv_home_new_arrivals_pic1);
+	        	    		}
+    	        		}else if(i == 2)
+    	        		{
+   	        	         tv_home_new_arrivals_title2.setText(title);
+   	        	         tv_home_new_arrivals_content2.setText(title2);
+	        	    		if(imageLoader != null && iv_home_new_arrivals_pic2 != null)
+	        	    		{
+	        	    			imageLoader.downloadImage(JsonControl.FILE_HEAD+thumb, iv_home_new_arrivals_pic2);
+	        	    		}
+    	        		}
+    	        		
+    	        		/*        			
+    	        		id
+            			sid
+            			cateid
+            			title
+            			title2
+            			qishu
+            			money
+            			yunjiage
+            			thumb
+            			brandid
+            			brandname
+            			zongrenshu
+            			canyurenshu
+            			shenyurenshu*/
+    	        		}
+        			
+        			
+        			} catch (JSONException e) {
+    					// TODO Auto-generated catch block
+    					e.printStackTrace();
+    				}
+        		}
+        		
         		default:
         			break;
         		}
@@ -352,7 +448,6 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         	initADPager(mainFragmentView);      //初始化页眉广告条
         	initNewestSwitcher(mainFragmentView);
         	initCountDownPage(mainFragmentView);
-        	
         	initNewArrivals(mainFragmentView);
         	intiGoodsItems(mainFragmentView);
         }
@@ -382,6 +477,9 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
          home_new_arrivals = (View)v.findViewById(R.id.home_new_arrivals);
          home_new_arrivals1 = (View)v.findViewById(R.id.home_new_arrivals1);
          home_new_arrivals2 = (View)v.findViewById(R.id.home_new_arrivals2);
+         
+ 		new Thread(runnableArrivals).start();		
+         
 	}
 
 
@@ -508,9 +606,9 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     		
     		//1079635     1036800     42835
     		
-    		long countDownTimeLeft =Long.parseLong( hashMapList.get(i).getQ_end_time().substring(0, 9) ) + 180000 - timeUnixNow;
+    		long countDownTimeLeft =Long.parseLong( hashMapList.get(i).getQ_end_time().substring(0, 9) ) + 180000 - (timeUnixNow/1000);
     		
-    		Utils.Log("System.currentTimeMillis() = "+timeUnixNow+" countDownTimeLeft = "+countDownTimeLeft);
+    		Utils.Log("开奖时间: "+Long.parseLong( hashMapList.get(i).getQ_end_time().substring(0, 9) )+" + 180000 - "+(timeUnixNow/1000)+" = "+countDownTimeLeft);
     		
     		if(countDownTimeLeft < 0)
     		{
