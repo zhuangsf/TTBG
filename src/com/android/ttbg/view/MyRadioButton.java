@@ -27,6 +27,15 @@ public class MyRadioButton extends RadioButton {
         initView(context, null);  
     }  
   
+    public void setWidthHeight(int width,int height)
+    {
+    	mTopWith = width;
+    	mTopHeight = height;
+    }
+    public void setDrawableTop(Drawable drawableTop)
+    {
+    	this.drawableTop = drawableTop;
+    }
     private void initView(Context context, AttributeSet attrs) {  
         if (attrs != null) {  
             float scale = context.getResources().getDisplayMetrics().density;  

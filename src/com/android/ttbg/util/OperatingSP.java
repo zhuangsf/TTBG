@@ -56,7 +56,9 @@ public class OperatingSP {
 	public static final String PREFERENCE_ADDRESS_ACTIVE="ADDRESS_ACTIVE";   //用于表示在数组里是否可用
 	public static final boolean PREFERENCE_ADDRESS_ACTIVE_DEFAULT=false;
 	
-
+	//所有商品里面默认的排序类型
+	public static final String PREFERENCE_ALLGOODS_LIST_TYPE="ALLGOODS_LIST_TYPE";   //用于表示在数组里是否可用
+	public static final int  PREFERENCE_ALLGOODS_LIST_TYPE_DEFAULT=0;
 
     /**  
      * <pre>  
@@ -163,6 +165,24 @@ public class OperatingSP {
         SharedPreferences sharedPreferences = context.getSharedPreferences(  
         		PREFERENCE_NAME, Context.MODE_PRIVATE);  
         String retrunString = sharedPreferences.getString(key, keyValueDefault);  
+        return retrunString;  
+    }    
+    
+    
+    public static void setInt(Context context,String key,int keyValue)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		PREFERENCE_NAME, Context.MODE_PRIVATE);  
+        Editor editor = sharedPreferences.edit();// 获取编辑器  
+        editor.putInt(key, keyValue);  
+        editor.commit();// 提交修改  
+    }
+    
+    public static int getInt(Context context,String key,int keyValueDefault)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(  
+        		PREFERENCE_NAME, Context.MODE_PRIVATE);  
+        int retrunString = sharedPreferences.getInt(key, keyValueDefault);  
         return retrunString;  
     }    
     
