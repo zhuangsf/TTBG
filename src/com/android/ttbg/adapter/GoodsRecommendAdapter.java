@@ -2,10 +2,12 @@ package com.android.ttbg.adapter;
 
 import java.util.List;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -117,11 +119,19 @@ public class GoodsRecommendAdapter extends BaseAdapter
             viewHolder.tv_total_num.setText(goodsRecommandItem.getTotalNum()+"");
             viewHolder.tv_surplus_num.setText(goodsRecommandItem.getSurplusNum()+"");
             viewHolder.pb_participation.setMax(goodsRecommandItem.getTotalNum());
-            viewHolder.pb_participation.setProgress(goodsRecommandItem.getParticipatedNum());
+           // viewHolder.pb_participation.setProgress(goodsRecommandItem.getParticipatedNum());
+            
+            //设置动画效果
+            ObjectAnimator animation = ObjectAnimator.ofInt(viewHolder.pb_participation, "progress", 0, goodsRecommandItem.getParticipatedNum());
+            animation.setDuration(1000); 
+            animation.setInterpolator(new DecelerateInterpolator());
+            animation.start();
         }
 
         return convertView;
     }
+    
+
 
     private static class ViewHolder
     {
