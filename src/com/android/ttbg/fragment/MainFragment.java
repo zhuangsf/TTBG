@@ -452,6 +452,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     	                    goodsRecommandItem.setGoodsRecommandItemUrl(mContext, title, JsonControl.FILE_HEAD+thumb, Integer.parseInt(canyurenshu), Integer.parseInt(zongrenshu),Integer.parseInt(shenyurenshu),"价值:¥ "+money);
     	                    hashMapListRecommend.add(goodsRecommandItem);
     	        		}
+    	        		
     	        		goodsRecommendAdapter.setData(hashMapListRecommend);
     	        		goodsRecommendAdapter.notifyDataSetChanged();
     	        		
@@ -621,7 +622,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     
     private void intiGoodsItems(View v) {
     	NoScroolGridView gridView = (NoScroolGridView) v.findViewById(R.id.gridview_recommend);
-    	
+    	gridView.setFocusable(false); 
 /*    	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
         //测试数据
         for (int i = 0; i < 8; i++) {

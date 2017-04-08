@@ -1,6 +1,7 @@
 package com.android.ttbg.view;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ListView;
@@ -38,7 +39,17 @@ public class PullableListView extends ListView implements Pullable
 		} else
 			return false;
 	}
-
+	/** 
+	 * 屏蔽android4.4 setAdapter时View抢焦点的BUG 
+	 */  
+	@Override  
+	public boolean isInTouchMode() {  
+	    if(19 == Build.VERSION.SDK_INT){  
+	        return !(hasFocus() && !super.isInTouchMode());  
+	    }else{  
+	        return super.isInTouchMode(); 
+	    }
+	}
 	@Override
 	public boolean canPullUp()
 	{
