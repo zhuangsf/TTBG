@@ -174,20 +174,46 @@ public class AllGoodsFragment extends BaseFragment {
 				tempButton.setPadding(10, 25, 10, 25); // 设置文字距离按钮四周的距离
 				tempButton.setText(mStringLabel[i]);
 				tempButton.setGravity(Gravity.CENTER);
+				tempButton.setId(i);
 				tempButton.setLines(2);
-				tempButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10);
+				tempButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10);  
 				tempButton.setTextColor(0xff666666);
 				tempButton.setWidthHeight(36,36);
 				tempButton.setDrawableTop(getActivity().getResources().getDrawable(mGoodsSortID[i]));
 				tempButton.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(mGoodsSortID[i]), null, null);
 				tempButton.setButtonDrawable(android.R.color.transparent);
-				if (i == 0) {
-					tempButton.setTextColor(0xffff7700);
+				if (i == current_goods_type_index) {
+					tempButton.setTextColor(0xffff7700);  
 					tempButton.setBackgroundColor(0xffffffff);
+					tempButton.setChecked(true);
 				} 
+				
 				mRadioGroup.addView(tempButton, 66, LinearLayout.LayoutParams.WRAP_CONTENT);
 			}
 			
+			mRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+				@Override
+				public void onCheckedChanged(RadioGroup group, int checkedId) {
+					// TODO Auto-generated method stub
+					for (int i = 0; i < mStringLabel.length; i++) {
+						MyRadioButton tempButton = (MyRadioButton) mRadioGroup.findViewById(i);
+						
+						Utils.Log("checkedId = "+checkedId);
+						if (tempButton != null) {
+							if (i == checkedId) {
+								tempButton.setTextColor(0xffff7700);
+								tempButton.setBackgroundColor(0xffffffff);
+							} else {
+								tempButton.setTextColor(0xff666666);
+								tempButton.setBackgroundColor(0xfff5f5f5);
+							}
+						}
+
+					}
+
+				}
+			});
 		}
 		else
 		{
@@ -199,7 +225,7 @@ public class AllGoodsFragment extends BaseFragment {
 				tempButton.setText(mStringLabel[i]);
 				tempButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
 				tempButton.setTextColor(0xff666666);
-	
+				tempButton.setId(i);
 				tempButton.setButtonDrawable(android.R.color.transparent);
 				if (i == 0) {
 					tempButton.setTextColor(0xffff7700);
@@ -207,31 +233,35 @@ public class AllGoodsFragment extends BaseFragment {
 				} 
 				mRadioGroup.addView(tempButton, LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 			}
-		}
+			
+			mRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-		mRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				// TODO Auto-generated method stub
-				for (int i = 0; i < mStringLabel.length; i++) {
-					RadioButton tempButton = (RadioButton) mRadioGroup.findViewById(i);
-					
-					Utils.Log("checkedId = "+checkedId);
-					if (tempButton != null) {
-						if (i == checkedId) {
-							tempButton.setTextColor(0xffff7700);
-							tempButton.setBackgroundColor(0xffffffff);
-						} else {
-							tempButton.setTextColor(0xff666666);
-							tempButton.setBackgroundColor(0xfff5f5f5);
+				@Override
+				public void onCheckedChanged(RadioGroup group, int checkedId) {
+					// TODO Auto-generated method stub
+					for (int i = 0; i < mStringLabel.length; i++) {
+						RadioButton tempButton = (RadioButton) mRadioGroup.findViewById(i);
+						
+						Utils.Log("checkedId = "+checkedId);
+						if (tempButton != null) {
+							if (i == checkedId) {
+								tempButton.setTextColor(0xffff7700);
+								tempButton.setBackgroundColor(0xffffffff);
+							} else {
+								tempButton.setTextColor(0xff666666);
+								tempButton.setBackgroundColor(0xfff5f5f5);
+							}
 						}
+
 					}
 
 				}
+			});
+			
+		}
 
-			}
-		});
+
+
 
 	}
 
