@@ -367,7 +367,7 @@ public class AllGoodsFragment extends BaseFragment {
 				tempButton.setTextColor(0xff666666);
 				tempButton.setId(i);
 				tempButton.setButtonDrawable(android.R.color.transparent);
-				if (i == 0) {
+				if (i == current_goods_type_index) {
 					tempButton.setTextColor(0xffff7700);
 					tempButton.setBackgroundColor(0xffffffff);
 				} 
