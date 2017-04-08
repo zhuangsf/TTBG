@@ -21,11 +21,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextSwitcher;
+import android.widget.TextView;
 
 import com.android.ttbg.MyListener;
 import com.android.ttbg.R;
 import com.android.ttbg.SearchActivity;
-import com.android.ttbg.adapter.AllGoodsContentsAdapter;
+import com.android.ttbg.adapter.AllGoodsContentsAdapterGrid;
+import com.android.ttbg.adapter.AllGoodsContentsAdapterList;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.tools.DataCleanManager;
 import com.android.ttbg.util.OperatingSP;
@@ -33,6 +35,7 @@ import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.GoodsProperty;
 import com.android.ttbg.view.MyRadioButton;
 import com.android.ttbg.view.PullToRefreshLayout;
+import com.android.ttbg.view.PullableGridView;
 import com.android.ttbg.view.PullableListView;
 
 public class AllGoodsFragment extends BaseFragment {
@@ -45,18 +48,25 @@ public class AllGoodsFragment extends BaseFragment {
 	private String[] mStringLabel;
 	private int[] mGoodsSortID;
 	private PullableListView allgoods_content_listview;
-	private PullToRefreshLayout ptrl;
+	private PullableGridView allgoods_content_gridview;
+	private PullToRefreshLayout ptrl_list;
+	private PullToRefreshLayout ptrl_grid;
 	private boolean isFirstIn = true;
 	private View search;
 	private View icon_allgoods_listtype;
 	private ImageView iv_allgoods_listtype;
 	private int allgoods_listtype = ALLGOODS_LIST_TYPE_LIST;  //当前是list列表还是grid类型
 	private int current_goods_type_index = 0;  //左侧商品类型序号
+	private int allgoods_orderby = 0; //0 即将揭晓   1 人气  2 最新 3 价值低 4价值高
+	private TextView tv_allgoods_announce;
+	private TextView tv_allgoods_popular;
+	private TextView tv_allgoods_newest;
+	private TextView tv_allgoods_price;
 	@Override
 	protected View initView() {
 		allGoodsFragment = View.inflate(mContext, R.layout.fragment_allgoods, null);
 		mStringLabel = mContext.getResources().getStringArray(R.array.classify_string);
-		
+		allgoods_listtype = OperatingSP.getInt(mContext,OperatingSP.PREFERENCE_ALLGOODS_LIST_TYPE,OperatingSP.PREFERENCE_ALLGOODS_LIST_TYPE_DEFAULT);
 		TypedArray ar = mContext.getResources().obtainTypedArray(R.array.allgood_sort_id);
 		int len = ar.length();     
 		mGoodsSortID = new int[len];     
@@ -69,12 +79,9 @@ public class AllGoodsFragment extends BaseFragment {
 		//mGoodsSortID  = getActivity().getResources().getIntArray(R.array.allgood_sort_id);
 		mRadioGroup = (RadioGroup) allGoodsFragment.findViewById(R.id.rg_allgoods_classify);
 		if (allGoodsFragment != null) {
+			initTitle(allGoodsFragment);// 这个要比initAllGoodsContentView先初始化
 			reflashRadioGroup();
 			initAllGoodsContentView(allGoodsFragment);
-			initTitle(allGoodsFragment);
-			
-
-			 
 		}
 		
 		
@@ -91,8 +98,10 @@ public class AllGoodsFragment extends BaseFragment {
 		        }  
 		  }); 
 		iv_allgoods_listtype = (ImageView) v.findViewById(R.id.iv_allgoods_listtype);
-		allgoods_listtype = OperatingSP.getInt(mContext,OperatingSP.PREFERENCE_ALLGOODS_LIST_TYPE,OperatingSP.PREFERENCE_ALLGOODS_LIST_TYPE_DEFAULT);
-    	if(allgoods_listtype == ALLGOODS_LIST_TYPE_LIST)
+
+    	
+		Utils.Log("initTitle allgoods_listtype = "+allgoods_listtype);
+		if(allgoods_listtype == ALLGOODS_LIST_TYPE_LIST)
     	{
     		iv_allgoods_listtype.setImageResource(R.drawable.icon_allgoods_list);
     	}
@@ -103,6 +112,7 @@ public class AllGoodsFragment extends BaseFragment {
 		icon_allgoods_listtype = (View) v.findViewById(R.id.icon_allgoods_listtype);
 		icon_allgoods_listtype.setOnClickListener(new View.OnClickListener() {  
 	        public void onClick(View v) {  
+	        	Utils.Log("icon_allgoods_listtype onClick allgoods_listtype = "+allgoods_listtype);
 	        	if(allgoods_listtype == ALLGOODS_LIST_TYPE_LIST)
 	        	{
 	        		allgoods_listtype = ALLGOODS_LIST_TYPE_GRID;
@@ -117,18 +127,104 @@ public class AllGoodsFragment extends BaseFragment {
 	        	//保存类型
 	        	OperatingSP.setInt(mContext,OperatingSP.PREFERENCE_ALLGOODS_LIST_TYPE,allgoods_listtype);
 	        	reflashRadioGroup();
+	        	refrashContentListView();
 	        }  
 	  }); 
 	}
+	
+	
+	private void reflashOrderByTextColor()
+	{
+		tv_allgoods_announce.setTextColor(0xff666666);
+		tv_allgoods_popular.setTextColor(0xff666666);
+		tv_allgoods_newest.setTextColor(0xff666666);
+		tv_allgoods_price.setTextColor(0xff666666);
+		tv_allgoods_price.setCompoundDrawablesWithIntrinsicBounds(null, null, mContext.getResources().getDrawable(R.drawable.icon_allgoods_price_default), null);
+		switch(allgoods_orderby)
+		{
+		case 0:
+			tv_allgoods_announce.setTextColor(0xffff6600);
+			break;
+		case 1:
+			tv_allgoods_popular.setTextColor(0xffff6600);
+			break;
+		case 2:
+			tv_allgoods_newest.setTextColor(0xffff6600);
+			break;
+		case 3:
+			tv_allgoods_price.setTextColor(0xffff6600);
+			tv_allgoods_price.setCompoundDrawablesWithIntrinsicBounds(null, null, mContext.getResources().getDrawable(R.drawable.icon_allgoods_price_up), null);
+			break;
+		case 4:
+			tv_allgoods_price.setTextColor(0xffff6600);
+			tv_allgoods_price.setCompoundDrawablesWithIntrinsicBounds(null, null, mContext.getResources().getDrawable(R.drawable.icon_allgoods_price_down), null);
+			break;
+			default:
+				tv_allgoods_announce.setTextColor(0xffff6600);
+				break;
+		}
+
+	}
+	
 	private void initAllGoodsContentView(View v) {
-		ptrl = ((PullToRefreshLayout) v.findViewById(R.id.prl_allgoods));
-		ptrl.setOnRefreshListener(new MyListener());
+		
+		//allgoods_orderby
+		tv_allgoods_announce = (TextView)v.findViewById(R.id.tv_allgoods_announce);
+		tv_allgoods_announce.setOnClickListener(new View.OnClickListener() {  
+	        public void onClick(View v) {  
+	        	allgoods_orderby = 0;
+	        	reflashOrderByTextColor();
+	        }  
+	    }); 
+		tv_allgoods_popular = (TextView)v.findViewById(R.id.tv_allgoods_popular);
+		tv_allgoods_popular.setOnClickListener(new View.OnClickListener() {  
+	        public void onClick(View v) {  
+	        	allgoods_orderby = 1;
+	        	reflashOrderByTextColor();
+	        }  
+	    }); 
+		tv_allgoods_newest = (TextView)v.findViewById(R.id.tv_allgoods_newest);
+		tv_allgoods_newest.setOnClickListener(new View.OnClickListener() {  
+	        public void onClick(View v) {  
+	        	allgoods_orderby = 2;
+	        	reflashOrderByTextColor();
+	        }  
+	    }); 
+		tv_allgoods_price = (TextView)v.findViewById(R.id.tv_allgoods_price);
+		tv_allgoods_price.setOnClickListener(new View.OnClickListener() {  
+	        public void onClick(View v) {  
+	        	if(allgoods_orderby == 3)
+	        	{
+	        		allgoods_orderby = 4;
+	        	}
+	        	else if(allgoods_orderby == 4)
+	        	{
+	        		allgoods_orderby = 3;
+	        	}
+	        	else
+	        	{
+	        		allgoods_orderby = 3;
+	        	}
+	        	reflashOrderByTextColor();
+	        }  
+	    }); 
+		
+		reflashOrderByTextColor();
+		
+		
+		ptrl_grid = ((PullToRefreshLayout) v.findViewById(R.id.prl_allgoods_grid));
+		ptrl_grid.setOnRefreshListener(new MyListener());
+		ptrl_list = ((PullToRefreshLayout) v.findViewById(R.id.prl_allgoods_list));
+		ptrl_list.setOnRefreshListener(new MyListener());
 		allgoods_content_listview = (PullableListView) v.findViewById(R.id.allgoods_content_listview);
+		allgoods_content_gridview = (PullableGridView) v.findViewById(R.id.allgoods_content_gridview);
 		initContentListView();
 	}
 	private void initContentListView()
 	{
 	   	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
+	   	
+	   	
         //测试数据
         for (int i = 0; i < 8; i++) {
 
@@ -138,8 +234,7 @@ public class AllGoodsFragment extends BaseFragment {
 
         }
 
-        AllGoodsContentsAdapter allGoodsContentsAdapter = new AllGoodsContentsAdapter(getActivity(), hashMapList);
-
+        AllGoodsContentsAdapterList allGoodsContentsAdapter = new AllGoodsContentsAdapterList(getActivity(), hashMapList);
         allgoods_content_listview.setAdapter(allGoodsContentsAdapter);
 		allgoods_content_listview.setOnItemLongClickListener(new OnItemLongClickListener()
 		{
@@ -160,11 +255,52 @@ public class AllGoodsFragment extends BaseFragment {
 			{
 			}
 		});
+		
+		
+        AllGoodsContentsAdapterGrid allGoodsContentsAdapterGrid = new AllGoodsContentsAdapterGrid(getActivity(), hashMapList);
+        allgoods_content_gridview.setAdapter(allGoodsContentsAdapterGrid);
+        allgoods_content_gridview.setOnItemLongClickListener(new OnItemLongClickListener()
+ 		{
+
+ 			@Override
+ 			public boolean onItemLongClick(AdapterView<?> parent, View view,
+ 					int position, long id)
+ 			{
+ 				return true;
+ 			}
+ 		});
+        allgoods_content_gridview.setOnItemClickListener(new OnItemClickListener()
+ 		{
+
+ 			@Override
+ 			public void onItemClick(AdapterView<?> parent, View view,
+ 					int position, long id)
+ 			{
+ 			}
+ 		});
+        
+        refrashContentListView();
+        
+	}
+	
+	private void refrashContentListView()
+	{
+        if(allgoods_listtype == ALLGOODS_LIST_TYPE_LIST)
+        {
+        	ptrl_grid.setVisibility(View.GONE);
+        	ptrl_list.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+        	ptrl_grid.setVisibility(View.VISIBLE);
+        	ptrl_list.setVisibility(View.GONE);
+        }
 	}
 	
 	private void reflashRadioGroup( ) {
 		// TODO Auto-generated method stub
 		mRadioGroup.removeAllViews();
+		Utils.Log("reflashRadioGroup allgoods_listtype = "+allgoods_listtype);
 		if(allgoods_listtype == ALLGOODS_LIST_TYPE_GRID)
 		{      
 			for (int i = 0; i < mStringLabel.length; i++) {
@@ -196,10 +332,14 @@ public class AllGoodsFragment extends BaseFragment {
 				@Override
 				public void onCheckedChanged(RadioGroup group, int checkedId) {
 					// TODO Auto-generated method stub
+					
+					current_goods_type_index = checkedId;
+					
 					for (int i = 0; i < mStringLabel.length; i++) {
 						MyRadioButton tempButton = (MyRadioButton) mRadioGroup.findViewById(i);
 						
 						Utils.Log("checkedId = "+checkedId);
+						
 						if (tempButton != null) {
 							if (i == checkedId) {
 								tempButton.setTextColor(0xffff7700);
@@ -239,6 +379,7 @@ public class AllGoodsFragment extends BaseFragment {
 				@Override
 				public void onCheckedChanged(RadioGroup group, int checkedId) {
 					// TODO Auto-generated method stub
+					current_goods_type_index = checkedId;
 					for (int i = 0; i < mStringLabel.length; i++) {
 						RadioButton tempButton = (RadioButton) mRadioGroup.findViewById(i);
 						

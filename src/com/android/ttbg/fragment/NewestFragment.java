@@ -15,7 +15,7 @@ import android.widget.TextSwitcher;
 
 import com.android.ttbg.MyListener;
 import com.android.ttbg.R;
-import com.android.ttbg.adapter.AllGoodsContentsAdapter;
+import com.android.ttbg.adapter.AllGoodsContentsAdapterList;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.adapter.NewestGoodsAdapter;
 import com.android.ttbg.view.GoodsProperty;

@@ -15,28 +15,28 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class AllGoodsContentsAdapter extends BaseAdapter {
+public class AllGoodsContentsAdapterGrid extends BaseAdapter {
 
 	private Context mContext;
-    private List<GoodsProperty> goodsRecommandItems = null;
-    public AllGoodsContentsAdapter(Context context, List<GoodsProperty> goodsRecommandItems)
+    private List<GoodsProperty> goodsItems = null;
+    public AllGoodsContentsAdapterGrid(Context context, List<GoodsProperty> goodsItems)
     {
         mContext = context;
-        this.goodsRecommandItems = goodsRecommandItems;
+        this.goodsItems = goodsItems;
     }
 
-    public void setData(List<GoodsProperty> goodsRecommandItems)
+    public void setData(List<GoodsProperty> goodsItems)
     {
-    	this.goodsRecommandItems = goodsRecommandItems;
+    	this.goodsItems = goodsItems;
     }
 
     @Override
     public int getCount()
     {
         int count = 0;
-        if (null != goodsRecommandItems)
+        if (null != goodsItems)
         {
-            count = goodsRecommandItems.size();
+            count = goodsItems.size();
         }
         return count;
     }
@@ -46,9 +46,9 @@ public class AllGoodsContentsAdapter extends BaseAdapter {
     {
     	GoodsProperty item = null;
 
-        if (null != goodsRecommandItems)
+        if (null != goodsItems)
         {
-            item = goodsRecommandItems.get(position);
+            item = goodsItems.get(position);
         }
 
         return item;
@@ -68,11 +68,11 @@ public class AllGoodsContentsAdapter extends BaseAdapter {
         {
             viewHolder = new ViewHolder();
             LayoutInflater mInflater = LayoutInflater.from(mContext);
-            convertView = mInflater.inflate(R.layout.item_allgood_list, null);
-            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.iv_allgood_pic_list);
-            viewHolder.tv_goods_label = (TextView) convertView.findViewById(R.id.tv_allgood_name_list);
-            viewHolder.tv_goods_price = (TextView) convertView.findViewById(R.id.tv_allgood_price_list);
-            viewHolder.pb_participation = (ProgressBar) convertView.findViewById(R.id.pb_participation);
+            convertView = mInflater.inflate(R.layout.item_allgood_grid, null);
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.iv_allgoods_good_grid);
+            viewHolder.tv_goods_label = (TextView) convertView.findViewById(R.id.tv_allgoods_grid_name);
+            viewHolder.tv_goods_price = (TextView) convertView.findViewById(R.id.tv_allgoods_grid_price);
+            viewHolder.pb_participation = (ProgressBar) convertView.findViewById(R.id.cpb_allgoods_grid);
             convertView.setTag(viewHolder);
         }
         else
@@ -82,12 +82,12 @@ public class AllGoodsContentsAdapter extends BaseAdapter {
 
         // set item values to the viewHolder:
 
-        GoodsProperty goodsRecommandItem = getItem(position);
-        if (null != goodsRecommandItem)
+        GoodsProperty goodsItem = getItem(position);
+        if (null != goodsItem)
         {
-            viewHolder.imageView.setImageDrawable(goodsRecommandItem.getImageDrawable());
-            viewHolder.tv_goods_label.setText(goodsRecommandItem.getGoodsTitle());
-            viewHolder.tv_goods_price.setText(goodsRecommandItem.getGoods_price());
+            viewHolder.imageView.setImageDrawable(goodsItem.getImageDrawable());
+            viewHolder.tv_goods_label.setText(goodsItem.getGoodsTitle());
+            viewHolder.tv_goods_price.setText(goodsItem.getGoods_price());
         }
 
         return convertView;

@@ -3,7 +3,7 @@ package com.android.ttbg;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.android.ttbg.adapter.AllGoodsContentsAdapter;
+import com.android.ttbg.adapter.AllGoodsContentsAdapterList;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.adapter.HistoryContentsAdapter;
 import com.android.ttbg.adapter.ObtainGoodsAdapter;
