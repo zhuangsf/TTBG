@@ -108,7 +108,7 @@ public class AllGoodsContentsAdapterGrid extends BaseAdapter {
         		viewHolder.imageView.setImageDrawable(goodsItem.getImageDrawable());
         	}
             viewHolder.tv_goods_label.setText(goodsItem.getGoodsTitle());
-            viewHolder.tv_goods_price.setText(goodsItem.getGoods_price());
+            viewHolder.tv_goods_price.setText(goodsItem.getMoney());
             if(position%2!=0) {
             	viewHolder.item_rightline.setVisibility(View.GONE);
             }

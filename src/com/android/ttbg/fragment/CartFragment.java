@@ -44,7 +44,7 @@ public class CartFragment extends BaseFragment {
         for (int i = 0; i < 8; i++) {
 
             GoodsProperty goodsRecommandItem = new GoodsProperty();
-            goodsRecommandItem.setGoodsRecommandItem(getActivity(), "测试测    "+i+"   试测试,要两行啊要两行,这么多字够了吗", null, i*10, i*100, i*90,"价值:¥ 888.88");
+            goodsRecommandItem.setGoodsItem(getActivity(), "测试测    "+i+"   试测试,要两行啊要两行,这么多字够了吗", null, i*10, i*100, i*90,"价值:¥ 888.88");
             hashMapList.add(goodsRecommandItem);
 
         }

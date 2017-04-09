@@ -90,7 +90,7 @@ public class HotRecommendAdapter extends BaseAdapter
         {
             viewHolder.imageView.setImageDrawable(goodsRecommandItem.getImageDrawable());
             viewHolder.tv_goods_label.setText(goodsRecommandItem.getGoodsTitle());
-            viewHolder.tv_goods_price.setText(goodsRecommandItem.getGoods_price());
+            viewHolder.tv_goods_price.setText(goodsRecommandItem.getMoney());
         }
 
         return convertView;

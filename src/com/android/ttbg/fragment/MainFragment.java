@@ -447,7 +447,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         	        		String shenyurenshu = obj.getString("shenyurenshu");
         	        		
     	                    GoodsProperty goodsRecommandItem = new GoodsProperty();
-    	                    goodsRecommandItem.setGoodsRecommandItemUrl(mContext, title, JsonControl.FILE_HEAD+thumb, Integer.parseInt(canyurenshu), Integer.parseInt(zongrenshu),Integer.parseInt(shenyurenshu),"价值:¥ "+money);
+    	                    goodsRecommandItem.setGoodsItemUrl(mContext, title, JsonControl.FILE_HEAD+thumb, Integer.parseInt(canyurenshu), Integer.parseInt(zongrenshu),Integer.parseInt(shenyurenshu),"价值:¥ "+money);
     	                    hashMapListRecommend.add(goodsRecommandItem);
     	        		}
     	        		

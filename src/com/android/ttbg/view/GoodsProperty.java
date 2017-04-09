@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import com.android.ttbg.R;
+import com.android.ttbg.json.JsonControl;
 
 
 
@@ -12,13 +13,13 @@ public class GoodsProperty
 {   
 
     private Drawable imageDrawable;
-    private String drawableUrl;
+
 
 
 	private int participated_num;   //已参与人数
     private int total_num;			//总人数
     private int surplus_num;		//剩余人数
-    private String goods_price;     //	商品单价
+//    private String goods_price;     //	商品单价
     
     
 
@@ -30,6 +31,7 @@ public class GoodsProperty
     private String money;   //	价值
     private String yunjiage;   //	商品单价
     private String thumb;   //	商品图片
+    private String drawableUrl;  //商品图片完整路径,跟thumb有点多余,后续修改
     private String q_end_time;   //	商品揭晓时间
     private String q_uid;   //	中奖用户id
     private String username;   //	中奖用户名称
@@ -110,6 +112,7 @@ public class GoodsProperty
 
 	public void setThumb(String thumb) {
 		this.thumb = thumb;
+		this.drawableUrl = JsonControl.FILE_HEAD+thumb;
 	}
 
 	public String getQ_end_time() {
@@ -160,16 +163,13 @@ public class GoodsProperty
 		this.q_user_code = q_user_code;
 	}
 
-	public String getGoods_price() {
-		return goods_price;
-	}
 
 	public GoodsProperty()   
     {   
         super();   
     }   
    
-    public void setGoodsRecommandItem(Context context,String title, Drawable imageDrawable,int participated_num,int total_num,int surplus_num,String goods_price)   
+    public void setGoodsItem(Context context,String title, Drawable imageDrawable,int participated_num,int total_num,int surplus_num,String money)   
     {   
         this.title = title;   
         if(imageDrawable == null)
@@ -183,16 +183,16 @@ public class GoodsProperty
         this.participated_num = participated_num;  
         this.total_num = total_num;
         this.surplus_num = surplus_num;
-        this.goods_price = goods_price;
+        this.money = money;
     }   
-    public void setGoodsRecommandItemUrl(Context context,String title, String drawableUrl,int participated_num,int total_num,int surplus_num,String goods_price)   
+    public void setGoodsItemUrl(Context context,String title, String drawableUrl,int participated_num,int total_num,int surplus_num,String money)   
     {   
         this.title = title;   
         this.drawableUrl = drawableUrl;
         this.participated_num = participated_num;  
         this.total_num = total_num;
         this.surplus_num = surplus_num;
-        this.goods_price = goods_price;
+        this.money = money;
     }   
     
     public Drawable getImageDrawable()

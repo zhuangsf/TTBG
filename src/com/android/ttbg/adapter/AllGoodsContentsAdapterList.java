@@ -109,7 +109,7 @@ public class AllGoodsContentsAdapterList extends BaseAdapter {
         		viewHolder.imageView.setImageDrawable(goodsItem.getImageDrawable());
         	}
             viewHolder.tv_goods_label.setText(goodsItem.getGoodsTitle());
-            viewHolder.tv_goods_price.setText(goodsItem.getGoods_price());
+            viewHolder.tv_goods_price.setText(goodsItem.getMoney());
             viewHolder.pb_participation.setMax(goodsItem.getTotalNum());
             //设置动画效果
             ObjectAnimator animation = ObjectAnimator.ofInt(viewHolder.pb_participation, "progress", 0, goodsItem.getParticipatedNum());
