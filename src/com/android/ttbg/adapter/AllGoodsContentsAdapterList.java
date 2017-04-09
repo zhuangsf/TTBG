@@ -3,13 +3,16 @@ package com.android.ttbg.adapter;
 import java.util.List;
 
 import com.android.ttbg.R;
+import com.android.ttbg.tools.AsyncImageLoader;
 import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.GoodsProperty;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -19,12 +22,21 @@ public class AllGoodsContentsAdapterList extends BaseAdapter {
 
 	private Context mContext;
     private List<GoodsProperty> goodsRecommandItems = null;
+    private AsyncImageLoader imageLoader;
     public AllGoodsContentsAdapterList(Context context, List<GoodsProperty> goodsRecommandItems)
     {
         mContext = context;
+        imageLoader = new AsyncImageLoader(mContext);  
         this.goodsRecommandItems = goodsRecommandItems;
     }
 
+    public AllGoodsContentsAdapterList(Context context)
+    {
+        mContext = context;
+        imageLoader = new AsyncImageLoader(mContext);  
+    }
+
+    
     public void setData(List<GoodsProperty> goodsRecommandItems)
     {
     	this.goodsRecommandItems = goodsRecommandItems;
@@ -82,12 +94,29 @@ public class AllGoodsContentsAdapterList extends BaseAdapter {
 
         // set item values to the viewHolder:
 
-        GoodsProperty goodsRecommandItem = getItem(position);
-        if (null != goodsRecommandItem)
+        GoodsProperty goodsItem = getItem(position);
+        if (null != goodsItem)
         {
-            viewHolder.imageView.setImageDrawable(goodsRecommandItem.getImageDrawable());
-            viewHolder.tv_goods_label.setText(goodsRecommandItem.getGoodsTitle());
-            viewHolder.tv_goods_price.setText(goodsRecommandItem.getGoods_price());
+        	if(goodsItem.getDrawableUrl() != null)
+        	{
+        		if(imageLoader != null)
+        		{
+        			imageLoader.downloadImage(goodsItem.getDrawableUrl(), viewHolder.imageView);
+        		}
+        	}
+        	else
+        	{
+        		viewHolder.imageView.setImageDrawable(goodsItem.getImageDrawable());
+        	}
+            viewHolder.tv_goods_label.setText(goodsItem.getGoodsTitle());
+            viewHolder.tv_goods_price.setText(goodsItem.getGoods_price());
+            viewHolder.pb_participation.setMax(goodsItem.getTotalNum());
+            //设置动画效果
+            ObjectAnimator animation = ObjectAnimator.ofInt(viewHolder.pb_participation, "progress", 0, goodsItem.getParticipatedNum());
+            animation.setDuration(1000); 
+            animation.setInterpolator(new DecelerateInterpolator());
+            animation.start();
+            
         }
 
         return convertView;

@@ -3,13 +3,16 @@ package com.android.ttbg.adapter;
 import java.util.List;
 
 import com.android.ttbg.R;
+import com.android.ttbg.tools.AsyncImageLoader;
 import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.GoodsProperty;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -19,12 +22,19 @@ public class AllGoodsContentsAdapterGrid extends BaseAdapter {
 
 	private Context mContext;
     private List<GoodsProperty> goodsItems = null;
+    private AsyncImageLoader imageLoader;
     public AllGoodsContentsAdapterGrid(Context context, List<GoodsProperty> goodsItems)
     {
         mContext = context;
+        imageLoader = new AsyncImageLoader(mContext);  
         this.goodsItems = goodsItems;
     }
-
+    public AllGoodsContentsAdapterGrid(Context context)
+    {
+    	
+        mContext = context;
+        imageLoader = new AsyncImageLoader(mContext);  
+    }
     public void setData(List<GoodsProperty> goodsItems)
     {
     	this.goodsItems = goodsItems;
@@ -86,12 +96,28 @@ public class AllGoodsContentsAdapterGrid extends BaseAdapter {
         GoodsProperty goodsItem = getItem(position);
         if (null != goodsItem)
         {
-            viewHolder.imageView.setImageDrawable(goodsItem.getImageDrawable());
+        	if(goodsItem.getDrawableUrl() != null)
+        	{
+        		if(imageLoader != null)
+        		{
+        			imageLoader.downloadImage(goodsItem.getDrawableUrl(), viewHolder.imageView);
+        		}
+        	}
+        	else
+        	{
+        		viewHolder.imageView.setImageDrawable(goodsItem.getImageDrawable());
+        	}
             viewHolder.tv_goods_label.setText(goodsItem.getGoodsTitle());
             viewHolder.tv_goods_price.setText(goodsItem.getGoods_price());
             if(position%2!=0) {
             	viewHolder.item_rightline.setVisibility(View.GONE);
             }
+            viewHolder.pb_participation.setMax(goodsItem.getTotalNum());
+            //设置动画效果
+            ObjectAnimator animation = ObjectAnimator.ofInt(viewHolder.pb_participation, "progress", 0, goodsItem.getParticipatedNum());
+            animation.setDuration(1000); 
+            animation.setInterpolator(new DecelerateInterpolator());
+            animation.start();
         }
 
         return convertView;

@@ -425,9 +425,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     	        		{
     	        			return;
     	        		}
-    	        		
-    	        		
-    	        		List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
+    	        		hashMapListRecommend.clear();
     	        		for(int i =0;i<len;i++){
     	        			
         	        		JSONObject obj = shoplists.getJSONObject(i);

@@ -39,6 +39,9 @@ public class JsonControl {
 	public static final int JSON_TYPE_ARRIVALS=0x4003; 
 	//猜你喜欢的数据
 	public static final int JSON_TYPE_RECOMMAND=0x4004; 
+	//所有商品
+	public static final int JSON_TYPE_ALLGOODS=0x4005; 
+	
 	  @SuppressWarnings("deprecation")
 	public static void httpGet(String url,Handler mHandler,int jsonType) {
 		Utils.Log("http httpGet url:"+url);

@@ -3,10 +3,19 @@ package com.android.ttbg.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.os.Message;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -29,6 +38,7 @@ import com.android.ttbg.SearchActivity;
 import com.android.ttbg.adapter.AllGoodsContentsAdapterGrid;
 import com.android.ttbg.adapter.AllGoodsContentsAdapterList;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
+import com.android.ttbg.json.JsonControl;
 import com.android.ttbg.tools.DataCleanManager;
 import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.util.Utils;
@@ -37,6 +47,7 @@ import com.android.ttbg.view.MyRadioButton;
 import com.android.ttbg.view.PullToRefreshLayout;
 import com.android.ttbg.view.PullableGridView;
 import com.android.ttbg.view.PullableListView;
+import com.finddreams.adbanner.ImagePagerAdapter;
 
 public class AllGoodsFragment extends BaseFragment {
 	private static final String TAG = AllGoodsFragment.class.getSimpleName();
@@ -49,6 +60,9 @@ public class AllGoodsFragment extends BaseFragment {
 	private int[] mGoodsSortID;
 	private PullableListView allgoods_content_listview;
 	private PullableGridView allgoods_content_gridview;
+	private AllGoodsContentsAdapterList allGoodsContentsAdapter;
+	private AllGoodsContentsAdapterGrid allGoodsContentsAdapterGrid;
+	
 	private PullToRefreshLayout ptrl_list;
 	private PullToRefreshLayout ptrl_grid;
 	private boolean isFirstIn = true;
@@ -62,6 +76,7 @@ public class AllGoodsFragment extends BaseFragment {
 	private TextView tv_allgoods_popular;
 	private TextView tv_allgoods_newest;
 	private TextView tv_allgoods_price;
+	private ArrayList<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
 	@Override
 	protected View initView() {
 		allGoodsFragment = View.inflate(mContext, R.layout.fragment_allgoods, null);
@@ -84,10 +99,149 @@ public class AllGoodsFragment extends BaseFragment {
 			initAllGoodsContentView(allGoodsFragment);
 		}
 		
-		
+		new Thread(runnableAllGoods).start();
 		
 		return allGoodsFragment;
 	}
+	
+	//最新揭晓
+	Runnable runnableAllGoods = new Runnable(){
+		  @Override
+		  public void run() {
+		    //
+		    // TODO: http request.
+		    //
+			String orderflag = "30";
+			String cateid = "0s";
+			
+			//orderflag	排序类型，30即将揭晓；40人气；20最新；50价值降序；60价值升序；80十元专区（替换限购类型）								
+			if(allgoods_orderby == 0)
+			{
+				orderflag = "30";
+			}else if(allgoods_orderby == 1)
+			{
+				orderflag = "40";
+			}
+			else if(allgoods_orderby == 2)
+			{
+				orderflag = "20";
+			}
+			else if(allgoods_orderby == 3)
+			{
+				orderflag = "50";
+			}
+			else if(allgoods_orderby == 4)
+			{
+				orderflag = "60";
+			}
+
+			JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getShopList/0/"+orderflag+"/0/30/1", mHandler,JsonControl.JSON_TYPE_ALLGOODS);
+		  }
+	};
+	
+    private Handler mHandler= new Handler()
+	    {
+	   		@Override
+	   		public void handleMessage(Message msg) {
+	   			switch (msg.what) {
+	   			case JsonControl.GET_SUCCESS_MSG:
+	   			{
+	            	JSONObject jsonObject=(JSONObject)msg.obj;
+	            	Utils.Log("GET_SUCCESS_MSG jsonObject:"+jsonObject+" msg.arg1 = "+msg.arg1);
+	            	if(jsonObject == null)
+	            	{
+	            		return;
+	            	}
+	        		JSONObject result;
+	        		switch(msg.arg1)
+	        		{
+	        		case JsonControl.JSON_TYPE_ALLGOODS:
+	        		{
+	        			try {
+	            			result = new JSONObject(jsonObject.toString());
+	            			Utils.Log("JsonControl.JSON_TYPE_ALLGOODS  result = "+result);
+	            			
+	            			if(result.toString().contains("连接不成功"))
+	            			{
+	            				return;
+	            			}
+	            			String bSuccess = result.optString("success","");
+	            			Utils.Log("getJson JSON_TYPE_ALLGOODS bSuccess = "+bSuccess);
+	            			
+	            			if(bSuccess.toString().equals("0"))
+	            			{
+	            				//商品序号已经超出
+	            				return;
+	            			}
+	            			
+	            			String count = result.optString("count","");
+	            			Utils.Log("getJson JSON_TYPE_ALLGOODS count = "+count);
+	            			
+	            			JSONArray shoplists = result.getJSONArray("shoplists");
+	    	        		int len = shoplists.length();
+	    	        		Utils.Log("getJson JSON_TYPE_ALLGOODS len = "+len);
+	    	        		
+	    	        		if(len == 0)
+	    	        		{
+	    	        			return;
+	    	        		}
+	    	        		
+	    	        		hashMapList.clear();
+	    	        		
+	    	        		for(int i =0;i<len;i++){
+	    	        			
+	        	        		JSONObject obj = shoplists.getJSONObject(i);
+	        	        		Utils.Log("getJson hashMapList["+i+"] = "+obj.toString());
+
+	        	        		String id = obj.getString("id");
+	        	        		String sid = obj.getString("sid");
+	        	        		String cateid = obj.getString("cateid");
+	        	        		String title = obj.getString("title");
+	        	        		String title2 = obj.getString("title2");
+	        	        		String qishu = obj.getString("qishu");
+	        	        		String money = obj.getString("money");    	        		
+	        	        		String yunjiage = obj.getString("yunjiage");
+	        	        		String thumb = obj.getString("thumb");
+	        	        		String brandid = obj.getString("brandid");
+	        	        		String brandname = obj.getString("brandname");
+	        	        		String zongrenshu = obj.getString("zongrenshu");
+	        	        		String canyurenshu = obj.getString("canyurenshu");
+	        	        		String shenyurenshu = obj.getString("shenyurenshu");
+	        	        		
+	    	                    GoodsProperty goodsRecommandItem = new GoodsProperty();
+	    	                    goodsRecommandItem.setGoodsRecommandItemUrl(mContext, title, JsonControl.FILE_HEAD+thumb, Integer.parseInt(canyurenshu), Integer.parseInt(zongrenshu),Integer.parseInt(shenyurenshu),"价值:¥ "+money);
+	    	                    hashMapList.add(goodsRecommandItem);
+	    	        		}
+	    	        		
+	    	        			//一起刷新得了
+	    	        			allGoodsContentsAdapter.setData(hashMapList);
+	    	        			allGoodsContentsAdapter.notifyDataSetChanged();
+
+	    	        			allGoodsContentsAdapterGrid.setData(hashMapList);
+	    	        			allGoodsContentsAdapterGrid.notifyDataSetChanged();
+
+	    	        	
+	    	        		
+	            			
+	        			}catch (JSONException e) {
+	         					// TODO Auto-generated catch block
+	         					e.printStackTrace();
+	         				}
+	        		}
+	        		break;
+	        		default:
+	        			break;
+	        		}
+
+
+	            	
+	   			}
+	   			break;
+	   		  }
+	   			
+	   		}
+	   	};
+	
 	private void initTitle(View v) {
 		// TODO Auto-generated method stub
 		search = (View) v.findViewById(R.id.search);
@@ -222,19 +376,8 @@ public class AllGoodsFragment extends BaseFragment {
 	}
 	private void initContentListView()
 	{
-	   	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
-	   	
-	   	
-        //测试数据
-        for (int i = 0; i < 8; i++) {
 
-            GoodsProperty goodsRecommandItem = new GoodsProperty();
-            goodsRecommandItem.setGoodsRecommandItem(getActivity(), "(第"+i+"云)红米4 16G 全网通 标准版 4G手机 只要一元啦 一元啦一元啦", null, i*10, i*100, i*90,"价值:¥ 888.88");
-            hashMapList.add(goodsRecommandItem);
-
-        }
-
-        AllGoodsContentsAdapterList allGoodsContentsAdapter = new AllGoodsContentsAdapterList(getActivity(), hashMapList);
+        allGoodsContentsAdapter = new AllGoodsContentsAdapterList(getActivity());
         allgoods_content_listview.setAdapter(allGoodsContentsAdapter);
 		allgoods_content_listview.setOnItemLongClickListener(new OnItemLongClickListener()
 		{
@@ -257,7 +400,7 @@ public class AllGoodsFragment extends BaseFragment {
 		});
 		
 		
-        AllGoodsContentsAdapterGrid allGoodsContentsAdapterGrid = new AllGoodsContentsAdapterGrid(getActivity(), hashMapList);
+        allGoodsContentsAdapterGrid = new AllGoodsContentsAdapterGrid(getActivity());
         allgoods_content_gridview.setAdapter(allGoodsContentsAdapterGrid);
         allgoods_content_gridview.setOnItemLongClickListener(new OnItemLongClickListener()
  		{
