@@ -7,9 +7,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
@@ -18,11 +20,16 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -32,6 +39,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
+import com.android.ttbg.AddressEditActivity;
 import com.android.ttbg.MyListener;
 import com.android.ttbg.R;
 import com.android.ttbg.SearchActivity;
@@ -77,6 +85,47 @@ public class AllGoodsFragment extends BaseFragment {
 	private TextView tv_allgoods_newest;
 	private TextView tv_allgoods_price;
 	private ArrayList<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();
+	
+	private Dialog mLoadingDialog;
+	
+	
+	public void hideLoadingDialog(){      
+		if(mLoadingDialog != null)
+        {
+			mLoadingDialog.dismiss();
+        }
+	}
+	public void showLoadingDialog(){         
+	       // AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.Translucent_NoTitle);  
+	        if(mLoadingDialog == null)
+	        {
+			    mLoadingDialog = new Dialog(mContext, R.style.Translucent_Dialog);
+		        LayoutInflater inflater = getActivity().getLayoutInflater();  
+		        final View layout = inflater.inflate(R.layout.layout_loading_dialog, null);//获取自定义布局  
+		        ImageView animationIV;  
+		        AnimationDrawable animationDrawable;
+		        animationIV = (ImageView) layout.findViewById(R.id.iv_loading_dialog);
+		        animationDrawable = (AnimationDrawable) animationIV.getDrawable();
+				animationDrawable.start();
+				mLoadingDialog.setCancelable(false);
+				mLoadingDialog.setCanceledOnTouchOutside(false);
+		        mLoadingDialog.setContentView(layout);  
+		        mLoadingDialog.show();  
+	        }
+	        else
+	        {
+	        	 mLoadingDialog.show();  
+	        }
+/*	        WindowManager m = getActivity().getWindowManager();  
+	        Display display = m.getDefaultDisplay();  //为获取屏幕宽、高  
+	        android.view.WindowManager.LayoutParams p = mLoadingDialog.getWindow().getAttributes();  //获取对话框当前的参数值  
+	        //p.height = (int) (display.getHeight() * 0.3);   //高度设置为屏幕的0.3
+	        p.width = (int) (display.getWidth() * 0.8);    //宽度设置为屏幕的0.5 
+	        mLoadingDialog.getWindow().setAttributes(p);     //设置生效  
+*/	        
+	     }   
+	
+	
 	@Override
 	protected View initView() {
 		allGoodsFragment = View.inflate(mContext, R.layout.fragment_allgoods, null);
@@ -98,7 +147,7 @@ public class AllGoodsFragment extends BaseFragment {
 			reflashRadioGroup();
 			initAllGoodsContentView(allGoodsFragment);
 		}
-		
+		showLoadingDialog();
 		new Thread(runnableAllGoods).start();
 		
 		return allGoodsFragment;
@@ -134,7 +183,6 @@ public class AllGoodsFragment extends BaseFragment {
 			{
 				orderflag = "60";
 			}
-
 			JsonControl.httpGet(JsonControl.HOME_PAGE+"apps/ajax/getShopList/0/"+orderflag+"/0/30/1", mHandler,JsonControl.JSON_TYPE_ALLGOODS);
 		  }
 	};
@@ -221,7 +269,7 @@ public class AllGoodsFragment extends BaseFragment {
 	    	        			allGoodsContentsAdapterGrid.notifyDataSetChanged();
 
 	    	        	
-	    	        		
+	    	        			hideLoadingDialog();
 	            			
 	        			}catch (JSONException e) {
 	         					// TODO Auto-generated catch block
@@ -317,7 +365,10 @@ public class AllGoodsFragment extends BaseFragment {
 				tv_allgoods_announce.setTextColor(0xffff6600);
 				break;
 		}
-
+		
+		//重新读取数据
+		showLoadingDialog();
+		new Thread(runnableAllGoods).start();
 	}
 	
 	private void initAllGoodsContentView(View v) {
