@@ -112,7 +112,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     private static final int MSG_TEST_SWITCHER_TEST=0;
     private static final int MSG_JSON_TYPE_NEWEST_UPDATE=1;
     private ImageView add_menus;
-    
+    private ImageView iv_home_to_check_more;
     
     private GoodsRecommendAdapter goodsRecommendAdapter;
     
@@ -493,19 +493,28 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         	initNewestSwitcher(mainFragmentView);
         	initCountDownPage(mainFragmentView);
         	initNewArrivals(mainFragmentView);
-        	intiGoodsItems(mainFragmentView);
+        	initGoodsItems(mainFragmentView);
+
         }
-        
-        
-
-        
-
-        
+        iv_home_to_check_more = (ImageView)mainFragmentView.findViewById(R.id.iv_home_to_check_more);
         return mainFragmentView;
     }
 
     
-    private void initNewArrivals(View v) {
+    public ImageView getCheckMoreButton()
+    {
+    	if(iv_home_to_check_more != null)
+    	{
+    		return iv_home_to_check_more;
+    	}
+    	else
+    	{
+    		return null;
+    	}
+	}
+
+
+	private void initNewArrivals(View v) {
 		// TODO Auto-generated method stub
          tv_home_new_arrivals_title = (TextView)v.findViewById(R.id.tv_home_new_arrivals_title);
          tv_home_new_arrivals_content = (TextView)v.findViewById(R.id.tv_home_new_arrivals_content);
@@ -618,7 +627,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         return textView;   
     }  
     
-    private void intiGoodsItems(View v) {
+    private void initGoodsItems(View v) {
     	NoScroolGridView gridView = (NoScroolGridView) v.findViewById(R.id.gridview_recommend);
     	gridView.setFocusable(false); 
 /*    	List<GoodsProperty> hashMapList = new ArrayList<GoodsProperty>();

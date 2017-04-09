@@ -4,6 +4,8 @@ package com.android.ttbg;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.android.ttbg.fragment.BaseFragment;
@@ -12,6 +14,7 @@ import com.android.ttbg.fragment.CountFragment;
 import com.android.ttbg.fragment.MainFragment;
 import com.android.ttbg.fragment.NewestFragment;
 import com.android.ttbg.fragment.AllGoodsFragment;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +24,8 @@ public class MainActivity extends FragmentActivityPack {
     private List<BaseFragment> mBaseFragments;
     private int position; //当前选中的位置
     private BaseFragment mFragment;//刚显示的Fragment
-
+    private MainFragment mMainFragment;
+    private ImageView iv_home_to_check_more;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +47,10 @@ public class MainActivity extends FragmentActivityPack {
     }
 
     private void initData() {
+    	mMainFragment = new MainFragment();
+
         mBaseFragments = new ArrayList<>();
-        mBaseFragments.add(new MainFragment());
+        mBaseFragments.add(mMainFragment);
         mBaseFragments.add(new AllGoodsFragment());
         mBaseFragments.add(new NewestFragment());
         mBaseFragments.add(new CartFragment());
@@ -55,6 +61,21 @@ public class MainActivity extends FragmentActivityPack {
         mRadioGroup = (RadioGroup) findViewById(R.id.main_tab_group);
     }
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		//mMainFragment 初始化之后才能获取iv_home_to_check_more这个控件,不然会报空
+		if(iv_home_to_check_more == null && mMainFragment != null && mMainFragment.getCheckMoreButton() != null)
+		{
+			iv_home_to_check_more = mMainFragment.getCheckMoreButton();
+	    	iv_home_to_check_more.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+		        	mRadioGroup.check(R.id.main_tab_allgoods);
+		        }  
+		  }); 
+		}
+	}
 
     private class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
         @Override
