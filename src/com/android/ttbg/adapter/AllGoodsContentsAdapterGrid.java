@@ -112,6 +112,10 @@ public class AllGoodsContentsAdapterGrid extends BaseAdapter {
             if(position%2!=0) {
             	viewHolder.item_rightline.setVisibility(View.GONE);
             }
+            else
+            {
+            	viewHolder.item_rightline.setVisibility(View.VISIBLE);
+            }
             viewHolder.pb_participation.setMax(goodsItem.getTotalNum());
             //设置动画效果
             ObjectAnimator animation = ObjectAnimator.ofInt(viewHolder.pb_participation, "progress", 0, goodsItem.getParticipatedNum());
