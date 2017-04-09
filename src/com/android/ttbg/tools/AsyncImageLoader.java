@@ -55,6 +55,7 @@ public class AsyncImageLoader {
         startThreadPoolIfNecessary();  
           
         String defaultDir = context.getCacheDir().getAbsolutePath();  
+        Utils.Log("AsyncImageLoader  defaultDir = "+defaultDir);
         setCachedDir(defaultDir);  
     }  
       

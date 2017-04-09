@@ -115,7 +115,7 @@ public class LoaderImpl {
         
         Utils.Log("imageCache.containsKey(url) = "+imageCache.containsKey(url)+" url = "+url);
         
-        if(imageCache.containsKey(url)){  
+/*        if(imageCache.containsKey(url)){  
             synchronized(imageCache){  
                 SoftReference<Bitmap> bitmapRef = imageCache.get(url);  
                 if(bitmapRef != null){  
@@ -123,15 +123,15 @@ public class LoaderImpl {
                     return bitmap;  
                 }  
             }  
-        }  
+        }  */
         
         Utils.Log("cache2FileFlag = "+cache2FileFlag);
         
         //从外部缓存文件读取  
         if(cache2FileFlag){  
             bitmap = getBitmapFromFile(url);  
-            if(bitmap != null)  
-                imageCache.put(url, new SoftReference<Bitmap>(bitmap));  
+/*            if(bitmap != null)  
+                imageCache.put(url, new SoftReference<Bitmap>(bitmap));  */
         }  
           
         return bitmap;  
@@ -168,6 +168,16 @@ public class LoaderImpl {
      * MD5 加密   
      */     
     private static String getMD5Str(String str) {     
+    	
+    	
+    	//暂时不加密
+    	if(true)
+    	{
+    		int index = str.lastIndexOf("/");
+    		return str.substring(index+1, str.length());
+    	}
+    	
+    	
         MessageDigest messageDigest = null;     
         try {     
             messageDigest = MessageDigest.getInstance("MD5");     
