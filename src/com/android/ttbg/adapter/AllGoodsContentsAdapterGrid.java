@@ -73,6 +73,7 @@ public class AllGoodsContentsAdapterGrid extends BaseAdapter {
             viewHolder.tv_goods_label = (TextView) convertView.findViewById(R.id.tv_allgoods_grid_name);
             viewHolder.tv_goods_price = (TextView) convertView.findViewById(R.id.tv_allgoods_grid_price);
             viewHolder.pb_participation = (ProgressBar) convertView.findViewById(R.id.cpb_allgoods_grid);
+            viewHolder.item_rightline = (View)  convertView.findViewById(R.id.item_rightline);
             convertView.setTag(viewHolder);
         }
         else
@@ -88,6 +89,9 @@ public class AllGoodsContentsAdapterGrid extends BaseAdapter {
             viewHolder.imageView.setImageDrawable(goodsItem.getImageDrawable());
             viewHolder.tv_goods_label.setText(goodsItem.getGoodsTitle());
             viewHolder.tv_goods_price.setText(goodsItem.getGoods_price());
+            if(position%2!=0) {
+            	viewHolder.item_rightline.setVisibility(View.GONE);
+            }
         }
 
         return convertView;
@@ -101,5 +105,6 @@ public class AllGoodsContentsAdapterGrid extends BaseAdapter {
         TextView tv_goods_label;
         TextView tv_goods_price;
         ProgressBar pb_participation;
+        View item_rightline;
     }
 }

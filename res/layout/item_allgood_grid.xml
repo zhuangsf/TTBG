@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/rl_good_grid_rootview" android:background="@drawable/item_click_bg" android:paddingLeft="@dimen/allgoods_goods_grid_padding_left" android:paddingTop="@dimen/allgoods_goods_grid_padding_top" android:paddingBottom="@dimen/padding_large" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@+id/rl_good_grid_rootview" android:orientation="vertical" android:clickable="true" android:background="@drawable/item_click_bg"   android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout android:id="@+id/rl_good_grid_contentview" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingTop="@dimen/allgoods_goods_grid_padding_top" android:paddingLeft="@dimen/allgoods_goods_grid_padding_left">
+    
     <ImageView android:id="@+id/iv_allgoods_good_grid" android:layout_width="@dimen/allgoods_goods_grid_goodsimage_height" android:layout_height="@dimen/allgoods_goods_grid_goodsimage_height" android:src="@drawable/goods_pic_default" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
     <TextView android:text="1111" android:id="@+id/tv_allgoods_grid_label" android:paddingRight="@dimen/allgoods_goods_grid_padding_right" android:layout_alignLeft="@id/iv_allgoods_good_grid" android:layout_alignTop="@id/iv_allgoods_good_grid" style="@style/TextView.Limit" />
     <TextView android:text="2222" android:textSize="@dimen/text_little" android:textColor="@color/text_title" android:ellipsize="end" android:id="@+id/tv_allgoods_grid_name" android:paddingRight="@dimen/allgoods_goods_grid_padding_right" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/allgoods_goods_grid_image_marginbottom" android:singleLine="true" android:layout_below="@id/iv_allgoods_good_grid" android:layout_alignParentLeft="true" />
@@ -17,8 +20,25 @@
        android:progress="30"
        android:progressDrawable="@drawable/progress_horizontal_cloudbar" />
     
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_normal" android:layout_below="@id/cpb_allgoods_grid">
+    <RelativeLayout android:id="@+id/rl_allgoods_grid_add"  android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_normal" android:layout_below="@id/cpb_allgoods_grid">
         <ImageView android:id="@+id/btn_allgoods_grid_add" android:paddingRight="@dimen/allgoods_goods_grid_padding_right" android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/add_to_cart" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
         <Button android:textSize="@dimen/text_little" android:textColor="@color/theme" android:id="@+id/btn_allgoods_buynow" android:background="@drawable/btn_home_buy_now" android:paddingTop="@dimen/padding_xlittle" android:paddingBottom="@dimen/padding_xlittle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/padding_xlittle" android:text="@string/home_buy_now" android:layout_toLeftOf="@id/btn_allgoods_grid_add" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     </RelativeLayout>
+    </RelativeLayout>
+    
+    
+     <View android:background="@color/light_gray" android:id="@+id/item_bottomline" android:layout_below="@id/rl_good_grid_contentview" android:layout_height="0.2dp" android:layout_width="fill_parent"/> 
+
+     <View
+         android:id="@+id/item_rightline"
+         android:layout_width="0.2dp"
+         android:layout_height="fill_parent"
+         android:layout_alignBottom="@+id/item_bottomline"
+          android:layout_alignTop="@+id/rl_good_grid_contentview"
+         android:layout_alignParentRight="true"
+         android:layout_centerHorizontal="false"
+         android:layout_centerVertical="true"
+         android:background="@color/light_gray"
+         android:minHeight="160dp" />
+
 </RelativeLayout>
