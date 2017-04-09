@@ -24,6 +24,8 @@
     android:textSize="@dimen/text_title" />
 
     </LinearLayout>   
+    
+    
 <com.android.ttbg.view.PullToRefreshLayout android:id="@+id/ptr_newest_refresh" android:layout_width="fill_parent" android:layout_height="fill_parent" >
    <!--  <android.support.v7.widget.RecyclerView android:id="@id/rv_newest" android:background="@color/background_gray" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" /> -->
 <include layout="@layout/refresh_head" />
@@ -37,4 +39,11 @@
 <include layout="@layout/load_more" />
 </com.android.ttbg.view.PullToRefreshLayout>
         
+
+
+
+
+
+
+
 </LinearLayout>

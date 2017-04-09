@@ -25,16 +25,16 @@
             app:suffixGravity="center"
             app:suffixLRMargin="5dp"
             app:suffixTextColor="#FC903E"
-            app:suffixTextSize="17sp"
-            app:timeBgBorderColor="#E8E8E8"
+            app:suffixTextSize="14sp"
+            app:timeBgBorderColor="@color/text_orange"
             app:timeBgBorderRadius="3dp"
-            app:timeBgBorderSize="2dp"
+            app:timeBgBorderSize="1dp"
             app:timeBgColor="#FFFFFF"
             app:timeBgDivisionLineSize="1dp"
             app:timeBgRadius="3dp"
-            app:timeBgSize="30dp"
-            app:timeTextColor="#FC903E"
-            app:timeTextSize="17sp"
+            app:timeBgSize="25dp"
+            app:timeTextColor="@color/text_orange"
+            app:timeTextSize="14sp"
     />
  
  
