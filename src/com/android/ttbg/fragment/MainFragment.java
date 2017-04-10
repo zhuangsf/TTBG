@@ -671,9 +671,9 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     		
     		//1079635     1036800     42835
     		
-    		long countDownTimeLeft =Long.parseLong( hashMapList.get(i).getQ_end_time().substring(0, 10) ) + 180000 - (timeUnixNow/1000);
+    		long countDownTimeLeft =hashMapList.get(i).getQ_end_time() + 180 - (timeUnixNow/1000);
     		
-    		Utils.Log("开奖时间: "+Long.parseLong( hashMapList.get(i).getQ_end_time().substring(0, 10) )+" + 180000 - "+(timeUnixNow/1000)+" = "+countDownTimeLeft);
+    		Utils.Log("开奖时间: "+hashMapList.get(i).getQ_end_time()+" + 180 - "+(timeUnixNow/1000)+" = "+countDownTimeLeft);
     		
     		if(countDownTimeLeft < 0)
     		{
@@ -685,7 +685,7 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     		if(countDownTimers.get(i) != null)
     		{
     			countDownTimers.get(i).setTextView(countTimes.get(i));
-    			countDownTimers.get(i).setCountDownTime(180000);
+    			countDownTimers.get(i).setCountDownTime(countDownTimeLeft*1000);
     			countDownTimers.get(i).start();
     		}
     	}

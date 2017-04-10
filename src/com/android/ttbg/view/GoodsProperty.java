@@ -38,11 +38,19 @@ public class GoodsProperty
     private String userphoto;   //	中奖用户头像
     private String q_buynum;   //	中奖用户购买次数
     private String q_user_code;   //	中奖用户中奖码
-
+    private String endtime;
 
 
     
-    public String getDrawableUrl() {
+    public String getEndtime() {
+		return endtime;
+	}
+
+	public void setEndtime(String endtime) {
+		this.endtime = endtime;
+	}
+
+	public String getDrawableUrl() {
 		return drawableUrl;
 	}
 
@@ -115,8 +123,15 @@ public class GoodsProperty
 		this.drawableUrl = JsonControl.FILE_HEAD+thumb;
 	}
 
-	public String getQ_end_time() {
-		return q_end_time;
+	public long getQ_end_time() {
+		if(q_end_time.length() > 10)
+		{
+			return Long.parseLong(q_end_time.substring(0, 10));
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
 	public void setQ_end_time(String q_end_time) {
@@ -140,7 +155,7 @@ public class GoodsProperty
 	}
 
 	public String getUserphoto() {
-		return userphoto;
+		return JsonControl.FILE_HEAD+userphoto;
 	}
 
 	public void setUserphoto(String userphoto) {
