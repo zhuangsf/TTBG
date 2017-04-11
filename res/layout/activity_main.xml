@@ -83,16 +83,16 @@
 
         <TextView
             android:id="@+id/main_tab_new_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="15dip"
-            android:layout_marginLeft="60dip"
-            android:background="@drawable/tips"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="80dip"
+            android:singleLine="true"
+            android:textSize="8.0sp" android:textColor="@color/text_white"
+            android:background="@drawable/im_cart_count_bg"
             android:gravity="center"
-            android:text="100"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_xlittle" />
+            android:text="66"
+            />
     </FrameLayout>
 
 </LinearLayout>
