@@ -27,9 +27,20 @@
     <include layout="@layout/refresh_head" />
     <com.android.ttbg.view.PullableScrollView android:id="@+id/layout_empty_cart" android:background="@color/background_main" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <RelativeLayout android:paddingBottom="@dimen/padding_xxlarge" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@+id/view1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cart_image_margintop" android:src="@drawable/blank_cart" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="@dimen/text_little" android:textColor="@color/text_topic_hint" android:id="@+id/view2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_mlarge" android:layout_marginBottom="@dimen/margin_big" android:text="@string/cart_is_empty" android:layout_below="@id/view1" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@+id/empty_imageview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cart_image_margintop" android:src="@drawable/blank_cart" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/text_little" android:textColor="@color/text_topic_hint" android:id="@+id/empty_textview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_mlarge" android:layout_marginBottom="@dimen/margin_big" android:text="@string/cart_is_empty" android:layout_below="@id/empty_imageview" android:layout_centerHorizontal="true" />
                        <!-- 人气推荐 -->
+ <ListView
+        android:id="@+id/cart_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:divider="@color/divider_new"
+        android:layout_below="@id/empty_textview"
+        android:scrollbars="none"
+        android:dividerHeight="@dimen/divider_vertical" /> 
+
+
 
             <LinearLayout
                  android:id="@+id/view3" 
@@ -37,7 +48,7 @@
                 android:layout_height="36.0dip"
                 android:gravity="center"
                 android:background="@color/background_gray"
-                android:layout_below="@id/view2"
+                android:layout_below="@id/cart_listview"
                 android:orientation="horizontal" >
 
                <LinearLayout

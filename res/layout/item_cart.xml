@@ -3,7 +3,15 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:id="@+id/divider" android:background="@color/divider" android:layout_width="fill_parent" android:layout_height="@dimen/stroke" />
     <RelativeLayout android:id="@+id/layout_cart_goods" android:background="@android:color/white" android:padding="@dimen/padding_large" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/divider">
-        <ToggleButton android:id="@+id/tb_select_goods" android:background="@android:color/transparent" android:layout_width="@dimen/margin_xlarge" android:layout_height="wrap_content" android:checked="false" android:textOn="" android:textOff="" android:drawableLeft="@drawable/checkbox_agreement" android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/tb_select_goods"
+            android:layout_width="18dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/checkbox_agreement" />
+
         <ImageView android:id="@+id/iv_cart_goodspic" android:layout_width="@dimen/pic_small" android:layout_height="@dimen/pic_small" android:layout_marginRight="@dimen/padding_large" android:src="@drawable/goods_pic_default" android:scaleType="fitCenter" android:layout_toRightOf="@id/tb_select_goods" />
         <TextView android:text="1111" android:id="@+id/tv_cart_goods_label" android:layout_alignLeft="@id/iv_cart_goodspic" android:layout_alignTop="@id/iv_cart_goodspic" style="@style/TextView.Limit" />
         <TextView android:text="2222" android:textSize="@dimen/text_small" android:textColor="@color/text_title" android:id="@+id/tv_cart_period" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0px" android:layout_marginRight="@dimen/text_leading" android:singleLine="true" android:layout_toRightOf="@id/iv_cart_goodspic" />

@@ -5,13 +5,24 @@ import java.util.List;
 
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.TextView;
 
 import com.android.ttbg.MyListener;
 import com.android.ttbg.R;
+import com.android.ttbg.adapter.AllGoodsContentsAdapterGrid;
+import com.android.ttbg.adapter.CartAdapter;
 import com.android.ttbg.adapter.GoodsRecommendAdapter;
 import com.android.ttbg.adapter.HotRecommendAdapter;
 import com.android.ttbg.adapter.NewestGoodsAdapter;
+import com.android.ttbg.view.CartProperty;
 import com.android.ttbg.view.GoodsProperty;
 import com.android.ttbg.view.NoScroolGridView;
 import com.android.ttbg.view.PullToRefreshLayout;
@@ -23,6 +34,11 @@ public class CartFragment extends BaseFragment {
     private static final String TAG = CartFragment.class.getSimpleName();
 	private View cartFragment;
 	private PullToRefreshLayout ptrl;
+	private ListView cart_listview;
+	private CartAdapter cartadapter;
+	
+	private ImageView empty_imageview;
+	private TextView empty_textview;
     @Override
     protected View initView() {
     	cartFragment = View.inflate(mContext, R.layout.fragment_cart_empty, null);
@@ -30,12 +46,96 @@ public class CartFragment extends BaseFragment {
 		if (cartFragment != null) {
 
 			initEmptyCartView(cartFragment);
+			initListView(cartFragment);
 			initHotRecommend(cartFragment);
 		}
 		return cartFragment;
     }
 
-    private void initHotRecommend(View v) {
+    private void initListView(View v) {
+		// TODO Auto-generated method stub
+    	cart_listview = (ListView) v.findViewById(R.id.cart_listview);
+    	cartadapter = new CartAdapter(getActivity());
+
+        cart_listview.setAdapter(cartadapter);
+        cart_listview.setOnItemLongClickListener(new OnItemLongClickListener()
+		{
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id)
+			{
+				return true;
+			}
+		});
+        cart_listview.setOnItemClickListener(new OnItemClickListener()
+		{
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id)
+			{
+
+			}
+		});
+
+        List<CartProperty> hashMapList = new ArrayList<CartProperty>();
+        //测试数据
+       // setCartItemData(String drawableUrl,String cart_period,String cart_goodsname,boolean cart_ended,
+    	//String cart_surplus_count,String cart_limit_count,String cart_tobuy_count,String cart_goods_count)
+        for (int i = 0; i < 8; i++) {
+
+            CartProperty cartItem = new CartProperty();
+            cartItem.setCartItemData(null,"100818","苹果 ipad 一分钱不要白送啦快点来抢啊",false,"100","5","90","10000");
+            hashMapList.add(cartItem);
+        }
+        
+        if(hashMapList.size() > 0)
+        {
+        	if(empty_imageview != null)
+        	{
+        		empty_imageview.setVisibility(View.GONE);
+        	}
+        	if(empty_textview != null)
+        	{
+        		empty_textview.setVisibility(View.GONE);
+        	}
+        }
+        
+        cartadapter.setData(hashMapList);
+
+        cartadapter.notifyDataSetChanged();
+        
+        //要重新设置listview高度,不然只显示一行
+        setListViewHeightBasedOnChildren(cart_listview);
+	}
+    
+    
+    public void setListViewHeightBasedOnChildren(ListView listView) {   
+        // 获取ListView对应的Adapter   
+        ListAdapter listAdapter = listView.getAdapter();   
+        if (listAdapter == null) {   
+            return;   
+        }   
+   
+        int totalHeight = 0;   
+        for (int i = 0, len = listAdapter.getCount(); i < len; i++) {   
+            // listAdapter.getCount()返回数据项的数目   
+            View listItem = listAdapter.getView(i, null, listView);   
+            // 计算子项View 的宽高   
+            listItem.measure(0, 0);    
+            // 统计所有子项的总高度   
+            totalHeight += listItem.getMeasuredHeight();    
+        }   
+   
+        ViewGroup.LayoutParams params = listView.getLayoutParams();   
+        params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));   
+        // listView.getDividerHeight()获取子项间分隔符占用的高度   
+        // params.height最后得到整个ListView完整显示需要的高度   
+        listView.setLayoutParams(params);   
+    }   
+
+	private void initHotRecommend(View v) {
 		// TODO Auto-generated method stub
     	NoScroolGridView gridView = (NoScroolGridView) v.findViewById(R.id.gridview_hot_recommend);
     	
@@ -58,6 +158,9 @@ public class CartFragment extends BaseFragment {
 		// TODO Auto-generated method stub
 		ptrl = ((PullToRefreshLayout) v.findViewById(R.id.ptr_cart_refresh));
 		ptrl.setOnRefreshListener(new MyListener());
+		
+		empty_imageview = (ImageView) v.findViewById(R.id.empty_imageview);
+		empty_textview = (TextView) v.findViewById(R.id.empty_textview);
 	}
 
 	@Override
