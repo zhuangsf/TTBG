@@ -5,23 +5,37 @@
     android:background="@color/white"
     android:orientation="vertical" >
     <!-- title -->
-
-    <LinearLayout
+       
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/titlebar_height"
-        android:background="@color/titlebar_white" >
-
-
-<TextView
+        android:background="@color/titlebar_white" 
+        android:orientation="horizontal">
+     
+       <TextView
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center_horizontal"
     android:gravity="center"
+    android:layout_centerInParent="true"
     android:text="@string/title_tab_cart"
     android:textColor="@color/crop__button_text"
     android:textSize="@dimen/text_title" />
 
-    </LinearLayout>   
+                <TextView
+                    android:id="@+id/title_edit_finish"
+    android:layout_width="40dp"
+    android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+    android:text="编辑"
+    android:textColor="@color/text_orange"
+    android:textSize="@dimen/text_title" />
+         
+         
+         
+    </RelativeLayout>     
 
 <com.android.ttbg.view.PullToRefreshLayout android:id="@+id/ptr_cart_refresh" android:layout_width="fill_parent" android:layout_height="fill_parent" >
     <include layout="@layout/refresh_head" />

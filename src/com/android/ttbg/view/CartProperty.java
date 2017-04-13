@@ -13,9 +13,17 @@ public class CartProperty {
 	private String cart_limit_count;
 	private String cart_tobuy_count;
 	private String cart_goods_count;
+	private boolean bChecked = false;
 	
 	
-	
+	public boolean isbChecked() {
+		return bChecked;
+	}
+
+	public void setbChecked(boolean bChecked) {
+		this.bChecked = bChecked;
+	}
+
 	public void setCartItemData(String drawableUrl,String cart_period,String cart_goodsname,boolean cart_ended,
 			String cart_surplus_count,String cart_limit_count,String cart_tobuy_count,String cart_goods_count)
 	{

@@ -39,6 +39,10 @@ public class CartFragment extends BaseFragment {
 	
 	private ImageView empty_imageview;
 	private TextView empty_textview;
+	
+	private TextView title_edit_finish;
+	
+	private boolean bEditMode = false;
     @Override
     protected View initView() {
     	cartFragment = View.inflate(mContext, R.layout.fragment_cart_empty, null);
@@ -101,6 +105,9 @@ public class CartFragment extends BaseFragment {
         		empty_textview.setVisibility(View.GONE);
         	}
         }
+        else{
+        	title_edit_finish.setVisibility(View.GONE);
+        }
         
         cartadapter.setData(hashMapList);
 
@@ -161,6 +168,32 @@ public class CartFragment extends BaseFragment {
 		
 		empty_imageview = (ImageView) v.findViewById(R.id.empty_imageview);
 		empty_textview = (TextView) v.findViewById(R.id.empty_textview);
+		
+		title_edit_finish  = (TextView) v.findViewById(R.id.title_edit_finish);
+		//title_edit_finish.setVisibility(View.GONE);
+		title_edit_finish.setOnClickListener(new View.OnClickListener() {  
+	        public void onClick(View v) {  
+	        	if(cartadapter != null)
+	        	{
+	        		if(bEditMode)
+	        		{
+	        			bEditMode = false;
+	        			cartadapter.setEditMode(false);
+	        			title_edit_finish.setText("编辑");
+	        		}
+	        		else
+	        		{
+	        			bEditMode = true;
+	        			cartadapter.setEditMode(true);
+	        			title_edit_finish.setText("完成");
+	        		}
+	        		if(cartadapter != null)
+	                {
+	        			cartadapter.notifyDataSetChanged();
+	                }
+	        	}
+	        }  
+	  }); 
 	}
 
 	@Override
