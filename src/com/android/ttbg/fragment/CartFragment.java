@@ -90,7 +90,7 @@ public class CartFragment extends BaseFragment {
         for (int i = 0; i < 8; i++) {
 
             CartProperty cartItem = new CartProperty();
-            cartItem.setCartItemData(null,"100818","苹果 ipad 一分钱不要白送啦快点来抢啊",false,"100","5","90","10000");
+            cartItem.setCartItemData(null,"100818","苹果 ipad 一分钱不要白送啦快点来抢啊",false,"100","5","90","1");
             hashMapList.add(cartItem);
         }
         

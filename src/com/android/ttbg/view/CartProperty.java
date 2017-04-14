@@ -16,6 +16,8 @@ public class CartProperty {
 	private boolean bChecked = false;
 	
 	
+	private int nCart_surplus_count;
+	
 	public boolean isbChecked() {
 		return bChecked;
 	}
@@ -32,6 +34,7 @@ public class CartProperty {
 		this.cart_goodsname = cart_goodsname;
 		this.cart_ended = cart_ended;
 		this.cart_surplus_count = cart_surplus_count;
+		this.nCart_surplus_count = Integer.parseInt(cart_surplus_count);
 		this.cart_limit_count = cart_limit_count;
 		this.cart_tobuy_count = cart_tobuy_count;
 		this.cart_goods_count = cart_goods_count;
@@ -44,7 +47,7 @@ public class CartProperty {
 		this.drawableUrl = drawableUrl;
 	}
 	public String getCart_period() {
-		return cart_period;
+		return "(第"+cart_period+"云)";
 	}
 	public void setCart_period(String cart_period) {
 		this.cart_period = cart_period;
@@ -62,13 +65,19 @@ public class CartProperty {
 		this.cart_ended = cart_ended;
 	}
 	public String getCart_surplus_count() {
-		return cart_surplus_count;
+		return "剩余"+cart_surplus_count+"人次";
 	}
 	public void setCart_surplus_count(String cart_surplus_count) {
 		this.cart_surplus_count = cart_surplus_count;
+		this.nCart_surplus_count = Integer.parseInt(cart_surplus_count);
+	}
+	
+	public int getnCart_surplus_count()
+	{
+		return nCart_surplus_count;
 	}
 	public String getCart_limit_count() {
-		return cart_limit_count;
+		return ",限购"+cart_limit_count+"人次";
 	}
 	public void setCart_limit_count(String cart_limit_count) {
 		this.cart_limit_count = cart_limit_count;
