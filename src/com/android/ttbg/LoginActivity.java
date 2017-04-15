@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import com.android.ttbg.json.JsonControl;
 import com.android.ttbg.util.NetworkUtil;
+import com.android.ttbg.util.Urls;
 import com.android.ttbg.util.Utils;
 
 
@@ -22,11 +23,13 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -39,6 +42,7 @@ public class LoginActivity extends ActivityPack {
     private Button btn_login;
     private ImageView iv_clear_password;
     private Context mContext;
+    private TextView tv_forgetpassword;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,7 +51,11 @@ public class LoginActivity extends ActivityPack {
 		initViews();
 	}
 
-	
+//	2	短信配置异常，联系管理员		
+//	3	该账号不存在		
+//	1	已发送验证码		
+//	4	请求频繁，请稍后在发送。		
+
 	private Handler mHandler= new Handler() {  
         @Override  
         public void handleMessage(Message msg) {  
@@ -64,12 +72,39 @@ public class LoginActivity extends ActivityPack {
 				}
 				else
 				{
-					Toast.makeText(mContext,"登录成功",Toast.LENGTH_SHORT).show();
+					Toast.makeText(mContext,"已发送验证码",Toast.LENGTH_SHORT).show();
 				}
 
             }
         }  	
 	};
+	
+	
+	private class EditViewClickListener implements OnClickListener{
+
+		EditText editview;
+
+		public EditViewClickListener(EditText editview) {
+			super();
+			this.editview = editview;
+		}
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent(mContext, ForgetActivity.class);
+			if(editview.getText().toString().length() != 0)
+			{
+				intent.putExtra(Urls.URL_USERNAME, editview.getText().toString());
+			}
+			startActivity(intent);
+		}
+
+
+		
+	}
+	
+	
 	
 	private void initViews() {
 		// TODO Auto-generated method stub
@@ -78,6 +113,8 @@ public class LoginActivity extends ActivityPack {
 		iv_clear_password  = (ImageView)findViewById(R.id.iv_clear_password);
 		tv_username.addTextChangedListener(new MyTextWatcher(tv_username));
 		et_password.addTextChangedListener(new MyTextWatcher(et_password));
+		tv_forgetpassword = (TextView)findViewById(R.id.tv_forgetpassword);
+		tv_forgetpassword.setOnClickListener(new EditViewClickListener(tv_username)); 
 		
 		btn_login  = (Button)findViewById(R.id.btn_login);
 		btn_login.setOnClickListener(new View.OnClickListener() {  
@@ -93,22 +130,20 @@ public class LoginActivity extends ActivityPack {
 	        		Toast.makeText(mContext,"请输入正确的手机号码或者邮箱",Toast.LENGTH_SHORT).show();
 	        		return;
 	        	}
-	        	
-	        	
-	    		final JSONObject result = new JSONObject();
-
-	    		try {
-	    			result.put("username", tv_username.getText().toString());
+	        	try {
+	    		//	result.put("username", tv_username.getText().toString());
 	    		//	result.put("password", et_password.getText().toString());
 	    			String passworkMD5string = Utils.getPasswordMD5Str(et_password.getText().toString());
+	    			final String postString = "username="+tv_username.getText().toString()+"&password="+passworkMD5string;
 	    			
-	    			Utils.Log(" httpPut passworkMD5string:" + passworkMD5string);
-	    			result.put("password", passworkMD5string);
+	    			Utils.Log(" httpPut postString:" + postString);
+
 	    			// send to server
 	    			new Thread(new Runnable() {
 	    				@Override
 	    				public void run() {
-	    					JsonControl.httpPost(JsonControl.LOGIN_PATH, result, mHandler);
+	    					//JsonControl.httpPost(JsonControl.LOGIN_PATH, postString, mHandler);
+	    					JsonControl.sendPost(JsonControl.LOGIN_PATH, postString,mHandler);
 	    				}
 	    			}).start();
 	    		} catch (Exception e) {

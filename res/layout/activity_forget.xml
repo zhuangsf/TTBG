@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray" 
+    android:orientation="vertical" >
+
+        <!-- title -->
+
+        
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/titlebar_white" 
+        android:orientation="horizontal">
+
+       
+       <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:text="忘记密码"
+    android:textColor="@color/crop__button_text"
+    android:textSize="@dimen/text_title" />
+       
+         <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/iconl_titlebacknormal" />
+    </RelativeLayout>   
+<RelativeLayout android:background="@color/background_main" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <RelativeLayout android:paddingLeft="@dimen/login_margin" android:paddingRight="@dimen/login_margin" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/linear_register_tel" android:layout_width="fill_parent" android:layout_height="@dimen/login_edit_text_height">
+            <ImageView  android:layout_gravity="center_vertical" android:layout_width="16dp" android:layout_height="20dp" android:src="@drawable/register_mobile" android:scaleType="fitXY" />
+            <EditText android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:textColorHint="@color/text_tips" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@+id/et_username" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/list_padding" android:layout_marginRight="@dimen/list_padding" android:hint="@string/input_mobile_or_email" android:singleLine="true" android:maxLength="100" android:digits="@string/password_limit" android:layout_weight="1.0" android:inputType="textEmailAddress" />
+            <RelativeLayout android:id="@+id/layout_clear_mobile" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="fill_parent">
+                <ImageView android:id="@+id/iv_clear_mobile" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/button_search_head" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View android:layout_gravity="center_vertical" android:background="@color/stroke_gray_de" android:layout_width="1.0px" android:layout_height="26.0dip" android:layout_marginRight="@dimen/list_padding" />
+            <TextView android:textSize="@dimen/text_small" android:textColor="@color/text_title" android:gravity="center" android:layout_gravity="center_vertical" android:id="@+id/tv_get_code" android:layout_width="@dimen/get_code_width" android:layout_height="fill_parent" android:text="@string/get_verify_code" android:singleLine="true" />
+        </LinearLayout>
+        <View android:id="@+id/view" android:background="@color/stroke_gray_de" android:layout_width="fill_parent" android:layout_height="@dimen/stroke" android:layout_below="@id/linear_register_tel" />
+        <LinearLayout android:orientation="horizontal" android:id="@+id/linear_register_code" android:layout_width="fill_parent" android:layout_height="@dimen/login_edit_text_height" android:layout_below="@id/view">
+            <ImageView  android:layout_gravity="center_vertical" android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/register_sn" android:scaleType="fitXY" />
+            <EditText android:textSize="@dimen/text_small" android:textColor="@color/text_black" android:textColorHint="@color/text_tips" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@+id/et_sn" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/list_padding" android:layout_marginRight="@dimen/list_padding" android:hint="@string/input_code" android:singleLine="true" android:maxLength="6" android:digits="@string/password_limit" android:layout_weight="1.0" android:inputType="number" />
+            <RelativeLayout android:id="@+id/layout_clear_sn" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="fill_parent">
+                <ImageView android:id="@+id/iv_clear_sn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/button_search_head" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <View android:background="@color/stroke_gray_de" android:layout_width="fill_parent" android:layout_height="@dimen/stroke" android:layout_below="@id/linear_register_code" />
+        <Button android:textSize="@dimen/text_large" android:textColor="@drawable/btn_login_color" android:id="@+id/btn_register_nextstep" android:background="@drawable/btn_login_bg" android:layout_width="fill_parent" android:layout_height="@dimen/btn_height" android:layout_marginTop="@dimen/margin_large" android:text="@string/nextstep" android:layout_below="@id/linear_register_code" />
+    </RelativeLayout>
+</RelativeLayout>
+
+
+</LinearLayout>
