@@ -143,7 +143,7 @@ public class LoginActivity extends ActivityPack {
 	    				@Override
 	    				public void run() {
 	    					//JsonControl.httpPost(JsonControl.LOGIN_PATH, postString, mHandler);
-	    					JsonControl.sendPost(JsonControl.LOGIN_PATH, postString,mHandler);
+	    					JsonControl.sendPost(JsonControl.LOGIN_PATH, postString,mHandler,JsonControl.POST_TYPE_LOGIN);
 	    				}
 	    			}).start();
 	    		} catch (Exception e) {

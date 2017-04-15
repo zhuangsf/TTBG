@@ -71,7 +71,16 @@ public class ForgetActivity extends ActivityPack {
 		        		Toast.makeText(mContext,"请输入验证码",Toast.LENGTH_SHORT).show();
 		        		return;
 		        	}
-		        	
+		        	//http://www.1ybgo.com/apps/login/checkforgetcode/13859926176/221920
+	    			// send to server
+		        	final String url = JsonControl.LOGIN_CHECK_CODE+et_username.getText().toString()+"/"+et_sn.getText().toString();
+	    			new Thread(new Runnable() {
+	    				@Override
+	    				public void run() {
+	    					//JsonControl.httpPost(JsonControl.LOGIN_PATH, postString, mHandler);
+	    					JsonControl.sendPost(url, null,mHandler,JsonControl.POST_TYPE_CHECK_SN_CODE);
+	    				}
+	    			}).start();
 		        }  
 		  }); 
 	}
@@ -99,15 +108,36 @@ public class ForgetActivity extends ActivityPack {
 				String success = jsonObject.optString("success", "");
 				String error_msg = jsonObject.optString("msg", "");
 				Utils.Log("POST_SUCCESS_MSG success:"+success);
-				if(!success.equals("1"))
+				
+				switch(msg.arg1)
+        		{
+				case JsonControl.POST_TYPE_GET_SN_CODE:
 				{
-					Toast.makeText(mContext,error_msg,Toast.LENGTH_SHORT).show();
+					if(!success.equals("1"))
+					{
+						Toast.makeText(mContext,error_msg,Toast.LENGTH_SHORT).show();
+					}
+					else
+					{
+						Toast.makeText(mContext,"验证码已发送",Toast.LENGTH_SHORT).show();
+						
+					}
 				}
-				else
+					break;
+				case JsonControl.POST_TYPE_CHECK_SN_CODE:
 				{
-					Toast.makeText(mContext,"验证码已发送",Toast.LENGTH_SHORT).show();
-					
+					if(!success.equals("1"))
+					{
+						Toast.makeText(mContext,error_msg,Toast.LENGTH_SHORT).show();
+					}
+					else
+					{
+						
+					}
 				}
+					break;
+        		}
+
 
             }
         }  	
@@ -152,7 +182,7 @@ public class ForgetActivity extends ActivityPack {
 				@Override
 				public void run() {
 					//JsonControl.httpPost(JsonControl.LOGIN_PATH, postString, mHandler);
-					JsonControl.sendPost(url, null,mHandler);
+					JsonControl.sendPost(url, null,mHandler,JsonControl.POST_TYPE_GET_SN_CODE);
 				}
 			}).start();
 	

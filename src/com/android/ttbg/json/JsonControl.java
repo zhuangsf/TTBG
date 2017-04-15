@@ -34,7 +34,7 @@ public class JsonControl {
 	public final static String FILE_HEAD= "http://file.1ybgou.com/";
 	public final static String LOGIN_PATH= "http://www.1ybgo.com/apps/login/userlogin";
 	public final static String LOGIN_FORGET= "http://www.1ybgo.com/apps/login/getforgetcode/";
-	
+	public final static String LOGIN_CHECK_CODE = "http://www.1ybgo.com/apps/login/checkforgetcode/";
 	//msg define
 	public static final int COUNT_DOWN_MSG=0x8001; //login count down msg
 	public static final int GET_SUCCESS_MSG=0x8002; //get success msg
@@ -43,6 +43,10 @@ public class JsonControl {
 	public static final int UPLOAD_SUCCESS_MSG=0x8005; //put success msg
 	
 	
+	public static final int POST_TYPE_GET_SN_CODE=0x5001; 
+	public static final int POST_TYPE_CHECK_SN_CODE=0x5002; 
+	public static final int POST_TYPE_LOGIN=0x5003;
+
 	
 	//从网络上获取的json类型,用来在同一个handler里面处理不同的回调
 	//广告栏
@@ -66,7 +70,7 @@ public class JsonControl {
      *            请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
      * @return 所代表远程资源的响应结果
      */
-    public static void sendPost(String url, String param,Handler mHandler) {
+    public static void sendPost(String url, String param,Handler mHandler,int posttype) {
         PrintWriter out = null;
         BufferedReader in = null;
         String result = "";
@@ -122,7 +126,7 @@ public class JsonControl {
 			if (mHandler != null) {
 			Message msg=new Message();
 			msg.what=POST_SUCCESS_MSG;
-			msg.arg1=1;
+			msg.arg1=posttype;
 			msg.obj=jsonObject;
 			mHandler.sendMessage(msg);
 		}
