@@ -13,6 +13,9 @@ public class OperatingSP {
 	public static final String PREFERENCE_FIRSTOPEN="FIRSTOPEN";
 	public static final String PREFERENCE_USER_IMAGE="AVATAR";
 	
+	public static final String PREFERENCE_LOGIN="LOGIN";
+	public static final boolean PREFERENCE_LOGIN_DEFAULT=false;
+	
 	//个人资料里用户名称
 	public static final String PREFERENCE_SETTING_USER_NAME="USER_NAME";
 	//性别信息

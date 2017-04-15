@@ -2,9 +2,14 @@ package com.android.ttbg.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.os.Environment;
@@ -39,6 +44,71 @@ public class Utils {
 		Log.d(tag, s);
 		}
 	}
+	
+	
+	/**
+	* 验证邮箱输入是否合法
+	* 
+	* @param strEmail
+	* @return
+	*/
+	public static boolean isEmail(String strEmail) {
+	// String strPattern =
+	// "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+	String strPattern = "^\\s*\\w+(?:\\.{0,1}[\\w-]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\\.[a-zA-Z]+\\s*$";
+
+
+	Pattern p = Pattern.compile(strPattern);
+	Matcher m = p.matcher(strEmail);
+	return m.matches();
+	}
+
+	/**
+	* 验证是否是手机号码
+	* 
+	* @param str
+	* @return
+	*/
+	public static boolean isMobile(String str) {
+	Pattern pattern = Pattern.compile("1[0-9]{10}");
+	Matcher matcher = pattern.matcher(str);
+	if (matcher.matches()) {
+	return true;
+	} else {
+	return false;
+	}
+	}
+	
+	
+	   /**   
+     * MD5 加密   
+     */     
+    public static String getPasswordMD5Str(String str) {     
+    	    	
+        MessageDigest messageDigest = null;     
+        try {     
+            messageDigest = MessageDigest.getInstance("MD5");     
+            messageDigest.reset();     
+            messageDigest.update(str.getBytes("UTF-8"));     
+        } catch (NoSuchAlgorithmException e) {     
+            System.out.println("NoSuchAlgorithmException caught!");     
+            return null;  
+        } catch (UnsupportedEncodingException e) {     
+            e.printStackTrace();  
+            return null;  
+        }     
+     
+        byte[] byteArray = messageDigest.digest();     
+        StringBuffer md5StrBuff = new StringBuffer();     
+        for (int i = 0; i < byteArray.length; i++) {                 
+            if (Integer.toHexString(0xFF & byteArray[i]).length() == 1)     
+                md5StrBuff.append("0").append(Integer.toHexString(0xFF & byteArray[i]));     
+            else     
+                md5StrBuff.append(Integer.toHexString(0xFF & byteArray[i]));     
+        }     
+     
+        return md5StrBuff.toString();     
+    }   
 	
 	public static String getInternelStoragePath() {
 		try{

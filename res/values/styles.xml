@@ -153,4 +153,10 @@
 <item name="android:windowBackground">@android:color/transparent</item>  <!-- 设置window背景透明，也就是去边框 -->
 <item name="android:backgroundDimEnabled">false</item>
 </style>
+
+    <style name="AutoCompleteStyle" parent="@android:style/Widget.AutoCompleteTextView">
+        <item name="android:dropDownSelector">@android:color/transparent</item>
+        <item name="android:popupBackground">@drawable/layout_radius_bottom_gray</item>
+        <item name="android:dropDownVerticalOffset">0.0dip</item>
+    </style>
 </resources>
