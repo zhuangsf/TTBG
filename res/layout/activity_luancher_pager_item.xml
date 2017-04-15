@@ -9,75 +9,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/welcome1" />
+        android:scaleType="fitXY"
+        android:src="@drawable/pic_splash3" />
 
     
-    <LinearLayout
-        android:id="@+id/btnLayout"    
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" 
-        android:layout_gravity="bottom|center_horizontal"
-        android:visibility="invisible" 
-        >
-        
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        >
+<Button android:textColor="#ff333333" android:layout_gravity="bottom|center" android:id="@+id/btn_splash_pager" android:background="@drawable/btn_splash_bg" android:visibility="gone" android:layout_width="200.0dip" android:layout_height="46.0dip" android:layout_marginBottom="@dimen/button_margin_bottom" android:text="@string/home_buy_now" />
 
-        <TextView
-            android:id="@+id/btnLogin"
-            android:layout_width="130.0dip"
-            android:layout_height="40.0dip"
-            android:layout_marginBottom="15.0dip"
-            android:layout_weight="1.0"
-            android:background="@drawable/dl_01"
-            android:textColor="@drawable/slide_selector"
-            android:textSize="15.0sp"
-             />
-
-        <TextView
-            android:id="@+id/btnReg"
-            android:layout_width="130.0dip"
-            android:layout_height="40.0dip"
-            android:layout_marginLeft="9.0dip"
-            android:layout_weight="1.0"
-            android:background="@drawable/zz_02"
-            android:textColor="@drawable/slide_selector"
-            android:textSize="15.0sp"
-             />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/btnVisit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginRight="15.0dip"
-        android:paddingBottom="10.0dip"
-        android:text="随便逛逛"
-        android:textColor="@android:color/white"
-        android:textSize="16.0sp" />
-    
- </LinearLayout>
-
-<!--    <TextView
-        android:id="@+id/tv_start_headlines"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="60dp"
-        android:paddingBottom="12dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="12dp"
-        android:text="开启我的头条"
-        android:textSize="16sp"
-        android:visibility="invisible" />
-          -->
 
 
 </FrameLayout>

@@ -26,7 +26,7 @@ public class LauncherPagerAdapter extends PagerAdapter implements OnClickListene
 	
 	private List<View> views;
 	//每页显示的图片
-	private int[] images=new int[]{R.drawable.welcome1,R.drawable.welcome2,R.drawable.welcome3,R.drawable.welcome1};
+	private int[] images=new int[]{R.drawable.pic_splash1,R.drawable.pic_splash2,R.drawable.pic_splash3};
 	
 	public LauncherPagerAdapter(Context context,ILauncherView launcherView){
 		views=new ArrayList<View>();
@@ -36,9 +36,7 @@ public class LauncherPagerAdapter extends PagerAdapter implements OnClickListene
 			View item=LayoutInflater.from(context).inflate(R.layout.activity_luancher_pager_item, null);
 			ImageView imageview=(ImageView) item.findViewById(R.id.imageview);
 			imageview.setImageResource(images[i]);
-			item.findViewById(R.id.btnLogin).setOnClickListener(this);
-			item.findViewById(R.id.btnReg).setOnClickListener(this);
-			item.findViewById(R.id.btnVisit).setOnClickListener(this);
+			item.findViewById(R.id.btn_splash_pager).setOnClickListener(this);
 			views.add(item);
 		}
 	}
@@ -70,14 +68,7 @@ public class LauncherPagerAdapter extends PagerAdapter implements OnClickListene
 
 	@Override
 	public void onClick(View v) {
-		
-		if(v.getId() == R.id.btnLogin)
-		{
-			launcherView.gotoLogin();
-		}else if(v.getId() == R.id.btnReg)
-		{
-			launcherView.gotoRegist();
-		}else if(v.getId() == R.id.btnVisit)
+	    if(v.getId() == R.id.btn_splash_pager)
 		{
 			launcherView.gotoVisit();
 		}

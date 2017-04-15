@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
@@ -43,10 +44,9 @@ public class LauncherActivity extends FragmentActivityPack implements ILauncherV
 		adapter = new LauncherPagerAdapter(this, this);
 		viewpagerLauncher.setOffscreenPageLimit(2);
 		viewpagerLauncher.setCurrentItem(0);
-		viewpagerLauncher.setOnPageChangeListener(changeListener);
 		viewpagerLauncher.setAdapter(adapter);
 		viewpagerLauncher.setOnPageChangeListener(changeListener);
-		ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);// 初始化底部显示控件
+/*		ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);// 初始化底部显示控件
 		tips = new ImageView[4];
 		for (int i = 0; i < tips.length; i++) {
 			ImageView imageView = new ImageView(this);
@@ -62,7 +62,7 @@ public class LauncherActivity extends FragmentActivityPack implements ILauncherV
 			layoutParams.rightMargin = 10;// 设置点点点view的右边距
 			layoutParams.bottomMargin = 50;
 			group.addView(imageView, layoutParams);
-		}
+		}*/
 	}
 
 	private OnPageChangeListener changeListener = new OnPageChangeListener() {
@@ -72,10 +72,10 @@ public class LauncherActivity extends FragmentActivityPack implements ILauncherV
 		public void onPageScrolled(int arg0, float arg1, int arg2) {}
 		@Override
 		public void onPageSelected(int index) {
-			setImageBackground(index);// 改变点点点的切换效果
+			//setImageBackground(index);// 改变点点点的切换效果
 
-			View btnLayout = adapter.getViews().get(index).findViewById(R.id.btnLayout);
-			if (index == tips.length - 1) {// 最后一个
+			View btnLayout = adapter.getViews().get(index).findViewById(R.id.btn_splash_pager);
+			if (index == adapter.getCount() - 1) {// 最后一个
 				btnLayout.setVisibility(View.VISIBLE);
 			} else {
 				btnLayout.setVisibility(View.INVISIBLE);
