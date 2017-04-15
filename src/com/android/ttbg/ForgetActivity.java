@@ -132,6 +132,8 @@ public class ForgetActivity extends ActivityPack {
 					}
 					else
 					{
+						Intent intent = new Intent(mContext, ResetPassWordActivity.class);
+						startActivity(intent);
 						
 					}
 				}

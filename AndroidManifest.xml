@@ -51,6 +51,7 @@
         <activity android:name=".SettingSignature" android:screenOrientation="portrait"/>
         <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ForgetActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ResetPassWordActivity" android:screenOrientation="portrait"/>
         
         <activity android:name=".SearchActivity" android:exported="false" android:screenOrientation="portrait" />
 
