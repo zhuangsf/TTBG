@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import com.android.ttbg.json.JsonControl;
 import com.android.ttbg.tencent.Util;
 import com.android.ttbg.util.NetworkUtil;
+import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.util.Urls;
 import com.android.ttbg.util.Utils;
 import com.tencent.connect.UserInfo;
@@ -92,6 +93,18 @@ public class LoginActivity extends ActivityPack {
 				else
 				{
 					Toast.makeText(mContext,"登录成功",Toast.LENGTH_SHORT).show();
+
+					String uid = jsonObject.optString("uid", "");
+					String ushell = jsonObject.optString("ushell", "");
+					
+					
+					//保存登录信息
+					OperatingSP.setBoolean(mContext, OperatingSP.PREFERENCE_LOGIN, true);
+					OperatingSP.setString(mContext, OperatingSP.PREFERENCE_UID, uid);
+					OperatingSP.setString(mContext, OperatingSP.PREFERENCE_USHELL, ushell);
+					
+					//这边需要增加一个当前登录时间的字段,用于保存登录时间.登录建议一星期有效
+					finish();
 				}
 
             }
@@ -134,6 +147,13 @@ public class LoginActivity extends ActivityPack {
 		et_password.addTextChangedListener(new MyTextWatcher(et_password));
 		tv_forgetpassword = (TextView)findViewById(R.id.tv_forgetpassword);
 		tv_forgetpassword.setOnClickListener(new EditViewClickListener(tv_username)); 
+		
+		View layout_back_left = (View)findViewById(R.id.layout_back_left);
+		layout_back_left.setOnClickListener(new View.OnClickListener() {  
+	        public void onClick(View v) {  
+	        	finish();
+	        }  
+	  }); 
 		
 		btn_login  = (Button)findViewById(R.id.btn_login);
 		btn_login.setOnClickListener(new View.OnClickListener() {  

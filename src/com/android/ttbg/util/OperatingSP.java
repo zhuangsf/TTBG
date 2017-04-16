@@ -13,11 +13,25 @@ public class OperatingSP {
 	public static final String PREFERENCE_FIRSTOPEN="FIRSTOPEN";
 	public static final String PREFERENCE_USER_IMAGE="AVATAR";
 	
+	
+	//是否登录
 	public static final String PREFERENCE_LOGIN="LOGIN";
 	public static final boolean PREFERENCE_LOGIN_DEFAULT=false;
 	
+	public static final String PREFERENCE_UID="UID";
+	public static final String PREFERENCE_UID_DEFAULT="";
+	public static final String PREFERENCE_USHELL="USHELL";
+	public static final String PREFERENCE_USHELL_DEFAULT="";
 	//个人资料里用户名称
 	public static final String PREFERENCE_SETTING_USER_NAME="USER_NAME";
+	public static final String PREFERENCE_SETTING_USER_ID="USER_ID";
+	public static final String PREFERENCE_SETTING_USER_MOBILE="MOBILE";
+	public static final String PREFERENCE_SETTING_USER_IMAGE_PATH="IMAGE_PATH";
+	public static final String PREFERENCE_SETTING_USER_MONEY="MONEY";
+	public static final String PREFERENCE_SETTING_USER_SCORE="SCORE";  //福分
+	public static final String PREFERENCE_SETTING_USER_JINGYAN="JINGYAN";  
+	public static final String PREFERENCE_SETTING_USER_GROUP="GROUP";  
+	public static final String PREFERENCE_SETTING_USER_DENGJI="DENGJI";  
 	//性别信息
 	public static final String PREFERENCE_SETTING_SEX="SEX";
 	public static final String PREFERENCE_SETTING_SEX_DEFAULT="保密";

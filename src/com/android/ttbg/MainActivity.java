@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import com.android.ttbg.fragment.BaseFragment;
 import com.android.ttbg.fragment.CartFragment;
 import com.android.ttbg.fragment.CountFragment;
+import com.android.ttbg.fragment.CountFragment.onLoginListener;
 import com.android.ttbg.fragment.MainFragment;
 import com.android.ttbg.fragment.NewestFragment;
 import com.android.ttbg.fragment.AllGoodsFragment;
@@ -19,7 +20,7 @@ import com.umeng.analytics.MobclickAgent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends FragmentActivityPack {
+public class MainActivity extends FragmentActivityPack implements onLoginListener  {
     private RadioGroup mRadioGroup;
     private List<BaseFragment> mBaseFragments;
     private int position; //当前选中的位置
@@ -61,6 +62,12 @@ public class MainActivity extends FragmentActivityPack {
         mRadioGroup = (RadioGroup) findViewById(R.id.main_tab_group);
     }
 
+    
+	@Override
+	public void onLogin( ) {
+		//登录之后要刷新一下界面  主要是获取一下信息
+	}
+    
 	@Override
 	protected void onResume() {
 		super.onResume();

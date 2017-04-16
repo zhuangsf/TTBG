@@ -36,7 +36,13 @@ public class JsonControl {
 	public final static String LOGIN_FORGET= "http://www.1ybgo.com/apps/login/getforgetcode/";
 	public final static String LOGIN_CHECK_CODE = "http://www.1ybgo.com/apps/login/checkforgetcode/";
 	public final static String LOGIN_RESET_PASSWORD = "http://www.1ybgo.com/apps/login/resetpassword/";
-	//msg define
+	public final static String USER_INFO = "http://www.1ybgo.com/apps/user/index/";
+	
+				
+	
+
+	
+	//msg define	
 	public static final int COUNT_DOWN_MSG=0x8001; //login count down msg
 	public static final int GET_SUCCESS_MSG=0x8002; //get success msg
 	public static final int POST_SUCCESS_MSG=0x8003; //post success msg
@@ -48,6 +54,7 @@ public class JsonControl {
 	public static final int POST_TYPE_CHECK_SN_CODE=0x5002; 
 	public static final int POST_TYPE_LOGIN=0x5003;
 	public static final int POST_TYPE_RESET_SN_CODE=0x5004; 
+	public static final int POST_TYPE_USER=0x5005;
 	
 	//从网络上获取的json类型,用来在同一个handler里面处理不同的回调
 	//广告栏
