@@ -33,8 +33,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-
-
 public class LoginActivity extends ActivityPack {
 	
 	private AutoCompleteTextView tv_username;
