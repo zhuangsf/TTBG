@@ -133,6 +133,8 @@ public class ForgetActivity extends ActivityPack {
 					else
 					{
 						Intent intent = new Intent(mContext, ResetPassWordActivity.class);
+						intent.putExtra(Urls.URL_USERNAME, et_username.getText().toString());
+						intent.putExtra(Urls.URL_SNCODE, et_sn.getText().toString());
 						startActivity(intent);
 						
 					}

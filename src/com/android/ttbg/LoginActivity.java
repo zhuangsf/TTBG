@@ -72,7 +72,7 @@ public class LoginActivity extends ActivityPack {
 				}
 				else
 				{
-					Toast.makeText(mContext,"已发送验证码",Toast.LENGTH_SHORT).show();
+					Toast.makeText(mContext,"登录成功",Toast.LENGTH_SHORT).show();
 				}
 
             }
