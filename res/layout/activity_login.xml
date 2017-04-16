@@ -40,7 +40,7 @@
         </RelativeLayout>
     </ScrollView>
     <RelativeLayout android:id="@+id/layout_back_left" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:layout_width="@dimen/titlebar_height" android:layout_height="@dimen/titlebar_height">
-        <ImageView android:id="@+id/btn_back_left" android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/btn_close" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <ImageView android:id="@+id/btn_back_left" android:layout_width="15dp" android:layout_height="15dp" android:src="@drawable/btn_close" android:scaleType="fitXY" android:layout_centerVertical="true" />
     </RelativeLayout>
     <RelativeLayout android:id="@+id/layout_register_right" android:paddingLeft="@dimen/padding_large" android:paddingRight="@dimen/padding_large" android:layout_width="60.0dip" android:layout_height="@dimen/titlebar_height" android:layout_alignParentRight="true">
         <TextView android:textSize="@dimen/text_middle" android:textColor="@color/text_orange" android:id="@+id/tv_register_right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/register" android:layout_alignParentRight="true" android:layout_centerVertical="true" />

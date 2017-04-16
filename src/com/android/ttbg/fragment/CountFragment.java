@@ -354,7 +354,8 @@ public class CountFragment extends BaseFragment {
 		btn_account_register.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+				Intent intent = new Intent(getActivity(), RegisterActivity.class);
+				startActivity(intent);
 			}
 		});
 	}

@@ -55,6 +55,7 @@ public class LoginActivity extends ActivityPack {
     private UserInfo mInfo;
     private static final String QQ_APP_ID="1106028097";
     private static final String TAG="LoginActivity";
+    private View layout_register_right;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -147,7 +148,14 @@ public class LoginActivity extends ActivityPack {
 		et_password.addTextChangedListener(new MyTextWatcher(et_password));
 		tv_forgetpassword = (TextView)findViewById(R.id.tv_forgetpassword);
 		tv_forgetpassword.setOnClickListener(new EditViewClickListener(tv_username)); 
-		
+		layout_register_right = (View)findViewById(R.id.layout_register_right);
+		layout_register_right.setOnClickListener(new View.OnClickListener() {  
+	        public void onClick(View v) {  
+				Intent intent = new Intent(mContext, RegisterActivity.class);
+				startActivity(intent);
+	        	finish();
+	        }  
+	  }); 
 		View layout_back_left = (View)findViewById(R.id.layout_back_left);
 		layout_back_left.setOnClickListener(new View.OnClickListener() {  
 	        public void onClick(View v) {  

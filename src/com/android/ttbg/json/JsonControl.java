@@ -37,9 +37,10 @@ public class JsonControl {
 	public final static String LOGIN_CHECK_CODE = "http://www.1ybgo.com/apps/login/checkforgetcode/";
 	public final static String LOGIN_RESET_PASSWORD = "http://www.1ybgo.com/apps/login/resetpassword/";
 	public final static String USER_INFO = "http://www.1ybgo.com/apps/user/index/";
+	public final static String REGISTER = "http://www.1ybgo.com/apps/login/getregcode/";
+	public final static String LOGIN_CHECK_REGISTE_CODE = "http://www.1ybgo.com/apps/login/checkregcode/";
 	
-				
-	
+
 
 	
 	//msg define	
@@ -55,7 +56,7 @@ public class JsonControl {
 	public static final int POST_TYPE_LOGIN=0x5003;
 	public static final int POST_TYPE_RESET_SN_CODE=0x5004; 
 	public static final int POST_TYPE_USER=0x5005;
-	
+	public static final int POST_TYPE_REGISTER=0x5006;
 	//从网络上获取的json类型,用来在同一个handler里面处理不同的回调
 	//广告栏
 	public static final int JSON_TYPE_BANNER=0x4001; 
