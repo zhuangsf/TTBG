@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="18"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="21" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -55,6 +55,24 @@
         
         <activity android:name=".SearchActivity" android:exported="false" android:screenOrientation="portrait" />
 
+        <!-- qq login start -->
+        <activity
+		       android:name="com.tencent.tauth.AuthActivity"
+		       android:noHistory="true"
+		       android:launchMode="singleTask" >
+		    <intent-filter>
+		           <action android:name="android.intent.action.VIEW" />
+		           <category android:name="android.intent.category.DEFAULT" />
+		           <category android:name="android.intent.category.BROWSABLE" />
+		           <data android:scheme="tencent1106028097" />
+		    </intent-filter>
+		 </activity>
+		 <activity android:name="com.tencent.connect.common.AssistActivity"
+           android:theme="@android:style/Theme.Translucent.NoTitleBar"
+           android:screenOrientation="behind"
+           android:configChanges="orientation|keyboardHidden|screenSize" 
+		 />
+		 <!-- qq login end -->
 
         <activity android:name=".LauncherActivity" 
         android:screenOrientation="portrait"

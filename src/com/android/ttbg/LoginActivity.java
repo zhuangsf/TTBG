@@ -4,20 +4,28 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.android.ttbg.json.JsonControl;
+import com.android.ttbg.tencent.Util;
 import com.android.ttbg.util.NetworkUtil;
 import com.android.ttbg.util.Urls;
 import com.android.ttbg.util.Utils;
-
+import com.tencent.connect.UserInfo;
+import com.tencent.connect.common.Constants;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -41,11 +49,24 @@ public class LoginActivity extends ActivityPack {
     private ImageView iv_clear_password;
     private Context mContext;
     private TextView tv_forgetpassword;
+    private static Tencent mTencent;
+    private ImageView iv_login_qq;
+    private UserInfo mInfo;
+    private static final String QQ_APP_ID="1106028097";
+    private static final String TAG="LoginActivity";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		mContext = LoginActivity.this;
+
+		// Tencent类是SDK的主要实现类，开发者可通过Tencent类访问腾讯开放的OpenAPI。
+		// 其中APP_ID是分配给第三方应用的appid，类型为String。
+		if (mTencent == null) {
+			mTencent = Tencent.createInstance(QQ_APP_ID, this.getApplicationContext());
+		}
+		// 1.4版本:此处需新增参数，传入应用程序的全局context，可通过activity的getApplicationContext方法获取
+		// 初始化视图
 		initViews();
 	}
 
@@ -151,8 +172,161 @@ public class LoginActivity extends ActivityPack {
 	        	
 	        }  
 	  }); 
+		
+		iv_login_qq=(ImageView)findViewById(R.id.iv_login_qq);
+		iv_login_qq.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (!mTencent.isSessionValid()) {
+					mTencent.login(LoginActivity.this, "all", loginListener);
+					Log.d(TAG, "FirstLaunch_SDK:" + SystemClock.elapsedRealtime());
+				} else{
+					//just test
+					logout();
+					Util.toastMessage(LoginActivity.this, "qq logout");
+					
+				}
+			}
+		});
 	}
 	
+	//add for qq login start
+	IUiListener loginListener = new BaseUiListener() {
+        @Override
+        protected void doComplete(JSONObject values) {
+        	super.doComplete(values);
+        	Log.d(TAG, "AuthorSwitch_SDK:" + SystemClock.elapsedRealtime());
+            initOpenidAndToken(values);
+            updateUserInfo();
+            updateLoginButton();
+        }
+    };
+    private class BaseUiListener implements IUiListener {
+
+		@Override
+		public void onComplete(Object response) {
+            if (null == response) {
+                Util.showResultDialog(LoginActivity.this, "返回为空", "登录失败");
+                return;
+            }
+            JSONObject jsonResponse = (JSONObject) response;
+            if (null != jsonResponse && jsonResponse.length() == 0) {
+                Util.showResultDialog(LoginActivity.this, "返回为空", "登录失败");
+                return;
+            }
+			Util.showResultDialog(LoginActivity.this, response.toString(), "登录成功");
+			doComplete((JSONObject)response);
+		}
+
+		protected void doComplete(JSONObject values) {
+			Log.d(TAG, "doComplete qq login success:" + values.toString());
+			//TODO success login
+		}
+
+		@Override
+		public void onError(UiError e) {
+			Util.toastMessage(LoginActivity.this, "onError: " + e.errorDetail);
+			Util.dismissDialog();
+		}
+
+		@Override
+		public void onCancel() {
+			Util.toastMessage(LoginActivity.this, "onCancel: ");
+			Util.dismissDialog();
+		}
+
+	}
+    public static void initOpenidAndToken(JSONObject jsonObject) {
+        try {
+            String token = jsonObject.getString(Constants.PARAM_ACCESS_TOKEN);
+            String expires = jsonObject.getString(Constants.PARAM_EXPIRES_IN);
+            String openId = jsonObject.getString(Constants.PARAM_OPEN_ID);
+            if (!TextUtils.isEmpty(token) && !TextUtils.isEmpty(expires)
+                    && !TextUtils.isEmpty(openId)) {
+                mTencent.setAccessToken(token, expires);
+                mTencent.setOpenId(openId);
+            }
+        } catch(Exception e) {
+        }
+    }
+    private void updateUserInfo() {
+		if (mTencent != null && mTencent.isSessionValid()) {
+			IUiListener listener = new IUiListener() {
+
+				@Override
+				public void onError(UiError e) {
+
+				}
+
+				@Override
+				public void onComplete(final Object response) {
+					Message msg = new Message();
+					msg.obj = response;
+					msg.what = 0;
+					mHandler.sendMessage(msg);
+					new Thread(){
+
+						@Override
+						public void run() {
+							JSONObject json = (JSONObject)response;
+							if(json.has("figureurl")){
+								Bitmap bitmap = null;
+								try {
+									bitmap = Util.getbitmap(json.getString("figureurl_qq_2"));
+								} catch (JSONException e) {
+
+								}
+								Message msg = new Message();
+								msg.obj = bitmap;
+								msg.what = 1;
+								mHandler.sendMessage(msg);
+							}
+						}
+
+					}.start();
+				}
+
+				@Override
+				public void onCancel() {
+
+				}
+			};
+			mInfo = new UserInfo(this, mTencent.getQQToken());
+			mInfo.getUserInfo(listener);
+
+		} else {
+//			mUserInfo.setText("");
+//			mUserInfo.setVisibility(android.view.View.GONE);
+//			mUserLogo.setVisibility(android.view.View.GONE);
+		}
+	}
+    
+    private void updateLoginButton() {
+		if (mTencent != null && mTencent.isSessionValid()) {
+                //login success
+		} else {
+			//login fail
+		}
+	}
+    @Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    Log.d(TAG, "-->onActivityResult " + requestCode  + " resultCode=" + resultCode);
+	    if (requestCode == Constants.REQUEST_LOGIN ||
+	    	requestCode == Constants.REQUEST_APPBAR) {
+	    	//在某些低端机上调用登录后，由于内存紧张导致APP被系统回收，登录成功后无法成功回传数据。解决办法如下
+	    	//在调用login的Activity或者Fragment重写onActivityResult方法
+	    	//mTencent.handleLoginData(data, loginListener);
+	    	Tencent.onActivityResultData(requestCode,resultCode,data,loginListener);
+	    }
+
+	    super.onActivityResult(requestCode, resultCode, data);
+	}
+    
+    public void logout()
+    {
+           mTencent.logout(this);
+    }
+  //add for qq login end
 	
 	private boolean checkPhoneAndEamil()
 	{
