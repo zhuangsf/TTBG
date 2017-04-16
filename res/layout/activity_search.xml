@@ -55,6 +55,7 @@
                  android:src="@drawable/ic_search" />
          
    <com.android.ttbg.view.EditTextWithDel
+       android:id="@+id/title_et_search"
        android:layout_width="match_parent"
        android:layout_height="fill_parent"
        android:layout_marginLeft="5dp"

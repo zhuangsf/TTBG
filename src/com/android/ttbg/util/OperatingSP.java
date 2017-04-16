@@ -77,6 +77,10 @@ public class OperatingSP {
 	public static final String PREFERENCE_ALLGOODS_LIST_TYPE="ALLGOODS_LIST_TYPE";   //用于表示在数组里是否可用
 	public static final int  PREFERENCE_ALLGOODS_LIST_TYPE_DEFAULT=0;
 
+	public static final String PREFERENCE_SEARCH_RECORD="SEARCH_RECORD";   //用于表示在数组里是否可用
+	public static final String  PREFERENCE_SEARCH_RECORD_DEFAULT="";
+	
+	
     /**  
      * <pre>  
      * 基本功能：保存启动标识到SharedPreferences  

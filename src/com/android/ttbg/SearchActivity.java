@@ -35,45 +35,51 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.android.ttbg.util.OperatingSP;
 import com.android.ttbg.util.Utils;
+import com.android.ttbg.view.EditTextWithDel;
 
 
 public class SearchActivity extends ActivityPack {
 	private static final String TAG = "SearchActivity";
     private ImageView  title_back;
-
+    private TextView title_tv_search;
     private ImageView add_menus;
+    private Context mContext;
+    private EditTextWithDel title_et_search;
+    private SimpleAdapter simpleAdapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 
-		ListView lv=(ListView)findViewById(R.id.lv);
-		List<Map<String,Object>> data=new ArrayList<Map<String,Object>>();
+		mContext = SearchActivity.this;
 		
+		title_et_search = (EditTextWithDel)findViewById(R.id.title_et_search);
 		
-		for(int i = 0;i < 20;i++)
-		{
-			Map<String,Object> map1=new HashMap<String, Object>();
-			map1.put("item_history", "iphone7");
-			data.add(map1);
-		}
-	
+		title_tv_search = (TextView)findViewById(R.id.title_tv_search);
+		title_tv_search.setOnClickListener(new View.OnClickListener() {  
+		        public void onClick(View v) {  
+		        	if(title_et_search.getText().toString().length() != 0)	
+		        	{
+		        		//跳转到搜索页面
+		        		
+		        		//保存
+		        		StringBuilder stringBuilder = new StringBuilder();  
+		        		String historyRecords = OperatingSP.getString(mContext, OperatingSP.PREFERENCE_SEARCH_RECORD, OperatingSP.PREFERENCE_SEARCH_RECORD_DEFAULT);
+		        		stringBuilder.append(historyRecords);
+		        		stringBuilder.append("_");
+		        		stringBuilder.append(title_et_search.getText().toString());
+		        		OperatingSP.setString(mContext, OperatingSP.PREFERENCE_SEARCH_RECORD, stringBuilder.toString());
+		        		
+		        		simpleAdapter.notifyDataSetChanged();
+		        	}
+		        }  
+		  }); 
 		
-		lv.setOnItemClickListener(new OnItemClickListener()
-		{
+		initListView();
+		
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		lv.setAdapter(new SimpleAdapter
-				(this, data, R.layout.item_serach_history_list, new String[]{"item_history"}, new int[]{R.id.tv_search_item}));
-		
-		 setListViewHeightBasedOnChildren(lv);   
-		 
 		 
 		 
 		 title_back = (ImageView)findViewById(R.id.title_back);
@@ -89,7 +95,43 @@ public class SearchActivity extends ActivityPack {
 	}
 
 	
-    public void setListViewHeightBasedOnChildren(ListView listView) {   
+    private void initListView() {
+		// TODO Auto-generated method stub
+		ListView lv=(ListView)findViewById(R.id.lv);
+		List<Map<String,Object>> data=new ArrayList<Map<String,Object>>();
+		
+		String historyRecords = OperatingSP.getString(mContext, OperatingSP.PREFERENCE_SEARCH_RECORD, OperatingSP.PREFERENCE_SEARCH_RECORD_DEFAULT);
+		if(historyRecords != null &&!historyRecords.equals(""))
+		{
+			String[] arrayRecords = historyRecords.split("_");  //用_当分割符
+		
+			for(int i = 0;i < arrayRecords.length;i++)
+			{
+				Map<String,Object> map1=new HashMap<String, Object>();
+				map1.put("item_history",arrayRecords[i]);
+				data.add(map1);
+			}
+	
+		}
+		lv.setOnItemClickListener(new OnItemClickListener()
+		{
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		simpleAdapter = new SimpleAdapter(this, data, R.layout.item_serach_history_list, new String[]{"item_history"}, new int[]{R.id.tv_search_item});
+		lv.setAdapter(simpleAdapter);
+		
+		 setListViewHeightBasedOnChildren(lv);   
+		 
+	}
+
+
+	public void setListViewHeightBasedOnChildren(ListView listView) {   
         // 获取ListView对应的Adapter   
         ListAdapter listAdapter = listView.getAdapter();   
         if (listAdapter == null) {   
