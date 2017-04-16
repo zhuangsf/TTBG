@@ -135,7 +135,10 @@ public class CountFragment extends BaseFragment {
     @Override
 	public void onResume() {
         super.onResume();
-        
+        if(CountFragment != null)
+        {
+        	reflahLoginView(CountFragment);
+        }
 
     }
     
@@ -162,7 +165,7 @@ public class CountFragment extends BaseFragment {
 				}
 				else
 				{
-					Toast.makeText(mContext,"获取用户信息成功",Toast.LENGTH_SHORT).show();
+					//Toast.makeText(mContext,"获取用户信息成功",Toast.LENGTH_SHORT).show();
 					try {
 					JSONObject j_user_info = jsonObject.getJSONObject("userinfo");
 

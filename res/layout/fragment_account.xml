@@ -114,7 +114,7 @@ android:layout_width="fill_parent" android:layout_height="45dp">
                                             <RelativeLayout android:id="@+id/account_share" android:clickable="true" android:background="@drawable/ll_customer_selector" android:layout_width="fill_parent" android:layout_height="45dp" >
                 <View android:layout_width="fill_parent"  android:layout_height="0.2dp"  android:background="@drawable/divider_vertical" android:layout_alignParentTop="true" />
                 <ImageView android:layout_marginLeft="@dimen/padding_xlarge" android:layout_centerVertical="true"   android:id="@+id/account_share_img"  android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/account_erweim" android:scaleType="centerInside" android:layout_alignParentLeft="true"/>
-                <TextView  android:layout_marginLeft="@dimen/padding_normal" android:text="我的晒单" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/account_share_img"/>
+                <TextView  android:layout_marginLeft="@dimen/padding_normal" android:text="二维码分享" android:textSize="15.0dip" android:textColor="@color/black" android:gravity="center"  android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/account_share_img"/>
                 <ImageView
                    android:layout_marginRight="@dimen/padding_xlarge"
                    android:layout_width="20dp"
