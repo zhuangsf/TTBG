@@ -42,7 +42,9 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/titlebar_logo" />
+                android:src="@drawable/titlebar_logo"
+                android:visibility="gone"
+                 />
         </LinearLayout>
 
         <LinearLayout
