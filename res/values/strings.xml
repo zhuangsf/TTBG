@@ -62,7 +62,7 @@
     <string name="account_score">"福分
 %d"</string>
     <string name="account_to_charge">去充值</string>
-    <string name="account_welcome">欢迎来到1元云购</string>
+    <string name="account_welcome">欢迎来到天天必购</string>
     <string name="action_settings">Settings</string>
     <string name="active_agree_friend">您已添加 %1$s ,可以开始聊天啦</string>
     <string name="add">添加</string>
@@ -111,7 +111,7 @@
     <string name="admintor">群主、管理员</string>
     <string name="advertisement">广告骚扰</string>
     <string name="agree">同意</string>
-    <string name="agreement">《1元云购互助购物协议》</string>
+    <string name="agreement">《天天必购互助购物协议》</string>
     <string name="all_video">所有视频</string>
     <string name="allgoods_orderby_announce">即将揭晓</string>
     <string name="allgoods_orderby_newest">最新</string>
@@ -124,7 +124,7 @@
     <string name="already_send">已发货</string>
     <string name="already_stop_recorder">已停止录音</string>
     <string name="announce_already_join">您已参与%d人次</string>
-    <string name="app_name">1元云购</string>
+    <string name="app_name">天天必购</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="apply_thaw">申请解冻</string>
     <string name="ask_for_friend">请求添加为朋友</string>
@@ -280,7 +280,7 @@
     <string name="edit_signature_title">个人签名</string>
     <string name="empty_btn_address">添加收货地址</string>
     <string name="empty_btn_network">点击刷新</string>
-    <string name="empty_btn_obtain">立即1元云购</string>
+    <string name="empty_btn_obtain">立即天天必购</string>
     <string name="empty_btn_record">去云购</string>
     <string name="empty_text_404">很抱歉，您查找的页面找不到了~</string>
     <string name="empty_text_address_null">主银，您还没添加收货地址哦~</string>
@@ -477,7 +477,7 @@
     <string name="hide_result_detail">收起详细参与结果</string>
     <string name="hint_search_friends">请输入昵称、手机号或邮箱</string>
     <string name="hint_search_local_friends">请输入关键字</string>
-    <string name="home_buy_now">立即1元云购</string>
+    <string name="home_buy_now">立即购买</string>
     <string name="home_navigation_limite">限购</string>
     <string name="home_navigation_new_goods">新品</string>
     <string name="home_navigation_newcomer">新手</string>
@@ -754,8 +754,8 @@
     <string name="notify_request_friend_join_group">您的好友 ${user}邀请您加入本群</string>
     <string name="notify_solve_thaw_group">本群已解冻,开始畅聊云购吧</string>
     <string name="notify_thaw_for_member">由于该群涉及%1$s,已做冻结处理</string>
-    <string name="notify_thaw_from_admins">由于该群涉及%1$s,1元云购已将该群作冻结处理,请您对该群进行整改,五天后方可申请解冻.</string>
-    <string name="notify_title">一元云购</string>
+    <string name="notify_thaw_from_admins">由于该群涉及%1$s,天天必购已将该群作冻结处理,请您对该群进行整改,五天后方可申请解冻.</string>
+    <string name="notify_title">天天必购</string>
     <string name="notify_title_activity">系统通知</string>
     <string name="notify_title_obtain_goods">获得商品通知</string>
     <string name="notify_video">发来一个视频</string>
@@ -808,7 +808,7 @@
     <string name="order_progress_state_check_fail_tips">您的身份证信息审核未通过，请重新提交！</string>
     <string name="order_progress_state_check_tips">正在审核您的收货信息，请耐心等待！</string>
     <string name="order_progress_state_completed">已完成</string>
-    <string name="order_progress_state_completed_tips">感谢您使用1元云购，愿惊喜与您天天见！</string>
+    <string name="order_progress_state_completed_tips">感谢您使用天天必购，愿惊喜与您天天见！</string>
     <string name="order_progress_state_is_deliver">已发货</string>
     <string name="order_progress_state_is_deliver_tips">发货啦，请注意签收哦！</string>
     <string name="order_progress_state_un_deliver">待发货</string>
@@ -964,8 +964,8 @@
     <string name="rule_identift_upload_for_normal2">2、身份证正反面扫描件必须为彩色且在同一张A4纸中，请勿进行任何变动、修饰等；</string>
     <string name="rule_identift_upload_for_normal3">3、请注意照片需白色背景、免冠、免眼镜、免染发、勿遮眼眉等，五官、文字清晰可辨，切勿美颜修饰；</string>
     <string name="rule_identift_upload_for_normal4">4、上传文件类型支持JPG/PNG/BMP/GIF，大小不超过10M。</string>
-    <string name="safe_tip">安全提醒：1元云购绝对不会以私信或QQ私聊的方式向您索取账号、密码、手机验证码等信息，谨防诈骗！</string>
-    <string name="safe_tip_html"><font color="#333333">安全提醒：</font>1元云购绝对不会以私信或QQ私聊的方式向您索取账号、密码、手机验证码等信息，谨防诈骗！</string>
+    <string name="safe_tip">安全提醒：天天必购绝对不会以私信或QQ私聊的方式向您索取账号、密码、手机验证码等信息，谨防诈骗！</string>
+    <string name="safe_tip_html"><font color="#333333">安全提醒：</font>天天必购绝对不会以私信或QQ私聊的方式向您索取账号、密码、手机验证码等信息，谨防诈骗！</string>
     <string name="save">保存</string>
     <string name="save_to_mobile">保存到手机</string>
     <string name="scan_code">扫一扫</string>
@@ -1054,11 +1054,11 @@
     <string name="setting_msg_friend">好友消息提醒</string>
     <string name="setting_msg_group">群消息提醒</string>
     <string name="setting_msg_notify">接收新消息通知</string>
-    <string name="setting_msg_notify_tips">如需更改，请在“手机-设置-通知中心”中找到应用程序“1元云购”进行更改</string>
+    <string name="setting_msg_notify_tips">如需更改，请在“手机-设置-通知中心”中找到应用程序“天天必购”进行更改</string>
     <string name="setting_msg_shock">震动</string>
     <string name="setting_msg_title">消息提醒</string>
     <string name="setting_msg_voice">声音</string>
-    <string name="setting_my_agreement">1元云购互助购物协议</string>
+    <string name="setting_my_agreement">天天必购互助购物协议</string>
     <string name="setting_my_share_friend">分享给好友</string>
     <string name="setting_name_format_error">昵称只能由汉字、字母、数字、“_-”组成</string>
     <string name="setting_name_lenght_error">昵称长度必须在2-20之间，一个汉字长度为2</string>
@@ -1068,7 +1068,7 @@
     <string name="setting_qq_length_short">请输入正确的QQ号</string>
     <string name="setting_read">标为已读</string>
     <string name="setting_safe">安全设置</string>
-    <string name="setting_scan_qrcode">1元云购客户端V%s</string>
+    <string name="setting_scan_qrcode">天天必购客户端V%s</string>
     <string name="setting_service">客服热线</string>
     <string name="setting_service_tel">4000-588-688</string>
     <string name="setting_signature_lenght_error">签名不能超过100个字</string>
@@ -1083,10 +1083,10 @@
     <string name="setting_update">版本更新</string>
     <string name="settle">结算</string>
     <string name="shaidan">晒单</string>
-    <string name="share_download">扫码下载1元云购官方APP</string>
+    <string name="share_download">扫码下载天天必购官方APP</string>
     <string name="share_friend">分享好友</string>
     <string name="share_goodsdetail_content">1元就能买iPhone 7，一种很有意思的购物方式，快来看看吧！</string>
-    <string name="share_goodsdetail_title">1元云购是一种很有意思的新型购物模式，你也来试试吧！</string>
+    <string name="share_goodsdetail_title">天天必购是一种很有意思的新型购物模式，你也来试试吧！</string>
     <string name="share_raffdetail_content">1元就能买iPhone 7，一种很有意思的购物方式，快来看看吧！</string>
     <string name="share_raffdetail_title">只花了%d元买到它，一种全新的购物模式，你也来试试吧！</string>
     <string name="share_to">分享晒单</string>
@@ -1098,9 +1098,9 @@
     <string name="share_to_tips">运气这么好，炫耀一下吧!还能赚钱哦!</string>
     <string name="share_to_weichat">分享给微信好友</string>
     <string name="share_to_wx_goods_details">求祝福，求好运!花了%s块钱，保佑千万要是我!</string>
-    <string name="share_to_wx_goods_title">哈哈!快来看啊!我真的就花了%s块钱得到哦!1元云购爱死你了，么么哒!</string>
+    <string name="share_to_wx_goods_title">哈哈!快来看啊!我真的就花了%s块钱得到哦!天天必购爱死你了，么么哒!</string>
     <string name="share_to_wx_post_title">真的就花了%s块钱，快来膜拜一下!</string>
-    <string name="share_wx_download_text">1元云购是一种全新的娱乐购物方式，所有商品只要1元，快来试试吧！</string>
+    <string name="share_wx_download_text">天天必购是一种全新的娱乐购物方式，所有商品只要1元，快来试试吧！</string>
     <string name="share_wx_download_title">1元就能买iPhone 7，快来跟我一起玩儿！</string>
     <string name="shop_complete_and_go_shopping_record_to_see">如参与成功，稍后您可以在“云购记录”查看您的云购记录</string>
     <string name="shopping_record">云购记录</string>
@@ -1210,8 +1210,8 @@
     <string name="tips_validate_identify_select">请选择%s</string>
     <string name="tips_validate_receiptor_info">请完善收货信息</string>
     <string name="tips_verify_code">请输入系统发送给您的6位验证码</string>
-    <string name="tips_warning_text">安全提醒：1元云购绝对不会以私信或QQ私聊的方式向您索取账号、密码、手机验证码等信息，谨防诈骗！</string>
-    <string name="tips_warning_text1">温馨提示：一元云购不会以任何方式向用户索取账号密码等个人资料，或以私信方式通知用户中奖信息，请勿将账号密码泄漏给陌生云友，谨防诈骗！如有疑问请致电官方客服热线</string>
+    <string name="tips_warning_text">安全提醒：天天必购绝对不会以私信或QQ私聊的方式向您索取账号、密码、手机验证码等信息，谨防诈骗！</string>
+    <string name="tips_warning_text1">温馨提示：天天必购不会以任何方式向用户索取账号密码等个人资料，或以私信方式通知用户中奖信息，请勿将账号密码泄漏给陌生云友，谨防诈骗！如有疑问请致电官方客服热线</string>
     <string name="tips_you_are_no_friends">你们还不是好友！</string>
     <string name="title_ad_recommend">新品推荐</string>
     <string name="title_agreement">互助购物协议</string>
