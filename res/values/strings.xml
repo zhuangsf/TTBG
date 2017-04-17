@@ -124,7 +124,7 @@
     <string name="already_send">已发货</string>
     <string name="already_stop_recorder">已停止录音</string>
     <string name="announce_already_join">您已参与%d人次</string>
-    <string name="app_name">天天必购</string>
+    <string name="app_name">每天必购</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="apply_thaw">申请解冻</string>
     <string name="ask_for_friend">请求添加为朋友</string>
