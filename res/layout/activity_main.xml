@@ -52,7 +52,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.0"
-                android:text="最新揭晓"
+                android:text="商品展示"
                 jockey:drawableTop="@drawable/icon_main_tab_newest"
                 jockey:drawableTopHeight="@dimen/icon_main_tab_size"
                 jockey:drawableTopWidth="@dimen/icon_main_tab_size" />
@@ -74,7 +74,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.0"
-                android:text="我的云购"
+                android:text="我的"
                 jockey:drawableTop="@drawable/icon_main_tab_mine"
                 jockey:drawableTopHeight="@dimen/icon_main_tab_size"
                 jockey:drawableTopWidth="@dimen/icon_main_tab_size" />
