@@ -50,7 +50,7 @@ public class ObtainGoodsItem
 	}
 
 	public String getGoods_pubilsh_time() {
-		return "揭晓时间: "+ goods_pubilsh_time;
+		return "结果时间: "+ goods_pubilsh_time;
 	}
 
 	public void setGoods_pubilsh_time(String goods_pubilsh_time) {

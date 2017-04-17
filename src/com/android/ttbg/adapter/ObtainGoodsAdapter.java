@@ -118,8 +118,8 @@ public class ObtainGoodsAdapter extends BaseAdapter {
             //在这里设置样式吧
             int fstart,fend;
             
-            String goods_luck_code = "幸运云购码: "+ObtainGoodsItem.getGoods_luck_code();
-            fstart="幸运云购码: ".length();  
+            String goods_luck_code = "幸运必购码: "+ObtainGoodsItem.getGoods_luck_code();
+            fstart="幸运必购码: ".length();  
             fend=goods_luck_code.length(); 
             SpannableStringBuilder style=new SpannableStringBuilder(goods_luck_code);     
             style.setSpan(new ForegroundColorSpan(0xffff7700),fstart,fend,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);   

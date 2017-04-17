@@ -159,8 +159,8 @@ public class NewestGoodsAdapter extends BaseAdapter {
                 style.setSpan(new ForegroundColorSpan(0xffff7700),fstart,fend,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);   
                 
                 viewHolder.buyTimes.setText(style);
-                viewHolder.luck_number.setText("幸运云购码: "+goodsItem.getQ_user_code());
-                viewHolder.endTime.setText("揭晓时间: "+goodsItem.getEndtime());
+                viewHolder.luck_number.setText("幸运必购码: "+goodsItem.getQ_user_code());
+                viewHolder.endTime.setText("结果时间: "+goodsItem.getEndtime());
     		}
     		else{
     			//正在倒计时,要显示倒计时时间
