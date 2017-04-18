@@ -68,8 +68,12 @@ public class CountFragment extends BaseFragment {
 			account_record.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
+						if(Utils.WTF){
+							
+						}else{
 						Intent intent = new Intent(getActivity(), HistoryActivity.class);
 						startActivity(intent);
+						}
 					}
 				});
 			
@@ -78,8 +82,12 @@ public class CountFragment extends BaseFragment {
 		   account_obtain_goods.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					if(Utils.WTF){
+						
+					}else{
 					Intent intent = new Intent(getActivity(), ObtainGoodsActivity.class);
 					startActivity(intent);
+					}
 				}
 			});
 		   

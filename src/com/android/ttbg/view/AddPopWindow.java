@@ -1,6 +1,7 @@
 package com.android.ttbg.view;
 
 import com.android.ttbg.R;
+import com.android.ttbg.util.Utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -61,6 +62,10 @@ public class AddPopWindow extends PopupWindow {
 				AddPopWindow.this.dismiss();
 			}
 		});
+		
+		if(Utils.WTF){
+			menu_history.setVisibility(View.GONE);
+		}
 	}
 
 	/**
