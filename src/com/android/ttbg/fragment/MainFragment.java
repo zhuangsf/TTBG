@@ -568,6 +568,14 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
         // 设置切出动画  
     	switcher.setOutAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_out_up));  
     	
+    	
+    	if(Utils.WTF)
+    	{
+    		View layout_home_newest_switcher = (View) v.findViewById(R.id.layout_home_newest_switcher);  
+    		layout_home_newest_switcher.setVisibility(View.GONE);
+    		
+    	}
+    	
 		Message msg = new Message();
 		msg.what = MSG_TEST_SWITCHER_TEST;
 		mHandler.sendMessageDelayed(msg, 2000);
@@ -651,6 +659,12 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     	
     	//hashMapList
     	
+    	if(Utils.WTF)
+    	{
+    		return;
+    	}
+    	
+    	
     	for(int i = 0;i < 4;i++)
     	{
     		if(hashMapList.size() < i + 1)
@@ -694,6 +708,16 @@ public class MainFragment extends BaseFragment implements ViewFactory,OnClickLis
     }
     
     private void initCountDownPage(View v) {
+    	
+    	
+    	if(Utils.WTF)
+    	{
+    		View ll_count_donw_view = (View) v.findViewById(R.id.ll_count_donw_view);
+    		ll_count_donw_view.setVisibility(View.GONE);
+    		return;
+    	}
+    	
+    	
         count1_image = (ImageView) v.findViewById(R.id.count1_image);
         count2_image = (ImageView) v.findViewById(R.id.count2_image);
         count3_image = (ImageView) v.findViewById(R.id.count3_image);

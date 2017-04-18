@@ -2,6 +2,7 @@ package com.android.ttbg;
 
 import com.android.ttbg.adapter.LauncherPagerAdapter;
 import com.android.ttbg.util.OperatingSP;
+import com.android.ttbg.util.Utils;
 import com.android.ttbg.view.ILauncherView;
 
 import android.annotation.SuppressLint;
@@ -100,6 +101,12 @@ public class LauncherActivity extends FragmentActivityPack implements ILauncherV
 
 
 	private boolean isFirst() {
+		
+		if(Utils.WTF)
+		{
+			return false;
+		}
+		
 		Boolean user_first = OperatingSP.getBooleanFirstBoot(LauncherActivity.this);
 		if (user_first) {// 第一次
 			OperatingSP.setBooleanFirstBoot(LauncherActivity.this);

@@ -15,6 +15,8 @@ import com.android.ttbg.fragment.CountFragment.onLoginListener;
 import com.android.ttbg.fragment.MainFragment;
 import com.android.ttbg.fragment.NewestFragment;
 import com.android.ttbg.fragment.AllGoodsFragment;
+import com.android.ttbg.util.Utils;
+import com.android.ttbg.view.MyRadioButton;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
@@ -53,13 +55,28 @@ public class MainActivity extends FragmentActivityPack implements onLoginListene
         mBaseFragments = new ArrayList<>();
         mBaseFragments.add(mMainFragment);
         mBaseFragments.add(new AllGoodsFragment());
-        mBaseFragments.add(new NewestFragment());
-        mBaseFragments.add(new CartFragment());
+        
+        if(!Utils.WTF)
+        {
+        	mBaseFragments.add(new NewestFragment());
+        	mBaseFragments.add(new CartFragment());
+        }
+       
         mBaseFragments.add(new CountFragment());
     }
 
     private void initView() {
         mRadioGroup = (RadioGroup) findViewById(R.id.main_tab_group);
+        
+        if(Utils.WTF)
+        {
+        MyRadioButton main_tab_newest = (MyRadioButton) findViewById(R.id.main_tab_newest);
+        main_tab_newest.setVisibility(View.GONE);
+        MyRadioButton main_tab_cart = (MyRadioButton) findViewById(R.id.main_tab_cart);
+        main_tab_cart.setVisibility(View.GONE);
+        }
+        
+        
     }
 
     
@@ -101,7 +118,13 @@ public class MainActivity extends FragmentActivityPack implements onLoginListene
                     position = 3;
                     break;
                 case R.id.main_tab_mine:
-                    position = 4;
+                	if(!Utils.WTF)
+                    {
+                		position = 4;
+                    }else{
+                    	position = 2;
+                    }
+                    
                     break;
                 default:
                     position = 0;

@@ -18,6 +18,10 @@ import android.util.Log;
 
 
 public class Utils {
+	
+	public final static boolean WTF = true;    //造假专用,后续用读取网络的方式
+	
+	
 	private final static boolean isDebug = true;
 	private final static String TAG = Utils.class.getPackage() + "."
 			+ Utils.class.getSimpleName();
